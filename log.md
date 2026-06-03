@@ -33,3 +33,12 @@
 - 新增 [[Obsidian工作台]]，明确日常阅读、维护和写作应在 Obsidian Markdown 层完成。
 - 调整交互式图谱模板为内容优先布局：左侧索引，中间正文，右侧图谱导航。
 - 明确 `wiki/knowledge-graph.html` 是离线全局地图，不是主要阅读界面。
+
+## 2026-06-04 intel-gather | 游戏工作室 AI 提效证据
+
+- 以 `/intel-gather` 方式并行拆分 5 条证据线：量化提效、NPC/叙事/语音、资产/3D/美术管线、QA/运营/内部工具、行业报告与落地方法论。
+- 新增原始情报副本 [[raw/notes/intel-gather-game-ai-2026-06-04]]。
+- 新增 source 页 [[游戏工作室 AI 提效证据]]，汇总 EA、King、Roblox、Ubisoft、KRAFTON、Embark、CDPR/Respeecher、Layer、Capcom、Square Enix、Unity、Google Cloud、GDC 等公开证据。
+- 新增综合页 [[游戏工作室AI提效落地框架]]，按自动测试、资产生产、NPC/语音、内部工具、客服运营等环节整理可复制方法。
+- 新增实体页 [[AI辅助QA]] 与 [[AI NPC]]，并更新 [[AI游戏与虚拟世界]]、[[游戏生产管线]]、[[AI游戏]]、[[wiki/overview]]、[[index]]。
+- 更新静态图谱 [[wiki/knowledge-graph]]；交互式 `wiki/knowledge-graph.html` 需要下次使用原 graph build 脚本重新生成。

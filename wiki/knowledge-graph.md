@@ -20,7 +20,15 @@ graph LR
 
   GameTopic[AI游戏与虚拟世界] --> AIGame[AI游戏]
   GameTopic --> Agent
+  GameTopic --> GamePipeline[游戏生产管线]
+  GameTopic --> GameIntel[游戏工作室AI提效证据]
+  GameIntel --> GameFramework[游戏工作室AI提效落地框架]
+  GameFramework --> GameQA[AI辅助QA]
+  GameFramework --> AINPC[AI NPC]
+  GameFramework --> GamePipeline
   AIGame --> Governance
+  GamePipeline --> GameQA
+  GamePipeline --> AINPC
 
   Safety[AI安全与治理] --> Governance
   Safety --> Agent
@@ -40,6 +48,9 @@ graph LR
   Altman[奥特曼访谈] --> AINative
   Schmidt[谷歌前CEO警告] --> Governance
   LiFeifei[李飞飞访谈] --> Human
+  EA[EA/King/Roblox量化证据] --> GameIntel
+  Ubisoft[Ubisoft/KRAFTON/Inworld] --> AINPC
+  Capcom[Capcom/Square Enix/Unity] --> GamePipeline
 ```
 
 ## 查看方式
@@ -56,3 +67,7 @@ graph LR
 - [[企业上下文]]
 - [[业务闭环]]
 - [[智能密度]]
+- [[游戏工作室 AI 提效证据]]
+- [[游戏工作室AI提效落地框架]]
+- [[AI辅助QA]]
+- [[AI NPC]]
