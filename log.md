@@ -1,0 +1,35 @@
+# 操作日志
+
+## 2026-06-03 init | llm-wiki 结构化改造
+
+- 拉取并参考 `sdyckjq-lab/llm-wiki-skill`。
+- 新增 `.wiki-schema.md`、`purpose.md`、`index.md` 和 `AGENTS.md`。
+- 新增 `raw/` 与 `wiki/` 目录骨架。
+- 保留原有 `00-入口/`、`01-主题/`、`02-视频笔记/`、`03-核验/`，作为历史笔记与人类阅读层。
+
+## 2026-06-03 migrate | 第一批主题与实体索引
+
+- 将既有视频笔记的主线改造为 `wiki/topics/` 与 `wiki/entities/`。
+- 建立 `[[AI原生公司]]`、`[[企业上下文]]`、`[[业务闭环]]`、`[[智能密度]]` 等核心实体。
+- 更新入口与 README，让后续交互默认遵循 ingest/query/digest/lint/graph 工作流。
+- 新增 `wiki/knowledge-graph.md` 静态图谱初版。
+- 使用 `llm-wiki-skill/scripts/build-graph-data.sh` 和 `build-graph-html.sh` 生成 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`。
+
+## 2026-06-03 align | Karpathy LLM Wiki 方法论对齐
+
+- 核对 Karpathy `LLM Wiki` 原文后，明确本库三层结构：`raw/` 原始素材层、`wiki/` LLM 维护层、`.wiki-schema.md` / `AGENTS.md` 规范层。
+- 将 24 篇历史视频笔记复制到 `raw/notes/video-notes/`，作为不可变素材副本。
+- 更新 schema、README、AGENTS 和 index，要求后续 ingest 不只生成摘要，还要更新实体页、主题页、矛盾/核验点、index、log 和图谱。
+
+## 2026-06-03 ingest | 历史视频笔记编译为 wiki
+
+- 为 24 篇历史视频笔记建立 `wiki/sources/` 摘要页，source 页只承载整理后的核心观点、概念链接和待核验点，不替代 `raw/` 中的原始副本。
+- 扩展 `wiki/entities/`，新增 [[个人独特性]]、[[共同故事]]、[[AI意识]]、[[柔性心智]]、[[AI代理]]、[[AI原生游戏]]、[[游戏生产管线]]、[[3D生成]]、[[AI创业与投资]]、[[基础模型]]、[[具身智能]]、[[硬科技创业]]。
+- 将主题页从旧视频笔记清单升级为 source/entity 网络，便于 Obsidian 双链和离线 HTML 图谱共同使用。
+- 下一步每次新增素材都应按 `raw -> sources -> entities/topics -> index/log -> graph` 顺序维护。
+
+## 2026-06-03 ux | 内容优先入口
+
+- 新增 [[Obsidian工作台]]，明确日常阅读、维护和写作应在 Obsidian Markdown 层完成。
+- 调整交互式图谱模板为内容优先布局：左侧索引，中间正文，右侧图谱导航。
+- 明确 `wiki/knowledge-graph.html` 是离线全局地图，不是主要阅读界面。

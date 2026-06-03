@@ -1,0 +1,6285 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知识图谱 · 研究目的与方向</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238B2E24'/%3E%3Cpath d='M10 43 C17 34 22 25 29 31 C35 18 42 14 54 43' fill='none' stroke='%23FFFDF7' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 49 C24 45 34 46 50 49' fill='none' stroke='%23FFFDF7' stroke-width='3' stroke-linecap='round' opacity='.75'/%3E%3Ccircle cx='43' cy='18' r='3' fill='%23FFFDF7'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe4;
+      --surface: #fffdf7;
+      --surface-2: #f8f1e4;
+      --vellum: #e9ddc9;
+      --mist: #ece5d8;
+      --ink: #241f1a;
+      --muted: #6f6559;
+      --faint: #9b8f7e;
+      --rule: #d8cdbb;
+      --line: #cfc4b1;
+      --cinnabar: #8b2e24;
+      --cinnabar-2: #a23b2a;
+      --jade: #4b7564;
+      --green: #3e6b4b;
+      --night: #315f72;
+      --amber: #b7791f;
+      --violet: #6f557f;
+      --shadow: 0 18px 36px rgba(36, 31, 26, .11);
+      --soft-shadow: 0 10px 24px rgba(36, 31, 26, .08);
+      --radius: 12px;
+      --font-serif: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+      --font-ui: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255, 253, 247, .72), transparent 28%),
+        radial-gradient(circle at 90% 18%, rgba(75, 117, 100, .12), transparent 28%),
+        linear-gradient(145deg, #f4efe4 0%, #ece4d4 48%, #f6f0e4 100%);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      overflow: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      opacity: .42;
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0 31px, rgba(104, 88, 66, .055) 31px 32px),
+        repeating-linear-gradient(90deg, transparent 0 31px, rgba(104, 88, 66, .042) 31px 32px),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .48 0 0 0 0 .34 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    body::after {
+      background:
+        linear-gradient(90deg, transparent 0 86px, rgba(139, 46, 36, .22) 86px 87px, transparent 87px),
+        linear-gradient(180deg, rgba(255, 255, 255, .28), transparent 22%);
+    }
+
+    button,
+    input,
+    a {
+      font: inherit;
+    }
+
+    button,
+    input,
+    a {
+      min-height: 44px;
+    }
+
+    a {
+      color: inherit;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid rgba(139, 46, 36, .72);
+      outline-offset: 3px;
+    }
+
+    .app {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(236px, 276px) minmax(520px, 1fr) minmax(300px, 370px);
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      padding: 14px 16px 16px 24px;
+    }
+
+    .app[data-reading="1"] {
+      grid-template-columns: minmax(226px, 260px) minmax(500px, 1fr) minmax(340px, 430px);
+    }
+
+    .topbar {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 14px 16px 13px 18px;
+      background: rgba(255, 253, 247, .82);
+      border: 1px solid rgba(216, 205, 187, .92);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .seal {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      background:
+        linear-gradient(135deg, rgba(139, 46, 36, .95), rgba(162, 59, 42, .95)),
+        var(--cinnabar);
+      color: #fffdf7;
+      box-shadow: inset 0 0 0 1px rgba(255, 253, 247, .28), 0 10px 18px rgba(139, 46, 36, .22);
+    }
+
+    .seal svg {
+      width: 29px;
+      height: 29px;
+      display: block;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(21px, 2vw, 31px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status-strip {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .status-pill,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 32px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(216, 205, 187, .92);
+      background: rgba(248, 241, 228, .84);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    button.chip {
+      min-height: 44px;
+    }
+
+    button[disabled],
+    .is-disabled {
+      cursor: not-allowed;
+      opacity: .62;
+      filter: saturate(.65);
+    }
+
+    button[disabled],
+    .is-disabled,
+    .node.is-disabled {
+      border-style: dashed;
+      background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgba(111, 101, 89, .08) 8px 10px);
+    }
+
+    .is-disabled::after {
+      content: "不可用";
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      margin-left: 8px;
+      padding: 0 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(111, 101, 89, .36);
+      color: var(--muted);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 99px;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(62, 107, 75, .12);
+    }
+
+    .icon-button,
+    .ghost-button,
+    .primary-button,
+    .state-button,
+    .nav-item,
+    .node {
+      border: 0;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .icon-button {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid rgba(216, 205, 187, .94);
+      background: rgba(255, 253, 247, .82);
+      display: inline-grid;
+      place-items: center;
+      color: var(--muted);
+    }
+
+    .ghost-button,
+    .primary-button,
+    .state-button {
+      border-radius: 10px;
+      padding: 0 12px;
+      border: 1px solid rgba(216, 205, 187, .94);
+      background: rgba(255, 253, 247, .82);
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .primary-button {
+      border-color: var(--cinnabar);
+      background: var(--cinnabar);
+      color: #fffdf7;
+      box-shadow: 0 10px 18px rgba(139, 46, 36, .18);
+    }
+
+    .ghost-button:hover,
+    .state-button:hover,
+    .icon-button:hover,
+    .nav-item:hover,
+    .node:hover {
+      transform: translateY(-1px);
+      border-color: rgba(139, 46, 36, .42);
+      box-shadow: 0 8px 16px rgba(36, 31, 26, .08);
+    }
+
+    .github-button {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .github-button svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .mobile-atlas-preview,
+    .sidebar,
+    .drawer,
+    .canvas-card {
+      min-height: 0;
+      border: 1px solid rgba(216, 205, 187, .92);
+      background: rgba(255, 253, 247, .76);
+      border-radius: var(--radius);
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(9px);
+    }
+
+    .mobile-atlas-preview {
+      display: none;
+    }
+
+    .sidebar {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 15px 22px 15px 15px;
+      overflow-y: auto;
+    }
+
+    .sidebar::after,
+    .drawer::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      background: rgba(139, 46, 36, .24);
+      pointer-events: none;
+    }
+
+    .sidebar::after {
+      right: 14px;
+    }
+
+    .drawer::before {
+      left: 14px;
+    }
+
+    .section {
+      position: relative;
+      display: grid;
+      gap: 9px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      min-height: 24px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .section-title b {
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 42px 0 13px;
+      border-radius: 10px;
+      border: 1px solid rgba(216, 205, 187, .95);
+      background: rgba(248, 241, 228, .78);
+      color: var(--ink);
+    }
+
+    .search-box span {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      translate: 0 -50%;
+      color: var(--faint);
+    }
+
+    .nav-list,
+    .queue-list,
+    .start-list,
+    .neighbor-list,
+    .notes-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav-item,
+    .queue-card,
+    .start-card,
+    .neighbor-card,
+    .note-card,
+    .state-panel {
+      width: 100%;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(216, 205, 187, .92);
+      background: rgba(248, 241, 228, .66);
+      text-align: left;
+    }
+
+    .start-card[data-preview-start="true"] {
+      border-color: rgba(139, 46, 36, .42);
+      background: rgba(248, 241, 228, .78);
+      box-shadow: inset 3px 0 0 rgba(139, 46, 36, .56);
+    }
+
+    .nav-item {
+      display: grid;
+      grid-template-columns: 10px 1fr auto;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .nav-item[aria-pressed="true"] {
+      border-color: rgba(139, 46, 36, .46);
+      background: rgba(255, 253, 247, .94);
+      box-shadow: inset 3px 0 0 var(--cinnabar), 0 7px 16px rgba(36, 31, 26, .07);
+    }
+
+    .swatch {
+      width: 10px;
+      height: 28px;
+      border-radius: 99px;
+      background: var(--night);
+    }
+
+    .nav-copy,
+    .card-copy {
+      min-width: 0;
+    }
+
+    .nav-copy strong,
+    .card-copy strong {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .nav-copy span,
+    .card-copy span {
+      display: block;
+      margin-top: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .count {
+      font-family: var(--font-mono);
+      color: var(--cinnabar);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      padding: 5px;
+      border-radius: 12px;
+      background: rgba(233, 221, 201, .52);
+      border: 1px solid rgba(216, 205, 187, .82);
+    }
+
+    .segmented button {
+      min-width: 44px;
+      min-height: 44px;
+      border-radius: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .segmented button[aria-pressed="true"] {
+      color: var(--ink);
+      background: rgba(255, 253, 247, .92);
+      box-shadow: 0 5px 12px rgba(36, 31, 26, .08);
+    }
+
+    .queue-card {
+      display: grid;
+      gap: 10px;
+    }
+
+    .queue-item {
+      display: grid;
+      grid-template-columns: 4px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 9px;
+      width: 100%;
+      min-width: 0;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(216, 205, 187, .92);
+      background: rgba(255, 253, 247, .72);
+      text-align: left;
+    }
+
+    .queue-item[aria-current="true"] {
+      border-color: rgba(139, 46, 36, .42);
+      background: rgba(255, 253, 247, .94);
+      box-shadow: 0 7px 16px rgba(36, 31, 26, .07);
+    }
+
+    .queue-item__marker {
+      width: 4px;
+      align-self: stretch;
+      border-radius: 99px;
+      background: var(--night);
+    }
+
+    .queue-item[data-kind="note"] .queue-item__marker {
+      background: var(--cinnabar);
+    }
+
+    .queue-item[data-kind="favorite"] .queue-item__marker {
+      background: var(--jade);
+    }
+
+    .queue-item__copy {
+      min-width: 0;
+      display: grid;
+      gap: 3px;
+    }
+
+    .queue-item__copy strong {
+      min-width: 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .queue-item__copy span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .queue-item__badge {
+      color: var(--cinnabar);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .queue-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric {
+      padding: 9px;
+      border-radius: 9px;
+      background: rgba(255, 253, 247, .72);
+      border: 1px dashed rgba(216, 205, 187, .95);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .metric b {
+      display: block;
+      margin-top: 5px;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .canvas-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      background:
+        linear-gradient(180deg, rgba(255, 253, 247, .62), rgba(248, 241, 228, .58)),
+        var(--surface-2);
+    }
+
+    .canvas-card::before,
+    .canvas-card::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .canvas-card::before {
+      inset: 64px 16px 72px;
+      opacity: .66;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='920' height='620' viewBox='0 0 920 620'%3E%3Cg fill='none' stroke='%23cfc4b1' stroke-width='1.35' opacity='.9'%3E%3Cpath d='M-20 480 C88 420 140 448 212 386 C298 312 364 378 454 322 C548 264 608 278 704 228 C798 180 856 206 946 150'/%3E%3Cpath d='M-28 525 C86 462 166 492 244 426 C332 350 394 414 482 352 C574 288 638 306 734 254 C820 208 880 236 952 196'/%3E%3Cpath d='M18 372 C112 324 170 340 240 282 C324 212 386 272 466 222 C542 174 636 190 700 142 C782 82 854 120 930 78'/%3E%3Cpath d='M44 540 C118 520 148 558 218 522 C306 478 340 514 430 462 C514 414 586 430 674 386 C778 334 826 362 912 322'/%3E%3Cpath d='M-32 262 C60 224 112 242 174 198 C244 148 300 184 374 142 C450 96 520 106 594 72 C686 32 760 56 930 4'/%3E%3Cpath d='M72 470 C156 430 218 456 290 404 C366 350 424 392 512 338 C602 284 662 302 742 260 C812 224 856 238 936 198'/%3E%3Cpath d='M80 302 C154 266 218 286 286 238 C350 190 422 218 492 178 C568 134 650 142 724 96 C796 52 854 72 930 34'/%3E%3C/g%3E%3Cg fill='none' stroke='%23315f72' stroke-width='1.1' opacity='.22'%3E%3Cpath d='M120 154 L206 198 L316 162 L430 236 L546 176 L678 226 L798 144'/%3E%3Cpath d='M172 398 L260 338 L368 390 L486 316 L604 356 L732 294'/%3E%3Cpath d='M236 112 L330 92 L426 140 L528 106 L632 156 L738 112'/%3E%3C/g%3E%3Cg fill='%23315f72' opacity='.18'%3E%3Ccircle cx='120' cy='154' r='3'/%3E%3Ccircle cx='316' cy='162' r='2.6'/%3E%3Ccircle cx='546' cy='176' r='2.8'/%3E%3Ccircle cx='798' cy='144' r='3'/%3E%3Ccircle cx='260' cy='338' r='2.4'/%3E%3Ccircle cx='604' cy='356' r='2.4'/%3E%3Ccircle cx='738' cy='112' r='2.8'/%3E%3C/g%3E%3C/svg%3E") center / cover no-repeat;
+    }
+
+    .canvas-card::after {
+      inset: 0;
+      background:
+        radial-gradient(circle at 52% 38%, rgba(49, 95, 114, .16), transparent 18%),
+        radial-gradient(circle at 70% 56%, rgba(75, 117, 100, .12), transparent 22%),
+        radial-gradient(circle at 35% 62%, rgba(139, 46, 36, .10), transparent 18%),
+        linear-gradient(90deg, rgba(255, 253, 247, .1), rgba(236, 229, 216, .18), rgba(255, 253, 247, .1));
+      mix-blend-mode: multiply;
+    }
+
+    .mobile-atlas-preview {
+      position: relative;
+      overflow: hidden;
+      padding: 12px;
+      background:
+        linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(248, 241, 228, .66)),
+        var(--surface-2);
+    }
+
+    .mobile-atlas-preview::before {
+      content: "";
+      position: absolute;
+      inset: 8px 10px;
+      pointer-events: none;
+      opacity: .72;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='112' viewBox='0 0 340 112'%3E%3Cg fill='none' stroke='%23cfc4b1' stroke-width='1.1' opacity='.86'%3E%3Cpath d='M-4 88 C32 58 64 76 96 50 C132 22 164 44 202 30 C246 14 280 34 346 10'/%3E%3Cpath d='M-10 106 C34 78 72 96 108 68 C148 38 178 60 218 44 C258 28 296 46 348 24'/%3E%3Cpath d='M10 66 C48 42 78 52 112 30 C150 8 184 24 218 16 C258 6 292 16 340 2'/%3E%3C/g%3E%3Cg fill='none' stroke='%23315f72' stroke-width='1' opacity='.26'%3E%3Cpath d='M48 68 L104 44 L164 56 L226 32 L292 50'/%3E%3Cpath d='M84 88 L146 74 L206 90 L272 70'/%3E%3C/g%3E%3Cg fill='%23315f72' opacity='.32'%3E%3Ccircle cx='48' cy='68' r='3'/%3E%3Ccircle cx='164' cy='56' r='3'/%3E%3Ccircle cx='292' cy='50' r='3'/%3E%3C/g%3E%3Cg fill='%238b2e24' opacity='.8'%3E%3Ccircle cx='104' cy='44' r='4'/%3E%3C/g%3E%3Cg fill='%234b7564' opacity='.72'%3E%3Ccircle cx='226' cy='32' r='4'/%3E%3C/g%3E%3C/svg%3E") center / cover no-repeat;
+    }
+
+    .preview-copy,
+    .preview-map {
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-copy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .preview-copy strong {
+      font-family: var(--font-serif);
+      font-size: 16px;
+    }
+
+    .preview-copy span {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .preview-map {
+      height: 94px;
+      border-radius: 11px;
+      border: 1px solid rgba(216, 205, 187, .86);
+      background: rgba(255, 253, 247, .38);
+    }
+
+    .canvas-toolbar,
+    .canvas-footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+    }
+
+    .canvas-toolbar {
+      border-bottom: 1px solid rgba(216, 205, 187, .78);
+      background: rgba(255, 253, 247, .72);
+    }
+
+    .canvas-title {
+      min-width: 0;
+    }
+
+    .canvas-title strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .canvas-title span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .canvas-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .atlas {
+      position: relative;
+      z-index: 1;
+      min-height: 0;
+      overflow: hidden;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .atlas.is-panning {
+      cursor: grabbing;
+    }
+
+    .mist {
+      position: absolute;
+      inset: auto -10% 8% -10%;
+      height: 28%;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 28% 55%, rgba(255, 253, 247, .56), transparent 56%),
+        radial-gradient(ellipse at 70% 48%, rgba(236, 229, 216, .6), transparent 58%);
+      filter: blur(18px);
+      opacity: .9;
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .graph-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    #edge-layer,
+    #node-layer {
+      transform-origin: 0 0;
+    }
+
+    #node-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      will-change: transform;
+    }
+
+    .edge {
+      fill: none;
+      stroke-linecap: round;
+      opacity: .74;
+    }
+
+    .edge.extracted {
+      stroke: rgba(49, 95, 114, .74);
+      stroke-width: 2.4;
+    }
+
+    .edge.inferred {
+      stroke: rgba(75, 117, 100, .62);
+      stroke-width: 1.7;
+      stroke-dasharray: 6 8;
+    }
+
+    .edge.ambiguous {
+      stroke: rgba(183, 121, 31, .66);
+      stroke-width: 1.6;
+      stroke-dasharray: 2 7;
+    }
+
+    .edge.unverified {
+      stroke: rgba(111, 101, 89, .45);
+      stroke-width: 1.2;
+      stroke-dasharray: 1 8;
+    }
+
+    .node {
+      position: absolute;
+      z-index: 3;
+      min-height: 46px;
+      max-width: 178px;
+      padding: 8px 11px;
+      border-radius: 12px;
+      border: 1px solid rgba(216, 205, 187, .98);
+      background: rgba(255, 253, 247, .88);
+      box-shadow: 0 12px 22px rgba(36, 31, 26, .09), inset 0 0 0 1px rgba(255, 255, 255, .44);
+      translate: -50% -50%;
+      transition: opacity .16s ease, transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      text-align: left;
+    }
+
+    .node::before {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 17px;
+      background: radial-gradient(circle, rgba(49, 95, 114, .18), transparent 66%);
+      z-index: -1;
+      opacity: .46;
+    }
+
+    .node[data-type="topic"] {
+      border-left: 5px solid var(--cinnabar);
+    }
+
+    .node[data-type="entity"] {
+      border-left: 5px solid var(--night);
+    }
+
+    .node[data-type="source"] {
+      border-left: 5px solid var(--jade);
+    }
+
+    .node[aria-pressed="true"] {
+      border-color: rgba(139, 46, 36, .74);
+      box-shadow: 0 16px 28px rgba(139, 46, 36, .16), 0 0 0 4px rgba(139, 46, 36, .1);
+      transform: translateY(-2px);
+    }
+
+    .node.is-dim,
+    .edge.is-dim {
+      opacity: .18;
+    }
+
+    .node.is-disabled {
+      opacity: .72;
+    }
+
+    .node.is-disabled::before {
+      background: radial-gradient(circle, rgba(111, 101, 89, .16), transparent 66%);
+    }
+
+    .node.is-disabled .spark {
+      background: var(--muted);
+      box-shadow: none;
+    }
+
+    .node.is-hidden {
+      display: none;
+    }
+
+    .node-kind {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .node-name {
+      display: block;
+      max-width: 146px;
+      margin-top: 3px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .node-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      color: var(--faint);
+      font-size: 11px;
+    }
+
+    .spark {
+      width: 5px;
+      height: 5px;
+      border-radius: 99px;
+      background: var(--night);
+      box-shadow: 0 0 10px rgba(49, 95, 114, .7);
+    }
+
+    .empty-state,
+    .loading-state,
+    .error-state {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      top: 50%;
+      width: min(360px, calc(100% - 48px));
+      translate: -50% -50%;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(216, 205, 187, .95);
+      background: rgba(255, 253, 247, .9);
+      box-shadow: var(--shadow);
+      text-align: center;
+      display: none;
+    }
+
+    .state-title {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: 18px;
+    }
+
+    .state-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .spinner {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 12px;
+      border-radius: 99px;
+      border: 2px solid rgba(216, 205, 187, .95);
+      border-top-color: var(--cinnabar);
+      animation: spin .9s linear infinite;
+    }
+
+    .atlas[data-mode="loading"] .loading-state,
+    .atlas[data-mode="empty"] .empty-state,
+    .atlas[data-mode="error"] .error-state {
+      display: block;
+    }
+
+    .atlas[data-mode="loading"] .node,
+    .atlas[data-mode="loading"] .edge,
+    .atlas[data-mode="empty"] .node,
+    .atlas[data-mode="empty"] .edge,
+    .atlas[data-mode="error"] .node,
+    .atlas[data-mode="error"] .edge {
+      opacity: .1;
+    }
+
+    .canvas-footer {
+      border-top: 1px solid rgba(216, 205, 187, .78);
+      background: rgba(255, 253, 247, .7);
+      align-items: stretch;
+    }
+
+    .legend,
+    .mini-map,
+    .insight {
+      min-width: 0;
+      border: 1px solid rgba(216, 205, 187, .82);
+      border-radius: 10px;
+      background: rgba(248, 241, 228, .62);
+      padding: 10px;
+    }
+
+    .legend {
+      flex: 1.2;
+    }
+
+    .mini-map {
+      flex: .9;
+      min-width: 138px;
+    }
+
+    .insight {
+      flex: 1.15;
+    }
+
+    .footer-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .confidence-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .confidence {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .confidence i {
+      width: 22px;
+      border-top: 2px solid var(--night);
+    }
+
+    .confidence:nth-child(2) i {
+      border-top-color: var(--jade);
+      border-top-style: dashed;
+    }
+
+    .confidence:nth-child(3) i {
+      border-top-color: var(--amber);
+      border-top-style: dotted;
+    }
+
+    .confidence:nth-child(4) i {
+      border-top-color: var(--muted);
+      border-top-style: dotted;
+    }
+
+    .mini-map svg {
+      width: 100%;
+      height: 54px;
+      display: block;
+      cursor: crosshair;
+      touch-action: manipulation;
+    }
+
+    .mini-map .mini-map-viewport {
+      fill: rgba(139, 46, 36, .06);
+      stroke: var(--cinnabar);
+      stroke-width: 1.35;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .insight strong {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: var(--font-serif);
+      font-size: 13px;
+    }
+
+    .insight p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .drawer {
+      position: relative;
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 0 0 0 12px;
+      overflow: hidden;
+    }
+
+    .drawer,
+    .drawer * {
+      min-width: 0;
+    }
+
+    .drawer-header {
+      padding: 18px 18px 13px;
+      border-bottom: 1px solid rgba(216, 205, 187, .82);
+      background: rgba(255, 253, 247, .72);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cinnabar);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .drawer h2 {
+      margin: 9px 0 0;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow-wrap: anywhere;
+      font-family: var(--font-serif);
+      font-size: 25px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .drawer-subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .drawer-body {
+      min-height: 0;
+      padding: 16px 18px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: grid;
+      align-content: start;
+      gap: 15px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .meta-box {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid rgba(216, 205, 187, .9);
+      border-radius: 10px;
+      background: rgba(248, 241, 228, .62);
+    }
+
+    .meta-box span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .04em;
+    }
+
+    .meta-box b {
+      display: block;
+      margin-top: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-wrap: anywhere;
+      font-family: var(--font-serif);
+      font-size: 14px;
+    }
+
+    .drawer-section {
+      display: grid;
+      gap: 8px;
+    }
+
+    .drawer-section h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 15px;
+    }
+
+    .summary-card {
+      padding: 12px 13px;
+      border-left: 3px solid var(--cinnabar);
+      border-radius: 0 10px 10px 0;
+      background: rgba(248, 241, 228, .66);
+      color: var(--ink);
+      line-height: 1.68;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .knowledge-card {
+      display: grid;
+      gap: 10px;
+      min-width: 0;
+      padding: 13px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(216, 205, 187, .88);
+      background: rgba(255, 253, 247, .7);
+      color: var(--ink);
+      line-height: 1.72;
+      font-size: 13px;
+      overflow-x: hidden;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .knowledge-card p {
+      margin: 0;
+    }
+
+    .knowledge-card h1,
+    .knowledge-card h2,
+    .knowledge-card h3,
+    .knowledge-card h4,
+    .knowledge-card h5,
+    .knowledge-card h6 {
+      margin: 4px 0 0;
+      overflow-wrap: anywhere;
+      font-family: var(--font-serif);
+      line-height: 1.35;
+    }
+
+    .knowledge-card ul,
+    .knowledge-card ol {
+      margin: 0;
+      padding-left: 1.35em;
+    }
+
+    .knowledge-card pre {
+      max-width: 100%;
+      margin: 0;
+      padding: 10px 11px;
+      overflow-x: auto;
+      border-radius: 9px;
+      background: rgba(36, 31, 26, .06);
+      white-space: pre;
+    }
+
+    .knowledge-card code {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-family: var(--font-mono);
+      font-size: .94em;
+    }
+
+    .knowledge-card pre code {
+      overflow-wrap: normal;
+      word-break: normal;
+      white-space: pre;
+    }
+
+    .knowledge-card img,
+    .knowledge-card video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .knowledge-card table {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+    }
+
+    .neighbor-section {
+      padding: 0;
+      border: 1px solid rgba(216, 205, 187, .88);
+      border-radius: 10px;
+      background: rgba(248, 241, 228, .48);
+      overflow: hidden;
+    }
+
+    .neighbor-section > summary {
+      min-height: 44px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      list-style: none;
+      color: var(--ink);
+      font-family: var(--font-serif);
+      font-size: 15px;
+    }
+
+    .neighbor-section > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .neighbor-section > summary span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .neighbor-section > summary small {
+      color: var(--muted);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .neighbor-section > summary::after {
+      content: "展开";
+      flex: 0 0 auto;
+      color: var(--cinnabar);
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .neighbor-section[open] > summary::after {
+      content: "收起";
+    }
+
+    .neighbor-section .neighbor-list {
+      padding: 0 12px 12px;
+    }
+
+    .neighbor-section[open] .neighbor-list {
+      max-height: 168px;
+      overflow-y: auto;
+      padding-right: 8px;
+      scrollbar-gutter: stable;
+    }
+
+    .neighbor-section[open] .neighbor-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .neighbor-section[open] .neighbor-list::-webkit-scrollbar-thumb {
+      border-radius: 999px;
+      background: rgba(111, 101, 89, .32);
+    }
+
+    .neighbor-card,
+    .note-card,
+    .start-card {
+      display: grid;
+      gap: 4px;
+      color: var(--ink);
+    }
+
+    .note-card {
+      border-style: dashed;
+      background: rgba(255, 253, 247, .62);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .drawer-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      padding: 13px 18px 16px;
+      border-top: 1px solid rgba(216, 205, 187, .82);
+      background: rgba(255, 253, 247, .76);
+    }
+
+    .state-dock {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .state-button {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 12px;
+      font-size: 12px;
+    }
+
+    .state-button[aria-pressed="true"] {
+      border-color: rgba(139, 46, 36, .55);
+      color: var(--cinnabar);
+      background: rgba(255, 253, 247, .96);
+    }
+
+    .hidden-count {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(183, 121, 31, .48);
+      background: rgba(248, 232, 196, .55);
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .hidden-count.is-visible {
+      display: block;
+    }
+
+
+    .node.is-compact {
+      min-height: 34px;
+      max-width: 130px;
+      padding: 6px 9px;
+      border-radius: 10px;
+    }
+
+    .node.is-compact .node-kind,
+    .node.is-compact .node-meta {
+      display: none;
+    }
+
+    .node.is-compact .node-name {
+      max-width: 104px;
+      font-size: 12px;
+    }
+
+    .node.is-point,
+    .node.is-overview {
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      min-height: 14px;
+      padding: 0;
+      border-radius: 999px;
+      border: 0;
+      background: var(--night);
+      box-shadow: 0 0 0 4px rgba(49, 95, 114, .14);
+    }
+
+    .node.is-point[data-type="topic"],
+    .node.is-overview[data-type="topic"] { background: var(--cinnabar); }
+
+    .node.is-point[data-type="source"],
+    .node.is-overview[data-type="source"] { background: var(--jade); }
+
+    .node.is-point .node-kind,
+    .node.is-point .node-name,
+    .node.is-point .node-meta,
+    .node.is-overview .node-kind,
+    .node.is-overview .node-name,
+    .node.is-overview .node-meta {
+      display: none;
+    }
+
+    .node.is-label-hidden .node-name {
+      display: none;
+    }
+
+    .node[data-visual-role="landmark"] {
+      min-height: 30px;
+      max-width: 150px;
+      padding: 5px 10px 5px 24px;
+      border: 1px solid rgba(216, 205, 187, .78);
+      border-radius: 999px 8px 8px 999px;
+      background: rgba(255, 253, 247, .7);
+      box-shadow: 0 8px 16px rgba(36, 31, 26, .06);
+    }
+
+    .node[data-visual-role="landmark"]::before {
+      inset: auto auto auto 9px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--night);
+      opacity: .78;
+      translate: 0 -50%;
+    }
+
+    .node[data-visual-role="landmark"][data-type="topic"]::before {
+      background: var(--cinnabar);
+    }
+
+    .node[data-visual-role="landmark"][data-type="source"]::before {
+      background: var(--jade);
+    }
+
+    .node[data-visual-role="landmark"] .node-kind,
+    .node[data-visual-role="landmark"] .node-meta {
+      display: none;
+    }
+
+    .node[data-visual-role="landmark"] .node-name {
+      max-width: 116px;
+      margin-top: 0;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .node[data-visual-role="index-slip"] {
+      min-height: 42px;
+      max-width: 182px;
+      padding: 8px 11px 8px 13px;
+      border-radius: 8px 12px 12px 8px;
+      background: rgba(255, 253, 247, .92);
+      box-shadow: 0 13px 24px rgba(36, 31, 26, .1), inset 0 0 0 1px rgba(255, 255, 255, .5);
+    }
+
+    .node[data-visual-role="index-slip"]::before {
+      inset: -6px;
+      border-radius: 13px;
+      background: radial-gradient(circle, rgba(49, 95, 114, .16), transparent 68%);
+      opacity: .42;
+      translate: 0 0;
+      width: auto;
+      height: auto;
+    }
+
+    .node[data-visual-role="index-slip"][data-start-node="true"] {
+      border-color: rgba(139, 46, 36, .42);
+      box-shadow: 0 14px 26px rgba(139, 46, 36, .11), inset 0 0 0 1px rgba(255, 253, 247, .82);
+    }
+
+    .node.is-preview-start {
+      border-color: rgba(139, 46, 36, .48);
+      box-shadow: 0 14px 26px rgba(139, 46, 36, .12), 0 0 0 3px rgba(139, 46, 36, .07);
+    }
+
+    .node.is-compact[data-visual-role="index-slip"] {
+      min-height: 34px;
+      max-width: 138px;
+      padding: 6px 9px 6px 10px;
+    }
+
+    .node.is-compact[data-visual-role="index-slip"] .node-name {
+      max-width: 112px;
+    }
+
+    .node[data-visual-role="cinnabar-note"] {
+      min-height: 48px;
+      max-width: 190px;
+      padding: 9px 12px 9px 14px;
+      border-radius: 9px 14px 14px 9px;
+      border-color: rgba(139, 46, 36, .78);
+      background: rgba(255, 253, 247, .96);
+      box-shadow: 0 17px 30px rgba(139, 46, 36, .18), 0 0 0 4px rgba(139, 46, 36, .11);
+    }
+
+    .node[data-visual-role="cinnabar-note"]::before {
+      inset: -8px;
+      border-radius: 17px;
+      background: radial-gradient(circle, rgba(139, 46, 36, .2), transparent 68%);
+      opacity: .78;
+      translate: 0 0;
+      width: auto;
+      height: auto;
+    }
+
+    .node[data-visual-role="map-pin"] {
+      width: 14px;
+      height: 14px;
+      min-width: 14px;
+      min-height: 14px;
+      max-width: 14px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      box-shadow: 0 0 0 4px rgba(49, 95, 114, .14);
+    }
+
+    .node[data-visual-role="map-pin"]::before {
+      inset: -6px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(49, 95, 114, .18), transparent 70%);
+      opacity: .7;
+      translate: 0 0;
+      width: auto;
+      height: auto;
+    }
+
+    .density-notice {
+      position: absolute;
+      z-index: 4;
+      right: 18px;
+      bottom: 18px;
+      max-width: 280px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(183, 121, 31, .45);
+      background: rgba(255, 253, 247, .82);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      box-shadow: var(--soft-shadow);
+      display: none;
+    }
+
+    .atlas[data-density="overview"] .density-notice {
+      display: block;
+    }
+
+    .knowledge-card a.wikilink {
+      display: inline;
+      min-height: 0;
+      color: var(--cinnabar);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .knowledge-card a.wikilink--dead {
+      color: var(--muted);
+      text-decoration-style: dotted;
+    }
+
+    .drawer[data-state="start-preview"] .summary-card {
+      border-left-color: var(--night);
+      background: rgba(248, 241, 228, .72);
+    }
+
+    .drawer[data-state="start-preview"] .knowledge-card {
+      border-style: dashed;
+      background: rgba(255, 253, 247, .62);
+    }
+
+    .drawer[data-state="start-preview"] #queue-action {
+      background: var(--cinnabar);
+      color: var(--surface);
+      border-color: var(--cinnabar);
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateX(-2%);
+      }
+      to {
+        transform: translateX(3%);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        rotate: 360deg;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .app {
+        grid-template-columns: 238px minmax(460px, 1fr) 318px;
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .app[data-reading="1"] {
+        grid-template-columns: 230px minmax(430px, 1fr) minmax(318px, 360px);
+      }
+
+      .status-strip .status-pill:nth-child(3) {
+        display: none;
+      }
+
+      .canvas-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .insight {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      .app {
+        min-height: 100vh;
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto minmax(620px, 72vh) auto;
+        padding: 10px;
+      }
+
+      .app[data-reading="1"] {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-atlas-preview {
+        display: block;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .status-strip {
+        justify-content: flex-start;
+      }
+
+      .sidebar {
+        max-height: none;
+        overflow: visible;
+      }
+
+      .drawer {
+        min-height: 560px;
+      }
+
+      .brand h1,
+      .brand p {
+        white-space: normal;
+      }
+
+      .canvas-footer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .brand {
+        align-items: flex-start;
+      }
+
+      .seal {
+        width: 38px;
+        height: 38px;
+      }
+
+      .canvas-toolbar,
+      .canvas-actions,
+      .drawer-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .canvas-toolbar {
+        align-items: start;
+      }
+
+      .canvas-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .canvas-actions .state-dock {
+        grid-column: 1 / -1;
+      }
+
+      .status-pill,
+      .chip {
+        min-height: 44px;
+      }
+
+      .state-dock,
+      .segmented {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .state-dock {
+        display: grid;
+      }
+
+      .canvas-actions .state-dock {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .ghost-button,
+      .state-button {
+        min-height: 44px;
+        padding-inline: 8px;
+      }
+
+      .node {
+        max-width: 144px;
+        min-width: 44px;
+        padding: 7px 9px;
+      }
+
+      .node-name {
+        max-width: 116px;
+      }
+    }
+    /* Local content-first override:
+       Keep the graph as navigation, but make reading the primary task. */
+    @media (min-width: 901px) {
+      .app {
+        grid-template-columns: minmax(220px, 260px) minmax(640px, 1.45fr) minmax(360px, .75fr);
+        gap: 14px;
+      }
+
+      .app[data-reading="1"] {
+        grid-template-columns: minmax(220px, 250px) minmax(720px, 1.65fr) minmax(320px, .65fr);
+      }
+
+      .drawer {
+        grid-column: 2;
+        grid-row: 2;
+        padding-left: 0;
+        overflow: hidden;
+      }
+
+      .drawer::before {
+        display: none;
+      }
+
+      .canvas-card {
+        grid-column: 3;
+        grid-row: 2;
+      }
+
+      .canvas-card {
+        grid-template-rows: auto 1fr;
+      }
+
+      .canvas-footer {
+        display: none;
+      }
+
+      .canvas-toolbar {
+        padding: 12px 14px;
+      }
+
+      .canvas-title strong {
+        font-size: 14px;
+      }
+
+      .canvas-title span {
+        font-size: 12px;
+      }
+
+      .canvas-actions {
+        display: none;
+      }
+
+      .atlas {
+        min-height: 0;
+      }
+
+      .node {
+        max-width: 128px;
+        min-height: 30px;
+        padding: 6px 9px;
+      }
+
+      .node-kind,
+      .node-meta {
+        display: none;
+      }
+
+      .node-name {
+        max-width: 108px;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .drawer-header {
+        padding: 22px 28px 16px;
+      }
+
+      .drawer h2 {
+        font-size: clamp(28px, 2.4vw, 42px);
+        line-height: 1.18;
+        -webkit-line-clamp: 3;
+      }
+
+      .drawer-subtitle {
+        font-size: 14px;
+      }
+
+      .drawer-body {
+        padding: 22px 28px 28px;
+        gap: 20px;
+      }
+
+      .drawer-section h3 {
+        font-size: 18px;
+      }
+
+      .summary-card {
+        font-size: 16px;
+        line-height: 1.85;
+        padding: 16px 18px;
+      }
+
+      .knowledge-card {
+        font-size: 16px;
+        line-height: 1.9;
+        padding: 20px 22px;
+        gap: 14px;
+      }
+
+      .knowledge-card p,
+      .knowledge-card li {
+        max-width: 76ch;
+      }
+
+      .neighbor-section,
+      .drawer-section:has(.notes-list) {
+        max-width: 76ch;
+      }
+
+      .drawer-actions {
+        padding: 14px 28px 18px;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1320px) {
+      .app,
+      .app[data-reading="1"] {
+        grid-template-columns: minmax(210px, 240px) minmax(560px, 1.4fr) minmax(300px, .7fr);
+      }
+
+      .drawer-header,
+      .drawer-body,
+      .drawer-actions {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar" aria-label="图谱标题与状态">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="img">
+            <path d="M5 32c7-6 10-16 17-10 5-10 12-13 21 10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8 38c8-3 18-2 32 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" opacity=".76"></path>
+            <path d="M13 28c5 2 10 2 15 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".52"></path>
+            <circle cx="35" cy="11" r="2.8" fill="currentColor"></circle>
+            <circle cx="40" cy="18" r="1.6" fill="currentColor" opacity=".8"></circle>
+          </svg>
+        </div>
+        <div>
+          <h1 id="wiki-title">研究目的与方向 知识舆图</h1>
+          <p>国风知识库·数字山水图</p>
+        </div>
+      </div>
+      <div class="status-strip">
+        <span class="status-pill"><i class="status-dot"></i>已生成 50 个索引点</span>
+        <span class="status-pill">关系 259 条</span>
+        <span class="status-pill">最近更新 2026-06-03</span>
+        <a class="ghost-button github-button brand__github" href="https://github.com/sdyckjq-lab/llm-wiki-skill" target="_blank" rel="noopener" aria-label="打开 GitHub 项目">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <section class="mobile-atlas-preview" aria-label="移动端图谱预览">
+      <div class="preview-copy">
+        <strong>数字山水图谱</strong>
+        <span>50 点 · 259 关系</span>
+      </div>
+      <div class="preview-map" aria-hidden="true"></div>
+    </section>
+
+    <aside class="sidebar" aria-label="文献索引导航">
+      <section class="section">
+        <div class="section-title"><b>文献索引</b></div>
+        <div class="search-box">
+          <input id="search" type="search" autocomplete="off" placeholder="搜索节点、来源或主题">
+          <span aria-hidden="true">⌕</span>
+        </div>
+        <div id="no-results" class="hidden-count">没有匹配结果，清除筛选后可回到完整图谱。</div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><b>社区</b></div>
+        <div class="nav-list" id="community-list"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><b>聚焦</b></div>
+        <div class="segmented" aria-label="聚焦模式">
+          <button type="button" data-focus="all" aria-pressed="true">全图</button>
+          <button type="button" data-focus="core" aria-pressed="false">核心</button>
+          <button type="button" data-focus="source" aria-pressed="false">来源</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><b>学习队列</b></div>
+        <div class="queue-card">
+          <div class="queue-metrics">
+            <div class="metric"><span>今日待读</span><b>5</b></div>
+            <div class="metric"><span>已批注</span><b>17</b></div>
+          </div>
+          <div class="queue-list">
+            <div class="note-card">选中节点后可加入学习队列。</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><b>推荐起点</b></div>
+        <div class="start-list" id="start-list"></div>
+      </section>
+    </aside>
+
+    <section class="canvas-card" aria-label="知识图谱画布">
+      <div class="canvas-toolbar">
+        <div class="canvas-title">
+          <strong id="canvas-title">知识地图 · 全局视图</strong>
+          <span id="canvas-subtitle">社区地貌、关系路径与批注状态保持同步</span>
+        </div>
+        <div class="canvas-actions">
+          <button class="ghost-button" type="button" id="fit-view">回到全图</button>
+          <button class="ghost-button" type="button" id="toggle-dim">弱化未选中</button>
+          <div class="state-dock" aria-label="数据状态">
+            <button class="state-button" type="button" data-mode="normal" aria-pressed="true">正常</button>
+            <button class="state-button" type="button" data-mode="loading" aria-pressed="false">加载</button>
+            <button class="state-button" type="button" data-mode="empty" aria-pressed="false">空</button>
+            <button class="state-button" type="button" data-mode="error" aria-pressed="false">错误</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="atlas" id="atlas" data-mode="normal">
+        <svg class="graph-svg" viewBox="0 0 1000 680" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+              <feMerge>
+                <feMergeNode in="blur"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+              </feMerge>
+            </filter>
+          </defs>
+          <g id="edge-layer"></g>
+        </svg>
+        <div class="mist" aria-hidden="true"></div>
+        <div id="node-layer"></div>
+        <div class="loading-state" role="status" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          <p class="state-title">正在铺开知识地图</p>
+          <p class="state-copy">图谱数据已读取，正在整理社区、关系和标签。</p>
+        </div>
+        <div class="empty-state" role="status" aria-live="polite">
+          <p class="state-title">这座知识库还没有图谱</p>
+          <p class="state-copy">消化素材后会自动生成节点、来源和关系。</p>
+        </div>
+        <div class="error-state" role="alert">
+          <p class="state-title">图谱数据没有加载成功</p>
+          <p class="state-copy">请确认本地 graph-data.json 存在且格式完整。</p>
+        </div>
+        <div class="density-notice" id="density-notice">当前视图过密，可搜索或筛选社区。</div>
+      </div>
+
+      <footer class="canvas-footer" aria-label="图谱二级信息">
+        <div class="legend">
+          <div class="footer-label"><span>关系置信度</span><span>说明</span></div>
+          <div class="confidence-list">
+            <span class="confidence"><i></i>直接提取</span>
+            <span class="confidence"><i></i>推断关联</span>
+            <span class="confidence"><i></i>存在歧义</span>
+            <span class="confidence"><i></i>未核实</span>
+          </div>
+        </div>
+        <div class="mini-map" id="minimap" data-collapsed="0">
+          <div class="footer-label"><span>小地图</span><span>方位图</span></div>
+          <svg id="mini-map-svg" viewBox="0 0 160 54" aria-hidden="true">
+            <path d="M8 40 C34 20 54 36 76 22 C98 8 118 24 150 12" fill="none" stroke="#cfc4b1" stroke-width="1.4"></path>
+            <circle cx="28" cy="34" r="3" fill="#315f72"></circle>
+            <circle cx="58" cy="27" r="3" fill="#8b2e24"></circle>
+            <circle cx="90" cy="21" r="3" fill="#4b7564"></circle>
+            <circle cx="124" cy="18" r="3" fill="#b7791f"></circle>
+            <rect class="mini-map-viewport" x="22" y="12" width="76" height="32" rx="5"></rect>
+          </svg>
+        </div>
+        <div class="insight">
+          <div class="footer-label"><span>洞察</span><span>INSIGHT</span></div>
+          <strong id="insight-title">来源节点连接度偏高</strong>
+          <p id="insight-copy">建议从“知识编译”进入，可同时看到方法论、缓存与图谱生成的关系。</p>
+        </div>
+      </footer>
+    </section>
+
+    <aside class="drawer" id="drawer" aria-label="批注札记详情">
+      <header class="drawer-header">
+        <div class="eyebrow" id="drawer-kind"><span class="spark"></span>TOPIC · SELECTED</div>
+        <h2 id="drawer-title">知识编译</h2>
+        <p class="drawer-subtitle" id="drawer-subtitle">方法论 · EXTRACTED · wiki/topics/知识编译.md</p>
+      </header>
+
+      <div class="drawer-body">
+        <section class="drawer-section">
+          <h3>摘要</h3>
+          <div class="summary-card" id="drawer-summary">知识编译强调“整理一次，持续维护”。它连接素材消化、结构化页面、缓存、查询和图谱展示，是 llm-wiki 区别于临时问答的关键。</div>
+        </section>
+
+        <section class="drawer-section">
+          <h3>知识内容</h3>
+          <div class="knowledge-card" id="drawer-content">
+            <p>知识编译把素材、主题、实体和来源串成一张可维护的地图。它不是临时总结，而是让后续查询、图谱和复盘都能复用同一份整理结果。</p>
+            <p>在图谱中，这个节点连接素材消化、缓存、查询和图谱展示，适合作为理解 llm-wiki 工作方式的入口。</p>
+          </div>
+        </section>
+
+        <details class="drawer-section neighbor-section" id="neighbor-details" data-collapsed="1">
+          <summary aria-expanded="false"><span>相邻节点 <small id="drawer-neighbor-count">5 个</small></span></summary>
+          <div class="neighbor-list" id="neighbor-list"></div>
+        </details>
+
+        <section class="drawer-section">
+          <h3>札记</h3>
+          <div class="notes-list">
+            <div class="note-card">批注：适合放在 README 首屏，作为“不是一次性总结”的视觉证明。</div>
+            <div class="note-card">待看：梳理“札记阅读”和“图谱入口”的职责边界。</div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="drawer-actions">
+        <button class="primary-button" type="button" id="queue-action">加入学习队列</button>
+        <button class="ghost-button" type="button" id="source-action">查看来源</button>
+      </footer>
+    </aside>
+  </main>
+
+  <script id="graph-data" type="application/json">
+{
+  "meta": {
+    "build_date": "2026-06-03T06:40:09Z",
+    "wiki_title": "研究目的与方向",
+    "total_nodes": 50,
+    "total_edges": 259,
+    "initial_view": [
+      "AI与人类独特性",
+      "AI人物访谈",
+      "AI原生组织",
+      "AI安全与治理",
+      "AI游戏与虚拟世界",
+      "智能体",
+      "业务闭环",
+      "企业上下文",
+      "AI原生公司",
+      "硬科技与中国创业",
+      "AI原生游戏",
+      "企业AI产品案例",
+      "AI创业与投资",
+      "AI安全治理",
+      "AI游戏",
+      "游戏生产管线",
+      "AI代理",
+      "个人独特性",
+      "基础模型",
+      "智能密度",
+      "奥特曼亲述：OpenAI如何赢下未来",
+      "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "共同故事",
+      "具身智能",
+      "柔性心智",
+      "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "AI意识",
+      "硬科技创业"
+    ],
+    "degraded": false,
+    "insights_degraded": false
+  },
+  "nodes": [
+    {
+      "id": "3D生成",
+      "label": "3D生成",
+      "type": "entity",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 3D生成\n\n> 3D 生成正在从玩具演示接近游戏资产生产链的前半段：参考、起稿、高模雏形和贴图探索。\n\n## 核心内容\n\n现阶段 3D AI 的价值不在一次性生成可商用完整模型，而在压缩高模探索、造型确认和贴图参考时间。输出仍需要传统 3D 工具修整、清理和组合。\n\n## 相关页面\n\n- [[游戏生产管线]]\n- [[AI游戏与虚拟世界]]\n- [[AI原生游戏]]"
+    },
+    {
+      "id": "AI代理",
+      "label": "AI代理",
+      "type": "entity",
+      "community": "AI安全与治理",
+      "content": "# AI代理\n\n> AI 代理不是被动工具，而是能围绕目标自主决策、调用资源、执行任务并产生策略的系统。\n\n## 核心内容\n\n赫拉利强调 AI 的历史新意在于它越来越像 agent，而不只是 tool。Manus 相关材料进一步把 Agent 解释为“用户、模型、环境”的三元系统：真正难点不只在模型聪明，而在执行环境、沙盒、上下文工程、成本和高价值任务选择。\n\n## 相关页面\n\n- [[智能体]]\n- [[AI安全治理]]\n- [[企业上下文]]\n- [[业务闭环]]"
+    },
+    {
+      "id": "AI创业与投资",
+      "label": "AI创业与投资",
+      "type": "entity",
+      "community": "AI人物访谈",
+      "content": "# AI创业与投资\n\n> AI 创业与投资正在从模型能力叙事转向应用入口、商业化闭环、成本结构和场景选择。\n\n## 核心内容\n\n朱啸虎材料强调应用层、超级入口、垂直 agent、私有化部署和能做脏活苦活的机器人。Manus 材料强调 Agent 公司要解决模型、环境和用户任务之间的系统问题。印奇材料则强调基础模型需要终端场景牵引，车、机器人和 AI 硬件可能形成商业闭环。\n\n## 相关页面\n\n- [[硬科技与中国创业]]\n- [[AI原生组织]]\n- [[AI代理]]\n- [[基础模型]]"
+    },
+    {
+      "id": "AI原生公司",
+      "label": "AI原生公司",
+      "type": "entity",
+      "community": "AI原生组织",
+      "content": "# AI原生公司\n\n> AI 原生公司不是“使用 AI 的公司”，而是把公司设计成 AI 可读取、可调用、可反馈、可学习的系统。\n\n## 核心定义\n\n从现有视频笔记看，AI 原生公司的关键不在于工具数量，而在于公司是否具备系统化智能：\n\n- 业务动作被记录。\n- 关键知识被结构化。\n- 流程能被 [[智能体]] 调用。\n- 失败能进入反馈。\n- 经验能复用到下一次执行。\n\n## 判断标准\n\n- 是否沉淀 [[企业上下文]]。\n- 是否形成高质量 [[业务闭环]]。\n- 是否提升 [[智能密度]]。\n- 是否把 AI 能力嵌入组织设计，而不是停留在个人提效。\n\n## 来源线索\n\n- [[02-视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]]\n- [[02-视频笔记/YC 的 AI 原生公司：公司要变成会进化的系统]]\n- [[02-视频笔记/微型巨头：100 倍组织与智能密度]]\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[企业上下文]]\n- [[业务闭环]]\n- [[智能密度]]"
+    },
+    {
+      "id": "AI原生游戏",
+      "label": "AI原生游戏",
+      "type": "entity",
+      "community": "AI游戏与虚拟世界",
+      "content": "# AI原生游戏\n\n> AI 原生游戏需要满足两个条件：离开 AI 不能玩，并且 AI 让它更好玩。\n\n## 核心内容\n\nAI 原生游戏不是给传统游戏加一个聊天 NPC，而是在玩法、世界状态、角色行为、内容生成或玩家协作上以 AI 为核心机制。游戏同时也是 AI 的训练场和试验田，因为它有明确规则、即时反馈、可模拟环境和大量交互。\n\n## 相关页面\n\n- [[AI游戏与虚拟世界]]\n- [[AI游戏]]\n- [[智能体]]\n- [[游戏生产管线]]"
+    },
+    {
+      "id": "AI安全治理",
+      "label": "AI安全治理",
+      "type": "entity",
+      "community": "AI安全与治理",
+      "content": "# AI安全治理\n\n> AI 安全治理关注能力扩散、控制机制、审计边界和人类责任。\n\n## 当前关注点\n\n- 能力跃迁速度是否超过社会适应速度。\n- 低成本行动主体是否放大风险。\n- 企业 AI 系统是否有权限、审计和复核机制。\n- AI 原生组织是否会在提效的同时放大错误传播。\n\n## 来源线索\n\n- [[02-视频笔记/谷歌前CEO警告：人类的时间不多了]]\n- [[02-视频笔记/奥特曼亲述：OpenAI如何赢下未来，ChatGPT的下一步与2026上市计划]]\n\n## 相关页面\n\n- [[AI安全与治理]]\n- [[业务闭环]]\n- [[智能体]]\n- [[AI与人类独特性]]"
+    },
+    {
+      "id": "AI意识",
+      "label": "AI意识",
+      "type": "entity",
+      "community": "AI与人类独特性",
+      "content": "# AI意识\n\n> AI 可以在智能上快速进步，但意识问题关心的是是否有感受、痛苦、快乐和主观经验。\n\n## 核心内容\n\n赫拉利区分智能与意识：智能是解决问题，意识是感受经验。侯世达式问题则追问自我意识是否来自复杂系统中的自指、递归和怪圈。\n\n## 待继续研究\n\n- 高智能是否必然伴随意识，还是两者可以长期分离？\n- AI 若能稳定报告主观状态，伦理边界如何调整？\n- 自指、反馈和身体经验在意识形成中各自扮演什么角色？\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[共同故事]]\n- [[智能体]]"
+    },
+    {
+      "id": "AI游戏",
+      "label": "AI游戏",
+      "type": "entity",
+      "community": "AI游戏与虚拟世界",
+      "content": "# AI游戏\n\n> AI 游戏既指 AI 改造游戏生产，也指游戏成为 AI 能力测试和交互实验环境。\n\n## 主要方向\n\n- 3D 资产与内容生成。\n- NPC 和虚拟角色智能体。\n- 关卡、剧情和玩法生成。\n- 游戏作为 AGI 或智能体评测环境。\n- 虚拟世界中的长期互动与记忆。\n\n## 来源线索\n\n- [[02-视频笔记/为什么顶尖AI公司都盯上游戏？【硅谷101】]]\n- [[02-视频笔记/GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】]]\n- [[02-视频笔记/游戏是AGI的试验田，AI如何重塑游戏宇宙：探展2025全球游戏开发者大会【硅谷101】]]\n\n## 相关页面\n\n- [[AI游戏与虚拟世界]]\n- [[智能体]]\n- [[AI安全治理]]"
+    },
+    {
+      "id": "业务闭环",
+      "label": "业务闭环",
+      "type": "entity",
+      "community": "AI原生组织",
+      "content": "# 业务闭环\n\n> 业务闭环是一个能感知、决策、执行、评估并学习的业务循环。\n\n## 五个动作\n\n1. 感知：获取输入和环境变化。\n2. 决策：基于目标、规则和上下文选择行动。\n3. 执行：调用人、工具或 [[智能体]] 完成动作。\n4. 评估：判断结果质量。\n5. 学习：把结果和失败原因写回系统。\n\n## 价值\n\n闭环让组织能力不只停留在人的经验里，而能进入系统复利。多个高质量闭环叠加，会提升 [[智能密度]]。\n\n## 风险\n\n低质量闭环会放大错误。闭环必须有明确目标、可靠输入、可审计输出和纠错机制。\n\n## 相关页面\n\n- [[AI原生公司]]\n- [[企业上下文]]\n- [[智能密度]]\n- [[AI安全治理]]"
+    },
+    {
+      "id": "个人独特性",
+      "label": "个人独特性",
+      "type": "entity",
+      "community": "AI与人类独特性",
+      "content": "# 个人独特性\n\n> 当 AI 降低实现成本，人的稀缺性会转向“想要什么”“为什么负责”“身后有什么不可复制的经验世界”。\n\n## 核心内容\n\n现有材料把个人独特性分成三层：\n\n- 独特行动：给自己出题，用行动让自己被识别。\n- 丰富经验：增加生命参数，让判断和表达不只来自模板。\n- 魅力世界：长期积累一个别人不能完全进入、但愿意靠近的世界。\n\n## 与 AI 的关系\n\nAI 强化了实现能力，却也让实现本身更不稀缺。个人价值不再只来自“能完成什么任务”，而来自定义问题、形成判断、承担责任和表达真实经验。\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[柔性心智]]\n- [[AI意识]]\n- [[共同故事]]"
+    },
+    {
+      "id": "企业上下文",
+      "label": "企业上下文",
+      "type": "entity",
+      "community": "AI原生组织",
+      "content": "# 企业上下文\n\n> 企业上下文是 AI 接管、辅助或放大企业工作的背景信息和判断语境。\n\n## 包含内容\n\n现有材料中提到的企业上下文包括：\n\n- 客户理解\n- 业务规则\n- 历史决策\n- 产品路线图\n- 创始人或管理层的判断标准\n- 失败案例和复盘经验\n\n## 为什么重要\n\n模型能力可以外购，但企业自己的判断语境无法直接购买。没有上下文，AI 只能做泛化回答；有了上下文，AI 才可能参与具体业务决策和执行。\n\n## 与知识库的关系\n\n本仓库本身就是一种个人版企业上下文建设：把视频笔记中的观点、概念和证据转成可链接页面，减少每次查询都从原始材料重读的成本。\n\n## 相关页面\n\n- [[AI原生公司]]\n- [[业务闭环]]\n- [[智能密度]]\n- [[AI原生组织]]"
+    },
+    {
+      "id": "共同故事",
+      "label": "共同故事",
+      "type": "entity",
+      "community": "AI与人类独特性",
+      "content": "# 共同故事\n\n> 共同故事是人类大规模合作的基础，货币、国家、公司、法律和意识形态都依赖共同相信的叙事。\n\n## 核心内容\n\n赫拉利的判断是，人类统治世界不是因为个体最聪明，而是因为能用想象力创造共同故事，让陌生人协同。AI 的特殊性在于，它可能成为非人类故事创造者，参与生产文化、制度和信任环境。\n\n## 与 AI 的关系\n\n如果 AI 不只是生成内容，还能优化、测试并推送故事，它就不只是工具，而会影响人类合作的底层机制。\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[AI安全治理]]\n- [[AI代理]]"
+    },
+    {
+      "id": "具身智能",
+      "label": "具身智能",
+      "type": "entity",
+      "community": "AI人物访谈",
+      "content": "# 具身智能\n\n> 具身智能把基础模型能力带入物理世界，需要终端、传感器、执行器、数据闭环和真实场景约束。\n\n## 核心内容\n\n印奇材料把车、Robotaxi、机器人和 AI 硬件视为基础模型落地的关键终端。投资视角则关注能做真实脏活苦活的机器人，而不是只停留在概念演示。\n\n## 相关页面\n\n- [[基础模型]]\n- [[AI创业与投资]]\n- [[硬科技创业]]"
+    },
+    {
+      "id": "基础模型",
+      "label": "基础模型",
+      "type": "entity",
+      "community": "AI人物访谈",
+      "content": "# 基础模型\n\n> 基础模型竞争不只是模型能力竞赛，还牵涉人才、算力、资本、产品闭环和终端场景。\n\n## 核心内容\n\n印奇把基础模型放进“基础模型大脑 + 物理世界终端”的战略组合里。姚顺宇材料则指出头部模型 benchmark 接近打满后，更难的是定义值得下注的问题、构建数据和 reward signal 清晰的应用场景。\n\n## 相关页面\n\n- [[AI创业与投资]]\n- [[具身智能]]\n- [[AI原生组织]]"
+    },
+    {
+      "id": "智能体",
+      "label": "智能体",
+      "type": "entity",
+      "community": "AI原生组织",
+      "content": "# 智能体\n\n> 智能体是在目标、上下文、工具和反馈约束下执行任务的 AI 行动单元。\n\n## 在本知识库中的位置\n\n智能体连接三条主线：\n\n- 在 [[AI原生组织]] 中，智能体是业务流程可调用的执行单元。\n- 在 [[企业AI产品案例]] 中，智能体常表现为可配置工作流或自动化任务链。\n- 在 [[AI游戏与虚拟世界]] 中，智能体是虚拟角色、NPC、世界模拟和交互行为的核心。\n\n## 待继续研究\n\n- 智能体什么时候适合自治，什么时候必须人类复核？\n- 长期记忆、工具调用和反馈学习如何组合？\n- 多智能体系统如何避免错误扩散？\n\n## 相关页面\n\n- [[业务闭环]]\n- [[企业上下文]]\n- [[AI游戏]]\n- [[AI安全治理]]"
+    },
+    {
+      "id": "智能密度",
+      "label": "智能密度",
+      "type": "entity",
+      "community": "AI原生组织",
+      "content": "# 智能密度\n\n> 智能密度是单位组织规模内可沉淀、调用和复用智能的能力。\n\n## 当前理解\n\n智能密度不是员工数量，也不是 AI 工具数量。它更接近一个组织把经验、上下文、流程、工具和反馈压缩进系统中的能力。\n\n## 可能指标\n\n- 每个员工可调用的自动化闭环数。\n- 关键决策的结构化比例。\n- 失败反馈进入系统的速度。\n- AI 可独立完成任务的比例。\n- 人工审核发现问题的频率。\n\n## 相关素材\n\n- [[02-视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]]\n- [[02-视频笔记/微型巨头：100 倍组织与智能密度]]\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[AI原生公司]]\n- [[业务闭环]]\n- [[企业上下文]]"
+    },
+    {
+      "id": "柔性心智",
+      "label": "柔性心智",
+      "type": "entity",
+      "community": "AI与人类独特性",
+      "content": "# 柔性心智\n\n> 柔性心智是在信息过剩和技术快速变化中持续学习、辨别真实、重塑自我的能力。\n\n## 核心内容\n\n信息稀缺时代，教育偏向灌输更多知识；信息过剩时代，关键变成判断信息可信度、承受复杂事实、识别虚假叙事，并在成年后继续学习和改变。\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[个人独特性]]\n- [[共同故事]]"
+    },
+    {
+      "id": "游戏生产管线",
+      "label": "游戏生产管线",
+      "type": "entity",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 游戏生产管线\n\n> 游戏生产管线是 AI 改造游戏行业时最先落地的区域之一，尤其是重复、耗时、可人工验收的美术和资产流程。\n\n## 核心内容\n\n当前材料显示，AI 对游戏行业的影响不是端到端替代，而是进入场景美术、3D 高模、装备适配、贴图参考、代码辅助、研究和流程优化等环节。复杂工业管线、性能约束和玩法体验仍需要游戏厂商完成最后一公里。\n\n## 相关页面\n\n- [[AI游戏与虚拟世界]]\n- [[AI原生游戏]]\n- [[AI游戏]]"
+    },
+    {
+      "id": "硬科技创业",
+      "label": "硬科技创业",
+      "type": "entity",
+      "community": "AI人物访谈",
+      "content": "# 硬科技创业\n\n> 硬科技创业是长周期、高投入、低容错的能力建设过程，商业化反馈和产业链位置比单点技术叙事更重要。\n\n## 核心内容\n\n禾赛案例显示，硬科技公司的核心挑战包括降本、可靠性、客户反馈、全球化、资本市场沟通和组织文化。中国制造业体系的内卷压力既是压力，也可能转化为全球竞争力。\n\n## 相关页面\n\n- [[硬科技与中国创业]]\n- [[具身智能]]\n- [[AI创业与投资]]"
+    },
+    {
+      "id": "AI与人类独特性",
+      "label": "AI与人类独特性",
+      "type": "topic",
+      "community": "AI与人类独特性",
+      "content": "# AI与人类独特性\n\n> AI 越能执行任务，人类越需要重新定义判断力、意义感、长期目标和不可替代的关系能力。\n\n## 核心判断\n\n这个主题从 [[01-主题/AI与人类独特性]] 迁移而来。它不是和技术主线分离的哲学问题，而是会反过来影响教育、组织分工、产品设计和治理选择。\n\n## 已有素材\n\n- [[罗振宇对话赫拉利：AI时代，人类该如何保持独特性]]\n- [[26.04.08罗振宇：AI时代人能做什么？]]\n- [[AI时代，什么让你不可替代？《The prompt》]]\n- [[李飞飞：AI教母的思考方式]]\n- [[【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》]]\n\n## 待继续研究\n\n- 人类独特性应落在意识、价值判断、关系、长期目标，还是行动责任上？\n- AI 原生组织会如何改变个人能力结构？\n- “不可替代”是个人能力问题，还是组织与社会制度问题？\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[AI安全与治理]]\n- [[个人独特性]]\n- [[共同故事]]\n- [[AI意识]]\n- [[柔性心智]]"
+    },
+    {
+      "id": "AI人物访谈",
+      "label": "AI人物访谈",
+      "type": "topic",
+      "community": "AI人物访谈",
+      "content": "# AI人物访谈\n\n> 人物访谈适合抽取判断框架、长期选择、产业分歧和关键人物的行动逻辑。\n\n## 已有素材\n\n- [[奥特曼亲述：OpenAI如何赢下未来]]\n- [[对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去]]\n- [[对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》]]\n- [[印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程]]\n- [[李飞飞：AI教母的思考方式]]\n- [[对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会]]\n\n## 维护方式\n\n后续应为高频人物建立实体页，并把“人物观点”与“事实核验”分开记录。\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[AI安全与治理]]\n- [[硬科技与中国创业]]\n- [[AI创业与投资]]\n- [[基础模型]]"
+    },
+    {
+      "id": "AI原生组织",
+      "label": "AI原生组织",
+      "type": "topic",
+      "community": "AI原生组织",
+      "content": "# AI原生组织\n\n> AI 原生组织不是更会使用 AI 工具的组织，而是把上下文、工具、反馈和学习能力设计进公司系统的组织。\n\n## 核心判断\n\n这一主题来自旧主题页 [[01-主题/AI原生组织]]，并在 llm-wiki 层中沉淀为长期主线。\n\n当前材料共同指向一个判断：公司正在从“人力组织”转向“可学习系统”。真正的 AI 原生，不是给每个岗位发一个聊天工具，而是让业务动作能被记录，让关键知识能被结构化，让流程能被 [[智能体]] 调用，让失败能进入反馈回路。\n\n## 关键概念\n\n- [[AI原生公司]]：被设计成 AI 可运行、可反馈、可学习的公司。\n- [[企业上下文]]：客户理解、业务规则、历史决策、产品路线图和判断标准。\n- [[业务闭环]]：感知、决策、执行、评估、学习的循环。\n- [[智能密度]]：单位组织规模内可沉淀、调用和复用智能的能力。\n\n## 已有素材\n\n- [[Tom Blomfield：公司不再是组织，而是 AI 系统]]\n- [[YC 的 AI 原生公司：公司要变成会进化的系统]]\n- [[微型巨头：100 倍组织与智能密度]]\n- [[奥特曼亲述：OpenAI如何赢下未来]]\n- [[Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…]]\n\n## 待继续研究\n\n- 如何量化 [[智能密度]]？\n- 哪些业务环节最适合优先改造成 [[业务闭环]]？\n- 企业上下文应该以文档、数据库、知识图谱还是工作流状态保存？\n- AI 原生组织是否会放大监控、隐私和绩效压力？\n\n## 相关页面\n\n- [[企业AI产品案例]]\n- [[AI安全与治理]]\n- [[AI与人类独特性]]\n- [[AI创业与投资]]"
+    },
+    {
+      "id": "AI安全与治理",
+      "label": "AI安全与治理",
+      "type": "topic",
+      "community": "AI安全与治理",
+      "content": "# AI安全与治理\n\n> AI 安全与治理关注的不只是模型是否出错，还包括能力跃迁、扩散速度、低成本行动主体和社会控制机制。\n\n## 核心判断\n\n这个主题从 [[01-主题/AI安全与治理]] 迁移而来。它和 [[AI原生组织]] 的关系在于：组织越 AI 原生，越需要把权限、审计、反馈、数据边界和责任机制设计进系统。\n\n## 已有素材\n\n- [[谷歌前CEO警告：人类的时间不多了]]\n- [[奥特曼亲述：OpenAI如何赢下未来]]\n- [[对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去]]\n\n## 关键问题\n\n- 能力扩散速度快于治理速度时，风险如何控制？\n- 企业 AI 系统中哪些环节需要审计和人类复核？\n- AI 原生组织会不会让风险反馈更快，也让错误扩散更快？\n\n## 相关页面\n\n- [[AI安全治理]]\n- [[AI原生组织]]\n- [[AI与人类独特性]]\n- [[AI代理]]"
+    },
+    {
+      "id": "AI游戏与虚拟世界",
+      "label": "AI游戏与虚拟世界",
+      "type": "topic",
+      "community": "AI游戏与虚拟世界",
+      "content": "# AI游戏与虚拟世界\n\n> 游戏是 AI 内容生产、智能体行为、3D 世界建模和人机互动的重要试验场。\n\n## 核心判断\n\n旧主题页 [[01-主题/AI游戏与虚拟世界]] 已经把多篇游戏相关笔记放在一起。新的 wiki 层把它视为一条独立主线：游戏不只是一个被 AI 改造的行业，也是测试智能体能力、生成式内容、长期记忆和虚拟社会交互的环境。\n\n## 已有素材\n\n- [[为什么顶尖AI公司都盯上游戏？【硅谷101】]]\n- [[GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】]]\n- [[游戏是AGI的试验田，AI如何重塑游戏宇宙]]\n- [[国产游戏AI又断档领先？AI的3D建模已经这么强了吗？]]\n- [[星铁帕姆AI什么水平？这个架构厉害了呀？]]\n- [[【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看]]\n- [[AI时代，什么让你不可替代？《The prompt》]]\n\n## 待继续研究\n\n- 游戏中的 [[智能体]] 需要哪些长期记忆和行为规划能力？\n- 3D 生成会优先改变美术、关卡、资产管线还是玩法设计？\n- 游戏作为 AGI 试验田的边界在哪里？\n\n## 相关页面\n\n- [[AI游戏]]\n- [[AI原生游戏]]\n- [[游戏生产管线]]\n- [[3D生成]]\n- [[智能体]]\n- [[AI安全与治理]]"
+    },
+    {
+      "id": "企业AI产品案例",
+      "label": "企业AI产品案例",
+      "type": "topic",
+      "community": "AI原生组织",
+      "content": "# 企业AI产品案例\n\n> 企业 AI 产品的价值正在从“单点自动化”转向“让业务人员搭建、运行和迭代智能工作流”。\n\n## 核心判断\n\n旧主题页 [[01-主题/企业AI产品案例]] 已经整理了一批案例。新的 wiki 层把这些案例连接到 [[AI原生组织]] 的主线：产品价值不只来自模型能力，而来自它能不能嵌入业务流程、读取上下文、形成闭环，并让普通业务人员参与构建。\n\n## 代表案例\n\n- [[02-视频笔记/Gumloop：业务人员自己搭建 AI 工作流]]：把工作流构建权交给业务人员。\n- [[02-视频笔记/主动式数据分析：AI 替企业发现问题]]：从被动报表转向主动发现问题。\n- [[02-视频笔记/AI 猎头：从公开产出发现专家]]：从简历筛选转向基于真实产出的能力发现。\n\n## 可复用问题\n\n- 这个产品是否沉淀 [[企业上下文]]？\n- 它是否形成可评估的 [[业务闭环]]？\n- 它的使用者是技术团队，还是一线业务人员？\n- 它创造的是一次性输出，还是可复用流程？\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[AI原生公司]]\n- [[智能体]]"
+    },
+    {
+      "id": "硬科技与中国创业",
+      "label": "硬科技与中国创业",
+      "type": "topic",
+      "community": "AI人物访谈",
+      "content": "# 硬科技与中国创业\n\n> 这条主线关注国家、产业链、硬科技窗口和中国创业者的结构性机会。\n\n## 已有素材\n\n- [[对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会]]\n- [[印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程]]\n- [[对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》]]\n\n## 待继续研究\n\n- AI 和硬科技创业在资本周期、组织能力和供应链上的差异。\n- 中国创业机会来自市场、国家叙事、工程能力还是产业链位置。\n\n## 相关页面\n\n- [[AI人物访谈]]\n- [[AI原生组织]]\n- [[硬科技创业]]\n- [[具身智能]]\n- [[基础模型]]"
+    },
+    {
+      "id": "26.04.08罗振宇：AI时代人能做什么？",
+      "label": "26.04.08罗振宇：AI时代人能做什么？",
+      "type": "source",
+      "community": "AI与人类独特性",
+      "content": "# 26.04.08罗振宇：AI时代人能做什么？\n\n> 核心观点：AI 让实现能力变得更便宜，人的稀缺性转向“自己是谁、想要什么、能否形成独特行动”。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/26.04.08罗振宇：AI时代人能做什么？]]\n- 历史笔记：[[02-视频笔记/26.04.08罗振宇：AI时代人能做什么？]]\n\n## 核心观点\n\n- AI 扩张的是实现能力，因此反向稀缺落在人能否定义方向。\n- 个人要把自己作为产品或作品生产出来。\n- 独特性、丰富性、魅力是 AI 时代个人价值的三个台阶。\n- 公开行动既是表达，也是生产个人世界的机制。\n\n## 可复用概念\n\n- [[个人独特性]]\n- [[柔性心智]]\n- [[AI与人类独特性]]\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[罗振宇对话赫拉利：AI时代，人类该如何保持独特性]]"
+    },
+    {
+      "id": "AI 猎头：从公开产出发现专家",
+      "label": "AI 猎头：从公开产出发现专家",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# AI 猎头：从公开产出发现专家\n\n> 核心观点：AI 可以从真实公开产出中识别专家能力，而不是只依赖简历标签。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/AI 猎头：从公开产出发现专家]]\n\n## 核心观点\n\n- 人才匹配可以从简历中心转向产出中心。\n- 公开论文、代码、专利和内容可以成为能力信号。\n- 这种产品形态需要把分散材料变成可比较的结构化上下文。\n\n## 可复用概念\n\n- [[企业上下文]]\n- [[智能体]]\n\n## 相关页面\n\n- [[企业AI产品案例]]"
+    },
+    {
+      "id": "AI时代，什么让你不可替代？《The prompt》",
+      "label": "AI时代，什么让你不可替代？《The prompt》",
+      "type": "source",
+      "community": "AI与人类独特性",
+      "content": "# AI时代，什么让你不可替代？《The prompt》\n\n> 核心观点：人的不可替代性来自训练数据之外的新问题、创作者品味、强烈想要和长期韧性。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/AI时代，什么让你不可替代？《The prompt》]]\n- 历史笔记：[[02-视频笔记/AI时代，什么让你不可替代？《The prompt》]]\n\n## 核心观点\n\n- AI 原生游戏要满足“离开 AI 不能玩，且 AI 让它更好玩”。\n- 技术型创始人可以通过结构化表达降低沟通成本。\n- 真正的新问题往往不在训练数据里，需要人的方向感和品味。\n- 创业韧性不是不掉坑，而是掉下去还能爬出来。\n\n## 可复用概念\n\n- [[AI原生游戏]]\n- [[个人独特性]]\n- [[AI游戏与虚拟世界]]\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[AI游戏与虚拟世界]]"
+    },
+    {
+      "id": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "label": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】\n\n> 核心观点：游戏 AI 正从概念讨论进入增长、运营、生产流程和玩家体验等落地环节。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】]]\n- 历史笔记：[[02-视频笔记/GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】]]\n\n## 核心观点\n\n- AI 进入游戏需要跨过工业管线、性能、玩法体验和系统耦合门槛。\n- 技术厂商提供模型和基础设施，但最后一公里常由游戏厂商完成。\n- 游戏行业的 GaaS、内购、赛季制、创作者经济可能反向启发 AI 应用商业模式。\n\n## 可复用概念\n\n- [[AI游戏与虚拟世界]]\n- [[游戏生产管线]]\n- [[AI原生游戏]]\n\n## 相关页面\n\n- [[AI游戏]]\n- [[为什么顶尖AI公司都盯上游戏？【硅谷101】]]"
+    },
+    {
+      "id": "Gumloop：业务人员自己搭建 AI 工作流",
+      "label": "Gumloop：业务人员自己搭建 AI 工作流",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# Gumloop：业务人员自己搭建 AI 工作流\n\n> 核心观点：企业 AI 平台的价值在于让业务人员直接把想法搭成可运行的工作流。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/Gumloop：业务人员自己搭建 AI 工作流]]\n\n## 核心观点\n\n- 企业 AI 不应只服务技术团队，也应让业务人员参与构建。\n- 工作流平台把 AI 从“聊天工具”推进到“流程执行层”。\n- 如果流程有输入、工具、验收和反馈，它就可能成为 [[业务闭环]]。\n\n## 可复用概念\n\n- [[智能体]]\n- [[业务闭环]]\n- [[企业上下文]]\n\n## 相关页面\n\n- [[企业AI产品案例]]\n- [[AI原生组织]]"
+    },
+    {
+      "id": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "label": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…\n\n> 核心观点：Agent 公司不是更聪明的 chatbot，而是用户、模型和执行环境组成的系统。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…]]\n- 历史笔记：[[02-视频笔记/Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…]]\n\n## 核心观点\n\n- Magi 的经历说明上一代 NLP 垂直整合路径可能被基础模型范式击穿。\n- Manus 的产品起源与 Monica、AI 浏览器尝试和 Cursor 的跨人群使用有关。\n- Agent 的难点在环境、沙盒、上下文工程、成本结构和高价值任务，而不只是模型能力。\n- 标题中的“决定出售”在材料中没有形成明确事实，应保持待核验。\n\n## 可复用概念\n\n- [[AI代理]]\n- [[AI创业与投资]]\n- [[企业上下文]]\n- [[业务闭环]]\n\n## 待核验\n\n- “决定出售”是否为访谈明确事实，还是标题叙事。\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[企业AI产品案例]]"
+    },
+    {
+      "id": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "label": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# Tom Blomfield：公司不再是组织，而是 AI 系统\n\n> 核心观点：未来公司的竞争不再主要看人数，而看能否把业务设计成可学习的 AI 系统。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]]\n\n## 核心观点\n\n- [[AI原生公司]] 不是全员会用 AI，而是公司本身被设计成系统。\n- 公司竞争从“人多”转向“[[业务闭环]] 多且质量高”。\n- [[企业上下文]] 是 AI 化基础设施，模型不是唯一瓶颈。\n- [[智能密度]] 可能取代员工规模成为组织能力指标。\n\n## 可复用概念\n\n- [[AI原生公司]]\n- [[企业上下文]]\n- [[业务闭环]]\n- [[智能密度]]\n\n## 待核验\n\n- 原笔记中提到视频时长与标题描述不一致，应保留在 [[03-核验/待核验事实]]。\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[企业AI产品案例]]"
+    },
+    {
+      "id": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "label": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# YC 的 AI 原生公司：公司要变成会进化的系统\n\n> 核心观点：AI 原生公司的重点是让上下文、工具调用和反馈机制持续进化。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/YC 的 AI 原生公司：公司要变成会进化的系统]]\n\n## 核心观点\n\n- 公司应把经验和上下文沉淀为可读、可调用、可迭代的系统。\n- 即时软件和智能体让业务流程更接近“可生成的工作系统”。\n- 组织优势来自持续学习，而不是一次性部署工具。\n\n## 可复用概念\n\n- [[AI原生公司]]\n- [[企业上下文]]\n- [[智能体]]\n- [[业务闭环]]\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[企业AI产品案例]]"
+    },
+    {
+      "id": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "label": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看\n\n> 核心观点：AI 对游戏行业的影响会强化头部护城河、重塑生产工种，并要求从工具执行者转向工具指挥者。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看]]\n- 历史笔记：[[02-视频笔记/【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看]]\n\n## 核心观点\n\n- AI 革命被视为全面自动化的起点。\n- 游戏场景美术中重复性制作会先被影响，审美、整合和决策能力更后置。\n- 行业可能两极分化：头部公司更能把工具接入工业管线。\n- 人需要从执行工具转向判断、指挥和承担结果。\n\n## 可复用概念\n\n- [[游戏生产管线]]\n- [[3D生成]]\n- [[AI游戏与虚拟世界]]\n- [[个人独特性]]\n\n## 相关页面\n\n- [[AI游戏]]\n- [[AI原生游戏]]"
+    },
+    {
+      "id": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "label": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "type": "source",
+      "community": "AI与人类独特性",
+      "content": "# 【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》\n\n> 核心观点：自我意识可以被理解为复杂符号系统中的自指、递归、同构和怪圈。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》]]\n- 历史笔记：[[02-视频笔记/【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》]]\n\n## 核心观点\n\n- 形式系统有边界，哥德尔不完备定理揭示了自指和系统外真理的问题。\n- 埃舍尔图形、巴赫音乐和逻辑系统共同提供了“怪圈”的直觉。\n- 意识不是大脑里的指挥者，而可能是复杂系统在高层形成的自我表征和反馈循环。\n\n## 可复用概念\n\n- [[AI意识]]\n- [[AI与人类独特性]]\n\n## 相关页面\n\n- [[罗振宇对话赫拉利：AI时代，人类该如何保持独特性]]"
+    },
+    {
+      "id": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "label": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 为什么顶尖AI公司都盯上游戏？【硅谷101】\n\n> 核心观点：游戏既是 AI 的训练与验证场，也会被 AI 重塑生产流程、玩家体验和未来形态。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/为什么顶尖AI公司都盯上游戏？【硅谷101】]]\n- 历史笔记：[[02-视频笔记/为什么顶尖AI公司都盯上游戏？【硅谷101】]]\n\n## 核心观点\n\n- 游戏具备规则清晰、反馈及时、可反复试错和数据可生成的特点。\n- 顶尖 AI 公司关注游戏，不只是为了 NPC，而是为了世界模型、智能体训练和应用落地。\n- AI 公司缺真实场景，游戏公司缺前沿 AI 理解，中间地带有融合机会。\n\n## 可复用概念\n\n- [[AI游戏与虚拟世界]]\n- [[AI原生游戏]]\n- [[智能体]]\n- [[游戏生产管线]]\n\n## 相关页面\n\n- [[游戏是AGI的试验田，AI如何重塑游戏宇宙]]"
+    },
+    {
+      "id": "主动式数据分析：AI 替企业发现问题",
+      "label": "主动式数据分析：AI 替企业发现问题",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# 主动式数据分析：AI 替企业发现问题\n\n> 核心观点：企业真正稀缺的不是数据，而是发现问题和做判断的能力。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/主动式数据分析：AI 替企业发现问题]]\n\n## 核心观点\n\n- AI 数据产品可以从被动回答转向主动发现异常和机会。\n- 主动分析需要读取业务语境，因此依赖 [[企业上下文]]。\n- 如果分析结果能触发行动和复盘，就能进入 [[业务闭环]]。\n\n## 可复用概念\n\n- [[企业上下文]]\n- [[业务闭环]]\n- [[AI原生公司]]\n\n## 相关页面\n\n- [[企业AI产品案例]]"
+    },
+    {
+      "id": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "label": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "type": "source",
+      "community": "AI人物访谈",
+      "content": "# 印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程\n\n> 核心观点：基础模型公司需要找到能牵引模型、形成数据和产品闭环的终端场景。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程]]\n- 历史笔记：[[02-视频笔记/印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程]]\n\n## 核心观点\n\n- 大模型竞争叠加人才、算力、资本、研发和商业化难度。\n- 基础模型不能只靠 2B 或纯 C 端软件，需要车、机器人、AI 硬件等终端牵引。\n- 复盘 AI 1.0，要避免“每张牌都上”，抓住想做、能做、可做的交集。\n\n## 可复用概念\n\n- [[基础模型]]\n- [[具身智能]]\n- [[AI创业与投资]]\n- [[硬科技创业]]\n\n## 相关页面\n\n- [[硬科技与中国创业]]\n- [[AI人物访谈]]"
+    },
+    {
+      "id": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "label": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 国产游戏AI又断档领先？AI的3D建模已经这么强了吗？\n\n> 核心观点：3D AI 高模生成正在进入游戏资产生产链的前半段，但仍需要人工和传统工具收尾。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/国产游戏AI又断档领先？AI的3D建模已经这么强了吗？]]\n- 历史笔记：[[02-视频笔记/国产游戏AI又断档领先？AI的3D建模已经这么强了吗？]]\n\n## 核心观点\n\n- 单张参考图生成 3D 高模、贴图和侧面结构已经接近可用。\n- 当前价值是生产链组件，而不是一次性生成完整可商用模型。\n- 资深从业者会获得能力杠杆，新人训练路径会被重估。\n\n## 可复用概念\n\n- [[3D生成]]\n- [[游戏生产管线]]\n- [[AI游戏与虚拟世界]]\n\n## 相关页面\n\n- [[AI游戏]]"
+    },
+    {
+      "id": "奥特曼亲述：OpenAI如何赢下未来",
+      "label": "奥特曼亲述：OpenAI如何赢下未来",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# 奥特曼亲述：OpenAI如何赢下未来\n\n> 核心观点：OpenAI 的竞争结构同时包含模型、产品、企业采用、记忆、代理、基础设施和资本叙事。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/奥特曼亲述：OpenAI如何赢下未来，ChatGPT的下一步与2026上市计划]]\n- 历史笔记：[[02-视频笔记/奥特曼亲述：OpenAI如何赢下未来，ChatGPT的下一步与2026上市计划]]\n\n## 核心观点\n\n- 前沿实验室正在转向基础设施和产品平台公司。\n- ChatGPT 的长期价值不仅来自模型能力，也来自记忆、代理和企业数据接入。\n- AI 平台公司需要把算力、模型、产品反馈和商业化连接起来。\n\n## 可复用概念\n\n- [[AI原生公司]]\n- [[智能体]]\n- [[企业上下文]]\n- [[AI安全治理]]\n\n## 相关页面\n\n- [[AI原生组织]]\n- [[AI安全与治理]]\n- [[AI人物访谈]]"
+    },
+    {
+      "id": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "label": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "type": "source",
+      "community": "AI人物访谈",
+      "content": "# 对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去\n\n> 核心观点：头部模型公司 benchmark 接近打满后，关键变成定义值得下注的问题和组织化工程能力。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去]]\n- 历史笔记：[[02-视频笔记/对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去]]\n\n## 核心观点\n\n- Coding 是当前最 AI 原生的应用场景之一，因为 reward signal 清楚、数据基础深厚。\n- 长上下文、ML coding、自我实验闭环是近期重要方向。\n- AI 研究中的个人英雄主义正在被集体工程、组织执行和基础设施吸收。\n- 聪明不再稀缺，靠谱、细致、能和 AI 协作并理解交付物的人更稀缺。\n\n## 可复用概念\n\n- [[基础模型]]\n- [[AI原生公司]]\n- [[业务闭环]]\n- [[柔性心智]]\n\n## 相关页面\n\n- [[AI人物访谈]]\n- [[AI原生组织]]"
+    },
+    {
+      "id": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "label": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "type": "source",
+      "community": "AI人物访谈",
+      "content": "# 对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》\n\n> 核心观点：AI 投资从 AGI 叙事转向应用入口、日活场景、垂直 agent、私有化部署和商业化兑现。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》]]\n- 历史笔记：[[02-视频笔记/对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》]]\n\n## 核心观点\n\n- 约束不只是估值泡沫，而是 token、数据中心、电力和商业化兑现能力。\n- OpenAI、Google、字节、阿里、腾讯等从模型竞争转向入口竞争。\n- 早期投资要和主流共识错开约 15 度。\n- 中国 AI 机会来自开源生态、执行速度、电力和数据中心建设能力。\n\n## 可复用概念\n\n- [[AI创业与投资]]\n- [[基础模型]]\n- [[AI代理]]\n- [[硬科技与中国创业]]\n\n## 相关页面\n\n- [[AI人物访谈]]\n- [[硬科技与中国创业]]"
+    },
+    {
+      "id": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "label": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "type": "source",
+      "community": "AI人物访谈",
+      "content": "# 对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会\n\n> 核心观点：硬科技创业需要在长期、低容错、高投入产业里建立反馈、降本、可靠性和全球竞争力。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会]]\n- 历史笔记：[[02-视频笔记/对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会]]\n\n## 核心观点\n\n- 激光雷达是车和机器人的“主动眼睛”，降本和可靠性决定产业化。\n- 商业化不只是卖货，也是反馈机制。\n- 硬科技公司要处理技术路线、组织文化、资本市场沟通和全球化。\n- 中国制造业体系的压力可能转化为全球竞争力。\n\n## 可复用概念\n\n- [[硬科技创业]]\n- [[具身智能]]\n- [[硬科技与中国创业]]\n\n## 相关页面\n\n- [[AI人物访谈]]"
+    },
+    {
+      "id": "微型巨头：100 倍组织与智能密度",
+      "label": "微型巨头：100 倍组织与智能密度",
+      "type": "source",
+      "community": "AI原生组织",
+      "content": "# 微型巨头：100 倍组织与智能密度\n\n> 核心观点：AI 会让小团队通过智能体和系统化流程获得被放大的产能。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/微型巨头：100 倍组织与智能密度]]\n\n## 核心观点\n\n- 组织规模优势可能被重新洗牌。\n- 小团队如果能沉淀 [[企业上下文]] 和高质量 [[业务闭环]]，可能获得更高 [[智能密度]]。\n- “人少但系统强”的组织会成为重要观察对象。\n\n## 可复用概念\n\n- [[智能密度]]\n- [[AI原生公司]]\n- [[业务闭环]]\n\n## 相关页面\n\n- [[AI原生组织]]"
+    },
+    {
+      "id": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "label": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 星铁帕姆AI什么水平？这个架构厉害了呀？\n\n> 核心观点：帕姆 AI 的价值不只在模型，而在干净、内部、持续更新的游戏数据和可复用功能层架构。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/星铁帕姆AI什么水平？这个架构厉害了呀？]]\n- 历史笔记：[[02-视频笔记/星铁帕姆AI什么水平？这个架构厉害了呀？]]\n\n## 核心观点\n\n- 游戏知识库、角色陪伴、记忆系统、攻略能力和商业化试探被放在同一产品里。\n- 数据层和功能层拆开后，同一套数据可复用给更多角色。\n- 选择帕姆而不是卡池角色，可能是为了降低大规模开放的人设和安全风险。\n\n## 可复用概念\n\n- [[AI游戏]]\n- [[AI原生游戏]]\n- [[智能体]]\n- [[企业上下文]]\n\n## 相关页面\n\n- [[AI游戏与虚拟世界]]"
+    },
+    {
+      "id": "李飞飞：AI教母的思考方式",
+      "label": "李飞飞：AI教母的思考方式",
+      "type": "source",
+      "community": "AI与人类独特性",
+      "content": "# 李飞飞：AI教母的思考方式\n\n> 核心观点：长期方向不是口号，而是把好奇心、大问题、学习能力和可验证建设连接成多年尺度的北极星。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/李飞飞：AI教母的思考方式，如何找到人生北极星]]\n- 历史笔记：[[02-视频笔记/李飞飞：AI教母的思考方式，如何找到人生北极星]]\n\n## 核心观点\n\n- 人的长期价值来自持续学习、定义问题和建设能力。\n- “北极星”适合放入 [[AI与人类独特性]] 主线。\n- 人物访谈应抽取判断框架，而不是只记录履历故事。\n\n## 可复用概念\n\n- [[AI与人类独特性]]\n- [[AI人物访谈]]\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[AI人物访谈]]"
+    },
+    {
+      "id": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "label": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "type": "source",
+      "community": "AI游戏与虚拟世界",
+      "content": "# 游戏是AGI的试验田，AI如何重塑游戏宇宙\n\n> 核心观点：游戏有规则、反馈、模拟环境、复杂目标和人机互动，因此适合测试 Agent 的感知、理解、决策、协作和生成能力。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/游戏是AGI的试验田，AI如何重塑游戏宇宙：探展2025全球游戏开发者大会【硅谷101】]]\n- 历史笔记：[[02-视频笔记/游戏是AGI的试验田，AI如何重塑游戏宇宙：探展2025全球游戏开发者大会【硅谷101】]]\n\n## 核心观点\n\n- AI Agent 正进入 NPC、队友和教练系统。\n- 生成式 AI 进入 3D 资产、UGC 和视频生成。\n- 海外创业公司偏 AI 原生 demo，中国大厂偏成熟产品增量改造。\n- AI 提效和行业裁员、从业者焦虑并行。\n\n## 可复用概念\n\n- [[AI游戏与虚拟世界]]\n- [[AI原生游戏]]\n- [[游戏生产管线]]\n- [[智能体]]\n\n## 相关页面\n\n- [[为什么顶尖AI公司都盯上游戏？【硅谷101】]]"
+    },
+    {
+      "id": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "label": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "type": "source",
+      "community": "AI与人类独特性",
+      "content": "# 罗振宇对话赫拉利：AI时代，人类该如何保持独特性\n\n> 核心观点：AI 的断裂不只是更聪明，而是非人类智能开始创造故事、影响制度和塑造文化环境。\n\n## 来源\n\n- 原始素材：[[raw/notes/video-notes/罗振宇对话赫拉利：AI时代，人类该如何保持独特性]]\n- 历史笔记：[[02-视频笔记/罗振宇对话赫拉利：AI时代，人类该如何保持独特性]]\n\n## 核心观点\n\n- 人类大规模合作依赖 [[共同故事]]。\n- AI 是历史上第一次能参与故事生产的非人类智能。\n- [[AI意识]] 和智能要区分：智能是解决问题，意识是感受痛苦、快乐和爱恨。\n- 教育应从灌输信息转向辨别真实、持续学习和 [[柔性心智]]。\n- 内容创作者的价值不在信息压缩，而在真实经验、感受、关系和个人理解。\n\n## 可复用概念\n\n- [[共同故事]]\n- [[AI意识]]\n- [[AI代理]]\n- [[柔性心智]]\n- [[个人独特性]]\n\n## 待核验\n\n- GPT-4 解决 CAPTCHA 并通过 TaskRabbit 找人协助案例的原始出处和叙述边界。\n\n## 相关页面\n\n- [[AI与人类独特性]]\n- [[AI安全与治理]]"
+    },
+    {
+      "id": "谷歌前CEO警告：人类的时间不多了",
+      "label": "谷歌前CEO警告：人类的时间不多了",
+      "type": "source",
+      "community": "AI安全与治理",
+      "content": "# 谷歌前CEO警告：人类的时间不多了\n\n> 核心观点：AI 风险来自能力跃迁、扩散速度和低成本行动主体，需要安全控制与应用推进同时发生。\n\n## 来源\n\n- 原笔记：[[02-视频笔记/谷歌前CEO警告：人类的时间不多了]]\n\n## 核心观点\n\n- AI 能力扩散可能快于制度、企业和社会适应速度。\n- 安全治理不是抽象伦理，而会影响产品、组织和基础设施设计。\n- 企业引入 AI 闭环时需要审计、权限和人工复核。\n\n## 可复用概念\n\n- [[AI安全治理]]\n- [[智能体]]\n- [[业务闭环]]\n\n## 相关页面\n\n- [[AI安全与治理]]\n- [[AI与人类独特性]]"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "3D生成",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.792,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.375,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e2",
+      "from": "3D生成",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.389,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e3",
+      "from": "3D生成",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.407,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e4",
+      "from": "AI代理",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.5,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e5",
+      "from": "AI代理",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.417,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e6",
+      "from": "AI代理",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.354,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e7",
+      "from": "AI代理",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.354,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e8",
+      "from": "AI创业与投资",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e9",
+      "from": "AI创业与投资",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.389,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e10",
+      "from": "AI创业与投资",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.583,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e11",
+      "from": "AI创业与投资",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e12",
+      "from": "AI原生公司",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e13",
+      "from": "AI原生公司",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.854,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.563,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e14",
+      "from": "AI原生公司",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.854,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.563,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e15",
+      "from": "AI原生公司",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.652,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.455,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e16",
+      "from": "AI原生公司",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.815,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.444,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e17",
+      "from": "AI原生游戏",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": 0.667,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e18",
+      "from": "AI原生游戏",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e19",
+      "from": "AI原生游戏",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.611,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e20",
+      "from": "AI原生游戏",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.556,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e21",
+      "from": "AI安全治理",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.75,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e22",
+      "from": "AI安全治理",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.396,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.188,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e23",
+      "from": "AI安全治理",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e24",
+      "from": "AI安全治理",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.41,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.231,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e25",
+      "from": "AI意识",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.577,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.231,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e26",
+      "from": "AI意识",
+      "to": "共同故事",
+      "type": "EXTRACTED",
+      "weight": 0.867,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e27",
+      "from": "AI意识",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.5,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e28",
+      "from": "AI游戏",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.792,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.583,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e29",
+      "from": "AI游戏",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.583,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e30",
+      "from": "AI游戏",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.563,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e31",
+      "from": "业务闭环",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.722,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.444,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e32",
+      "from": "业务闭环",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.771,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.313,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e33",
+      "from": "业务闭环",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.854,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.563,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e34",
+      "from": "业务闭环",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.917,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.75,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e35",
+      "from": "业务闭环",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.396,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.188,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e36",
+      "from": "个人独特性",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.658,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 0.667,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e37",
+      "from": "个人独特性",
+      "to": "柔性心智",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e38",
+      "from": "个人独特性",
+      "to": "AI意识",
+      "type": "EXTRACTED",
+      "weight": 0.611,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e39",
+      "from": "个人独特性",
+      "to": "共同故事",
+      "type": "EXTRACTED",
+      "weight": 0.833,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e40",
+      "from": "企业上下文",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.854,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.563,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e41",
+      "from": "企业上下文",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.917,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.75,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e42",
+      "from": "企业上下文",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.771,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.313,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e43",
+      "from": "企业上下文",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.852,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e44",
+      "from": "共同故事",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.769,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e45",
+      "from": "共同故事",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.333,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e46",
+      "from": "共同故事",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.722,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e47",
+      "from": "具身智能",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.595,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.286,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e48",
+      "from": "具身智能",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.792,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.375,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e49",
+      "from": "具身智能",
+      "to": "硬科技创业",
+      "type": "EXTRACTED",
+      "weight": 0.533,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e50",
+      "from": "基础模型",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e51",
+      "from": "基础模型",
+      "to": "具身智能",
+      "type": "EXTRACTED",
+      "weight": 0.595,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.286,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e52",
+      "from": "基础模型",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.407,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e53",
+      "from": "智能体",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e54",
+      "from": "智能体",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.611,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e55",
+      "from": "智能体",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e56",
+      "from": "智能体",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.722,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.444,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e57",
+      "from": "智能体",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e58",
+      "from": "智能体",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.583,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e59",
+      "from": "智能体",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e60",
+      "from": "智能密度",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.741,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e61",
+      "from": "智能密度",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.652,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.455,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e62",
+      "from": "智能密度",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.771,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.313,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e63",
+      "from": "智能密度",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.771,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.313,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e64",
+      "from": "柔性心智",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.744,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.231,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e65",
+      "from": "柔性心智",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e66",
+      "from": "柔性心智",
+      "to": "共同故事",
+      "type": "EXTRACTED",
+      "weight": 0.867,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e67",
+      "from": "游戏生产管线",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.583,
+        "source_overlap": 0.333,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e68",
+      "from": "游戏生产管线",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.556,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e69",
+      "from": "游戏生产管线",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.813,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.625,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e70",
+      "from": "硬科技创业",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e71",
+      "from": "硬科技创业",
+      "to": "具身智能",
+      "type": "EXTRACTED",
+      "weight": 0.533,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.6,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e72",
+      "from": "硬科技创业",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.417,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e73",
+      "from": "AI与人类独特性",
+      "to": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "type": "EXTRACTED",
+      "weight": 0.218,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.154,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e74",
+      "from": "AI与人类独特性",
+      "to": "26.04.08罗振宇：AI时代人能做什么？",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e75",
+      "from": "AI与人类独特性",
+      "to": "AI时代，什么让你不可替代？《The prompt》",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e76",
+      "from": "AI与人类独特性",
+      "to": "李飞飞：AI教母的思考方式",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e77",
+      "from": "AI与人类独特性",
+      "to": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e78",
+      "from": "AI与人类独特性",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.285,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.056,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e79",
+      "from": "AI与人类独特性",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.369,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e80",
+      "from": "AI与人类独特性",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.658,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 0.667,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e81",
+      "from": "AI与人类独特性",
+      "to": "共同故事",
+      "type": "EXTRACTED",
+      "weight": 0.769,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e82",
+      "from": "AI与人类独特性",
+      "to": "AI意识",
+      "type": "EXTRACTED",
+      "weight": 0.577,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.231,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e83",
+      "from": "AI与人类独特性",
+      "to": "柔性心智",
+      "type": "EXTRACTED",
+      "weight": 0.744,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.231,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e84",
+      "from": "AI人物访谈",
+      "to": "奥特曼亲述：OpenAI如何赢下未来",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e85",
+      "from": "AI人物访谈",
+      "to": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e86",
+      "from": "AI人物访谈",
+      "to": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e87",
+      "from": "AI人物访谈",
+      "to": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e88",
+      "from": "AI人物访谈",
+      "to": "李飞飞：AI教母的思考方式",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e89",
+      "from": "AI人物访谈",
+      "to": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e90",
+      "from": "AI人物访谈",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.322,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e91",
+      "from": "AI人物访谈",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.308,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e92",
+      "from": "AI人物访谈",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.41,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.429,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e93",
+      "from": "AI人物访谈",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.417,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e94",
+      "from": "AI人物访谈",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.69,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.571,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e95",
+      "from": "AI原生组织",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e96",
+      "from": "AI原生组织",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.815,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.444,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e97",
+      "from": "AI原生组织",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.852,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.556,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e98",
+      "from": "AI原生组织",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.87,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.611,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e99",
+      "from": "AI原生组织",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.741,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e100",
+      "from": "AI原生组织",
+      "to": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e101",
+      "from": "AI原生组织",
+      "to": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e102",
+      "from": "AI原生组织",
+      "to": "微型巨头：100 倍组织与智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e103",
+      "from": "AI原生组织",
+      "to": "奥特曼亲述：OpenAI如何赢下未来",
+      "type": "EXTRACTED",
+      "weight": 0.204,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e104",
+      "from": "AI原生组织",
+      "to": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e105",
+      "from": "AI原生组织",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.359,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e106",
+      "from": "AI原生组织",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.322,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e107",
+      "from": "AI原生组织",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.285,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.056,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e108",
+      "from": "AI原生组织",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.389,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e109",
+      "from": "AI安全与治理",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.322,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e110",
+      "from": "AI安全与治理",
+      "to": "谷歌前CEO警告：人类的时间不多了",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e111",
+      "from": "AI安全与治理",
+      "to": "奥特曼亲述：OpenAI如何赢下未来",
+      "type": "EXTRACTED",
+      "weight": 0.25,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e112",
+      "from": "AI安全与治理",
+      "to": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "type": "EXTRACTED",
+      "weight": 0.208,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e113",
+      "from": "AI安全与治理",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.75,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e114",
+      "from": "AI安全与治理",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.369,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.308,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e115",
+      "from": "AI安全与治理",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.375,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e116",
+      "from": "AI游戏与虚拟世界",
+      "to": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e117",
+      "from": "AI游戏与虚拟世界",
+      "to": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e118",
+      "from": "AI游戏与虚拟世界",
+      "to": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "type": "EXTRACTED",
+      "weight": 0.194,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.083,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e119",
+      "from": "AI游戏与虚拟世界",
+      "to": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e120",
+      "from": "AI游戏与虚拟世界",
+      "to": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e121",
+      "from": "AI游戏与虚拟世界",
+      "to": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e122",
+      "from": "AI游戏与虚拟世界",
+      "to": "AI时代，什么让你不可替代？《The prompt》",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e123",
+      "from": "AI游戏与虚拟世界",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e124",
+      "from": "AI游戏与虚拟世界",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.792,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.583,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e125",
+      "from": "AI游戏与虚拟世界",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.667,
+        "source_overlap": 0.667,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e126",
+      "from": "AI游戏与虚拟世界",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.639,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.583,
+        "source_overlap": 0.333,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e127",
+      "from": "AI游戏与虚拟世界",
+      "to": "3D生成",
+      "type": "EXTRACTED",
+      "weight": 0.389,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e128",
+      "from": "AI游戏与虚拟世界",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.267,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e129",
+      "from": "企业AI产品案例",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.359,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.278,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e130",
+      "from": "企业AI产品案例",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.5,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e131",
+      "from": "企业AI产品案例",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.479,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.438,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e132",
+      "from": "企业AI产品案例",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.455,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.364,
+        "source_overlap": 0,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e133",
+      "from": "企业AI产品案例",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.611,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": null,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e134",
+      "from": "硬科技与中国创业",
+      "to": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e135",
+      "from": "硬科技与中国创业",
+      "to": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e136",
+      "from": "硬科技与中国创业",
+      "to": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e137",
+      "from": "硬科技与中国创业",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.41,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.429,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e138",
+      "from": "硬科技与中国创业",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.304,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.8
+      }
+    },
+    {
+      "id": "e139",
+      "from": "硬科技与中国创业",
+      "to": "硬科技创业",
+      "type": "EXTRACTED",
+      "weight": 0.778,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 1,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e140",
+      "from": "硬科技与中国创业",
+      "to": "具身智能",
+      "type": "EXTRACTED",
+      "weight": 0.667,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e141",
+      "from": "硬科技与中国创业",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.69,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.571,
+        "source_overlap": 0.5,
+        "type_affinity": 1
+      }
+    },
+    {
+      "id": "e142",
+      "from": "26.04.08罗振宇：AI时代人能做什么？",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.256,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e143",
+      "from": "26.04.08罗振宇：AI时代人能做什么？",
+      "to": "柔性心智",
+      "type": "EXTRACTED",
+      "weight": 0.267,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e144",
+      "from": "26.04.08罗振宇：AI时代人能做什么？",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e145",
+      "from": "26.04.08罗振宇：AI时代人能做什么？",
+      "to": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "type": "EXTRACTED",
+      "weight": 0.211,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.3
+      }
+    },
+    {
+      "id": "e146",
+      "from": "AI 猎头：从公开产出发现专家",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e147",
+      "from": "AI 猎头：从公开产出发现专家",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.3,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e148",
+      "from": "AI 猎头：从公开产出发现专家",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e149",
+      "from": "AI时代，什么让你不可替代？《The prompt》",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.237,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e150",
+      "from": "AI时代，什么让你不可替代？《The prompt》",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.256,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e151",
+      "from": "AI时代，什么让你不可替代？《The prompt》",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e152",
+      "from": "AI时代，什么让你不可替代？《The prompt》",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e153",
+      "from": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e154",
+      "from": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e155",
+      "from": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.237,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e156",
+      "from": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.363,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e157",
+      "from": "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+      "to": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "type": "EXTRACTED",
+      "weight": 0.211,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.3
+      }
+    },
+    {
+      "id": "e158",
+      "from": "Gumloop：业务人员自己搭建 AI 工作流",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e159",
+      "from": "Gumloop：业务人员自己搭建 AI 工作流",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.3,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e160",
+      "from": "Gumloop：业务人员自己搭建 AI 工作流",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e161",
+      "from": "Gumloop：业务人员自己搭建 AI 工作流",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e162",
+      "from": "Gumloop：业务人员自己搭建 AI 工作流",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e163",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e164",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e165",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e166",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e167",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e168",
+      "from": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.208,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e169",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.23,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.091,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e170",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e171",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e172",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.256,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e173",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e174",
+      "from": "Tom Blomfield：公司不再是组织，而是 AI 系统",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.208,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e175",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.23,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.091,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e176",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e177",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.328,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.056,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e178",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e179",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e180",
+      "from": "YC 的 AI 原生公司：公司要变成会进化的系统",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.208,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e181",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e182",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "3D生成",
+      "type": "EXTRACTED",
+      "weight": 0.311,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e183",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e184",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e185",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.363,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e186",
+      "from": "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.237,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e187",
+      "from": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "to": "AI意识",
+      "type": "EXTRACTED",
+      "weight": 0.283,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e188",
+      "from": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e189",
+      "from": "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+      "to": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "type": "EXTRACTED",
+      "weight": 0.211,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.3
+      }
+    },
+    {
+      "id": "e190",
+      "from": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e191",
+      "from": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.311,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e192",
+      "from": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.356,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e193",
+      "from": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.325,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.375,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e194",
+      "from": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "to": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "type": "EXTRACTED",
+      "weight": 0.211,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.3
+      }
+    },
+    {
+      "id": "e195",
+      "from": "主动式数据分析：AI 替企业发现问题",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e196",
+      "from": "主动式数据分析：AI 替企业发现问题",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e197",
+      "from": "主动式数据分析：AI 替企业发现问题",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e198",
+      "from": "主动式数据分析：AI 替企业发现问题",
+      "to": "企业AI产品案例",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e199",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.295,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.286,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e200",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "具身智能",
+      "type": "EXTRACTED",
+      "weight": 0.267,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e201",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e202",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "硬科技创业",
+      "type": "EXTRACTED",
+      "weight": 0.283,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e203",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e204",
+      "from": "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e205",
+      "from": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "to": "3D生成",
+      "type": "EXTRACTED",
+      "weight": 0.311,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e206",
+      "from": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e207",
+      "from": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e208",
+      "from": "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.363,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e209",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.23,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.091,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e210",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.328,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.056,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e211",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e212",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e213",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.204,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e214",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.25,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e215",
+      "from": "奥特曼亲述：OpenAI如何赢下未来",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e216",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.248,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e217",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e218",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e219",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "柔性心智",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e220",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e221",
+      "from": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.204,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e222",
+      "from": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "to": "AI创业与投资",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e223",
+      "from": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "to": "基础模型",
+      "type": "EXTRACTED",
+      "weight": 0.295,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.286,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e224",
+      "from": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e225",
+      "from": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e226",
+      "from": "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e227",
+      "from": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "to": "硬科技创业",
+      "type": "EXTRACTED",
+      "weight": 0.283,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e228",
+      "from": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "to": "具身智能",
+      "type": "EXTRACTED",
+      "weight": 0.267,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e229",
+      "from": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "to": "硬科技与中国创业",
+      "type": "EXTRACTED",
+      "weight": 0.222,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e230",
+      "from": "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.214,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.143,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e231",
+      "from": "微型巨头：100 倍组织与智能密度",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e232",
+      "from": "微型巨头：100 倍组织与智能密度",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.221,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.063,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e233",
+      "from": "微型巨头：100 倍组织与智能密度",
+      "to": "智能密度",
+      "type": "EXTRACTED",
+      "weight": 0.256,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.167,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e234",
+      "from": "微型巨头：100 倍组织与智能密度",
+      "to": "AI原生公司",
+      "type": "EXTRACTED",
+      "weight": 0.23,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.091,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e235",
+      "from": "微型巨头：100 倍组织与智能密度",
+      "to": "AI原生组织",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e236",
+      "from": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "to": "AI游戏",
+      "type": "EXTRACTED",
+      "weight": 0.363,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e237",
+      "from": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.237,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e238",
+      "from": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.328,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.056,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e239",
+      "from": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "to": "企业上下文",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e240",
+      "from": "星铁帕姆AI什么水平？这个架构厉害了呀？",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e241",
+      "from": "李飞飞：AI教母的思考方式",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e242",
+      "from": "李飞飞：AI教母的思考方式",
+      "to": "AI人物访谈",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e243",
+      "from": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "to": "AI游戏与虚拟世界",
+      "type": "EXTRACTED",
+      "weight": 0.194,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.083,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e244",
+      "from": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "to": "AI原生游戏",
+      "type": "EXTRACTED",
+      "weight": 0.274,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.222,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e245",
+      "from": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "to": "游戏生产管线",
+      "type": "EXTRACTED",
+      "weight": 0.283,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.25,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e246",
+      "from": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.356,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0.111,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e247",
+      "from": "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+      "to": "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+      "type": "EXTRACTED",
+      "weight": 0.211,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.3
+      }
+    },
+    {
+      "id": "e248",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "共同故事",
+      "type": "EXTRACTED",
+      "weight": 0.267,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.2,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e249",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "AI意识",
+      "type": "EXTRACTED",
+      "weight": 0.367,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.5,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e250",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "柔性心智",
+      "type": "EXTRACTED",
+      "weight": 0.333,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.4,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e251",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "AI代理",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e252",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "个人独特性",
+      "type": "EXTRACTED",
+      "weight": 0.311,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.333,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e253",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.218,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.154,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e254",
+      "from": "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.208,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e255",
+      "from": "谷歌前CEO警告：人类的时间不多了",
+      "to": "AI安全治理",
+      "type": "EXTRACTED",
+      "weight": 0.242,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.125,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e256",
+      "from": "谷歌前CEO警告：人类的时间不多了",
+      "to": "智能体",
+      "type": "EXTRACTED",
+      "weight": 0.3,
+      "source_signal_available": false,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": null,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e257",
+      "from": "谷歌前CEO警告：人类的时间不多了",
+      "to": "业务闭环",
+      "type": "EXTRACTED",
+      "weight": 0.2,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.6
+      }
+    },
+    {
+      "id": "e258",
+      "from": "谷歌前CEO警告：人类的时间不多了",
+      "to": "AI安全与治理",
+      "type": "EXTRACTED",
+      "weight": 0.167,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    },
+    {
+      "id": "e259",
+      "from": "谷歌前CEO警告：人类的时间不多了",
+      "to": "AI与人类独特性",
+      "type": "EXTRACTED",
+      "weight": 0.192,
+      "source_signal_available": true,
+      "signals": {
+        "co_citation": 0.077,
+        "source_overlap": 0,
+        "type_affinity": 0.5
+      }
+    }
+  ],
+  "insights": {
+    "surprising_connections": [],
+    "isolated_nodes": [],
+    "bridge_nodes": [
+      {
+        "id": "AI与人类独特性",
+        "label": "AI与人类独特性",
+        "community": "AI与人类独特性",
+        "connected_communities": [
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "AI人物访谈",
+        "label": "AI人物访谈",
+        "community": "AI人物访谈",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "AI代理",
+        "label": "AI代理",
+        "community": "AI安全与治理",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI人物访谈",
+          "AI原生组织"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "AI创业与投资",
+        "label": "AI创业与投资",
+        "community": "AI人物访谈",
+        "connected_communities": [
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "AI原生游戏",
+        "label": "AI原生游戏",
+        "community": "AI游戏与虚拟世界",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "AI原生组织",
+        "label": "AI原生组织",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI人物访谈",
+          "AI安全与治理"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "AI安全与治理",
+        "label": "AI安全与治理",
+        "community": "AI安全与治理",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI人物访谈",
+          "AI原生组织",
+          "AI游戏与虚拟世界"
+        ],
+        "community_count": 4
+      },
+      {
+        "id": "AI安全治理",
+        "label": "AI安全治理",
+        "community": "AI安全与治理",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织",
+          "AI游戏与虚拟世界"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "AI游戏",
+        "label": "AI游戏",
+        "community": "AI游戏与虚拟世界",
+        "connected_communities": [
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "AI游戏与虚拟世界",
+        "label": "AI游戏与虚拟世界",
+        "community": "AI游戏与虚拟世界",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+        "label": "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI人物访谈",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "业务闭环",
+        "label": "业务闭环",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI人物访谈",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "企业上下文",
+        "label": "企业上下文",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI安全与治理",
+          "AI游戏与虚拟世界"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "奥特曼亲述：OpenAI如何赢下未来",
+        "label": "奥特曼亲述：OpenAI如何赢下未来",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI人物访谈",
+          "AI安全与治理"
+        ],
+        "community_count": 2
+      },
+      {
+        "id": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+        "label": "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+        "community": "AI人物访谈",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织",
+          "AI安全与治理"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "智能体",
+        "label": "智能体",
+        "community": "AI原生组织",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI安全与治理",
+          "AI游戏与虚拟世界"
+        ],
+        "community_count": 3
+      },
+      {
+        "id": "谷歌前CEO警告：人类的时间不多了",
+        "label": "谷歌前CEO警告：人类的时间不多了",
+        "community": "AI安全与治理",
+        "connected_communities": [
+          "AI与人类独特性",
+          "AI原生组织"
+        ],
+        "community_count": 2
+      }
+    ],
+    "sparse_communities": [],
+    "meta": {
+      "degraded": false,
+      "node_count": 50,
+      "edge_count": 259,
+      "max_insight_nodes": 250,
+      "max_insight_edges": 1000
+    }
+  },
+  "learning": {
+    "version": 1,
+    "entry": {
+      "recommended_start_node_id": "AI原生组织",
+      "recommended_start_reason": "community_hub",
+      "default_mode": "global"
+    },
+    "views": {
+      "path": {
+        "enabled": true,
+        "start_node_id": "AI原生组织",
+        "node_ids": [
+          "AI原生组织",
+          "AI原生公司",
+          "Gumloop：业务人员自己搭建 AI 工作流",
+          "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+          "Tom Blomfield：公司不再是组织，而是 AI 系统",
+          "YC 的 AI 原生公司：公司要变成会进化的系统",
+          "业务闭环",
+          "企业AI产品案例",
+          "企业上下文",
+          "奥特曼亲述：OpenAI如何赢下未来",
+          "微型巨头：100 倍组织与智能密度",
+          "智能体",
+          "智能密度"
+        ],
+        "degraded": false
+      },
+      "community": {
+        "enabled": true,
+        "community_id": "AI原生组织",
+        "label": "AI原生组织",
+        "node_ids": [
+          "AI 猎头：从公开产出发现专家",
+          "AI原生公司",
+          "AI原生组织",
+          "Gumloop：业务人员自己搭建 AI 工作流",
+          "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+          "Tom Blomfield：公司不再是组织，而是 AI 系统",
+          "YC 的 AI 原生公司：公司要变成会进化的系统",
+          "业务闭环",
+          "主动式数据分析：AI 替企业发现问题",
+          "企业AI产品案例",
+          "企业上下文",
+          "奥特曼亲述：OpenAI如何赢下未来",
+          "微型巨头：100 倍组织与智能密度",
+          "智能体",
+          "智能密度"
+        ],
+        "is_weak": false,
+        "degraded": false
+      },
+      "global": {
+        "enabled": true,
+        "node_ids": [
+          "AI原生组织",
+          "AI游戏与虚拟世界",
+          "智能体",
+          "AI与人类独特性",
+          "业务闭环",
+          "企业上下文",
+          "AI人物访谈",
+          "AI原生公司",
+          "AI安全与治理",
+          "硬科技与中国创业",
+          "AI原生游戏",
+          "企业AI产品案例",
+          "AI创业与投资",
+          "AI安全治理",
+          "AI游戏",
+          "游戏生产管线",
+          "AI代理",
+          "个人独特性",
+          "基础模型",
+          "奥特曼亲述：OpenAI如何赢下未来",
+          "智能密度",
+          "罗振宇对话赫拉利：AI时代，人类该如何保持独特性",
+          "为什么顶尖AI公司都盯上游戏？【硅谷101】",
+          "共同故事",
+          "具身智能",
+          "印奇出任阶跃星辰董事长的访谈：聪明人的诱惑、取舍、超长链路残酷淘汰赛、阶跃函数和超多元方程",
+          "对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去",
+          "柔性心智",
+          "【AI-游戏行业前沿研究】AI 颠覆游戏行业，2026最新前沿研究，拆解核心机会与坑～行业必看",
+          "AI意识",
+          "Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…",
+          "Tom Blomfield：公司不再是组织，而是 AI 系统",
+          "YC 的 AI 原生公司：公司要变成会进化的系统",
+          "对投资人朱啸虎的第三次访谈：现实主义、AI的盛筵与泡泡、和共识错开15度、《王者荣耀》",
+          "游戏是AGI的试验田，AI如何重塑游戏宇宙",
+          "硬科技创业",
+          "3D生成",
+          "AI时代，什么让你不可替代？《The prompt》",
+          "GDC观察：游戏大厂都来聊AI，游戏AI的新规则由谁制定？【硅谷101】",
+          "对话禾赛李一帆：你仔细想行业的机会来自哪？是国家、民族的机会",
+          "微型巨头：100 倍组织与智能密度",
+          "星铁帕姆AI什么水平？这个架构厉害了呀？",
+          "谷歌前CEO警告：人类的时间不多了",
+          "26.04.08罗振宇：AI时代人能做什么？",
+          "Gumloop：业务人员自己搭建 AI 工作流",
+          "国产游戏AI又断档领先？AI的3D建模已经这么强了吗？",
+          "【烧脑】【51分钟深度细读一本书】“自我意识”从何而来？细读《哥德尔、艾舍尔、巴赫》",
+          "主动式数据分析：AI 替企业发现问题",
+          "李飞飞：AI教母的思考方式",
+          "AI 猎头：从公开产出发现专家"
+        ],
+        "degraded": false
+      }
+    },
+    "communities": [
+      {
+        "id": "AI原生组织",
+        "label": "AI原生组织",
+        "node_count": 15,
+        "source_count": 8,
+        "internal_edge_weight": 31.75,
+        "is_primary": true,
+        "is_weak": false,
+        "recommended_start_node_id": "AI原生组织"
+      },
+      {
+        "id": "AI游戏与虚拟世界",
+        "label": "AI游戏与虚拟世界",
+        "node_count": 11,
+        "source_count": 6,
+        "internal_edge_weight": 16.603,
+        "is_primary": false,
+        "is_weak": false,
+        "recommended_start_node_id": "AI游戏与虚拟世界"
+      },
+      {
+        "id": "AI人物访谈",
+        "label": "AI人物访谈",
+        "node_count": 10,
+        "source_count": 4,
+        "internal_edge_weight": 15.678,
+        "is_primary": false,
+        "is_weak": false,
+        "recommended_start_node_id": "AI人物访谈"
+      },
+      {
+        "id": "AI与人类独特性",
+        "label": "AI与人类独特性",
+        "node_count": 10,
+        "source_count": 5,
+        "internal_edge_weight": 14.542,
+        "is_primary": false,
+        "is_weak": false,
+        "recommended_start_node_id": "AI与人类独特性"
+      },
+      {
+        "id": "AI安全与治理",
+        "label": "AI安全与治理",
+        "node_count": 4,
+        "source_count": 1,
+        "internal_edge_weight": 2.868,
+        "is_primary": false,
+        "is_weak": false,
+        "recommended_start_node_id": "AI安全与治理"
+      }
+    ],
+    "degraded": {
+      "path_to_community": false,
+      "community_to_global": false
+    }
+  }
+}
+</script>
+
+<!-- TWEAKS DEFAULTS (editable by host) -->
+<script>
+window.__TWEAKS = /*EDITMODE-BEGIN*/{
+  "variant": "wash",
+  "sizeMode": "uniform",
+  "bubbleMode": "wash",
+  "nodeStyle": "card"
+}/*EDITMODE-END*/;
+</script>
+
+<!-- Libraries -->
+<script src="d3.min.js" defer></script>
+<script src="rough.min.js" defer></script>
+<script src="marked.min.js" defer></script>
+<script src="purify.min.js" defer></script>
+
+<!-- Sample graph data -->
+<!-- Main app -->
+<script src="graph-wash-helpers.js" defer></script>
+<script src="graph-wash.js" defer></script>
+
+</body>
+</html>
