@@ -42,3 +42,8 @@
 - 新增综合页 [[游戏工作室AI提效落地框架]]，按自动测试、资产生产、NPC/语音、内部工具、客服运营等环节整理可复制方法。
 - 新增实体页 [[AI辅助QA]] 与 [[AI NPC]]，并更新 [[AI游戏与虚拟世界]]、[[游戏生产管线]]、[[AI游戏]]、[[wiki/overview]]、[[index]]。
 - 更新静态图谱 [[wiki/knowledge-graph]]；交互式 `wiki/knowledge-graph.html` 需要下次使用原 graph build 脚本重新生成。
+
+## 2026-06-07 graph | 重建游戏工作室 AI 提效图谱
+
+- 重建 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`，将 [[游戏工作室 AI 提效证据]]、[[游戏工作室AI提效落地框架]]、[[AI辅助QA]]、[[AI NPC]] 纳入交互式图谱数据。
+- 核对 [[index]]、[[wiki/knowledge-graph]]、[[log]] 中的 Obsidian 双链，确认三处链接均能解析到现有页面。
