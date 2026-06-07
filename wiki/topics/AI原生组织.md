@@ -2,7 +2,7 @@
 tags: [主题, AI原生组织, 组织设计]
 created: 2026-06-03
 updated: 2026-06-07
-sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI 原生公司：公司要变成会进化的系统, 微型巨头：100 倍组织与智能密度, 知乎侯容这段 AI 提效，讲得很实在, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]
+sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI 原生公司：公司要变成会进化的系统, 微型巨头：100 倍组织与智能密度, 知乎侯容这段 AI 提效，讲得很实在, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味, 麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]
 ---
 
 # AI原生组织
@@ -29,6 +29,14 @@ sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI �
 - [[团队知识库]]：让项目经验、老系统考古和人机对话变成后续任务的上下文资产。
 - [[产品品味]]：实现成本下降后仍能判断该做什么、怎么做才对。
 - [[Evals]]：把模型和产品成功标准固化为可运行的测试。
+- [[后敏捷操作模型]]：把 AI 研发从个人提效推进到组织级工作方式重写。
+- [[Spec-driven development]]：AI 时代人机协作的规格接口。
+
+## 后敏捷操作模型
+
+[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 把 [[AI原生组织]] 的主线推进到软件工程 operating model。AI 让代码生成变便宜，但组织仍用 8-10 人团队、两周 sprint、模糊 story、人工 review 和旧测试队列协作时，公司级生产率只会得到有限提升。McKinsey 的框架不是“敏捷已死”，而是旧敏捷操作模型需要被 [[后敏捷操作模型]] 替换。
+
+AI 原生组织在研发上的形态包括 [[AI原生工作流]] 和 AI-native roles：从季度规划转向 continuous planning，从 story-driven 转向 [[Spec-driven development]]，从 two-pizza team 转向 3-5 人 one-pizza pod，从前后端/QA 分离转向产品构建者编排 [[智能体]]、理解全栈和架构。组织级变革还需要 upskilling、incentives、coaching、bring your own code 和 outcome measurement，而不只是发放工具账号。
 
 ## 已有素材
 
@@ -39,6 +47,7 @@ sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI �
 - [[Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…]]
 - [[知乎侯容这段 AI 提效，讲得很实在]]
 - [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]
+- [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]
 
 ## 待继续研究
 

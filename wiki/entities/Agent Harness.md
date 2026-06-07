@@ -2,7 +2,7 @@
 tags: [实体, Agent, AI研发提效, Claude Code]
 created: 2026-06-07
 updated: 2026-06-07
-sources: [Anthropic团队：如何构建运行 数小时的Agent, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]
+sources: [Anthropic团队：如何构建运行 数小时的Agent, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味, 麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]
 ---
 
 # Agent Harness
@@ -27,6 +27,12 @@ Harness 的职责随模型能力移动。模型不能可靠规划时，harness �
 ## 工程原则
 
 Harness 不应被当成永久教条。每次模型发布后，都要用 [[Evals]] 判断旧 scaffold 是否仍补模型短板。真正可复用的是“发现 spiky behavior -> 用 harness 补 -> 让模型或 workflow 吸收 -> 删除不再必要的结构”这个循环。
+
+## 从任务 Harness 到组织 Harness
+
+[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 提供了一个组织层类比：[[Agent Harness]] 是模型外部的任务运行框架，[[后敏捷操作模型]] 是团队外部的组织运行框架。前者用 completion contract、trace、evaluator、hooks 和文件系统状态约束单个 agent；后者用 spec、角色、测试、review、架构规则、upskilling 和 outcome measurement 约束整条研发价值流。
+
+两者的共同点是：不能把“生成速度”误认为“系统能力”。AI 能产出代码，只是系统的一个局部动作；真正可持续的能力来自外部结构如何发现失败、记录失败、评价结果，并把经验回写进下一次运行。
 
 ## 相关页面
 

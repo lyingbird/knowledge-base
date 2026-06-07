@@ -1,0 +1,1154 @@
+[00:00:13.755] [music]
+[00:00:20.840] &gt;&gt; Good morning. Hello everyone. It's
+[00:00:22.560] &gt;&gt; Good morning. Hello everyone. It's really great to be here.
+[00:00:24.310] really great to be here.
+[00:00:24.320] really great to be here. So I'm Martin and I'm here with my
+[00:00:25.750] So I'm Martin and I'm here with my
+[00:00:25.760] So I'm Martin and I'm here with my colleague Natasha.
+[00:00:27.350] colleague Natasha.
+[00:00:27.360] colleague Natasha. We're from a part of McKinsey you may
+[00:00:29.670] We're from a part of McKinsey you may
+[00:00:29.680] We're from a part of McKinsey you may may not be as familiar with. We have a
+[00:00:31.910] may not be as familiar with. We have a
+[00:00:31.920] may not be as familiar with. We have a practice called software X and we work
+[00:00:34.670] practice called software X and we work
+[00:00:34.680] practice called software X and we work with mostly enterprise clients on how to
+[00:00:37.670] with mostly enterprise clients on how to
+[00:00:37.680] with mostly enterprise clients on how to build better software products which has
+[00:00:40.310] build better software products which has
+[00:00:40.320] build better software products which has meant mostly using AI in the in the past
+[00:00:42.910] meant mostly using AI in the in the past
+[00:00:42.920] meant mostly using AI in the in the past couple of years.
+[00:00:45.230] couple of years.
+[00:00:45.240] couple of years. And so what our talk is about today is
+[00:00:48.230] And so what our talk is about today is
+[00:00:48.240] And so what our talk is about today is really more focused on the people and
+[00:00:50.750] really more focused on the people and
+[00:00:50.760] really more focused on the people and the operating model aspects of
+[00:00:52.750] the operating model aspects of
+[00:00:52.760] the operating model aspects of leveraging AI for software development
+[00:00:54.990] leveraging AI for software development
+[00:00:55.000] leveraging AI for software development and and that we believe that that has to
+[00:00:56.550] and and that we believe that that has to
+[00:00:56.560] and and that we believe that that has to change quite significantly and and
+[00:00:58.550] change quite significantly and and
+[00:00:58.560] change quite significantly and and that's what we're excited to talk to you
+[00:01:00.510] that's what we're excited to talk to you
+[00:01:00.520] that's what we're excited to talk to you about.
+[00:01:02.710] about.
+[00:01:02.720] about. If I take a quick step back in in time
+[00:01:05.670] If I take a quick step back in in time
+[00:01:05.680] If I take a quick step back in in time and we just
+[00:01:06.950] and we just
+[00:01:06.960] and we just you know think through some of these the
+[00:01:08.630] you know think through some of these the
+[00:01:08.640] you know think through some of these the major technology breakthroughs that
+[00:01:10.150] major technology breakthroughs that
+[00:01:10.160] major technology breakthroughs that we've seen in the last few decades
+[00:01:13.070] we've seen in the last few decades
+[00:01:13.080] we've seen in the last few decades they tend to always come with a paradigm
+[00:01:15.350] they tend to always come with a paradigm
+[00:01:15.360] they tend to always come with a paradigm shift and also how we develop software.
+[00:01:18.110] shift and also how we develop software.
+[00:01:18.120] shift and also how we develop software. And so I still recall almost 20 years
+[00:01:20.350] And so I still recall almost 20 years
+[00:01:20.360] And so I still recall almost 20 years ago now I started working as a software
+[00:01:22.510] ago now I started working as a software
+[00:01:22.520] ago now I started working as a software engineer entry level developer
+[00:01:25.430] engineer entry level developer
+[00:01:25.440] engineer entry level developer in a tech company.
+[00:01:26.870] in a tech company.
+[00:01:26.880] in a tech company. And the company I was working for was
+[00:01:28.790] And the company I was working for was
+[00:01:28.800] And the company I was working for was just switching to to Agile. We were
+[00:01:30.630] just switching to to Agile. We were
+[00:01:30.640] just switching to to Agile. We were using Kanban boards, we were doing
+[00:01:32.910] using Kanban boards, we were doing
+[00:01:32.920] using Kanban boards, we were doing stand-ups and and other ceremonies.
+[00:01:36.190] stand-ups and and other ceremonies.
+[00:01:36.200] stand-ups and and other ceremonies. This was a big change. It was a massive
+[00:01:38.390] This was a big change. It was a massive
+[00:01:38.400] This was a big change. It was a massive change for the for the company.
+[00:01:40.470] change for the for the company.
+[00:01:40.480] change for the for the company. And now with everything that is
+[00:01:42.550] And now with everything that is
+[00:01:42.560] And now with everything that is happening happening in AI we're at the
+[00:01:44.990] happening happening in AI we're at the
+[00:01:45.000] happening happening in AI we're at the precipice of another such paradigm
+[00:01:47.390] precipice of another such paradigm
+[00:01:47.400] precipice of another such paradigm shift.
+[00:01:49.110] shift.
+[00:01:49.120] shift. And
+[00:01:50.550] And
+[00:01:50.560] And um
+[00:01:52.950] um
+[00:01:52.960] um if we think about some of the
+[00:01:54.950] if we think about some of the
+[00:01:54.960] if we think about some of the some of the things that are happening
+[00:01:57.310] some of the things that are happening
+[00:01:57.320] some of the things that are happening with AI and software development that
+[00:01:59.030] with AI and software development that
+[00:01:59.040] with AI and software development that we've seen at this
+[00:02:01.150] we've seen at this
+[00:02:01.160] we've seen at this at this conference there's no doubt that
+[00:02:03.750] at this conference there's no doubt that
+[00:02:03.760] at this conference there's no doubt that this is a new paradigm that is about us.
+[00:02:05.830] this is a new paradigm that is about us.
+[00:02:05.840] this is a new paradigm that is about us. And so we'll talk about two things.
+[00:02:07.910] And so we'll talk about two things.
+[00:02:07.920] And so we'll talk about two things. We'll first touch a little bit about how
+[00:02:09.550] We'll first touch a little bit about how
+[00:02:09.560] We'll first touch a little bit about how do you go from these things that we're
+[00:02:11.590] do you go from these things that we're
+[00:02:11.600] do you go from these things that we're seeing at individual productivity to
+[00:02:14.230] seeing at individual productivity to
+[00:02:14.240] seeing at individual productivity to scaling that to the whole team and what
+[00:02:16.230] scaling that to the whole team and what
+[00:02:16.240] scaling that to the whole team and what that what type of changes we think that
+[00:02:17.950] that what type of changes we think that
+[00:02:17.960] that what type of changes we think that implies. And then we'll talk a little
+[00:02:19.710] implies. And then we'll talk a little
+[00:02:19.720] implies. And then we'll talk a little bit
+[00:02:20.710] bit
+[00:02:20.720] bit about how do you scale that across whole
+[00:02:23.150] about how do you scale that across whole
+[00:02:23.160] about how do you scale that across whole organization and to really get get
+[00:02:25.230] organization and to really get get
+[00:02:25.240] organization and to really get get value.
+[00:02:28.400] Um
+[00:02:30.240] Um if if you sort of
+[00:02:31.710] if if you sort of
+[00:02:31.720] if if you sort of talking to an audience here which is
+[00:02:33.470] talking to an audience here which is
+[00:02:33.480] talking to an audience here which is using AI agents all the time and I
+[00:02:36.390] using AI agents all the time and I
+[00:02:36.400] using AI agents all the time and I thought if I if I asked you about some
+[00:02:38.430] thought if I if I asked you about some
+[00:02:38.440] thought if I if I asked you about some examples I'm sure you could rattle off
+[00:02:40.990] examples I'm sure you could rattle off
+[00:02:41.000] examples I'm sure you could rattle off you know 10 different ones where you
+[00:02:42.590] you know 10 different ones where you
+[00:02:42.600] you know 10 different ones where you would say look there was this thing that
+[00:02:44.390] would say look there was this thing that
+[00:02:44.400] would say look there was this thing that I used to do it used to take
+[00:02:47.430] I used to do it used to take
+[00:02:47.440] I used to do it used to take maybe even days and and and hours that
+[00:02:50.630] maybe even days and and and hours that
+[00:02:50.640] maybe even days and and and hours that are now taking only minutes right.
+[00:02:53.350] are now taking only minutes right.
+[00:02:53.360] are now taking only minutes right. There's no shortage of those those
+[00:02:54.750] There's no shortage of those those
+[00:02:54.760] There's no shortage of those those stories and you can go over to the expo
+[00:02:57.270] stories and you can go over to the expo
+[00:02:57.280] stories and you can go over to the expo and and talk to any of the companies
+[00:02:58.950] and and talk to any of the companies
+[00:02:58.960] and and talk to any of the companies there about all these all these great
+[00:03:00.910] there about all these all these great
+[00:03:00.920] there about all these all these great use cases. It really shows that these
+[00:03:02.870] use cases. It really shows that these
+[00:03:02.880] use cases. It really shows that these tools work and they can be really
+[00:03:04.350] tools work and they can be really
+[00:03:04.360] tools work and they can be really impactful.
+[00:03:05.790] impactful.
+[00:03:05.800] impactful. And so yet despite seeing you know some
+[00:03:08.510] And so yet despite seeing you know some
+[00:03:08.520] And so yet despite seeing you know some of these improvement
+[00:03:10.830] of these improvement
+[00:03:10.840] of these improvement improvements
+[00:03:12.430] improvements
+[00:03:12.440] improvements we've done some research to gauge you
+[00:03:14.990] we've done some research to gauge you
+[00:03:15.000] we've done some research to gauge you know where are our clients at the
+[00:03:16.670] know where are our clients at the
+[00:03:16.680] know where are our clients at the moment. We we recently surveyed about
+[00:03:18.830] moment. We we recently surveyed about
+[00:03:18.840] moment. We we recently surveyed about 300 companies
+[00:03:21.190] 300 companies
+[00:03:21.200] 300 companies mostly enterprises around what are they
+[00:03:23.390] mostly enterprises around what are they
+[00:03:23.400] mostly enterprises around what are they seeing in terms of productivity
+[00:03:25.150] seeing in terms of productivity
+[00:03:25.160] seeing in terms of productivity improvements. So you have this and then
+[00:03:28.150] improvements. So you have this and then
+[00:03:28.160] improvements. So you have this and then they would say on average we're often
+[00:03:30.310] they would say on average we're often
+[00:03:30.320] they would say on average we're often seeing only 5 10 15% improvements
+[00:03:33.750] seeing only 5 10 15% improvements
+[00:03:33.760] seeing only 5 10 15% improvements overall as as a company.
+[00:03:35.990] overall as as a company.
+[00:03:36.000] overall as as a company. So we're in a place where there's a bit
+[00:03:37.630] So we're in a place where there's a bit
+[00:03:37.640] So we're in a place where there's a bit of a disconnect between this this big
+[00:03:39.870] of a disconnect between this this big
+[00:03:39.880] of a disconnect between this this big potential around AI as
+[00:03:43.030] potential around AI as
+[00:03:43.040] potential around AI as from the reality.
+[00:03:45.510] from the reality.
+[00:03:45.520] from the reality. And so
+[00:03:46.590] And so
+[00:03:46.600] And so we we think that
+[00:03:49.030] we we think that
+[00:03:49.040] we we think that there is this gap because as we've
+[00:03:50.990] there is this gap because as we've
+[00:03:51.000] there is this gap because as we've started implementing AI whether it's
+[00:03:54.230] started implementing AI whether it's
+[00:03:54.240] started implementing AI whether it's you know coding assistance or whether
+[00:03:55.950] you know coding assistance or whether
+[00:03:55.960] you know coding assistance or whether it's now using you know you just heard
+[00:03:57.870] it's now using you know you just heard
+[00:03:57.880] it's now using you know you just heard about
+[00:03:59.350] about
+[00:03:59.360] about you know how AI is using agents and more
+[00:04:02.310] you know how AI is using agents and more
+[00:04:02.320] you know how AI is using agents and more complex workflows.
+[00:04:04.510] complex workflows.
+[00:04:04.520] complex workflows. What has started to emerge is a is a set
+[00:04:06.390] What has started to emerge is a is a set
+[00:04:06.400] What has started to emerge is a is a set of bottlenecks
+[00:04:07.830] of bottlenecks
+[00:04:07.840] of bottlenecks that that were not necessarily there
+[00:04:10.870] that that were not necessarily there
+[00:04:10.880] that that were not necessarily there before.
+[00:04:12.070] before.
+[00:04:12.080] before. Like for for example
+[00:04:14.190] Like for for example
+[00:04:14.200] Like for for example as we now start moving much faster in
+[00:04:16.150] as we now start moving much faster in
+[00:04:16.160] as we now start moving much faster in certain in certain aspects of work
+[00:04:18.710] certain in certain aspects of work
+[00:04:18.720] certain in certain aspects of work we haven't really changed how we
+[00:04:19.990] we haven't really changed how we
+[00:04:20.000] we haven't really changed how we collaborate among people and and team
+[00:04:21.949] collaborate among people and and team
+[00:04:21.959] collaborate among people and and team members it's not quite keeping up.
+[00:04:25.390] members it's not quite keeping up.
+[00:04:25.400] members it's not quite keeping up. We started generating way more more code
+[00:04:27.510] We started generating way more more code
+[00:04:27.520] We started generating way more more code but we're it's still being reviewed in a
+[00:04:29.230] but we're it's still being reviewed in a
+[00:04:29.240] but we're it's still being reviewed in a in a pretty manual way in in many
+[00:04:31.030] in a pretty manual way in in many
+[00:04:31.040] in a pretty manual way in in many companies.
+[00:04:32.790] companies.
+[00:04:32.800] companies. Then we also have this this theme which
+[00:04:34.950] Then we also have this this theme which
+[00:04:34.960] Then we also have this this theme which was recently highlighted in in even a
+[00:04:37.190] was recently highlighted in in even a
+[00:04:37.200] was recently highlighted in in even a research report from Carnegie Mellon
+[00:04:39.990] research report from Carnegie Mellon
+[00:04:40.000] research report from Carnegie Mellon about how all the new code that is being
+[00:04:42.110] about how all the new code that is being
+[00:04:42.120] about how all the new code that is being generated is also amplifying the
+[00:04:44.510] generated is also amplifying the
+[00:04:44.520] generated is also amplifying the generation of tech debt in some in some
+[00:04:46.590] generation of tech debt in some in some
+[00:04:46.600] generation of tech debt in some in some cases and actually generating
+[00:04:47.910] cases and actually generating
+[00:04:47.920] cases and actually generating complexity.
+[00:04:49.430] complexity.
+[00:04:49.440] complexity. And so
+[00:04:50.630] And so
+[00:04:50.640] And so there are these bottlenecks they're not
+[00:04:52.190] there are these bottlenecks they're not
+[00:04:52.200] there are these bottlenecks they're not impossible to overcome but this is what
+[00:04:54.310] impossible to overcome but this is what
+[00:04:54.320] impossible to overcome but this is what we believe is limiting many companies
+[00:04:56.750] we believe is limiting many companies
+[00:04:56.760] we believe is limiting many companies from seeing the
+[00:04:57.990] from seeing the
+[00:04:58.000] from seeing the the real value that that they should be
+[00:04:59.630] the real value that that they should be
+[00:04:59.640] the real value that that they should be seeing.
+[00:05:02.280] Let me talk about maybe just a couple of
+[00:05:04.440] Let me talk about maybe just a couple of examples to to make that
+[00:05:06.830] examples to to make that
+[00:05:06.840] examples to to make that come to life a a little bit more.
+[00:05:09.150] come to life a a little bit more.
+[00:05:09.160] come to life a a little bit more. One of the things that we see as a big
+[00:05:10.750] One of the things that we see as a big
+[00:05:10.760] One of the things that we see as a big rate limiter at the moment is around how
+[00:05:13.510] rate limiter at the moment is around how
+[00:05:13.520] rate limiter at the moment is around how work is allocated and so what what we've
+[00:05:15.990] work is allocated and so what what we've
+[00:05:16.000] work is allocated and so what what we've learned over the last couple of years is
+[00:05:17.790] learned over the last couple of years is
+[00:05:17.800] learned over the last couple of years is that the impact from AI and agents is
+[00:05:19.670] that the impact from AI and agents is
+[00:05:19.680] that the impact from AI and agents is highly uneven. There are some tasks
+[00:05:21.950] highly uneven. There are some tasks
+[00:05:21.960] highly uneven. There are some tasks which which works amazingly well today
+[00:05:24.350] which which works amazingly well today
+[00:05:24.360] which which works amazingly well today and you see
+[00:05:26.230] and you see
+[00:05:26.240] and you see huge improvements and there are others
+[00:05:27.830] huge improvements and there are others
+[00:05:27.840] huge improvements and there are others where it's not as effective. As you have
+[00:05:30.550] where it's not as effective. As you have
+[00:05:30.560] where it's not as effective. As you have that variability you also have
+[00:05:31.910] that variability you also have
+[00:05:31.920] that variability you also have variability among people. Some have have
+[00:05:35.030] variability among people. Some have have
+[00:05:35.040] variability among people. Some have have lots of experience now using these tools
+[00:05:37.150] lots of experience now using these tools
+[00:05:37.160] lots of experience now using these tools and and know how to pick that up and
+[00:05:39.270] and and know how to pick that up and
+[00:05:39.280] and and know how to pick that up and others
+[00:05:40.350] others
+[00:05:40.360] others are less experienced right. And so what
+[00:05:42.470] are less experienced right. And so what
+[00:05:42.480] are less experienced right. And so what that means for for team leaders for
+[00:05:44.710] that means for for team leaders for
+[00:05:44.720] that means for for team leaders for engineering managers and so on is it's
+[00:05:47.070] engineering managers and so on is it's
+[00:05:47.080] engineering managers and so on is it's very highly non-trivial to know how to
+[00:05:49.870] very highly non-trivial to know how to
+[00:05:49.880] very highly non-trivial to know how to allocate work and resources in in a good
+[00:05:52.310] allocate work and resources in in a good
+[00:05:52.320] allocate work and resources in in a good way and this is creating a lot of
+[00:05:53.990] way and this is creating a lot of
+[00:05:54.000] way and this is creating a lot of inefficiencies.
+[00:05:56.350] inefficiencies.
+[00:05:56.360] inefficiencies. Another example
+[00:05:58.590] Another example
+[00:05:58.600] Another example is is around how work is being reviewed.
+[00:06:01.230] is is around how work is being reviewed.
+[00:06:01.240] is is around how work is being reviewed. So agents are often giving given pretty
+[00:06:04.950] So agents are often giving given pretty
+[00:06:04.960] So agents are often giving given pretty fussy you know stories that are written
+[00:06:07.590] fussy you know stories that are written
+[00:06:07.600] fussy you know stories that are written in prose with pretty fussy acceptance
+[00:06:09.710] in prose with pretty fussy acceptance
+[00:06:09.720] in prose with pretty fussy acceptance criteria which which means that the code
+[00:06:13.030] criteria which which means that the code
+[00:06:13.040] criteria which which means that the code that comes back is not always what it
+[00:06:14.630] that comes back is not always what it
+[00:06:14.640] that comes back is not always what it was intended to be.
+[00:06:16.390] was intended to be.
+[00:06:16.400] was intended to be. And and for many companies the only
+[00:06:18.550] And and for many companies the only
+[00:06:18.560] And and for many companies the only mechanism to control that is is often
+[00:06:20.550] mechanism to control that is is often
+[00:06:20.560] mechanism to control that is is often manual review. So you've you've
+[00:06:22.430] manual review. So you've you've
+[00:06:22.440] manual review. So you've you've automated some things but we've
+[00:06:23.670] automated some things but we've
+[00:06:23.680] automated some things but we've generated more manual reviews. So these
+[00:06:25.830] generated more manual reviews. So these
+[00:06:25.840] generated more manual reviews. So these are some of the some of the examples of
+[00:06:28.270] are some of the some of the examples of
+[00:06:28.280] are some of the some of the examples of these bottleneck that we that we see
+[00:06:29.950] these bottleneck that we that we see
+[00:06:29.960] these bottleneck that we that we see coming up.
+[00:06:32.880] And as mentioned what what has that has
+[00:06:34.720] And as mentioned what what has that has resulted in so far is that
+[00:06:37.670] resulted in so far is that
+[00:06:37.680] resulted in so far is that most most large companies today
+[00:06:40.630] most most large companies today
+[00:06:40.640] most most large companies today are are stuck a little bit in in a world
+[00:06:43.950] are are stuck a little bit in in a world
+[00:06:43.960] are are stuck a little bit in in a world of relatively marginal gains.
+[00:06:46.470] of relatively marginal gains.
+[00:06:46.480] of relatively marginal gains. They're working in ways that was
+[00:06:48.750] They're working in ways that was
+[00:06:48.760] They're working in ways that was developed with constraints that we had
+[00:06:51.110] developed with constraints that we had
+[00:06:51.120] developed with constraints that we had in the past paradigm of human
+[00:06:52.550] in the past paradigm of human
+[00:06:52.560] in the past paradigm of human development. So you have you you know if
+[00:06:55.110] development. So you have you you know if
+[00:06:55.120] development. So you have you you know if you go out to most companies you see
+[00:06:56.950] you go out to most companies you see
+[00:06:56.960] you go out to most companies you see eight to 10 person teams you see working
+[00:06:59.750] eight to 10 person teams you see working
+[00:06:59.760] eight to 10 person teams you see working in two week sprints you have all these
+[00:07:01.870] in two week sprints you have all these
+[00:07:01.880] in two week sprints you have all these these elements that were largely parts
+[00:07:03.590] these elements that were largely parts
+[00:07:03.600] these elements that were largely parts of like an of an Agile operating
+[00:07:05.950] of like an of an Agile operating
+[00:07:05.960] of like an of an Agile operating model.
+[00:07:07.070] model.
+[00:07:07.080] model. And that is and that is putting in some
+[00:07:09.470] And that is and that is putting in some
+[00:07:09.480] And that is and that is putting in some some limits to what they can see.
+[00:07:11.950] some limits to what they can see.
+[00:07:11.960] some limits to what they can see. Over the past year we've been working
+[00:07:13.990] Over the past year we've been working
+[00:07:14.000] Over the past year we've been working with lots of clients to to sort of break
+[00:07:16.310] with lots of clients to to sort of break
+[00:07:16.320] with lots of clients to to sort of break that model a bit and develop new ways of
+[00:07:19.510] that model a bit and develop new ways of
+[00:07:19.520] that model a bit and develop new ways of of working in smaller teams in new roles
+[00:07:23.150] of working in smaller teams in new roles
+[00:07:23.160] of working in smaller teams in new roles in in shorter cycles and when you do
+[00:07:25.710] in in shorter cycles and when you do
+[00:07:25.720] in in shorter cycles and when you do that we see really great performance
+[00:07:28.230] that we see really great performance
+[00:07:28.240] that we see really great performance improvements and that's what gives you
+[00:07:30.070] improvements and that's what gives you
+[00:07:30.080] improvements and that's what gives you it gives us this path where we see
+[00:07:32.630] it gives us this path where we see
+[00:07:32.640] it gives us this path where we see things are going to improve.
+[00:07:36.640] So we realized that re-wiring the PDLC
+[00:07:39.160] So we realized that re-wiring the PDLC is not just a one-size-fits-all
+[00:07:41.430] is not just a one-size-fits-all
+[00:07:41.440] is not just a one-size-fits-all solution. For example different types of
+[00:07:44.230] solution. For example different types of
+[00:07:44.240] solution. For example different types of engineering functions across the
+[00:07:45.790] engineering functions across the
+[00:07:45.800] engineering functions across the enterprise along the product life cycle
+[00:07:48.270] enterprise along the product life cycle
+[00:07:48.280] enterprise along the product life cycle may require different operating models
+[00:07:50.390] may require different operating models
+[00:07:50.400] may require different operating models based on how humans and agents best
+[00:07:52.230] based on how humans and agents best
+[00:07:52.240] based on how humans and agents best collaborate. So if we take the example
+[00:07:54.670] collaborate. So if we take the example
+[00:07:54.680] collaborate. So if we take the example of modernizing legacy code bases this
+[00:07:57.590] of modernizing legacy code bases this
+[00:07:57.600] of modernizing legacy code bases this task requires a high context of
+[00:08:00.510] task requires a high context of
+[00:08:00.520] task requires a high context of potentially the entire code base but
+[00:08:02.630] potentially the entire code base but
+[00:08:02.640] potentially the entire code base but also has clearly well-defined outputs.
+[00:08:05.550] also has clearly well-defined outputs.
+[00:08:05.560] also has clearly well-defined outputs. So an example operating model could look
+[00:08:07.590] So an example operating model could look
+[00:08:07.600] So an example operating model could look like a factory of agents where humans
+[00:08:10.350] like a factory of agents where humans
+[00:08:10.360] like a factory of agents where humans provide an initial spec and final review
+[00:08:12.910] provide an initial spec and final review
+[00:08:12.920] provide an initial spec and final review with minimal intervention.
+[00:08:15.070] with minimal intervention.
+[00:08:15.080] with minimal intervention. For new features for greenfield and
+[00:08:17.510] For new features for greenfield and
+[00:08:17.520] For new features for greenfield and brownfield projects the operating model
+[00:08:19.950] brownfield projects the operating model
+[00:08:19.960] brownfield projects the operating model may look like an iterative loop because
+[00:08:22.310] may look like an iterative loop because
+[00:08:22.320] may look like an iterative loop because they may benefit from the
+[00:08:23.630] they may benefit from the
+[00:08:23.640] they may benefit from the non-deterministic outputs and increased
+[00:08:26.550] non-deterministic outputs and increased
+[00:08:26.560] non-deterministic outputs and increased variation. Where agents act as
+[00:08:29.310] variation. Where agents act as
+[00:08:29.320] variation. Where agents act as co-creators
+[00:08:30.750] co-creators
+[00:08:30.760] co-creators providing more options to facilitate
+[00:08:33.149] providing more options to facilitate
+[00:08:33.159] providing more options to facilitate faster feedback loops.
+[00:08:36.630] faster feedback loops.
+[00:08:36.640] faster feedback loops. So as we mentioned we did a survey among
+[00:08:38.990] So as we mentioned we did a survey among
+[00:08:39.000] So as we mentioned we did a survey among 300 enterprises globally to understand
+[00:08:41.670] 300 enterprises globally to understand
+[00:08:41.680] 300 enterprises globally to understand what sets these top performers apart. We
+[00:08:44.630] what sets these top performers apart. We
+[00:08:44.640] what sets these top performers apart. We found that they are seven times more
+[00:08:46.270] found that they are seven times more
+[00:08:46.280] found that they are seven times more likely to have AI native workflows which
+[00:08:48.910] likely to have AI native workflows which
+[00:08:48.920] likely to have AI native workflows which meant scaling over four use cases across
+[00:08:51.390] meant scaling over four use cases across
+[00:08:51.400] meant scaling over four use cases across the software development life cycle
+[00:08:53.310] the software development life cycle
+[00:08:53.320] the software development life cycle rather than just having point solutions
+[00:08:55.390] rather than just having point solutions
+[00:08:55.400] rather than just having point solutions for just code review or for just code
+[00:08:57.510] for just code review or for just code
+[00:08:57.520] for just code review or for just code dev.
+[00:08:58.790] dev.
+[00:08:58.800] dev. They were also six times more likely to
+[00:09:00.710] They were also six times more likely to
+[00:09:00.720] They were also six times more likely to have AI native roles which meant having
+[00:09:03.110] have AI native roles which meant having
+[00:09:03.120] have AI native roles which meant having smaller pods with different skill sets
+[00:09:05.630] smaller pods with different skill sets
+[00:09:05.640] smaller pods with different skill sets and new roles.
+[00:09:08.070] and new roles.
+[00:09:08.080] and new roles. To enable these shifts these
+[00:09:09.510] To enable these shifts these
+[00:09:09.520] To enable these shifts these organizations were investing in
+[00:09:11.470] organizations were investing in
+[00:09:11.480] organizations were investing in continuous and hands-on upskilling
+[00:09:14.310] continuous and hands-on upskilling
+[00:09:14.320] continuous and hands-on upskilling impact measurement and also incentive
+[00:09:16.670] impact measurement and also incentive
+[00:09:16.680] impact measurement and also incentive structures to incentivize developers and
+[00:09:19.830] structures to incentivize developers and
+[00:09:19.840] structures to incentivize developers and PMs to adopt AI.
+[00:09:23.310] PMs to adopt AI.
+[00:09:23.320] PMs to adopt AI. This led to five to six times increase
+[00:09:25.870] This led to five to six times increase
+[00:09:25.880] This led to five to six times increase in time to market and delivery speed as
+[00:09:28.910] in time to market and delivery speed as
+[00:09:28.920] in time to market and delivery speed as well as higher quality and more
+[00:09:30.710] well as higher quality and more
+[00:09:30.720] well as higher quality and more consistent artifacts.
+[00:09:33.790] consistent artifacts.
+[00:09:33.800] consistent artifacts. So when we talk about AI native
+[00:09:35.230] So when we talk about AI native
+[00:09:35.240] So when we talk about AI native workflows we mean that these enterprises
+[00:09:37.870] workflows we mean that these enterprises
+[00:09:37.880] workflows we mean that these enterprises are moving away from quarterly planning
+[00:09:39.990] are moving away from quarterly planning
+[00:09:40.000] are moving away from quarterly planning to continuous planning and also the unit
+[00:09:43.470] to continuous planning and also the unit
+[00:09:43.480] to continuous planning and also the unit of work is moving from story driven to
+[00:09:46.030] of work is moving from story driven to
+[00:09:46.040] of work is moving from story driven to spec driven development so that these
+[00:09:48.630] spec driven development so that these
+[00:09:48.640] spec driven development so that these PMs are iterating on these specs with
+[00:09:51.470] PMs are iterating on these specs with
+[00:09:51.480] PMs are iterating on these specs with agents rather than iterating on long
+[00:09:53.390] agents rather than iterating on long
+[00:09:53.400] agents rather than iterating on long PRDs.
+[00:09:55.150] PRDs.
+[00:09:55.160] PRDs. On the talent side AI native roles
+[00:09:57.030] On the talent side AI native roles
+[00:09:57.040] On the talent side AI native roles essentially means that we're moving away
+[00:09:58.790] essentially means that we're moving away
+[00:09:58.800] essentially means that we're moving away from the two-pizza structure to
+[00:10:01.230] from the two-pizza structure to
+[00:10:01.240] from the two-pizza structure to one-pizza pods of three to five
+[00:10:03.070] one-pizza pods of three to five
+[00:10:03.080] one-pizza pods of three to five individuals. Instead of having separate
+[00:10:05.830] individuals. Instead of having separate
+[00:10:05.840] individuals. Instead of having separate QA, front-end, and back-end engineers,
+[00:10:08.510] QA, front-end, and back-end engineers,
+[00:10:08.520] QA, front-end, and back-end engineers, there are more consolidated roles where
+[00:10:10.670] there are more consolidated roles where
+[00:10:10.680] there are more consolidated roles where product builders are managing and
+[00:10:12.390] product builders are managing and
+[00:10:12.400] product builders are managing and orchestrating agents with full-stack
+[00:10:14.630] orchestrating agents with full-stack
+[00:10:14.640] orchestrating agents with full-stack fluency and also a better understanding
+[00:10:16.910] fluency and also a better understanding
+[00:10:16.920] fluency and also a better understanding of the full architecture of their code
+[00:10:18.670] of the full architecture of their code
+[00:10:18.680] of the full architecture of their code base.
+[00:10:19.670] base.
+[00:10:19.680] base. PMs are starting to create direct
+[00:10:22.510] PMs are starting to create direct
+[00:10:22.520] PMs are starting to create direct prototypes in code rather than iterating
+[00:10:25.150] prototypes in code rather than iterating
+[00:10:25.160] prototypes in code rather than iterating on these long PRDs.
+[00:10:28.070] on these long PRDs.
+[00:10:28.080] on these long PRDs. And one example that we've described in
+[00:10:30.470] And one example that we've described in
+[00:10:30.480] And one example that we've described in our article, we've studied some AI
+[00:10:32.190] our article, we've studied some AI
+[00:10:32.200] our article, we've studied some AI native startups and realized that
+[00:10:34.070] native startups and realized that
+[00:10:34.080] native startups and realized that they've actually implemented all of
+[00:10:35.630] they've actually implemented all of
+[00:10:35.640] they've actually implemented all of these shifts to accelerate their
+[00:10:37.550] these shifts to accelerate their
+[00:10:37.560] these shifts to accelerate their outcomes. And in our article, we've
+[00:10:39.310] outcomes. And in our article, we've
+[00:10:39.320] outcomes. And in our article, we've described how Cursor actually operates
+[00:10:41.310] described how Cursor actually operates
+[00:10:41.320] described how Cursor actually operates internally.
+[00:10:43.110] internally.
+[00:10:43.120] internally. But if you're a large enterprise
+[00:10:44.670] But if you're a large enterprise
+[00:10:44.680] But if you're a large enterprise predicated on the Agile model, what are
+[00:10:47.190] predicated on the Agile model, what are
+[00:10:47.200] predicated on the Agile model, what are some steps you can take? So in in a
+[00:10:49.470] some steps you can take? So in in a
+[00:10:49.480] some steps you can take? So in in a recent client study with a leading
+[00:10:51.230] recent client study with a leading
+[00:10:51.240] recent client study with a leading international bank, we tested some
+[00:10:53.350] international bank, we tested some
+[00:10:53.360] international bank, we tested some team-level interventions to address the
+[00:10:55.350] team-level interventions to address the
+[00:10:55.360] team-level interventions to address the bottlenecks previously mentioned before.
+[00:10:58.230] bottlenecks previously mentioned before.
+[00:10:58.240] bottlenecks previously mentioned before. Mainly around the sequencing of steps
+[00:11:00.150] Mainly around the sequencing of steps
+[00:11:00.160] Mainly around the sequencing of steps within the Agile ceremony and how to
+[00:11:03.230] within the Agile ceremony and how to
+[00:11:03.240] within the Agile ceremony and how to define the roles of agents and humans
+[00:11:05.790] define the roles of agents and humans
+[00:11:05.800] define the roles of agents and humans within the sprint cycle. So let's walk
+[00:11:07.950] within the sprint cycle. So let's walk
+[00:11:07.960] within the sprint cycle. So let's walk through some examples.
+[00:11:09.750] through some examples.
+[00:11:09.760] through some examples. First, team leads would assign sprint
+[00:11:12.750] First, team leads would assign sprint
+[00:11:12.760] First, team leads would assign sprint stories using agents based on the data
+[00:11:15.230] stories using agents based on the data
+[00:11:15.240] stories using agents based on the data of the team velocity and delivery
+[00:11:17.150] of the team velocity and delivery
+[00:11:17.160] of the team velocity and delivery history. And then they would create
+[00:11:19.470] history. And then they would create
+[00:11:19.480] history. And then they would create co-create multiple prototypes and
+[00:11:21.590] co-create multiple prototypes and
+[00:11:21.600] co-create multiple prototypes and iterate with agents on the acceptance
+[00:11:23.430] iterate with agents on the acceptance
+[00:11:23.440] iterate with agents on the acceptance criteria around security and
+[00:11:25.430] criteria around security and
+[00:11:25.440] criteria around security and observability needs to have more
+[00:11:27.270] observability needs to have more
+[00:11:27.280] observability needs to have more consistent artifacts across teams.
+[00:11:30.030] consistent artifacts across teams.
+[00:11:30.040] consistent artifacts across teams. This prevents downstream rework that was
+[00:11:32.510] This prevents downstream rework that was
+[00:11:32.520] This prevents downstream rework that was mentioned before so that developers
+[00:11:34.950] mentioned before so that developers
+[00:11:34.960] mentioned before so that developers don't have to constantly be iterating
+[00:11:36.870] don't have to constantly be iterating
+[00:11:36.880] don't have to constantly be iterating with the agents during during the code
+[00:11:38.510] with the agents during during the code
+[00:11:38.520] with the agents during during the code process.
+[00:11:39.950] process.
+[00:11:39.960] process. The squads were also reorganized by
+[00:11:41.990] The squads were also reorganized by
+[00:11:42.000] The squads were also reorganized by workflow, so there would be one which
+[00:11:44.070] workflow, so there would be one which
+[00:11:44.080] workflow, so there would be one which would be focused on
+[00:11:46.070] would be focused on
+[00:11:46.080] would be focused on small bug fixes and another focused on
+[00:11:48.550] small bug fixes and another focused on
+[00:11:48.560] small bug fixes and another focused on greenfield development. In the
+[00:11:50.390] greenfield development. In the
+[00:11:50.400] greenfield development. In the background, agents would be used to look
+[00:11:53.670] background, agents would be used to look
+[00:11:53.680] background, agents would be used to look and impact look at
+[00:11:55.910] and impact look at
+[00:11:55.920] and impact look at the
+[00:11:57.110] the
+[00:11:57.120] the potential cross-repository impacts
+[00:11:59.870] potential cross-repository impacts
+[00:11:59.880] potential cross-repository impacts to prevent debugging time for
+[00:12:01.829] to prevent debugging time for
+[00:12:01.839] to prevent debugging time for developers.
+[00:12:03.870] developers.
+[00:12:03.880] developers. And another example is that instead of
+[00:12:06.790] And another example is that instead of
+[00:12:06.800] And another example is that instead of for reducing the collaboration overhead
+[00:12:08.750] for reducing the collaboration overhead
+[00:12:08.760] for reducing the collaboration overhead and meetings that happen within the
+[00:12:10.310] and meetings that happen within the
+[00:12:10.320] and meetings that happen within the sprint cycle, instead of waiting for
+[00:12:13.630] sprint cycle, instead of waiting for
+[00:12:13.640] sprint cycle, instead of waiting for data scientist input, PMs would directly
+[00:12:16.070] data scientist input, PMs would directly
+[00:12:16.080] data scientist input, PMs would directly be observing the real-time customer
+[00:12:18.350] be observing the real-time customer
+[00:12:18.360] be observing the real-time customer feedback to reprioritize these features.
+[00:12:22.150] feedback to reprioritize these features.
+[00:12:22.160] feedback to reprioritize these features. And this would lead to an acceleration
+[00:12:24.550] And this would lead to an acceleration
+[00:12:24.560] And this would lead to an acceleration in the backlog within the same amount of
+[00:12:26.550] in the backlog within the same amount of
+[00:12:26.560] in the backlog within the same amount of time.
+[00:12:28.750] time.
+[00:12:28.760] time. So we studied the
+[00:12:30.710] So we studied the
+[00:12:30.720] So we studied the impact of these interventions and found
+[00:12:32.990] impact of these interventions and found
+[00:12:33.000] impact of these interventions and found high-promising results. For example, not
+[00:12:35.910] high-promising results. For example, not
+[00:12:35.920] high-promising results. For example, not just the increase in agent consumption
+[00:12:38.670] just the increase in agent consumption
+[00:12:38.680] just the increase in agent consumption by over 60 times, but there was also an
+[00:12:41.070] by over 60 times, but there was also an
+[00:12:41.080] by over 60 times, but there was also an increase in the delivery speed that was
+[00:12:43.430] increase in the delivery speed that was
+[00:12:43.440] increase in the delivery speed that was tied directly to the business priorities
+[00:12:45.829] tied directly to the business priorities
+[00:12:45.839] tied directly to the business priorities for this bank. There was a 51% increase
+[00:12:48.990] for this bank. There was a 51% increase
+[00:12:49.000] for this bank. There was a 51% increase in code mergers, but also a decrease in
+[00:12:52.870] in code mergers, but also a decrease in
+[00:12:52.880] in code mergers, but also a decrease in an increase in efficiency.
+[00:12:56.230] an increase in efficiency.
+[00:12:56.240] an increase in efficiency. The other aspect of this is is around
+[00:12:58.710] The other aspect of this is is around
+[00:12:58.720] The other aspect of this is is around the different roles and the talent
+[00:13:00.750] the different roles and the talent
+[00:13:00.760] the different roles and the talent model.
+[00:13:01.910] model.
+[00:13:01.920] model. And so one of the biggest
+[00:13:03.590] And so one of the biggest
+[00:13:03.600] And so one of the biggest differentiators that we saw, as
+[00:13:05.070] differentiators that we saw, as
+[00:13:05.080] differentiators that we saw, as mentioned, was around whether you have
+[00:13:06.910] mentioned, was around whether you have
+[00:13:06.920] mentioned, was around whether you have actually changed the roles that that are
+[00:13:09.590] actually changed the roles that that are
+[00:13:09.600] actually changed the roles that that are involved in software development. And
+[00:13:11.870] involved in software development. And
+[00:13:11.880] involved in software development. And so, you know, what what you all are
+[00:13:13.950] so, you know, what what you all are
+[00:13:13.960] so, you know, what what you all are seeing is that engineers are moving away
+[00:13:15.990] seeing is that engineers are moving away
+[00:13:16.000] seeing is that engineers are moving away from execution and and just simply
+[00:13:18.510] from execution and and just simply
+[00:13:18.520] from execution and and just simply writing code to being more of
+[00:13:19.950] writing code to being more of
+[00:13:19.960] writing code to being more of orchestrators and and thinking through
+[00:13:22.550] orchestrators and and thinking through
+[00:13:22.560] orchestrators and and thinking through more how to divide up work to agents,
+[00:13:24.350] more how to divide up work to agents,
+[00:13:24.360] more how to divide up work to agents, for example. And we also heard some
+[00:13:26.430] for example. And we also heard some
+[00:13:26.440] for example. And we also heard some examples of how the role of the product
+[00:13:28.470] examples of how the role of the product
+[00:13:28.480] examples of how the role of the product manager is changing. As a while this
+[00:13:31.310] manager is changing. As a while this
+[00:13:31.320] manager is changing. As a while this this may sound, you know, pretty
+[00:13:32.870] this may sound, you know, pretty
+[00:13:32.880] this may sound, you know, pretty straightforward to many of you here who
+[00:13:34.710] straightforward to many of you here who
+[00:13:34.720] straightforward to many of you here who are who are working with these tools
+[00:13:36.470] are who are working with these tools
+[00:13:36.480] are who are working with these tools like they today that you have to change
+[00:13:38.310] like they today that you have to change
+[00:13:38.320] like they today that you have to change what you do, the reality is that about
+[00:13:41.270] what you do, the reality is that about
+[00:13:41.280] what you do, the reality is that about 70% of the companies that we that we
+[00:13:43.790] 70% of the companies that we that we
+[00:13:43.800] 70% of the companies that we that we survey have have not changed the roles
+[00:13:45.670] survey have have not changed the roles
+[00:13:45.680] survey have have not changed the roles at all. I mean, so you have this
+[00:13:47.990] at all. I mean, so you have this
+[00:13:48.000] at all. I mean, so you have this background expectation that people are
+[00:13:49.550] background expectation that people are
+[00:13:49.560] background expectation that people are going to do things differently, but the
+[00:13:51.710] going to do things differently, but the
+[00:13:51.720] going to do things differently, but the role is still defined in the same way
+[00:13:53.270] role is still defined in the same way
+[00:13:53.280] role is still defined in the same way and it's the same understanding
+[00:13:55.350] and it's the same understanding
+[00:13:55.360] and it's the same understanding as it was, you know, a couple of years
+[00:13:57.030] as it was, you know, a couple of years
+[00:13:57.040] as it was, you know, a couple of years ago.
+[00:13:58.630] ago.
+[00:13:58.640] ago. Um but we are starting to see, you know,
+[00:14:01.750] Um but we are starting to see, you know,
+[00:14:01.760] Um but we are starting to see, you know, some companies changing this. So this is
+[00:14:03.350] some companies changing this. So this is
+[00:14:03.360] some companies changing this. So this is another example from a from another
+[00:14:05.270] another example from a from another
+[00:14:05.280] another example from a from another recent recent client. They were set up
+[00:14:07.829] recent recent client. They were set up
+[00:14:07.839] recent recent client. They were set up in a in a way that is, you know,
+[00:14:09.590] in a in a way that is, you know,
+[00:14:09.600] in a in a way that is, you know, probably pretty common for
+[00:14:11.710] probably pretty common for
+[00:14:11.720] probably pretty common for many companies and and a kind of typical
+[00:14:14.230] many companies and and a kind of typical
+[00:14:14.240] many companies and and a kind of typical two-pizza uh team model with with the
+[00:14:17.470] two-pizza uh team model with with the
+[00:14:17.480] two-pizza uh team model with with the types of roles that you'd be familiar
+[00:14:19.030] types of roles that you'd be familiar
+[00:14:19.040] types of roles that you'd be familiar with.
+[00:14:19.990] with.
+[00:14:20.000] with. Um
+[00:14:21.310] Um
+[00:14:21.320] Um they we ran a bunch of experiments on on
+[00:14:23.870] they we ran a bunch of experiments on on
+[00:14:23.880] they we ran a bunch of experiments on on frontrunners and and tested new models
+[00:14:25.990] frontrunners and and tested new models
+[00:14:26.000] frontrunners and and tested new models that were had much smaller pods
+[00:14:28.790] that were had much smaller pods
+[00:14:28.800] that were had much smaller pods that had
+[00:14:30.230] that had
+[00:14:30.240] that had new roles which consolidated some of the
+[00:14:33.470] new roles which consolidated some of the
+[00:14:33.480] new roles which consolidated some of the tasks that were previously done by
+[00:14:35.430] tasks that were previously done by
+[00:14:35.440] tasks that were previously done by different roles.
+[00:14:36.949] different roles.
+[00:14:36.959] different roles. And
+[00:14:38.110] And
+[00:14:38.120] And and so by doing that, we could we could
+[00:14:40.190] and so by doing that, we could we could
+[00:14:40.200] and so by doing that, we could we could create basically more pods or more teams
+[00:14:43.270] create basically more pods or more teams
+[00:14:43.280] create basically more pods or more teams with with the same number of people. Uh
+[00:14:45.590] with with the same number of people. Uh
+[00:14:45.600] with with the same number of people. Uh but retaining the expectation that each
+[00:14:47.510] but retaining the expectation that each
+[00:14:47.520] but retaining the expectation that each pod is is
+[00:14:49.190] pod is is
+[00:14:49.200] pod is is is
+[00:14:50.390] is
+[00:14:50.400] is performing at about the same level as as
+[00:14:52.390] performing at about the same level as as
+[00:14:52.400] performing at about the same level as as it were before.
+[00:14:54.550] it were before.
+[00:14:54.560] it were before. And so so we also see really really
+[00:14:57.829] And so so we also see really really
+[00:14:57.839] And so so we also see really really positive results from that
+[00:15:00.030] positive results from that
+[00:15:00.040] positive results from that with with maintaining and even improving
+[00:15:02.910] with with maintaining and even improving
+[00:15:02.920] with with maintaining and even improving in some case the quality of the code
+[00:15:04.870] in some case the quality of the code
+[00:15:04.880] in some case the quality of the code that was generated. In particular, there
+[00:15:06.949] that was generated. In particular, there
+[00:15:06.959] that was generated. In particular, there was a there was a high speed up in in
+[00:15:09.430] was a there was a high speed up in in
+[00:15:09.440] was a there was a high speed up in in terms of
+[00:15:10.710] terms of
+[00:15:10.720] terms of the output from from the different
+[00:15:12.150] the output from from the different
+[00:15:12.160] the output from from the different teams. And you can see some of the
+[00:15:13.230] teams. And you can see some of the
+[00:15:13.240] teams. And you can see some of the metrics
+[00:15:14.390] metrics
+[00:15:14.400] metrics here.
+[00:15:17.520] Let's shift gears a little bit and and
+[00:15:19.520] Let's shift gears a little bit and and and go from talking about just the team
+[00:15:21.390] and go from talking about just the team
+[00:15:21.400] and go from talking about just the team level to how does this now scale
+[00:15:23.670] level to how does this now scale
+[00:15:23.680] level to how does this now scale across a big organization?
+[00:15:26.430] across a big organization?
+[00:15:26.440] across a big organization? The reality is that
+[00:15:28.310] The reality is that
+[00:15:28.320] The reality is that many many companies don't just have like
+[00:15:30.829] many many companies don't just have like
+[00:15:30.839] many many companies don't just have like one or two of these these teams, but
+[00:15:32.510] one or two of these these teams, but
+[00:15:32.520] one or two of these these teams, but often hundreds of teams even and
+[00:15:34.630] often hundreds of teams even and
+[00:15:34.640] often hundreds of teams even and thousands or even tens of thousands of
+[00:15:36.670] thousands or even tens of thousands of
+[00:15:36.680] thousands or even tens of thousands of people who are working in in this way.
+[00:15:39.470] people who are working in in this way.
+[00:15:39.480] people who are working in in this way. And uh this is where one of the biggest
+[00:15:42.750] And uh this is where one of the biggest
+[00:15:42.760] And uh this is where one of the biggest differences that we that we saw between
+[00:15:44.590] differences that we that we saw between
+[00:15:44.600] differences that we that we saw between those that are stuck with in the
+[00:15:47.949] those that are stuck with in the
+[00:15:47.959] those that are stuck with in the in in getting only 10% or so change
+[00:15:50.750] in in getting only 10% or so change
+[00:15:50.760] in in getting only 10% or so change improvements from those who are seeing
+[00:15:52.270] improvements from those who are seeing
+[00:15:52.280] improvements from those who are seeing outsized improvements is around how you
+[00:15:54.910] outsized improvements is around how you
+[00:15:54.920] outsized improvements is around how you manage that how you manage that change.
+[00:15:57.870] manage that how you manage that change.
+[00:15:57.880] manage that how you manage that change. And change management I got is like one
+[00:15:59.710] And change management I got is like one
+[00:15:59.720] And change management I got is like one of these a little bit of an you know,
+[00:16:01.510] of these a little bit of an you know,
+[00:16:01.520] of these a little bit of an you know, often catch or elusive term for
+[00:16:04.710] often catch or elusive term for
+[00:16:04.720] often catch or elusive term for for a lot of different things. But but I
+[00:16:07.110] for a lot of different things. But but I
+[00:16:07.120] for a lot of different things. But but I think in some ways it's not a bad way to
+[00:16:08.750] think in some ways it's not a bad way to
+[00:16:08.760] think in some ways it's not a bad way to think about it. I usually say that the
+[00:16:10.670] think about it. I usually say that the
+[00:16:10.680] think about it. I usually say that the change management is about getting a lot
+[00:16:13.069] change management is about getting a lot
+[00:16:13.079] change management is about getting a lot of like small things right. And so the
+[00:16:15.550] of like small things right. And so the
+[00:16:15.560] of like small things right. And so the crux to like actually scaling this is
+[00:16:17.470] crux to like actually scaling this is
+[00:16:17.480] crux to like actually scaling this is often about getting 20, 30, or even more
+[00:16:20.790] often about getting 20, 30, or even more
+[00:16:20.800] often about getting 20, 30, or even more things right at the same time that
+[00:16:22.990] things right at the same time that
+[00:16:23.000] things right at the same time that involve the way you communicate, uh what
+[00:16:25.590] involve the way you communicate, uh what
+[00:16:25.600] involve the way you communicate, uh what this means, the way you incentivize
+[00:16:27.230] this means, the way you incentivize
+[00:16:27.240] this means, the way you incentivize people,
+[00:16:28.510] people,
+[00:16:28.520] people, the way you upskill them. And it all has
+[00:16:30.310] the way you upskill them. And it all has
+[00:16:30.320] the way you upskill them. And it all has to come together.
+[00:16:32.670] to come together.
+[00:16:32.680] to come together. Um and when it when it's not, we we we
+[00:16:35.510] Um and when it when it's not, we we we
+[00:16:35.520] Um and when it when it's not, we we we see what happens. And so this is an
+[00:16:37.470] see what happens. And so this is an
+[00:16:37.480] see what happens. And so this is an example from a from another tech company
+[00:16:39.829] example from a from another tech company
+[00:16:39.839] example from a from another tech company that we worked with.
+[00:16:41.270] that we worked with.
+[00:16:41.280] that we worked with. Um where initially we were rolling out
+[00:16:44.069] Um where initially we were rolling out
+[00:16:44.079] Um where initially we were rolling out new AI tools for them that that hit
+[00:16:46.590] new AI tools for them that that hit
+[00:16:46.600] new AI tools for them that that hit different parts of the product
+[00:16:47.750] different parts of the product
+[00:16:47.760] different parts of the product development life cycle.
+[00:16:49.430] development life cycle.
+[00:16:49.440] development life cycle. Um we we rolled we rolled out the tools.
+[00:16:52.390] Um we we rolled we rolled out the tools.
+[00:16:52.400] Um we we rolled we rolled out the tools. There was some usage, but often it
+[00:16:53.829] There was some usage, but often it
+[00:16:53.839] There was some usage, but often it dropped off. It was either not used or
+[00:16:55.790] dropped off. It was either not used or
+[00:16:55.800] dropped off. It was either not used or it was
+[00:16:57.110] it was
+[00:16:57.120] it was um it was sort of um
+[00:16:58.829] um it was sort of um
+[00:16:58.839] um it was sort of um used in very suboptimal ways. So that's
+[00:17:01.150] used in very suboptimal ways. So that's
+[00:17:01.160] used in very suboptimal ways. So that's the sort of jagged part that you're
+[00:17:02.270] the sort of jagged part that you're
+[00:17:02.280] the sort of jagged part that you're seeing on the on the left-hand side
+[00:17:04.030] seeing on the on the left-hand side
+[00:17:04.040] seeing on the on the left-hand side here. Despite kind of adding more users,
+[00:17:07.510] here. Despite kind of adding more users,
+[00:17:07.520] here. Despite kind of adding more users, uh the overall impact did not change at
+[00:17:09.630] uh the overall impact did not change at
+[00:17:09.640] uh the overall impact did not change at all. So we had to do a quite a reset.
+[00:17:12.230] all. So we had to do a quite a reset.
+[00:17:12.240] all. So we had to do a quite a reset. And and um start over effectively. Reset
+[00:17:16.069] And and um start over effectively. Reset
+[00:17:16.079] And and um start over effectively. Reset the expectations. What should what what
+[00:17:17.910] the expectations. What should what what
+[00:17:17.920] the expectations. What should what what does this mean if you're a developer
+[00:17:19.390] does this mean if you're a developer
+[00:17:19.400] does this mean if you're a developer day-to-day? What does it mean for a PM?
+[00:17:21.710] day-to-day? What does it mean for a PM?
+[00:17:21.720] day-to-day? What does it mean for a PM? Uh we had much more hands-on upskilling.
+[00:17:24.390] Uh we had much more hands-on upskilling.
+[00:17:24.400] Uh we had much more hands-on upskilling. There was could bring your own code.
+[00:17:26.350] There was could bring your own code.
+[00:17:26.360] There was could bring your own code. There were, you know, coaches available.
+[00:17:28.429] There were, you know, coaches available.
+[00:17:28.439] There were, you know, coaches available. Especially those first like few sprints
+[00:17:30.550] Especially those first like few sprints
+[00:17:30.560] Especially those first like few sprints before you get make this a habit and
+[00:17:32.950] before you get make this a habit and
+[00:17:32.960] before you get make this a habit and work it into the way that you develop
+[00:17:34.910] work it into the way that you develop
+[00:17:34.920] work it into the way that you develop software day-to-day. It's a very
+[00:17:36.790] software day-to-day. It's a very
+[00:17:36.800] software day-to-day. It's a very critical time. And that's when when this
+[00:17:39.230] critical time. And that's when when this
+[00:17:39.240] critical time. And that's when when this matters a lot. Um
+[00:17:41.510] matters a lot. Um
+[00:17:41.520] matters a lot. Um and having a bit of a a measurement
+[00:17:43.310] and having a bit of a a measurement
+[00:17:43.320] and having a bit of a a measurement system as well, so you know what's
+[00:17:44.830] system as well, so you know what's
+[00:17:44.840] system as well, so you know what's changing and and you're able to to see
+[00:17:46.950] changing and and you're able to to see
+[00:17:46.960] changing and and you're able to to see what's
+[00:17:48.070] what's
+[00:17:48.080] what's uh what's what's improving.
+[00:17:51.470] uh what's what's improving.
+[00:17:51.480] uh what's what's improving. Another example just to but just
+[00:17:53.950] Another example just to but just
+[00:17:53.960] Another example just to but just elaborate as mentioned that this is
+[00:17:56.190] elaborate as mentioned that this is
+[00:17:56.200] elaborate as mentioned that this is about getting a lot of things
+[00:17:58.510] about getting a lot of things
+[00:17:58.520] about getting a lot of things um right. And if each one of these
+[00:18:00.669] um right. And if each one of these
+[00:18:00.679] um right. And if each one of these individually may not seem as it's the
+[00:18:02.910] individually may not seem as it's the
+[00:18:02.920] individually may not seem as it's the biggest deal,
+[00:18:04.550] biggest deal,
+[00:18:04.560] biggest deal, uh but put together, they really make a
+[00:18:06.310] uh but put together, they really make a
+[00:18:06.320] uh but put together, they really make a make a huge difference.
+[00:18:07.990] make a huge difference.
+[00:18:08.000] make a huge difference. Like this is for this is some of the top
+[00:18:10.590] Like this is for this is some of the top
+[00:18:10.600] Like this is for this is some of the top interventions that another client had to
+[00:18:13.150] interventions that another client had to
+[00:18:13.160] interventions that another client had to go through. For them, it really helped
+[00:18:15.230] go through. For them, it really helped
+[00:18:15.240] go through. For them, it really helped having, you know, setting up code labs,
+[00:18:17.110] having, you know, setting up code labs,
+[00:18:17.120] having, you know, setting up code labs, for example, really, you know,
+[00:18:18.750] for example, really, you know,
+[00:18:18.760] for example, really, you know, instituting a new set of certifications
+[00:18:20.669] instituting a new set of certifications
+[00:18:20.679] instituting a new set of certifications that helped motivate and and drive
+[00:18:22.430] that helped motivate and and drive
+[00:18:22.440] that helped motivate and and drive people to to change what they do
+[00:18:24.070] people to to change what they do
+[00:18:24.080] people to to change what they do day-to-day. And these these things
+[00:18:26.710] day-to-day. And these these things
+[00:18:26.720] day-to-day. And these these things really added up to
+[00:18:28.909] really added up to
+[00:18:28.919] really added up to the change they needed.
+[00:18:31.630] the change they needed.
+[00:18:31.640] the change they needed. But building a robust measurement system
+[00:18:33.830] But building a robust measurement system
+[00:18:33.840] But building a robust measurement system that prioritizes outcomes and not just
+[00:18:36.149] that prioritizes outcomes and not just
+[00:18:36.159] that prioritizes outcomes and not just adoption is important not just to
+[00:18:38.190] adoption is important not just to
+[00:18:38.200] adoption is important not just to monitor progress, but also pinpoint
+[00:18:40.750] monitor progress, but also pinpoint
+[00:18:40.760] monitor progress, but also pinpoint issues and course-correct quickly. So
+[00:18:43.510] issues and course-correct quickly. So
+[00:18:43.520] issues and course-correct quickly. So one surprising result from the survey
+[00:18:45.630] one surprising result from the survey
+[00:18:45.640] one surprising result from the survey was that these enterprises that were
+[00:18:47.550] was that these enterprises that were
+[00:18:47.560] was that these enterprises that were bottom performers were not even
+[00:18:48.950] bottom performers were not even
+[00:18:48.960] bottom performers were not even measuring speed and only 10% were
+[00:18:50.790] measuring speed and only 10% were
+[00:18:50.800] measuring speed and only 10% were measuring productivity.
+[00:18:52.990] measuring productivity.
+[00:18:53.000] measuring productivity. Our goal is to make our clients
+[00:18:54.510] Our goal is to make our clients
+[00:18:54.520] Our goal is to make our clients top-performing organizations. So we've
+[00:18:56.550] top-performing organizations. So we've
+[00:18:56.560] top-performing organizations. So we've worked with them to create a holistic
+[00:18:58.149] worked with them to create a holistic
+[00:18:58.159] worked with them to create a holistic measurement system that captures impact
+[00:19:01.950] measurement system that captures impact
+[00:19:01.960] measurement system that captures impact all the way down to inputs. So for
+[00:19:04.230] all the way down to inputs. So for
+[00:19:04.240] all the way down to inputs. So for inputs, this would include the
+[00:19:06.310] inputs, this would include the
+[00:19:06.320] inputs, this would include the investment into coding tools and other
+[00:19:08.390] investment into coding tools and other
+[00:19:08.400] investment into coding tools and other AI tools, but also the time and
+[00:19:10.310] AI tools, but also the time and
+[00:19:10.320] AI tools, but also the time and resources in upskilling and change
+[00:19:12.430] resources in upskilling and change
+[00:19:12.440] resources in upskilling and change management.
+[00:19:13.790] management.
+[00:19:13.800] management. These inputs would lead to direct
+[00:19:15.350] These inputs would lead to direct
+[00:19:15.360] These inputs would lead to direct outputs, but a lot of organizations are
+[00:19:17.590] outputs, but a lot of organizations are
+[00:19:17.600] outputs, but a lot of organizations are just focusing on how the increased
+[00:19:19.830] just focusing on how the increased
+[00:19:19.840] just focusing on how the increased breadth and depth of adoption with of AI
+[00:19:21.990] breadth and depth of adoption with of AI
+[00:19:22.000] breadth and depth of adoption with of AI tools is leading to increased velocity
+[00:19:24.510] tools is leading to increased velocity
+[00:19:24.520] tools is leading to increased velocity and capacity increase. However, it's
+[00:19:27.070] and capacity increase. However, it's
+[00:19:27.080] and capacity increase. However, it's also important to understand how
+[00:19:29.270] also important to understand how
+[00:19:29.280] also important to understand how developers have different NPS scores and
+[00:19:32.710] developers have different NPS scores and
+[00:19:32.720] developers have different NPS scores and if they're enjoying their craft more
+[00:19:34.870] if they're enjoying their craft more
+[00:19:34.880] if they're enjoying their craft more rather than feeling more frustrated. And
+[00:19:37.310] rather than feeling more frustrated. And
+[00:19:37.320] rather than feeling more frustrated. And it's also important to understand
+[00:19:38.710] it's also important to understand
+[00:19:38.720] it's also important to understand whether the code is becoming more secure
+[00:19:41.149] whether the code is becoming more secure
+[00:19:41.159] whether the code is becoming more secure and have has better quality, but also
+[00:19:43.149] and have has better quality, but also
+[00:19:43.159] and have has better quality, but also more resilient. And one proxy for
+[00:19:45.190] more resilient. And one proxy for
+[00:19:45.200] more resilient. And one proxy for resiliency that we used for our client
+[00:19:47.110] resiliency that we used for our client
+[00:19:47.120] resiliency that we used for our client was the mean time to resolve priority
+[00:19:49.430] was the mean time to resolve priority
+[00:19:49.440] was the mean time to resolve priority bugs.
+[00:19:51.230] bugs.
+[00:19:51.240] bugs. Now if we look at economic outcomes,
+[00:19:52.950] Now if we look at economic outcomes,
+[00:19:52.960] Now if we look at economic outcomes, which is priority for um the C-suite
+[00:19:55.590] which is priority for um the C-suite
+[00:19:55.600] which is priority for um the C-suite executives, they look into what is the
+[00:19:58.070] executives, they look into what is the
+[00:19:58.080] executives, they look into what is the time to revenue target, what is the
+[00:20:00.230] time to revenue target, what is the
+[00:20:00.240] time to revenue target, what is the increased price differential for higher
+[00:20:02.190] increased price differential for higher
+[00:20:02.200] increased price differential for higher quality features, or expanding the
+[00:20:04.070] quality features, or expanding the
+[00:20:04.080] quality features, or expanding the number of customers to meet the future
+[00:20:05.750] number of customers to meet the future
+[00:20:05.760] number of customers to meet the future demand. And also, what is the cost
+[00:20:07.590] demand. And also, what is the cost
+[00:20:07.600] demand. And also, what is the cost reduction per pod for reduced human
+[00:20:10.670] reduction per pod for reduced human
+[00:20:10.680] reduction per pod for reduced human labor.
+[00:20:12.270] labor.
+[00:20:12.280] labor. In aggregate,
+[00:20:13.870] In aggregate,
+[00:20:13.880] In aggregate, having these larger economic outcomes
+[00:20:15.870] having these larger economic outcomes
+[00:20:15.880] having these larger economic outcomes can also lead um to for organizations to
+[00:20:18.790] can also lead um to for organizations to
+[00:20:18.800] can also lead um to for organizations to understand how there is an increased
+[00:20:20.950] understand how there is an increased
+[00:20:20.960] understand how there is an increased reinvestment in greenfield and
+[00:20:22.870] reinvestment in greenfield and
+[00:20:22.880] reinvestment in greenfield and brownfield development.
+[00:20:24.630] brownfield development.
+[00:20:24.640] brownfield development. But as these tools evolve, the proxies
+[00:20:26.910] But as these tools evolve, the proxies
+[00:20:26.920] But as these tools evolve, the proxies for these metrics will also evolve. But
+[00:20:29.030] for these metrics will also evolve. But
+[00:20:29.040] for these metrics will also evolve. But hopefully, this provides a MEC framework
+[00:20:31.630] hopefully, this provides a MEC framework
+[00:20:31.640] hopefully, this provides a MEC framework as an initial starting point.
+[00:20:34.510] as an initial starting point.
+[00:20:34.520] as an initial starting point. So, what's next? The future, of course,
+[00:20:36.550] So, what's next? The future, of course,
+[00:20:36.560] So, what's next? The future, of course, is difficult to predict, let alone in
+[00:20:38.390] is difficult to predict, let alone in
+[00:20:38.400] is difficult to predict, let alone in the next 5 years. But we hope that with
+[00:20:41.230] the next 5 years. But we hope that with
+[00:20:41.240] the next 5 years. But we hope that with our vision of a new software development
+[00:20:43.230] our vision of a new software development
+[00:20:43.240] our vision of a new software development model, even as agents increase in their
+[00:20:45.950] model, even as agents increase in their
+[00:20:45.960] model, even as agents increase in their intelligence and humans become more
+[00:20:48.310] intelligence and humans become more
+[00:20:48.320] intelligence and humans become more fluent in AI, that this model still
+[00:20:50.430] fluent in AI, that this model still
+[00:20:50.440] fluent in AI, that this model still stands.
+[00:20:51.910] stands.
+[00:20:51.920] stands. So, hopefully, this model that includes
+[00:20:54.390] So, hopefully, this model that includes
+[00:20:54.400] So, hopefully, this model that includes um shorter sprints, smaller teams, but
+[00:20:57.030] um shorter sprints, smaller teams, but
+[00:20:57.040] um shorter sprints, smaller teams, but large uh smaller but larger number of
+[00:20:59.270] large uh smaller but larger number of
+[00:20:59.280] large uh smaller but larger number of teams will set enterprises up for
+[00:21:01.590] teams will set enterprises up for
+[00:21:01.600] teams will set enterprises up for success in the long term.
+[00:21:04.190] success in the long term.
+[00:21:04.200] success in the long term. So, we just leave you with some some key
+[00:21:06.150] So, we just leave you with some some key
+[00:21:06.160] So, we just leave you with some some key takeaways.
+[00:21:07.470] takeaways.
+[00:21:07.480] takeaways. Um
+[00:21:08.710] Um
+[00:21:08.720] Um start now, I would say to to our our
+[00:21:11.070] start now, I would say to to our our
+[00:21:11.080] start now, I would say to to our our clients. This is a human change, and it
+[00:21:13.110] clients. This is a human change, and it
+[00:21:13.120] clients. This is a human change, and it takes some times, and it's a big change,
+[00:21:15.230] takes some times, and it's a big change,
+[00:21:15.240] takes some times, and it's a big change, and and it's going to be a journey. And
+[00:21:17.230] and and it's going to be a journey. And
+[00:21:17.240] and and it's going to be a journey. And so, I think um is it something that
+[00:21:19.990] so, I think um is it something that
+[00:21:20.000] so, I think um is it something that everyone needs to go on. I think it's
+[00:21:21.750] everyone needs to go on. I think it's
+[00:21:21.760] everyone needs to go on. I think it's also important to figure out which model
+[00:21:23.310] also important to figure out which model
+[00:21:23.320] also important to figure out which model works for you and set a really bold
+[00:21:25.230] works for you and set a really bold
+[00:21:25.240] works for you and set a really bold ambition.
+[00:21:26.310] ambition.
+[00:21:26.320] ambition. And with that, say thank you so much for
+[00:21:29.030] And with that, say thank you so much for
+[00:21:29.040] And with that, say thank you so much for listening to us, and and uh we have an
+[00:21:31.230] listening to us, and and uh we have an
+[00:21:31.240] listening to us, and and uh we have an article here if you're more interested
+[00:21:32.870] article here if you're more interested
+[00:21:32.880] article here if you're more interested in in the research that we've conducted.
+[00:21:35.110] in in the research that we've conducted.
+[00:21:35.120] in in the research that we've conducted. Thank you so much for having us.
+[00:21:38.879] &gt;&gt; [music]

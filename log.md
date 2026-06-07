@@ -78,3 +78,14 @@
 - 新增 source 页 [[Anthropic团队：如何构建运行 数小时的Agent]]，并新增实体页 [[长程智能体]]、[[Agent Harness]]、[[生成器-评估器架构]]、[[文件系统共享状态]]。
 - 更新 [[Anthropic]]、[[Claude Code]]、[[Evals]]、[[智能体]]、[[AI原生组织]]、[[企业AI产品案例]]、[[AI游戏与虚拟世界]] 和 [[wiki/overview]]，把长程 agent harness 接入既有知识网络。
 - 将模型版本、METR benchmark、RALPH 来源、人物身份、Retro Forge demo 数字、hooks/auto memory 等高风险事实加入 [[03-核验/待核验事实]]。
+
+## 2026-06-07 ingest | McKinsey 后敏捷 AI 研发 operating model
+
+- 导入 B 站视频 BV1bMq3BTEhX，标题为 [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]。
+- 普通 DASH 高码率音频解码存在截断，改用可完整解码的 30216 直链/导入音频，核对时长 2264.642 秒，ASR 生成 1194 段，尾部到 00:37:34。
+- 另抓取原始英文演讲校准材料：YouTube SZStlIhyTCY 英文字幕与 Sozai transcript；区分 McKinsey 原演讲和 B 站二次讲解案例。
+- 派出 4 个分段 agent 精读 00:00-09:30、09:30-19:00、19:00-28:30、28:30-37:44，保留 5%-15% 公司级提效、300 家企业、spec-driven development、one-pizza pods、银行案例、change management、outcome measurement、Netflix/高盛/Cursor/P&G/Browser Company 待核验案例等细节。
+- 新增 raw 转写副本 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.transcript.txt]]、英文字幕校准件 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.youtube-en.txt]] 和 Sozai 校准件 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.sozai.txt]]。
+- 新增 source 页 [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]，并新增实体页 [[后敏捷操作模型]]、[[Spec-driven development]]、[[AI原生工作流]]、[[技术债]]。
+- 更新 [[AI研发提效]]、[[AI原生组织]]、[[企业AI产品案例]]、[[智能体]]、[[企业上下文]]、[[Agent Harness]]、[[wiki/overview]] 和 [[index]]，把这条素材接入既有图谱。
+- 将 McKinsey 调研口径、CMU 技术债研究、GitHub Spec Kit、银行案例数字、Netflix/高盛/Cursor/P&G/Browser Company 等高风险事实加入 [[03-核验/待核验事实]]。
