@@ -54,3 +54,8 @@ sources: []
 - [[Anthropic]]
 - [[Claude Code]]
 - [[purpose]]
+
+
+## 新增：长程 Agent Harness
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 将知识库中的 Anthropic 主线从产品组织延伸到工程系统。新增 [[长程智能体]]、[[Agent Harness]]、[[生成器-评估器架构]] 和 [[文件系统共享状态]] 四个节点，用来描述多小时 agent 如何通过 completion contract、独立 evaluator、真实浏览器验证、trace reading 和版本控制稳定运行。

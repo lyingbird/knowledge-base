@@ -1,0 +1,3397 @@
+[00:00:00] 欢迎认识大家,我是Ash,这是Andrew,我们两个是工程师,我们在Anthropic的Applied AI团队工作。
+[00:00:21] 这个设计的主题是我们在几个星期前发布的博客文章,我们讨论了如何想办法建立很长的长期时间的专业人员。
+[00:00:38] 我们讨论了五、六个小时多的时间。
+[00:00:41] 我认为我们都看过一些专业人员的示范,例如说我们在一个网页上做了一个评测,
+[00:00:49] 但并不需要分享一些关于钥匙的详细。
+[00:00:54] 这就是我们今天想谈论的主题。
+[00:00:56] 首先,我的惊奇同学Andrew将谈论一下我们在CodeCode上发布的一些原则,
+[00:01:06] 以及我们现在的状态。
+[00:01:09] 接下来,我们将回到舞台上,我们将谈论一些比较测试性的东西,
+[00:01:14] 例如钥匙和几个例子。
+[00:01:18] 我们将谈论我们看到的几个例子。
+[00:01:21] 好的,谢谢你,Ash。
+[00:01:23] 谢谢大家参与我们的第一个机构讨论课程。
+[00:01:28] 很高兴你能与我们一起分享。
+[00:01:30] 我的名字是Andrew。
+[00:01:31] 我来自伦敦的Apply.ai团队。
+[00:01:33] 我与很多我们的电子企业和企业项目的项目合作,
+[00:01:35] 与很多我们的电子企业和企业项目的项目合作。
+[00:01:38] 我将与大家分享一些历史的一段旅程,
+[00:01:41] 一段旅程到记忆区域。
+[00:01:43] 我将与大家分享一些我们转换的东西,
+[00:01:46] 帮助企业在几个小时或几天之内运行。
+[00:01:51] 然后我将与Ash与大家分享更多实用的东西。
+[00:01:54] 好的,好的,
+[00:01:55] 我们在Twitter上发了一个小评论,
+[00:01:59] 来自Boris,Claude Code的创建者。
+[00:02:01] 这是Claude Code的一年纪录。
+[00:02:04] 基本上,一年前,
+[00:02:06] Claude Code在写Bash指令和逃避钥匙的工作中,
+[00:02:09] 而它可以在20分钟之内运行。
+[00:02:13] 现在,我们已经在几乎所有的Claude Code
+[00:02:15] 都被写成了Claude Code的文件,
+[00:02:17] 并且它可以在一天之内运行。
+[00:02:20] 所以,这是一个一年纪录。
+[00:02:24] 我现在将与大家谈论这个历史。
+[00:02:27] 但是,
+[00:02:28] 让我来点击这里。
+[00:02:31] 为了解决问题,
+[00:02:34] 为什么这些专业人员
+[00:02:37] 运行的时间很长?
+[00:02:39] 我认为,
+[00:02:40] 有三个大框架。
+[00:02:42] 有些比其他人更有意义。
+[00:02:44] 首先,
+[00:02:45] 其实,
+[00:02:46] 我认为,
+[00:02:47] 我们都明白的,
+[00:02:48] 关于关于关键的问题,
+[00:02:49] 关键的门槽非常简单,
+[00:02:50] 所以你开始一个新的设计,
+[00:02:51] 有幻想,
+[00:02:52] 专业人必须从外面开始,
+[00:02:53] 所以你需要一些记忆的元素。
+[00:02:56] 另外,
+[00:02:57] 你正在过去关键的门槽中,
+[00:02:58] 有这个认为是关键失落,
+[00:02:59] 所以,
+[00:03:00] 在那次设计中,
+[00:03:01] 你进入了更深的设计中,
+[00:03:02] 它会比较稳定。
+[00:03:03] 另外,
+[00:03:04] 你有可能会想到,
+[00:03:07] 这个模型实际上展示了
+[00:03:08] 关键感觉的情绪。
+[00:03:10] 因此,
+[00:03:11] 它开始感到紧张,
+[00:03:12] context window and it just quickly
+[00:03:13] hurries up to finish what it's doing
+[00:03:15] this kind of leads into planning
+[00:03:17] so in general models are not
+[00:03:19] that great at planning just out of the
+[00:03:21] box they might try and do
+[00:03:23] everything in just one shot or
+[00:03:25] for example they might build half a feature
+[00:03:27] and then stop or they might just
+[00:03:29] run out of context altogether and sort
+[00:03:31] of leave a half finished app built
+[00:03:33] but then maybe less
+[00:03:35] intuitively models are
+[00:03:37] really bad at judging their own output
+[00:03:39] so I know we all know that
+[00:03:41] models can be sycophantic and sort of tell
+[00:03:43] you what you want to hear but this applies as well to
+[00:03:45] coding tasks so it might
+[00:03:47] look at a feature and see that it's sort of
+[00:03:49] half baked or a little bit implemented
+[00:03:51] and say yeah okay that looks done
+[00:03:53] and then it'll move on to the next thing or
+[00:03:55] it might build a feature like a button
+[00:03:57] but actually the back end you know it doesn't
+[00:03:59] exist for it there's sort of no nothing
+[00:04:01] behind that but it looks like the feature is done
+[00:04:03] so I know Ash will
+[00:04:05] talk quite extensively of some of the new
+[00:04:07] techniques we have to help with this
+[00:04:09] specifically so models can become
+[00:04:11] better at judging their own output
+[00:04:14] so there's there's two ways really
+[00:04:16] we can we can fix these things
+[00:04:18] the first one is obviously the model
+[00:04:20] so baking it all into the model
+[00:04:23] waits themselves and I'm sure you've
+[00:04:25] all seen this this meter charts
+[00:04:26] basically how long can an agent run
+[00:04:28] for with a minimal scaffold
+[00:04:31] where it's completing 50% of the
+[00:04:33] tasks and you'll see from opus
+[00:04:35] 3.7 it's around one hour and up to
+[00:04:38] opus 4.6 one year later it's at
+[00:04:41] 12 hours
+[00:04:42] so an entire day and we've of
+[00:04:44] course you know managed to get
+[00:04:45] that running much longer other
+[00:04:46] people have as well but this is
+[00:04:47] just a sort of very minimal scaffold
+[00:04:51] the second thing that you can do is
+[00:04:53] of course make changes to the harness
+[00:04:55] itself so this is the scaffolding
+[00:04:57] around the model and we have the
+[00:05:00] agent SDK which ships with all the
+[00:05:03] primitives that we've been building
+[00:05:04] overtime so there's the core agent
+[00:05:07] loop itself where you have Claude
+[00:05:09] model that's determining what to
+[00:05:10] do what tools to run and what tools to run
+[00:05:11] maybe it's pulling in some
+[00:05:13] tools from MCP servers it might
+[00:05:16] delegate some tasks to a subagent
+[00:05:17] it's bringing in all the context
+[00:05:19] from things like Claude MD or
+[00:05:21] the skills that are loaded or
+[00:05:22] slash commands and there's a
+[00:05:23] whole permission system and this
+[00:05:25] this will change over time as
+[00:05:27] well as the models get better
+[00:05:28] and improve but these are sort of
+[00:05:30] the core primitives that we're
+[00:05:31] working with and then of course
+[00:05:32] you use this framework to build
+[00:05:34] your own harness for whatever
+[00:05:36] it is you're trying to do such
+[00:05:38] as some of the things that
+[00:05:39] ash will show later on when we
+[00:05:40] get into more long running
+[00:05:41] agents I think what's also
+[00:05:44] interesting is just looking
+[00:05:45] back at the last year of
+[00:05:47] releases is that when we've
+[00:05:49] released a model we've always
+[00:05:51] also released a lot of harness
+[00:05:52] changes alongside the models
+[00:05:54] so really these things are
+[00:05:56] co-evolving together so we'll
+[00:05:57] just look back suppose firstly
+[00:06:00] just pre-history beyond one
+[00:06:02] year ago I think we all
+[00:06:04] remember that period where Claude
+[00:06:06] had the artifact section of
+[00:06:08] Claude.ai and Sonnet 3.5 was
+[00:06:11] the first model that
+[00:06:12] really showed promise when
+[00:06:13] it came to coding and it
+[00:06:14] could now verify that it
+[00:06:15] could look at what it had
+[00:06:16] built and sort of iterate from
+[00:06:18] there and that was quite an
+[00:06:19] aha moment sort of pre-Claude
+[00:06:21] code but then also we shipped
+[00:06:24] computer use so it could
+[00:06:25] start clicking around taking
+[00:06:26] screenshots testing its own
+[00:06:28] code as well as MCP spec
+[00:06:30] which enabled it to sort of
+[00:06:32] use tools so then getting into
+[00:06:34] Claude code this is February
+[00:06:36] 2025 so this is about just
+[00:06:38] over a year ago Sonnet 3.7 was
+[00:06:42] released and sort of
+[00:06:43] state of the art on
+[00:06:44] Sweebench and Claude code
+[00:06:45] was released in research
+[00:06:46] preview and I think an
+[00:06:48] interesting quote that I
+[00:06:49] pulled from this release
+[00:06:50] actually is that the goal of
+[00:06:52] Claude code was to better
+[00:06:54] understand how developers
+[00:06:55] use Claude for coding to
+[00:06:56] inform future model
+[00:06:58] improvements so
+[00:06:59] essentially when we released
+[00:07:00] Claude code the whole idea
+[00:07:01] was for it to be somewhat
+[00:07:03] experimental to inform how
+[00:07:05] we actually improve the base
+[00:07:06] model itself and you'll see
+[00:07:07] this trend that over time
+[00:07:09] the models become better
+[00:07:11] the harness certain
+[00:07:12] aspects of it might become
+[00:07:13] less necessary or it will
+[00:07:14] evolve just just in terms
+[00:07:17] of these slides as well in
+[00:07:19] the bottom left corner these
+[00:07:21] are some of the things that
+[00:07:22] are sort of the focus of
+[00:07:23] these releases whether it's
+[00:07:25] context or planning or
+[00:07:27] verification and then some
+[00:07:28] some stats but I'm not
+[00:07:29] going to sort of read
+[00:07:30] everything so yeah next this
+[00:07:33] was around May time of last
+[00:07:34] year Opus 4 and Sonnet 4
+[00:07:36] were released and just in
+[00:07:38] general these tools got
+[00:07:39] much better at managing
+[00:07:41] their own context and they're
+[00:07:42] getting to task
+[00:07:43] completion without reward
+[00:07:45] hacking or anything like
+[00:07:46] that and then Claude code
+[00:07:47] became GA as well and we
+[00:07:50] released the Claude code
+[00:07:51] SDK so sort of the harness
+[00:07:53] powering Claude code little
+[00:07:56] interlude here from the
+[00:07:57] timeline I think everybody
+[00:07:58] now knows about this Ralph
+[00:08:00] Wiggum technique you might
+[00:08:01] not know that it was
+[00:08:02] actually last July that
+[00:08:04] this was that this came out
+[00:08:06] when when Jeffrey Huntley
+[00:08:08] initially released the paper
+[00:08:09] because it really sort of
+[00:08:10] gained a lot of traction
+[00:08:11] around say December or so of
+[00:08:13] last year when for
+[00:08:15] example people started
+[00:08:16] playing around with it
+[00:08:16] themselves Claude also
+[00:08:18] released our own Ralph
+[00:08:20] loop within the Claude code
+[00:08:22] harness itself but
+[00:08:24] essentially it's quite sort
+[00:08:25] of a simple technique that
+[00:08:27] you're just taking a prompt
+[00:08:28] and you're feeding it into
+[00:08:30] Claude code CLI for
+[00:08:31] example and then you're just
+[00:08:32] running that on a loop
+[00:08:33] until all the tasks are
+[00:08:35] complete it's a little bit
+[00:08:37] deeper than that I think
+[00:08:38] people tend to simplify it
+[00:08:40] there's actually a few
+[00:08:41] phases where at first you
+[00:08:42] know would have some kind of
+[00:08:43] planning where it breaks
+[00:08:44] down that prompt into a
+[00:08:45] few different features and
+[00:08:46] then it would pick sort of
+[00:08:48] one task from that and
+[00:08:50] start a new session and
+[00:08:51] then work with a fresh
+[00:08:52] context window so a lot of
+[00:08:54] those concepts were
+[00:08:55] applied in the Ralphloop but
+[00:08:56] I think why it caught so
+[00:08:58] much attention is because
+[00:08:59] it's sort of seems really
+[00:09:00] simplistic and he put it
+[00:09:02] deterministically bad in an
+[00:09:04] undeterministic world so
+[00:09:05] the idea being that it's
+[00:09:07] better to fail predictably
+[00:09:08] than it is to succeed
+[00:09:10] unpredictably when we
+[00:09:12] actually created a
+[00:09:13] our own plugin for
+[00:09:14] this in cloud code you'll
+[00:09:16] see well I don't know
+[00:09:17] if people can recognize
+[00:09:19] what the major
+[00:09:19] difference is there's
+[00:09:20] some people say that's
+[00:09:21] not a real Ralphloop the
+[00:09:23] idea is that this is just
+[00:09:24] running within a single
+[00:09:25] cloud code session so it's
+[00:09:27] not creating a fresh
+[00:09:28] context window it's just
+[00:09:30] relying on compaction to
+[00:09:31] happen over time so you
+[00:09:33] know maybe it's not
+[00:09:33] considered sort of a real
+[00:09:34] Ralphloop but you'd set
+[00:09:35] the max iterations you'd
+[00:09:37] set a safe word and
+[00:09:39] then essentially a stop
+[00:09:40] hook would intercept when
+[00:09:42] cloud would typically stop
+[00:09:43] and if it's not finished
+[00:09:44] it would just sort of
+[00:09:45] continue until it hits
+[00:09:46] one of those exit
+[00:09:47] criteria okay so onto
+[00:09:50] sonnet four point five
+[00:09:53] this was when the
+[00:09:54] model just generally
+[00:09:56] started getting better
+[00:09:56] again at handling its
+[00:09:58] own context so this is
+[00:10:00] when became more
+[00:10:01] context aware tracking
+[00:10:02] how many tokens had
+[00:10:03] been consumed so as it
+[00:10:05] got towards the end of
+[00:10:06] the context window it
+[00:10:07] sort of understand that
+[00:10:08] and it could manage its
+[00:10:09] own context cloud code
+[00:10:12] two point oh also shipped
+[00:10:13] this is where we
+[00:10:15] introduce check points so
+[00:10:17] actually keeping track of
+[00:10:18] of the code over time
+[00:10:19] being able to rewind to
+[00:10:20] previous parts of the
+[00:10:21] session and then we
+[00:10:23] released we're just sort
+[00:10:24] of rename the cloud code
+[00:10:25] sdk to the agent sdk and
+[00:10:27] that's because we
+[00:10:28] realize it's much more
+[00:10:29] general purpose than
+[00:10:30] actually just for coding
+[00:10:31] so you'll see we're
+[00:10:33] talking about coding a
+[00:10:33] lot right now but i
+[00:10:34] think what's very
+[00:10:35] interesting is applying
+[00:10:36] these long running
+[00:10:37] harnesses to other
+[00:10:38] domains as well at this
+[00:10:41] point we could run for
+[00:10:43] about thirty hours or
+[00:10:44] so with
+[00:10:47] clawed sonnet four point
+[00:10:48] five but then
+[00:10:49] completing the family
+[00:10:50] with haiku four point
+[00:10:51] five and opus four point
+[00:10:53] five this is where it
+[00:10:54] got really interesting
+[00:10:55] because all of a sudden
+[00:10:56] running many sub agents
+[00:10:58] became really economical
+[00:11:00] and opus four point five
+[00:11:01] became really good at
+[00:11:02] planning so we could
+[00:11:04] start doing things like
+[00:11:04] using opus four point
+[00:11:06] five for planning and
+[00:11:07] then using sonnet four point
+[00:11:09] fives the workhorse for
+[00:11:10] really executing all of
+[00:11:11] that code and then
+[00:11:13] there's a big couple
+[00:11:15] months as well because
+[00:11:16] this is when we release
+[00:11:17] skills which again very
+[00:11:18] good at making use
+[00:11:20] effective use of the
+[00:11:20] context with this notion
+[00:11:22] of progressive disclosure
+[00:11:24] so just the front
+[00:11:25] matter of the skill is
+[00:11:26] loaded in instead of
+[00:11:27] sort of all of your tool
+[00:11:28] descriptions which can
+[00:11:30] consume quite a lot of
+[00:11:30] the context window up
+[00:11:31] front and then sort of the
+[00:11:34] entire rest of the body
+[00:11:35] of the skill is loaded in
+[00:11:36] if it's instantiated
+[00:11:38] followed by say some
+[00:11:39] references to even
+[00:11:41] code that could run more
+[00:11:42] deterministically
+[00:11:43] and then more context
+[00:11:45] improvements things like
+[00:11:46] programmatic tool calling
+[00:11:47] so instead of running a
+[00:11:48] bunch of tools pulling
+[00:11:49] all of that into context
+[00:11:51] and then trying to
+[00:11:52] process it actually just
+[00:11:53] writing code on the fly
+[00:11:54] and being able to sort of
+[00:11:55] run a series of tool calls
+[00:11:57] and then just get the
+[00:11:58] final result back and
+[00:11:59] again this is all just to
+[00:12:00] improve the usage of the
+[00:12:02] context window
+[00:12:05] okay so a lot going on
+[00:12:07] on this side but at this
+[00:12:08] point this is around
+[00:12:10] november time we
+[00:12:11] released our first blog
+[00:12:12] post on long running agents
+[00:12:14] and how you go about
+[00:12:15] building these so a lot
+[00:12:17] of the concepts i've
+[00:12:18] already described should
+[00:12:19] make this fairly easy to
+[00:12:21] understand actually where
+[00:12:23] say human would write
+[00:12:24] something like you know
+[00:12:25] write me a browser or
+[00:12:27] create a slack clone or
+[00:12:28] a sales force clone just
+[00:12:29] something like really
+[00:12:30] really vague and the
+[00:12:32] first thing that would
+[00:12:33] happen in this harness that
+[00:12:35] we built is there's an
+[00:12:36] initializer agent that
+[00:12:38] would take that simple
+[00:12:39] prompt and it would
+[00:12:40] break it down into a
+[00:12:41] series of persistent
+[00:12:43] artifacts the first
+[00:12:44] being a featureless of
+[00:12:46] say x number of
+[00:12:47] features featureless dot
+[00:12:49] json because we
+[00:12:50] actually found the
+[00:12:51] models might overwrite
+[00:12:53] markdown files whereas
+[00:12:54] they're they're less
+[00:12:55] likely to just overwrite
+[00:12:56] json files which is
+[00:12:57] kind of interesting it
+[00:12:59] would also write a
+[00:12:59] progress file of course
+[00:13:01] sort of start the git
+[00:13:02] repo build an init
+[00:13:04] script and then just
+[00:13:06] have a flag for you
+[00:13:07] know whether the
+[00:13:08] features are complete or
+[00:13:09] not if they sort of
+[00:13:10] pass all the tests from
+[00:13:12] there it would go into
+[00:13:14] this harness loop where
+[00:13:15] there's multiple
+[00:13:16] different steps here so
+[00:13:17] the first one is you
+[00:13:19] know again in fresh
+[00:13:19] context window just
+[00:13:21] getting the bearings
+[00:13:22] what's the present
+[00:13:22] working directory what's
+[00:13:24] the progress file say
+[00:13:26] okay and then doing
+[00:13:28] a smoke test or
+[00:13:28] running the init script
+[00:13:30] so it didn't have to
+[00:13:30] figure out how to do
+[00:13:31] that every time get
+[00:13:32] the server up and
+[00:13:33] running etcetera and
+[00:13:34] then picking one
+[00:13:35] feature only one
+[00:13:37] feature that that
+[00:13:38] hasn't passed all the
+[00:13:39] tests implementing that
+[00:13:41] feature doing some
+[00:13:42] actual tests much so very
+[00:13:44] like a human would
+[00:13:45] do using puppeteer in
+[00:13:47] this case and then if
+[00:13:49] everything passes
+[00:13:51] actually writing the git
+[00:13:52] commit and changing the
+[00:13:54] state of this
+[00:13:55] particular feature it
+[00:13:57] passes and then if
+[00:13:58] there are any
+[00:13:58] features that are
+[00:13:59] unfinished just
+[00:14:00] continuing that loop in
+[00:14:01] a fresh context window
+[00:14:03] so we're starting to
+[00:14:04] layer in a lot of
+[00:14:05] these concepts here fresh
+[00:14:06] context windows these
+[00:14:08] sort of persistent
+[00:14:08] artifacts verification
+[00:14:10] loops really good
+[00:14:11] planning upfront you'll
+[00:14:13] see like this this
+[00:14:14] is sort of the
+[00:14:14] first iteration of
+[00:14:15] of these long
+[00:14:16] running harnesses here
+[00:14:20] okay so continue
+[00:14:21] with the history tour so
+[00:14:22] then opus four point
+[00:14:23] six on four point six
+[00:14:26] these models are
+[00:14:27] really great because
+[00:14:28] sonic four point six
+[00:14:29] was basically offering
+[00:14:30] that opus level
+[00:14:31] intelligence more at
+[00:14:32] the the sonic price and
+[00:14:33] it became again like
+[00:14:34] very much a workhorse
+[00:14:35] for a lot of cloud
+[00:14:36] code and opus four point
+[00:14:38] six just became really
+[00:14:40] good at planning we
+[00:14:41] called it very much an
+[00:14:43] agentic model so opus
+[00:14:45] four point six was
+[00:14:46] great at at
+[00:14:47] deciding like which
+[00:14:48] tools to use and
+[00:14:49] just being able to
+[00:14:50] run for much longer
+[00:14:51] if you recall that
+[00:14:53] meter chart you'll
+[00:14:53] see that this was a
+[00:14:55] jump from about four
+[00:14:56] hours up to twelve
+[00:14:57] hours with sort of
+[00:14:57] that very simple
+[00:14:58] harness so this model
+[00:14:59] is like very very
+[00:15:00] agentic and then along
+[00:15:02] with that with some of
+[00:15:03] the research we had
+[00:15:04] done we released agent
+[00:15:05] teams which the idea
+[00:15:07] being in cloud code
+[00:15:08] this sort of more
+[00:15:08] general purpose way for
+[00:15:10] you to say scaffold out
+[00:15:11] your own set set of
+[00:15:13] custom agents and the
+[00:15:14] innovation with agent
+[00:15:15] teams is that instead
+[00:15:17] of everything reporting
+[00:15:18] back into the main
+[00:15:19] agent the actual
+[00:15:21] subagents could
+[00:15:22] communicate with each
+[00:15:23] other so they sort of
+[00:15:24] have their own way to
+[00:15:25] coordinate and then
+[00:15:26] report back to the
+[00:15:27] main agent only when it
+[00:15:28] was required we also
+[00:15:31] introduce server side
+[00:15:32] compaction which
+[00:15:33] basically meaning that
+[00:15:34] these models can now
+[00:15:35] just run indefinitely and
+[00:15:37] compaction could just
+[00:15:37] sort of you know happen
+[00:15:38] on the server side and
+[00:15:40] then this one million
+[00:15:42] context GA so now we
+[00:15:43] have like one big
+[00:15:44] context window you see
+[00:15:45] like the models
+[00:15:45] are getting better
+[00:15:46] maybe you can just
+[00:15:47] run a lot you know
+[00:15:48] within a single
+[00:15:49] context window even
+[00:15:50] instead of necessarily
+[00:15:51] needing new sessions
+[00:15:52] all the time you see
+[00:15:53] how things start
+[00:15:54] shifting over time so
+[00:15:56] that's sort of the
+[00:15:58] the whole overview you
+[00:15:59] can see all of the
+[00:16:01] different releases that
+[00:16:02] i shared here on this
+[00:16:03] table and you can see
+[00:16:04] how it's changed from
+[00:16:06] say sonnet three point
+[00:16:07] seven at one hour to
+[00:16:08] twelve hours with
+[00:16:09] opus four point six and
+[00:16:11] then we have our own
+[00:16:12] anecdotes as well where
+[00:16:15] we have our own anecdotes as well where
+[00:16:15] task would take say
+[00:16:16] you know like twenty
+[00:16:18] minutes when it was
+[00:16:19] opus three point five and
+[00:16:21] now we're building say
+[00:16:22] fully fledged apps that
+[00:16:23] you don't have to run
+[00:16:24] for you know thirty
+[00:16:25] hours they can run
+[00:16:26] typically we're seeing
+[00:16:27] like say three to
+[00:16:28] five hours you can
+[00:16:29] build like a really
+[00:16:30] really fully featured
+[00:16:31] application that that
+[00:16:32] runs out of the box
+[00:16:35] so what's really
+[00:16:37] interesting is is the
+[00:16:38] harness doesn't just
+[00:16:40] disappear as the models
+[00:16:42] get better it's really
+[00:16:43] evolving as the models
+[00:16:44] change over time and
+[00:16:46] it's really fascinating
+[00:16:47] to sort of find the
+[00:16:49] gaps in the model and
+[00:16:50] then fill that in with
+[00:16:51] the harness and then you
+[00:16:51] train the model on
+[00:16:53] the using that aspect
+[00:16:55] of the harness then
+[00:16:55] maybe at some point you
+[00:16:56] actually remove that
+[00:16:57] entirely and sort of
+[00:16:58] this iterative loop
+[00:17:00] just keeps happening
+[00:17:01] overtime with with
+[00:17:02] more and more of
+[00:17:02] these sort of co
+[00:17:03] releases that we
+[00:17:04] have so yeah
+[00:17:06] hopefully those
+[00:17:06] interesting little trip
+[00:17:09] back through the
+[00:17:10] clawed evolution and
+[00:17:11] how it applies to
+[00:17:12] the long running
+[00:17:13] agents and so I'll
+[00:17:14] I'll hand over to
+[00:17:15] to ash to continue
+[00:17:16] with where we
+[00:17:17] are today in
+[00:17:18] terms of the state of
+[00:17:18] the art
+[00:17:28] all right
+[00:17:31] quick question
+[00:17:32] any of you guys
+[00:17:33] have any agents
+[00:17:34] running at the
+[00:17:35] moment in the
+[00:17:35] background doing work
+[00:17:37] where you're here
+[00:17:38] just one two
+[00:17:39] three OK
+[00:17:41] probably should be
+[00:17:42] more of you
+[00:17:44] hopefully by the end
+[00:17:44] of this you'll have
+[00:17:45] some ideas to like
+[00:17:46] take away and
+[00:17:46] actually like put into
+[00:17:47] practice
+[00:17:50] so yeah that's
+[00:17:52] that's the history
+[00:17:53] and I quite like that
+[00:17:54] quote that
+[00:17:56] andrew talked about
+[00:17:57] where the front
+[00:17:58] here doesn't
+[00:17:58] really shrink
+[00:17:59] it just
+[00:18:00] moves and
+[00:18:01] so what I
+[00:18:02] wanted to talk
+[00:18:03] about a little bit
+[00:18:03] is some very
+[00:18:04] simple
+[00:18:07] kind of harness
+[00:18:07] patterns that we've
+[00:18:08] been playing around
+[00:18:09] with internally that
+[00:18:09] we used to
+[00:18:11] to build these
+[00:18:11] like very fancy
+[00:18:12] one shot demo
+[00:18:13] apps
+[00:18:15] but also you
+[00:18:16] know we're
+[00:18:16] experimenting with
+[00:18:17] this stuff in post
+[00:18:17] training and in
+[00:18:19] rl how do we
+[00:18:20] make our models
+[00:18:21] and and just the
+[00:18:22] general behaviors
+[00:18:23] more adept at
+[00:18:25] autonomous work
+[00:18:27] so
+[00:18:30] if you've ever
+[00:18:30] tried to get
+[00:18:32] an agent to
+[00:18:33] try and review
+[00:18:34] its own
+[00:18:35] pr
+[00:18:36] you'll kind of
+[00:18:37] understand
+[00:18:38] where this is
+[00:18:39] going
+[00:18:40] so
+[00:18:42] this general
+[00:18:44] idea is
+[00:18:45] shamelessly kind of
+[00:18:45] stolen from
+[00:18:46] from gans
+[00:18:48] generative kind of
+[00:18:49] adversarial networks
+[00:18:51] so you have this
+[00:18:52] generator kind of
+[00:18:53] model and then you
+[00:18:54] have some sort of
+[00:18:55] discriminator
+[00:18:57] and
+[00:18:58] you have some sort of
+[00:18:58] adversarial pressure
+[00:18:59] between them
+[00:19:01] you know the
+[00:19:01] generator bills
+[00:19:02] the evaluator grades
+[00:19:04] and the whole idea here
+[00:19:05] is we're splitting up
+[00:19:07] the context
+[00:19:09] windows
+[00:19:10] system prompts
+[00:19:12] the jobs
+[00:19:13] entirely
+[00:19:14] the evaluator here
+[00:19:15] isn't just reading
+[00:19:16] dif but it's
+[00:19:17] actually using play
+[00:19:18] right
+[00:19:19] to open
+[00:19:20] live pages
+[00:19:20] click around
+[00:19:21] try things out
+[00:19:23] and then eventually
+[00:19:24] hands back
+[00:19:24] whatever critique
+[00:19:25] is decided
+[00:19:26] back to the
+[00:19:27] actual generator
+[00:19:28] and you know you kind of
+[00:19:29] start to play these
+[00:19:29] I want to continue that loop.
+[00:19:31] Contrast that with what most people today are doing
+[00:19:33] which is kind of using one core code session
+[00:19:36] telling it to check its own work
+[00:19:38] and kind of loop that way.
+[00:19:40] So the obvious question for me at least is
+[00:19:44] if the evaluator is also just an LLM
+[00:19:47] why doesn't it just rubber stamp it too?
+[00:19:50] And so the key idea that we're kind of exploiting here is
+[00:19:55] yes, the evaluator is still a large language model
+[00:19:59] yes, it's still going to be biased towards
+[00:20:02] liking large language model style outputs
+[00:20:06] but tuning a standalone critic
+[00:20:09] to be harsh is actually very tractable
+[00:20:11] but tuning a builder to be somewhat self-critical is not.
+[00:20:16] I think a really good analogy for this is same as humans.
+[00:20:20] It's very easy for me to critique
+[00:20:24] a lovely piece of artwork or a fine meal.
+[00:20:28] Much harder for me
+[00:20:29] to actually go ahead and like
+[00:20:31] paint that or cook that meal myself.
+[00:20:34] So what we're doing here
+[00:20:36] is exploiting the gap between the ability of an LLM
+[00:20:38] to be kind of a critic versus a generator.
+[00:20:42] So the next thing I kind of want to talk about is like
+[00:20:46] how do you actually think about designing these critics?
+[00:20:49] It's very similar to the process of creating good evals.
+[00:20:51] But in the context of full stack apps
+[00:20:54] there are a lot of fuzzy kind of areas
+[00:20:56] which go into what makes something good.
+[00:20:58] It's not just
+[00:20:59] does it work
+[00:21:00] but does it look good?
+[00:21:01] Does it feel good?
+[00:21:03] Is there an element of taste
+[00:21:05] in these kind of products as well?
+[00:21:08] So this is where we've been doing a lot of experimental work
+[00:21:12] especially when trying to
+[00:21:13] imbue Claude with design taste and post-training
+[00:21:16] but also
+[00:21:19] create these kind of front-end design skills
+[00:21:21] that we kind of put out there
+[00:21:21] and just generally improve the front-end design
+[00:21:24] ability of our models.
+[00:21:27] So the way we think about this is
+[00:21:31] most people say you can't grade taste
+[00:21:34] but we think you can
+[00:21:36] if you have a strong enough opinion on it
+[00:21:38] and you just kind of write it down.
+[00:21:40] And so the way we do this at least
+[00:21:41] is with kind of creating a rubric
+[00:21:43] with four criteria
+[00:21:45] design, originality, craft, and functionality.
+[00:21:49] We actually weight this towards
+[00:21:52] design and originality.
+[00:21:55] We've kind of shifted the weightings
+[00:21:56] between these four things
+[00:21:58] depending on which model is in play.
+[00:22:00] But at the moment,
+[00:22:01] Opus 4.6 is pretty good at functionality already
+[00:22:04] so the problem that we're trying to overcome
+[00:22:07] is how do we prevent things like
+[00:22:09] purple gradients, general kind of AI slot type aesthetics in general.
+[00:22:14] And we kind of just go ahead and calibrate this
+[00:22:17] with a few short examples on reference sites
+[00:22:20] so the evaluator's kind of taste converges on our own.
+[00:22:24] And let me show you an example, I guess,
+[00:22:27] of what this actually looks like kind of in practice.
+[00:22:31] So
+[00:22:32] this is just an example
+[00:22:35] of
+[00:22:36] a model going through this similar kind of loop
+[00:22:39] generator evaluator launches playwright
+[00:22:42] navigates, screenshots, scores on those kind of four criteria
+[00:22:46] writes critique, and then hands back to generator.
+[00:22:49] So all of these examples are just HTML and CSS only
+[00:22:52] that I've gone through for maybe four hours, five to 15 rounds.
+[00:22:57] I think the interesting thing here
+[00:22:59] which is quite unique and something which you wouldn't necessarily get,
+[00:23:02] if you're just using a single kind of agent loop
+[00:23:05] is that
+[00:23:06] the thing pivots, right?
+[00:23:08] So imagine the generator gets stuck on one of the four criteria.
+[00:23:11] Let's say it's like really struggling and
+[00:23:13] constantly scoring low on originality.
+[00:23:16] You know
+[00:23:19] this kind of GAN style harness which we're using
+[00:23:21] will just throw the whole thing out and try again from scratch.
+[00:23:24] Whereas
+[00:23:26] in a single pass generation
+[00:23:28] or a Ralph loop
+[00:23:30] it keeps trying to patch the same thing.
+[00:23:32] And this kind of ability to kind of course correct
+[00:23:35] over a very long
+[00:23:37] kind of time horizons
+[00:23:38] is something which is quite unique
+[00:23:40] to kind of breaking down
+[00:23:41] the different roles
+[00:23:42] that go into building something.
+[00:23:44] So that was just an insight into I guess how we think about the front end component.
+[00:23:51] But how to go from kind of like just nice pages to fully working apps,
+[00:23:55] we added one more role,
+[00:23:58] a planner.
+[00:23:59] And so again, sounds very simple.
+[00:24:02] It's ultimately just taking kind of a one line prompt
+[00:24:05] and then breaking it down into
+[00:24:07] a very deliberately high level
+[00:24:09] kind of spec.
+[00:24:12] So
+[00:24:13] what it does is actually just spec the granular
+[00:24:17] sorry, it kind of specs
+[00:24:19] the general workflow into a series of sprints.
+[00:24:23] What it doesn't do and what most harnesses do today
+[00:24:27] is necessarily try and plan the granular technical details of the product.
+[00:24:32] The reason being is,you know,
+[00:24:34] one,it's very likely to still make an error,
+[00:24:36] but when it does make an error,
+[00:24:37] it's going to cascade
+[00:24:39] through every single one of these sprints
+[00:24:41] and kind of magnify errors over a multi-hour time horizon.
+[00:24:45] If you kind of squint at this,
+[00:24:50] this is kind of just,you know,
+[00:24:51] a very simple kind of like PM,
+[00:24:53] IC,and QA kind of org structure,right?
+[00:24:56] Like we didn't invent this.
+[00:24:58] We just kind of gave each role its own kind of context window.
+[00:25:01] And so,you know,it's a very simple kind of like PM,IC,and QA kind of org structure,right?
+[00:25:03] And the bit which is kind of interesting,
+[00:25:06] I think to talk about,
+[00:25:07] is the glue between the generator
+[00:25:10] and the evaluator in this kind of setup.
+[00:25:12] So,before the generator
+[00:25:14] actually goes ahead and writes a single line,
+[00:25:17] we have the two agents
+[00:25:19] basically negotiate what done actually means.
+[00:25:23] And so,let's say the generator proposes,
+[00:25:28] I'm going to build X feature,
+[00:25:30] and you should verify it by testing Y.
+[00:25:33] The evaluator might push back and be like,
+[00:25:35] actually,the scope is too big,
+[00:25:37] and those tests that you propose are a bit too weak,
+[00:25:40] and you've missed X,Y,Z edge case.
+[00:25:43] And you basically have this back and forth
+[00:25:45] via files on disk.
+[00:25:47] One writes the markdown,the other reads it.
+[00:25:50] And you iterate until both agree.
+[00:25:52] And then once you kind of reach that kind of condition,
+[00:25:56] then you actually start building.
+[00:25:58] And then the evaluator kind of grades against the contract
+[00:26:01] that
+[00:26:02] those two agents have decided between themselves,
+[00:26:05] not the original spec,
+[00:26:07] which the planner has kind of one-shotted
+[00:26:08] at the beginning.
+[00:26:09] And why this matters,
+[00:26:12] as it kind of bridges this kind of
+[00:26:15] idea of kind of user stories,
+[00:26:17] i.e. the spec,
+[00:26:19] and kind of converts it into slightly more tangible,
+[00:26:22] testable kind of assertions,
+[00:26:24] some sort of contract,
+[00:26:25] without the planner having to over-specify
+[00:26:27] kind of up front.
+[00:26:30] And I think this is kind of the key innovation
+[00:26:32] that the Ralph Luke
+[00:26:33] never really had.
+[00:26:35] It had a kind of fixed plan.md style
+[00:26:39] kind of thing.
+[00:26:40] But nobody on the other side
+[00:26:42] is necessarily arguing with kind of the main loop.
+[00:26:45] And again,it comes back to like
+[00:26:46] having these separate context windows
+[00:26:48] and adversarial pressure.
+[00:26:50] So let me show you an example of
+[00:26:53] a very simple prompt that we had
+[00:26:57] in a solo kind of loop
+[00:26:59] versus the harness that we just discussed.
+[00:27:02] So the prompt was basically
+[00:27:05] build a retro game maker.
+[00:27:07] And that was it.
+[00:27:10] And I'm not,you know,
+[00:27:12] gonna try and convince you
+[00:27:14] that this is like necessarily the most
+[00:27:16] cost effective or most efficient way
+[00:27:18] to try and build an app.
+[00:27:20] As you can see,one,it takes
+[00:27:22] at the moment,an extremely long amount of time.
+[00:27:25] Two,it's very expensive.
+[00:27:27] But also,as we'll see in a second,
+[00:27:30] a lot of the stuff actually starts working only
+[00:27:32] with this harness
+[00:27:34] when it didn't in a kind of a solo loop.
+[00:27:36] So this is what it kind of looked like,
+[00:27:40] the opening screen,at least,
+[00:27:41] when we didn't have the harness.
+[00:27:43] Pretty simplistic,a little bit boring.
+[00:27:46] But it still looks nice,right?
+[00:27:48] If this were the whole app,you'd ship it.
+[00:27:51] But it's kind of the bait,I guess,if you will.
+[00:27:55] This was kind of the sprite editor,if you will.
+[00:27:59] Again,it still looks fine.
+[00:28:01] The canvas is there,the palette,
+[00:28:03] the frame timeline,live preview.
+[00:28:05] Maybe it's a little bit cramped,
+[00:28:08] and the color picker is just black swatches,
+[00:28:10] but it kind of works.
+[00:28:12] Clearly,the agent actually did understand
+[00:28:14] what it was trying to do.
+[00:28:16] And then,the one thing the app actually has to do,
+[00:28:20] which is play mode.
+[00:28:22] Entities rendered,score,health,
+[00:28:25] all the other things which go into an actual game,
+[00:28:27] pressing an arrow key does nothing,
+[00:28:29] pressing a space key did nothing.
+[00:28:31] The agent really didn't have any idea
+[00:28:34] how to test itself,
+[00:28:37] what it actually meant to play a game
+[00:28:39] and actually succeed.
+[00:28:41] And,yeah,this is kind of the same prompt,same model,
+[00:28:46] and this is kind of the breaking point.
+[00:28:49] It kind of looks down on the surface,
+[00:28:51] but when you try and actually push it to its limits,
+[00:28:53] it just kind of failed.
+[00:28:55] And then,if we ran the same prompt with the same model,
+[00:28:58] this is kind of what it looked like
+[00:28:59] when we ran the harness.
+[00:29:01] So this was about,yeah,200 bucks,6 hours.
+[00:29:06] First up,it decided to name itself Retroforge.
+[00:29:11] It decided to create a new project dialogue,
+[00:29:14] have a very nice canvas.
+[00:29:16] None of that was in our prompt.
+[00:29:18] So this was all the planner deciding,
+[00:29:21] like,okay,here's what the product decisions
+[00:29:23] should look like.
+[00:29:25] And then,the two other agents deciding,right,
+[00:29:27] how am I going to test this?
+[00:29:30] If we look at the sprite editor,
+[00:29:32] we have kind of a full 54 color palette,
+[00:29:36] the kind of 8-bit preset
+[00:29:38] from the project dialogue flowing through.
+[00:29:41] You see the sprite at actual game scale.
+[00:29:46] It's a lot more complete
+[00:29:48] as a product in general.
+[00:29:51] We had a whole new kind of
+[00:29:53] AI level assistant.
+[00:29:55] This is where it's kind of started to get recursive.
+[00:29:58] The planner had decided,like,right,
+[00:30:00] we should have some AI features,
+[00:30:02] which is just a vague line in the spec.
+[00:30:05] And the harness turned that
+[00:30:06] into a full AI level assistant
+[00:30:08] inside the app that it was building.
+[00:30:10] So,you know,someone could come in and say,
+[00:30:12] hey,create a castle
+[00:30:14] with sprites guarding it,let's say.
+[00:30:19] This is something which the solo rom
+[00:30:20] would never even attempted to look at.
+[00:30:23] Without a planner,that phrase just becomes,
+[00:30:25] never even becomes like a work item to look at.
+[00:30:28] Then finally,I guess,
+[00:30:32] the actual results kind of applied.
+[00:30:35] So,play modes.
+[00:30:39] You know,you have this whole
+[00:30:40] debug hud in the top left,
+[00:30:42] which you can clearly tell
+[00:30:43] is to make life easier
+[00:30:45] for the evaluator,for example.
+[00:30:47] Those numbers are live.
+[00:30:48] The physics loop is actually running.
+[00:30:51] Arrow keys work.
+[00:30:52] The player moves.
+[00:30:54] Collide was castle wars.
+[00:30:56] Because the evaluator
+[00:30:58] actually launched the game,tried to play it,
+[00:31:00] knew necessarily,like,
+[00:31:02] what features
+[00:31:04] need to be tested
+[00:31:05] to make this game
+[00:31:06] real and successful.
+[00:31:08] The difference between this output
+[00:31:10] and the previous output
+[00:31:11] is entirely just scaffolding.
+[00:31:13] It's a very simple loop,ultimately,
+[00:31:14] but the results are quite
+[00:31:15] startlingly different,at least.
+[00:31:17] And so,in case you're curious,
+[00:31:20] the kind of things which
+[00:31:22] the evaluator did catch
+[00:31:25] are pretty basic kind of stuff.
+[00:31:27] It's things like,you know,
+[00:31:31] fast API route ordering,
+[00:31:33] passes every unit test,
+[00:31:35] but might actually break and prod,
+[00:31:37] the evaluator catching things
+[00:31:39] like the delete key,
+[00:31:41] having some kind of Boolean logic bug.
+[00:31:44] Again,these are things
+[00:31:46] which were only caught
+[00:31:47] because the evaluator
+[00:31:48] is actually using the app.
+[00:31:50] It's things which might get
+[00:31:51] through CI in a Ralph loop,
+[00:31:54] but this isn't,you know,
+[00:31:57] that level of specificity
+[00:31:59] isn't something which
+[00:32:00] happened by accident.
+[00:32:01] And so,this is the kind of
+[00:32:04] level of detail
+[00:32:05] which these models are kind of
+[00:32:06] going to at this point in time.
+[00:32:07] So,we talked about
+[00:32:08] the kind of contracts
+[00:32:09] that the generator
+[00:32:11] and the evaluator
+[00:32:12] would write between themselves.
+[00:32:13] For this app,
+[00:32:14] it decided that there were
+[00:32:16] 27 contract criteria.
+[00:32:17] That's the level of granularity
+[00:32:19] which we found,you know,
+[00:32:20] that you really need
+[00:32:21] to make findings
+[00:32:22] kind of actionable.
+[00:32:24] If you have vague criteria,
+[00:32:25] you have vague critiques,
+[00:32:26] the generator just kind of
+[00:32:27] shrugs and does things,
+[00:32:29] whereas if you have
+[00:32:30] granular criteria,
+[00:32:31] the agent knows,okay,
+[00:32:33] I need to fix this exact line.
+[00:32:40] What's kind of interesting,
+[00:32:41] I thought,you know,
+[00:32:42] and I want to be honest
+[00:32:43] about this part,
+[00:32:44] is that out the box,
+[00:32:45] Claude is a really,really bad
+[00:32:46] just general QA agent.
+[00:32:49] Andrew talked about this
+[00:32:51] a little bit in his bit,right?
+[00:32:53] But the same kind of
+[00:32:55] sicophancy and generosity bias
+[00:32:56] that everyone hits with
+[00:32:58] general elements of
+[00:32:59] judge systems also applies here.
+[00:33:02] Most of the time in early runs,
+[00:33:03] it would,you know,
+[00:33:04] the QA agent would
+[00:33:05] kind of find a bug
+[00:33:06] and be like,fix it later.
+[00:33:09] Might take two weeks.
+[00:33:10] And then just kind of
+[00:33:11] like be done with it.
+[00:33:14] So we actually had to spend
+[00:33:15] an exorbitant amount of time
+[00:33:16] by going through,trying to
+[00:33:19] tune,you know,small layout
+[00:33:20] bugs,edge cases,and kind of
+[00:33:23] feeding that into the prompts.
+[00:33:25] I wish there was some kind of
+[00:33:27] secret to actually doing this,
+[00:33:28] but realistically,the whole
+[00:33:31] kind of art to building this
+[00:33:32] system and making it good
+[00:33:34] was kind of reading the traces.
+[00:33:37] The primary debugging
+[00:33:38] loop was this,and not
+[00:33:39] necessarily running more
+[00:33:40] experiments is this.
+[00:33:41] It was reading what
+[00:33:42] the agent actually did,
+[00:33:44] finding where its
+[00:33:45] judgment diverged from
+[00:33:47] ours as humans,and then
+[00:33:48] tuning the prompt for that.
+[00:33:51] It was the same kind of
+[00:33:52] muscle as reading kind of
+[00:33:53] a stack trace.
+[00:33:56] One kind of tooling tip
+[00:33:57] that we had was kind of
+[00:33:58] piping agent transcripts
+[00:34:00] into files,kind of grapping
+[00:34:02] them with another agent,or
+[00:34:03] having another agent kind of
+[00:34:04] go through them,and then
+[00:34:06] kind of update the prompts
+[00:34:07] itself,so you have some
+[00:34:08] sort of like closing the
+[00:34:09] loop,even on just like
+[00:34:10] building this harness out.
+[00:34:12] So the last thing I
+[00:34:15] kind of wanted to talk
+[00:34:16] about was how to think
+[00:34:19] about adjusting your harness
+[00:34:21] as these models kind of
+[00:34:22] get better in time.I think
+[00:34:24] there's a lot of like
+[00:34:25] discussion around whether
+[00:34:26] harness design is kind of
+[00:34:27] dead or null,especially
+[00:34:28] with,you know,models that
+[00:34:30] I mean,when I wrote this,it
+[00:34:31] was just opus 4.6,but
+[00:34:32] even like mythos,you
+[00:34:33] know,level models.And I
+[00:34:36] think the key thing that we
+[00:34:39] noted is it's really
+[00:34:41] important to get a feel for
+[00:34:42] what the kind of,what the
+[00:34:44] spiky behaviors of any
+[00:34:46] individual model are,and
+[00:34:47] then try and adapt your
+[00:34:48] harness to kind of fill
+[00:34:49] the gaps.So Andrew talked
+[00:34:53] about this a bit,but,you
+[00:34:54] know,context resetting
+[00:34:55] between sessions,we kind
+[00:34:56] of dropped that entirely.Opus
+[00:34:58] 4.5 used to have really bad
+[00:34:59] kind of context anxiety,
+[00:35:02] whereas opus 4.6 just,you
+[00:35:04] know,didn't,as part of
+[00:35:07] post-training there.And so
+[00:35:09] one continuous session and
+[00:35:10] compaction was more than
+[00:35:11] enough to handle very long
+[00:35:13] sessions.
+[00:35:14] Sprint decomposition,we
+[00:35:16] don't have a very strong
+[00:35:17] opinion on this,but it
+[00:35:18] was something which was
+[00:35:19] really,really critical to
+[00:35:20] getting opus 4.5 to work,but
+[00:35:25] opus 4.6 was able to
+[00:35:26] kind of hold a two-hour
+[00:35:28] continuous build
+[00:35:29] coherently in a way
+[00:35:31] without necessarily having
+[00:35:32] to be force-fed one
+[00:35:33] feature at a time.The
+[00:35:35] cadence at which the
+[00:35:37] evaluator should run,previously
+[00:35:39] we were running at every
+[00:35:40] single sprint per se,whereas
+[00:35:42] now we were just writing
+[00:35:43] at the end of a
+[00:35:44] one-shot generation from
+[00:35:46] the model and then
+[00:35:47] parting back.So the
+[00:35:48] harness is still the same,
+[00:35:49] we're just kind of
+[00:35:50] simplifying the specific
+[00:35:52] kind of loops and the
+[00:35:54] kind of recipe that
+[00:35:55] kind of goes into it.The
+[00:35:56] lesson isn't necessarily
+[00:35:57] our harness was wrong,but
+[00:35:59] rather it was right for
+[00:36:01] 4.5,the frontier moved,and
+[00:36:03] we ran a simplified
+[00:36:04] version to see how it
+[00:36:06] worked.So this is kind of
+[00:36:09] what the final kind of
+[00:36:10] setup kind of looks like
+[00:36:12] today.Having that plan
+[00:36:14] generator evaluator loop
+[00:36:16] is still the kind of
+[00:36:17] core of our system,but
+[00:36:18] you can see we kind of
+[00:36:19] ditched a bunch of the
+[00:36:20] other kind of
+[00:36:23] components that made
+[00:36:25] this slightly more
+[00:36:26] complicated than it had
+[00:36:27] to be.We also,as kind
+[00:36:29] of mentioned,big fan of
+[00:36:30] just using a file system
+[00:36:31] for shared state instead
+[00:36:33] of kind of leaning on
+[00:36:34] context windows for very
+[00:36:35] long-running agents in
+[00:36:36] general.And this is an
+[00:36:39] example of the simplified
+[00:36:42] harness running with one
+[00:36:44] of our latest models.Again,
+[00:36:48] very,very expensive,but
+[00:36:50] you can see it's actually
+[00:36:51] roughly like half the
+[00:36:52] cost of the previous runs,just
+[00:36:55] because we're kind of
+[00:36:57] doing things in a slightly
+[00:36:58] more simplified manner,but
+[00:36:59] it's still running over a
+[00:37:00] very,very extended period
+[00:37:01] of time.And so this is an
+[00:37:05] example of a DAW,which is
+[00:37:07] basically just like a
+[00:37:08] music-creating app,if
+[00:37:10] you will.The agent sets
+[00:37:13] the tempo.It keeps the
+[00:37:15] tune,it lays down the
+[00:37:16] melody,it builds the
+[00:37:17] drum tracks.This is the
+[00:37:18] evaluator actually going
+[00:37:21] and testing the app
+[00:37:24] itself.We did actually
+[00:37:27] listen to,like,the music
+[00:37:28] in this.Obviously,Claude
+[00:37:31] can't hear at the moment,and
+[00:37:33] so the music was pretty
+[00:37:34] trash,but the app was
+[00:37:36] really good in general and
+[00:37:38] pretty fleshed out,which,
+[00:37:39] you know,a model ago,this
+[00:37:41] is something which would
+[00:37:42] never have worked,but this
+[00:37:44] is something which was
+[00:37:45] possible with just a
+[00:37:46] couple rounds,and this
+[00:37:48] is kind of that meter
+[00:37:49] curve,which Andrew was
+[00:37:50] talking about kind of
+[00:37:51] really in action.And so I
+[00:37:55] kind of wanted to close
+[00:37:56] just by saying you don't
+[00:37:58] necessarily need,you know,our
+[00:37:59] entitle harness to go away
+[00:38:00] and start thinking about
+[00:38:01] this.We are constantly
+[00:38:03] trying to ship bits of,you
+[00:38:05] know,these primitives into
+[00:38:07] Code Code directly,but also
+[00:38:09] there's nothing stopping
+[00:38:10] you from just going ahead
+[00:38:11] and building something
+[00:38:12] similar to this,kind of on
+[00:38:13] your own.So we just shipped,you
+[00:38:14] know,auto mode is
+[00:38:15] probably my favorite
+[00:38:16] thing for slightly more,you
+[00:38:18] know,safe yellow,if you
+[00:38:20] will,instead of running
+[00:38:21] dangerously skip permissions
+[00:38:22] all the time.We already have
+[00:38:26] custom subagents as a
+[00:38:27] primitive,right?Your
+[00:38:28] evaluator,your QA role,give
+[00:38:30] it a harsh system prompt in
+[00:38:31] a very detailed rubric.Play
+[00:38:33] Write MCP or Cloud for
+[00:38:35] Chrome MCP,already
+[00:38:36] extremely,extremely good at
+[00:38:41] web app stuff,or just use
+[00:38:42] computer use if you're
+[00:38:43] building kind of native apps.
+[00:38:44] So we just shipped auto mode
+[00:38:45] and skills,again,a very
+[00:38:48] nice way to package your
+[00:38:49] grading rubrics into your
+[00:38:50] general development flow.So
+[00:38:53] yeah,five things,if you're
+[00:38:56] taking a photo,this is the
+[00:38:57] slide I would say to
+[00:38:59] remember.Self evaluation,very
+[00:39:02] much a trap,just use an
+[00:39:04] adversarial evaluator.Compaction
+[00:39:07] doesn't necessarily,does not
+[00:39:09] equal kind of coherence,right?
+[00:39:11] Lossy summaries really
+[00:39:12] drift.Structured handoffs and
+[00:39:15] clean context are not
+[00:39:16] a very good pattern
+[00:39:17] what we've seen.Don't
+[00:39:19] think that subjective
+[00:39:20] quality isn't gradable.If
+[00:39:22] you have a strong view on
+[00:39:23] what something should look
+[00:39:24] like,then kind of force
+[00:39:26] yourself to write it down.We
+[00:39:28] found this made kind of a
+[00:39:29] really massive difference to
+[00:39:31] the quality of kind of apps
+[00:39:33] that a model was able to
+[00:39:34] generate.And then kind of
+[00:39:35] finally was really just,you
+[00:39:37] know,sit with the model,read
+[00:39:39] the traces.Only then can
+[00:39:41] you kind of really know what
+[00:39:43] bits of a scaffold to delete.
+[00:39:45] What bits to keep,especially
+[00:39:47] as a kind of frontier moves.But
+[00:39:50] yeah,that's it from me.Thank
+[00:39:52] you very much for
+[00:39:53] listening.And yeah,check
+[00:39:55] out our blog post.But I
+[00:40:01] wanted to just open up for
+[00:40:02] Q&A in general,because
+[00:40:03] we've been yapping for like
+[00:40:04] close to an hour now.So if
+[00:40:06] you have any questions for
+[00:40:07] me and Andrew,just fire away.
+[00:40:09] We'll do our best to try
+[00:40:10] and answer them.Yeah.
+[00:40:12] Thank you.Joanne
+[00:40:13] from Poleside.One
+[00:40:14] question for you is that
+[00:40:16] if you have any questions
+[00:40:19] for me and Andrew,just fire
+[00:40:20] away.We'll do our best to
+[00:40:21] answer them.One question
+[00:40:22] for you,when you
+[00:40:23] improve the evaluator by
+[00:40:25] reading the logs and
+[00:40:26] improving it,is that
+[00:40:28] sort of like on a
+[00:40:29] per-project basis,or more
+[00:40:31] of a secret source that
+[00:40:32] you reuse across project?The
+[00:40:34] goal was very much to try
+[00:40:36] and do this in a way which
+[00:40:37] was reusable,right?Like,I
+[00:40:40] think anyone can tune this
+[00:40:41] in a way that's creating,you
+[00:40:43] know,a very specific type of
+[00:40:44] app,that's fine.At that
+[00:40:45] point,it's not that
+[00:40:46] different from,you know,going
+[00:40:47] ahead and just prompting
+[00:40:48] call code yourself and
+[00:40:49] doing it,right?I think
+[00:40:50] there's a lot of
+[00:40:51] common patterns that
+[00:40:52] you can kind of draw
+[00:40:53] across the model
+[00:40:54] weak points,right?So
+[00:40:55] talking to that kind of
+[00:40:56] front-end design piece,we
+[00:40:57] knew like what we thought
+[00:40:58] good design would be,right?You
+[00:40:59] could give examples like
+[00:41:00] this is what,you know,a
+[00:41:01] read before pro looks
+[00:41:02] like,this is what AI
+[00:41:03] slop looks like,right?And
+[00:41:04] that generalizes
+[00:41:05] quite well.So,yeah,this
+[00:41:06] was all around web apps,but
+[00:41:07] it could quite easily
+[00:41:08] apply to other kind of
+[00:41:09] things as well.Thanks
+[00:41:10] for this talk.Thank
+[00:41:11] you very much.Thank
+[00:41:12] you very much.Thank
+[00:41:13] you very much.Thank
+[00:41:14] you very much.Thank
+[00:41:15] you very much.Thank
+[00:41:16] you very much.Thank
+[00:41:17] you very much.Thank
+[00:41:18] you very much.Thank
+[00:41:25] you very much.Thank
+[00:41:28] you very much.Thank
+[00:41:29] you very much.Thank
+[00:41:30] you very much.Thank
+[00:41:32] you very much. Thank
+[00:41:34] your presentation. Panch
+[00:41:36] I was just wondering
+[00:41:37] what is your view on
+[00:41:39] concept of dumb zone
+[00:41:40] and smart zone of
+[00:41:41] a model?So I
+[00:41:42] understand like before
+[00:41:43] it was around divert
+[00:41:44] percent. Now,with one
+[00:41:45] bet pretty
+[00:41:46] in context,it's about
+[00:41:47] 100K,is what
+[00:41:48] understanding,and we
+[00:41:49] have a
+[00:41:50] Proof, subsidi trial
+[00:41:51] for照 mankind
+[00:41:52] neatly shared problem.So
+[00:41:53] basically,we are
+[00:41:54] keeping model
+[00:41:55] works in smart.So
+[00:41:56] basically
+[00:41:56] dio escuch
+[00:41:57] model
+[00:41:58] nujILL
+[00:41:59] Developer
+[00:42:00] I think
+[00:42:00] 我们想要在百分之百以下的项目下断
+[00:42:03] 所以它在百分之百的阻力区域内执行任务
+[00:42:06] 我理解你的介绍是
+[00:42:08] 你不再使用它了
+[00:42:10] 因为我们现在可以依靠
+[00:42:12] 综合性组成的方式
+[00:42:14] 这是你建议的吗
+[00:42:17] 还是像Ralph所说的
+[00:42:19] 综合性组成的方式
+[00:42:21] 仍然有自己的位置
+[00:42:23] 根据Smart和DumpZone的概念
+[00:42:29] 我认为从Ash的介绍
+[00:42:32] 以及我的介绍
+[00:42:33] 你可以看到现在的1亿的
+[00:42:35] 选项标题现在是GA
+[00:42:37] 所以你可以使用更大的选项
+[00:42:39] 模型比较健康
+[00:42:41] 所以它们可以保持
+[00:42:42] 在选项标题内的长时间内
+[00:42:44] 持续的适应
+[00:42:45] 而且其实
+[00:42:46] 在4.6的开发之后
+[00:42:48] 我们决定从新的选项标题
+[00:42:50] 移到一个
+[00:42:51] 长时间的继续设计
+[00:42:53] 以维修
+[00:42:55] 所以我认为
+[00:42:56] 无论你使用哪个选项
+[00:42:59] 无论是几次新的选项
+[00:43:01] 还是一个长时间的选项
+[00:43:03] 根据你所看到的
+[00:43:05] 最佳选项
+[00:43:06] 可能仍然是适应
+[00:43:08] 但至少
+[00:43:09] 在4.6的
+[00:43:10] 选项标题上
+[00:43:12] 我们看到
+[00:43:13] 使用一个选项
+[00:43:14] 是有可能的
+[00:43:15] 不知道你想说什么
+[00:43:17] 我觉得这也是
+[00:43:18] 一个 temporary的问题
+[00:43:20] 例如
+[00:43:21] context-wrought
+[00:43:23] 是
+[00:43:24] 今天的模型的
+[00:43:25] 失败
+[00:43:26] 到某种程度
+[00:43:27] 甚至是
+[00:43:28] 甚至是
+[00:43:29] 前一阵子的模型
+[00:43:31] 所以
+[00:43:32] 是否有选项
+[00:43:33] 适合
+[00:43:34] 你所谈论的选项
+[00:43:35] 我认为
+[00:43:36] 是的
+[00:43:37] 根据选项的选项
+[00:43:38] 但
+[00:43:39] 不像
+[00:43:40] 我认为
+[00:43:41] 我认为
+[00:43:42] 我会
+[00:43:43] 我会
+[00:43:44] 我会寻找
+[00:43:45] 模型的选项
+[00:43:46] 我可以把选项
+[00:43:47] 删除
+[00:43:53] 我们经常有
+[00:43:54] 谈论
+[00:43:55] 谈论
+[00:43:56] 你说
+[00:43:57] 谈论MCP
+[00:43:58] 谈论技能
+[00:43:59] 你能说
+[00:44:00] 如何
+[00:44:01] 改善谈论
+[00:44:02] 因为
+[00:44:03] 我认为
+[00:44:04] 我会想要
+[00:44:05] 把网址打开
+[00:44:06] 然后
+[00:44:07] 我可以看到
+[00:44:08] 模型
+[00:44:09] 正在运作
+[00:44:10] 然后
+[00:44:11] 我可以把它
+[00:44:12] 调动
+[00:44:13] 把几个按钮打开
+[00:44:14] 但是
+[00:44:16] 是的
+[00:44:17] 有什么新产品
+[00:44:18] 我错过了吗
+[00:44:19] 还是
+[00:44:20] 是
+[00:44:21] MCP
+[00:44:22] 你讨论
+[00:44:23] 人们使用
+[00:44:24] 我认为
+[00:44:25] MCP
+[00:44:26] 或者用Chrome的网址
+[00:44:27] MCP
+[00:44:28] 就是
+[00:44:30] 比较
+[00:44:31] 更坚定的
+[00:44:32] 网址控制
+[00:44:33] 我认为
+[00:44:34] 我不知道为什么
+[00:44:35] 你不想看到它做事情
+[00:44:36] 我说你可以
+[00:44:37] 但是我觉得
+[00:44:38] 今天是一个信任的缺点
+[00:44:39] 你知道
+[00:44:40] 我们现在想做的整个问题是
+[00:44:41] 你设定了一个东西
+[00:44:44] 你相信它做事
+[00:44:45] 做工作
+[00:44:46] 测试它
+[00:44:47] 你相信它做得对
+[00:44:48] 然后你回到它
+[00:44:49] 那就是
+[00:44:50] 是的
+[00:44:51] 在开始的时候
+[00:44:52] 你会看到
+[00:44:53] 看着
+[00:44:54] 看着绘图
+[00:44:55] 直到你能相信它
+[00:44:56] 但是
+[00:44:57] 至少在内
+[00:44:59] 当我做全数加工程师的时候
+[00:45:01] 我现在到了一个状态
+[00:45:04] 我现在觉得
+[00:45:05] OK
+[00:45:06] 跟Opus 4.6一样
+[00:45:07] 我可以信任这些模型
+[00:45:08] 可以去读
+[00:45:10] 网络诡计
+[00:45:13] 档案误解
+[00:45:16] 实际上在应用程序中
+[00:45:18] 按下转到需要的地方
+[00:45:20] 现在的视觉
+[00:45:21] 在这些模型上
+[00:45:22] 已经够了
+[00:45:23] 我可以去诊息
+[00:45:24] 适应的文字
+[00:45:25] 和其他东西
+[00:45:26] 但这并不实际
+[00:45:28] 直到
+[00:45:29] 实际上
+[00:45:30] 最后一代的模型
+[00:45:32] 所以
+[00:45:33] 是的
+[00:45:34] 對,我會推薦
+[00:45:37] 我好奇,在Generator和Evaluator的模式上
+[00:45:49] 你會把限定的Token放進去嗎?
+[00:45:53] 還是會停止,因為Evaluator不夠好?
+[00:45:57] 你能告訴我更多嗎?
+[00:45:59] 抱歉,請問一下
+[00:46:02] 我忘記了
+[00:46:03] 好,我可以說
+[00:46:05] 我可以說我會創造一個很酷的遊戲
+[00:46:09] 有某些功能
+[00:46:11] 如果Generator創造了Evaluator模式
+[00:46:14] 例如創造合約,建立應用程式
+[00:46:18] 如果我
+[00:46:22] 這會給我一些回饋,對嗎?
+[00:46:25] 我可以重新重新重新重新重新重新重新
+[00:46:27] 然後說,好的
+[00:46:29] 做得更好
+[00:46:30] 我不高興
+[00:46:32] Generator會選擇
+[00:46:34] Evaluator會選擇
+[00:46:36] 做得更好
+[00:46:37] 對
+[00:46:38] 或者Evaluator會
+[00:46:39] 在某個時刻不太好
+[00:46:40] 然後說
+[00:46:41] 這就是
+[00:46:43] 嗯
+[00:46:45] 我覺得
+[00:46:46] 首先
+[00:46:47] 如果你想要
+[00:46:48] 在這過程中
+[00:46:49] 有某種人類的程度
+[00:46:50] 那就
+[00:46:51] 你懂
+[00:46:52] 在某個時刻
+[00:46:53] 在這過程中
+[00:46:54] 做得更好
+[00:46:55] 嗯
+[00:46:56] 我覺得
+[00:46:57] 我們感到驚訝的部分
+[00:46:59] 嗯
+[00:47:00] 呃
+[00:47:01] 是
+[00:47:02] 這個
+[00:47:03] 這個基本模式
+[00:47:04] 特別是4.6系列模式
+[00:47:06] Sona和Opus
+[00:47:07] 非常願意
+[00:47:08] 把所有東西都丟掉
+[00:47:10] 即使
+[00:47:11] 做了10個過程
+[00:47:12] 但是
+[00:47:13] 它很開心
+[00:47:15] 把它們都丟掉
+[00:47:16] 從一開始
+[00:47:17] 如果
+[00:47:18] 有某種原因
+[00:47:19] 它沒有辦法
+[00:47:20] 在Evaluator中
+[00:47:21] 在一個有效性的方式
+[00:47:22] 抵抗
+[00:47:23] 輪迴
+[00:47:24] 之類的
+[00:47:25] 嗯
+[00:47:26] 因此
+[00:47:27] 因此
+[00:47:28] 當我們
+[00:47:29] 當我們在玩這類型的東西
+[00:47:30] 我們不自然地
+[00:47:31] 向
+[00:47:32] 有
+[00:47:34] 某種
+[00:47:35] 的
+[00:47:36] 重新
+[00:47:37] 或
+[00:47:38] Hue in the Loop
+[00:47:39] 類型的
+[00:47:40] 應用系統
+[00:47:41] 我猜
+[00:47:42] 我們真的沒有看出
+[00:47:43] 那種行為
+[00:47:44] 你剛才所說的
+[00:47:45] 那種行為
+[00:47:46] 就是
+[00:47:47] Evaluator
+[00:47:48] 就是
+[00:47:49] 呃
+[00:47:50] 我放棄了
+[00:47:51] 讓我們說
+[00:47:52] 嗯
+[00:47:53] 是的
+[00:47:54] 它更願意
+[00:47:55] 丟掉
+[00:47:56] 所有東西
+[00:47:57] 重新開始
+[00:47:58] 而這只是我們從來沒有看到的行為
+[00:47:59] 當它是
+[00:48:00] Generator
+[00:48:01] 它自己
+[00:48:02] 很自豪
+[00:48:03] 說
+[00:48:04] 我不會重新開始這件事
+[00:48:05] 嗯
+[00:48:06] 所以
+[00:48:07] 是的
+[00:48:08] 我想
+[00:48:09] 我看到的例子
+[00:48:10] Evaluator
+[00:48:11] 是
+[00:48:12] 你正在做的行為
+[00:48:13] 並不是正常的行為
+[00:48:14] 你可以
+[00:48:15] 刪除所有東西
+[00:48:16] 再重新開始嗎
+[00:48:17] 嗯
+[00:48:18] 這
+[00:48:19] 我不知道你們
+[00:48:20] 但
+[00:48:21] 我經常
+[00:48:22] 我經常
+[00:48:23] 作為人
+[00:48:24] 我經常
+[00:48:25] 作為人
+[00:48:26] 我經常
+[00:48:27] 利用新的空間
+[00:48:28] 不必要
+[00:48:29] 處理
+[00:48:30] 已經混亂的
+[00:48:31] 程序
+[00:48:32] 之類
+[00:48:33] 所以
+[00:48:36] 現在的模式
+[00:48:37] 已經
+[00:48:38] 達到這個程度
+[00:48:39] 但也
+[00:48:40] 簡短一點
+[00:48:41] 當然
+[00:48:42] 你可以開啓
+[00:48:43] 這個程序
+[00:48:44] 但
+[00:48:45] 我認為
+[00:48:46] 我們通常都在想
+[00:48:47] 什麼樣的行為
+[00:48:48] 如果是
+[00:48:49] 反過來的行為
+[00:48:50] 因為
+[00:48:51] 這就是
+[00:48:52] 建立一個
+[00:48:53] 非常複雜的
+[00:48:54] 遊戲應用
+[00:48:55] 你不知道
+[00:48:56] 會否需要三小時
+[00:48:57] 會否需要二十小時
+[00:48:58] 有點不明顯
+[00:48:59] 所以
+[00:49:00] 可能
+[00:49:01] 中間有些事情
+[00:49:02] 會有更多的
+[00:49:03] 對
+[00:49:07] 反應
+[00:49:08] 我
+[00:49:09] 我真的喜歡
+[00:49:10] 你提到的
+[00:49:12] 你
+[00:49:13] 知道
+[00:49:14] 這裡有一個
+[00:49:15] 人物的元素
+[00:49:16] 譬如
+[00:49:17] 你的
+[00:49:18] P.M.
+[00:49:19] 角色
+[00:49:20] 很多時候
+[00:49:21] 就是
+[00:49:22] 規格的
+[00:49:23] 保持時間
+[00:49:24] 之類的
+[00:49:25] 但是
+[00:49:26] 你只是
+[00:49:27] 放棄了
+[00:49:28] 你讓
+[00:49:29] 工程師
+[00:49:30] 在沙灘裡玩
+[00:49:31] 對嗎
+[00:49:32] 對
+[00:49:33] 是否有一個
+[00:49:34] 回復的
+[00:49:35] 綁匪的
+[00:49:36] 綁匪的
+[00:49:37] 綁匪的
+[00:49:38] 綁匪的
+[00:49:39] 綁匪的
+[00:49:40] 綁匪的
+[00:49:41] 綁匪的
+[00:49:42] 綁匪的
+[00:49:44] 綁匪的
+[00:49:45] 綁匪的
+[00:49:46] 綁匪的
+[00:49:47] 綁匪的
+[00:49:48] 綁匪的
+[00:49:49] 綁匪的
+[00:49:51] 綁匪的
+[00:49:53] 綁匪的
+[00:49:54] 綁匪的
+[00:49:55] 綁匪的
+[00:49:56] 綁匪的
+[00:49:57] 綁匪的
+[00:49:58] 綁匪的
+[00:49:59] 綁匪的
+[00:50:00] 綁匪的
+[00:50:01] 綁匪的
+[00:50:02] 綁匪的
+[00:50:03] 綁匪的
+[00:50:04] 綁匪的
+[00:50:05] 綁匪的
+[00:50:06] 綁匪的
+[00:50:07] 綁匪的
+[00:50:08] 綁匪的
+[00:50:09] 綁匪的
+[00:50:10] 綁匪的
+[00:50:11] 綁匪的
+[00:50:12] 綁匪的
+[00:50:13] 綁匪的
+[00:50:14] 綁匪的
+[00:50:15] 綁匪的
+[00:50:16] 綁匪的
+[00:50:17] 綁匪的
+[00:50:18] 但我們不想計劃者成為這個階段的主要部份
+[00:50:31] 它的目的應該是設定這個產品的重點
+[00:50:41] 但它的目的並不需要進入這個項目
+[00:50:45] 而是說這是一個不可能的項目
+[00:50:47] 我們不應該這樣做
+[00:50:49] 我們想要保持整個建築與發展的關係
+[00:50:57] 說到這個階段
+[00:50:59] 我使用了很多不同的方式
+[00:51:01] 它不需要只用一個發展和一個建築
+[00:51:04] 這個對抗性的交易可以使用
+[00:51:06] 一個不同的工序
+[00:51:08] 包括多個不同的部份
+[00:51:10] 對嗎
+[00:51:11] 我不知道
+[00:51:12] 如果你想要做
+[00:51:14] 比如說要發展E-VALS
+[00:51:16] 你可以使用一個類似的加工具
+[00:51:18] 比如說
+[00:51:19] 我們可以使用一個計劃器
+[00:51:22] 用來發展一個計劃器
+[00:51:24] 用來發展一個計劃器
+[00:51:26] 然後把工具交換成一個組合
+[00:51:28] 然後把工具交換成一個組合
+[00:51:30] 然後把工具交換成一個組合
+[00:51:32] 然後把工具交換成一個組合
+[00:51:34] 然後把工具交換成一個組合
+[00:51:36] 你可以把這個計劃器
+[00:51:38] 加進一個多步的工作程序
+[00:51:40] 我們每個建築員
+[00:51:42] 都會有一個不同的功能
+[00:51:44] 作為一個更長的工作程序
+[00:51:46] 所以
+[00:51:47] 有不同的方法
+[00:51:48] 可以把事情保持著
+[00:51:49] 根據這個任務的程序
+[00:51:50] 然後把這個整體的模式
+[00:51:52] 分成比較具體的
+[00:51:55] 任務或工作程序
+[00:51:58] 如果這樣說得對
+[00:52:01] 你提到
+[00:52:03] 一些後期的任務
+[00:52:06] 不可能使用
+[00:52:08] 一個比較早期的模式
+[00:52:09] 你可以談談你的過程
+[00:52:11] 和不同模式的工作
+[00:52:14] 例如你把同一個工作
+[00:52:16] 放在Opus 4.6
+[00:52:18] Opus 4.5的SONNET上
+[00:52:20] 還是用這個
+[00:52:22] 自動進行的
+[00:52:24] 模式來調整
+[00:52:26] 或是用這個模式來調整
+[00:52:28] 或是用這個模式來調整
+[00:52:31] 我認為我們可以
+[00:52:33] 走過歷史一點
+[00:52:35] 如果你看到
+[00:52:36] 第一次的網上貼文
+[00:52:37] 是長期的經營人
+[00:52:39] 而前期的貼文
+[00:52:40] 那裡有很大的分別
+[00:52:42] 例如我們剛才討論過的
+[00:52:44] 引擎人會建造
+[00:52:46] 這個超級複雜的
+[00:52:48] 200種不同的功能
+[00:52:50] 然後
+[00:52:52] 那裡的網絡
+[00:52:54] 會實際上要
+[00:52:55] 對每一個
+[00:52:56] 這些功能進行行動
+[00:52:57] 這可能會導致
+[00:52:58] 不正確的設計決定
+[00:53:00] 但是會被強迫
+[00:53:01] 進行這種行動
+[00:53:02] 而現在
+[00:53:04] 我認為
+[00:53:05] 你現在可以
+[00:53:06] 擁有一個比較
+[00:53:07] 具體的創意方式
+[00:53:09] 例如Opus 4.6
+[00:53:11] 你不只要
+[00:53:12] 擁有這個
+[00:53:13] 創意輸出器的
+[00:53:14] 輪圈
+[00:53:15] 但是
+[00:53:16] 你的模式選擇
+[00:53:17] 對你的
+[00:53:18] 創意設計
+[00:53:19] 非常影響
+[00:53:20] 當然
+[00:53:21] 在一個完美的世界
+[00:53:22] 你可以把所有東西
+[00:53:23] 都丟進去
+[00:53:24] 例如Opus 4.6
+[00:53:25] 但如果你有
+[00:53:26] 額外的擔心
+[00:53:27] 例如
+[00:53:28] 你使用Opus 4.6
+[00:53:29] 來計劃
+[00:53:30] 然後
+[00:53:31] 用Sonic 4.6
+[00:53:32] 來計劃
+[00:53:33] 創意輸出
+[00:53:34] 這是我們
+[00:53:35] 經常看到的
+[00:53:36] 但
+[00:53:37] 如果你
+[00:53:38] 想要
+[00:53:39] 建立一個
+[00:53:40] 完美的創意輸出器
+[00:53:42] 你會想要
+[00:53:43] 做一些評估
+[00:53:44] 以為
+[00:53:45] 你能夠
+[00:53:46] 理解這個模式
+[00:53:47] 以及
+[00:53:48] 它的表現
+[00:53:52] 如何表現
+[00:53:53] 對於這個任務
+[00:53:54] 然後
+[00:53:55] 再去強化
+[00:53:56] 你有任何建議
+[00:53:57] 在
+[00:53:58] 這些
+[00:53:59] 一鏡的
+[00:54:00] 應用
+[00:54:01] 和
+[00:54:02] 長命的產品
+[00:54:03] 之間
+[00:54:04] 你會想要
+[00:54:05] 改變
+[00:54:06] 幾天
+[00:54:07] 幾星期後
+[00:54:08] 你會想要
+[00:54:09] 做什麼
+[00:54:10] 你會想要
+[00:54:11] 知道
+[00:54:12] 對你所說的
+[00:54:13] 任務
+[00:54:14] 像在
+[00:54:15] 也可以
+[00:54:16] 因為
+[00:54:17] 我
+[00:54:20] 我
+[00:54:21] 我
+[00:54:22] 覺得
+[00:54:23] 我
+[00:54:24] 我
+[00:54:25] 我
+[00:54:26] 我
+[00:54:27] 我
+[00:54:28] 我
+[00:54:29] 我
+[00:54:30] 真的
+[00:54:31] 我
+[00:54:32] 真的
+[00:54:33] 我
+[00:54:36] 真的
+[00:54:37] 真的
+[00:54:38] 想要
+[00:54:39] 是
+[00:54:40] 做
+[00:54:41] 一個
+[00:54:42] 一個
+[00:54:43] 一般是使用文件系统的状态
+[00:54:46] 做这种连接
+[00:54:47] 第一是因为它很容易
+[00:54:48] 让另一个模型进入
+[00:54:49] 并复杂
+[00:54:51] 并复杂发生的东西
+[00:54:53] 但是我喜欢做的一件事
+[00:54:56] 是在这种连接中
+[00:54:59] 刺激几个小部分
+[00:55:00] 这基本上就是让它
+[00:55:01] 写一些学习的数据
+[00:55:03] 进入某种JSON文件
+[00:55:06] 因为模型不需要太多复杂
+[00:55:09] 所以最好的是
+[00:55:13] 你基本上只是在刺激
+[00:55:14] 另一个模型的线条
+[00:55:16] 所以坦白说
+[00:55:18] 对我来说
+[00:55:19] 我如何教导这种连接
+[00:55:22] 让人进入
+[00:55:24] 然后再用绘图
+[00:55:26] 所以在一般的情况下
+[00:55:28] 那个文件的形状可能是
+[00:55:32] 试试这个
+[00:55:33] 测试者找到这个不合适
+[00:55:35] 使用了这个连接
+[00:55:37] 这个连接成功
+[00:55:38] 是的 继续
+[00:55:38] 然后继续
+[00:55:39] 你会有一个时间线
+[00:55:42] 那种
+[00:55:44] 就像你们所说的时间线
+[00:55:45] 就是模型的所有试试
+[00:55:46] 它的精确性和最底层
+[00:55:48] 然后也会有
+[00:55:51] 那种直播的
+[00:55:54] 设定
+[00:55:55] 或者是非常高层的
+[00:55:57] 这里是文件的结构
+[00:55:58] 那些两个文件
+[00:55:59] 坦白说
+[00:56:00] 其实是复杂的
+[00:56:01] 只是为了让人来进入
+[00:56:02] 和开始辨认网上
+[00:56:04] 所以我们现在就是这样
+[00:56:06] 嗯哼
+[00:56:13] 完美
+[00:56:14] 嗯
+[00:56:15] 所以很好听的
+[00:56:17] 首先恭喜你的介绍
+[00:56:20] 然後我想問有兩種接觸方式
+[00:56:24] 比如說你有一組經理隊
+[00:56:26] 有幾個經理跟其他人互動
+[00:56:29] 然後有一個 explicit generator critic
+[00:56:32] 這個設定
+[00:56:35] 因為在某種意義上
+[00:56:37] 經理隊有同樣的設定
+[00:56:40] 主要的經理會教導某人
+[00:56:43] 然後作為經理的副經理
+[00:56:46] 但是現在的失敗模式
+[00:56:49] 讓我們仍然需要
+[00:56:51] 這個 specific generator critic harness
+[00:56:54] 而不是只是經理隊
+[00:56:58] 然後你認為
+[00:57:00] 我們需要多少個模式
+[00:57:02] 才能完全依賴經理隊
+[00:57:09] 我可以先解釋第一點
+[00:57:14] 首先,Claude Code
+[00:57:17] 使用同樣的harness
+[00:57:20] 就是經理的SDK
+[00:57:22] 所以你應該可以
+[00:57:24] 用Claude Code來建立這個模式
+[00:57:26] 經理隊是一個有用的模式
+[00:57:29] 可以這樣做的
+[00:57:31] 因為你可以說
+[00:57:33] 經理和經理會
+[00:57:35] 互動
+[00:57:37] 或者經理是經理的主人
+[00:57:39] 經理是經理隊的一員
+[00:57:44] 但我覺得
+[00:57:46] 我分享的第一篇文章
+[00:57:49] 我覺得那是
+[00:57:51] 某種程度上的結果
+[00:57:53] 嘗試將這個
+[00:57:54] 更為普遍的方式
+[00:57:55] 提供給大家
+[00:57:56] 但是你所限制的一件事
+[00:57:57] 當然是
+[00:57:58] Claude Code
+[00:57:59] 只能在你的機器上運作
+[00:58:01] 而經理的SDK
+[00:58:02] 你也可以在
+[00:58:03] 更多的網路環境
+[00:58:05] 或沙漠環境
+[00:58:06] 運作
+[00:58:07] 長時間
+[00:58:08] 而沒有它失敗
+[00:58:10] 或者你需要
+[00:58:11] 在你的機器上運作
+[00:58:13] 但我覺得
+[00:58:15] Claude Code是一個
+[00:58:16] 很好的測試基礎
+[00:58:17] 為了建立
+[00:58:18] 任何這種項鍊
+[00:58:20] 以測試
+[00:58:21] 探索
+[00:58:22] 看看有什麼效果
+[00:58:23] 以後
+[00:58:24] 你可以建立它
+[00:58:25] 成為Sdk的經理
+[00:58:26] 並且使用它
+[00:58:27] 作為自己的應用
+[00:58:28] 而對於
+[00:58:29] 我再說
+[00:58:30] 我只會測試
+[00:58:31] 如果經理隊
+[00:58:32] 是有意義的
+[00:58:33] 或
+[00:58:34] 如果只是
+[00:58:35] 使用普遍的
+[00:58:36] 或其他
+[00:58:37] 設計
+[00:58:38] 會更好
+[00:58:39] 但
+[00:58:40] 對
+[00:58:41] 我覺得
+[00:58:42] 人們使用經理隊
+[00:58:43] 有很多
+[00:58:44] 我不知道
+[00:58:45] 對
+[00:58:46] 這就是問題
+[00:58:47] 我覺得我們沒有
+[00:58:48] 一個正確的
+[00:58:49] 目標
+[00:58:50] 而是
+[00:58:52] 什麼是最好的
+[00:58:53] 在任何一刻
+[00:58:54] 的時間
+[00:58:55] 所以Boris
+[00:58:56] 總是發佈他的推特
+[00:58:57] 這是我現在做的
+[00:58:58] 現在
+[00:58:59] 像
+[00:59:00] 經理隊是
+[00:59:01] 一個人們
+[00:59:02] 在內心
+[00:59:03] 很喜歡的東西
+[00:59:04] 所以
+[00:59:05] 我們想
+[00:59:06] 好
+[00:59:07] 我們來測試
+[00:59:08] 看看別人的想法
+[00:59:09] 在這個領域
+[00:59:10] 我不是說我們會
+[00:59:11] 但是
+[00:59:12] 我們也會
+[00:59:13] 經常測試
+[00:59:14] 一些東西
+[00:59:15] 而我看到
+[00:59:16] Generator Evaluator
+[00:59:17] 是一個
+[00:59:18] 很正常的
+[00:59:19] 想法
+[00:59:20] 不需要
+[00:59:21] 太相反的
+[00:59:22] 設計
+[00:59:23] 你知道
+[00:59:24] 你可以想像
+[00:59:25] 你知道
+[00:59:26] 經典的
+[00:59:27] 團隊
+[00:59:28] 是
+[00:59:29] 你
+[00:59:30] 知道
+[00:59:31] 前端
+[00:59:32] 後端
+[00:59:33] 某種
+[00:59:34] 之間
+[00:59:35] 之間
+[00:59:36] 像
+[00:59:37] 中央
+[00:59:38] 每個
+[00:59:39] 都應該
+[00:59:40] 擁有自己的
+[00:59:41] 自己的
+[00:59:42] 偏向
+[00:59:43] 例如
+[00:59:44] 所以
+[00:59:45] 你可以看到
+[00:59:46] 兩種概念
+[00:59:47] 相互相合
+[00:59:48] 但現在
+[00:59:49] 目標不是
+[00:59:50] 在六小時內
+[00:59:51] 用一個手機
+[00:59:52] 一拍
+[00:59:53] 所以
+[00:59:54] 這不是
+[00:59:55] 必須的
+[00:59:56] 我們會
+[00:59:57] 通常
+[00:59:58] 輸入
+[00:59:59] 那裡
+[01:00:05] 所以
+[01:00:06] 是的
+[01:00:07] 我還在想
+[01:00:08] 你也試過
+[01:00:09] 像
+[01:00:10] 一位評判
+[01:00:11] 得到
+[01:00:12] Generator的
+[01:00:14] 概念
+[01:00:15] 你
+[01:00:16] 覺得
+[01:00:17] 如果
+[01:00:18] 他有
+[01:00:19] 一些
+[01:00:20] 記錄
+[01:00:21] 或者
+[01:00:22] 執行員
+[01:00:23] 可以用
+[01:00:25] 一個手機
+[01:00:26] 我會很懷疑
+[01:00:27] 我們試過
+[01:00:28] 但這是
+[01:00:29] 兩種
+[01:00:30] 模擬的
+[01:00:31] 想法
+[01:00:32] 之間的
+[01:00:33] 想法
+[01:00:34] 我覺得
+[01:00:35] 讓它
+[01:00:36] 判斷出
+[01:00:37] 出口
+[01:00:38] 而
+[01:00:39] 而
+[01:00:40] 而
+[01:00:41] 而
+[01:00:42] 而
+[01:00:43] 而
+[01:00:44] 而
+[01:00:45] 而
+[01:00:46] 而
+[01:00:47] 而
+[01:00:48] 而
+[01:00:49] 而
+[01:00:50] 而
+[01:00:51] 而
+[01:00:52] 而
+[01:00:53] 我
+[01:00:54] 我是
+[01:00:55] 錄影
+[01:00:56] 打裏
+[01:00:57] 這個
+[01:00:58] 是
+[01:00:59] 真的
+[01:01:00] 的是
+[01:01:04] 真的是
+[01:01:05] 是
+[01:01:06] 真的是
+[01:01:07] Yo
+[01:01:08] �
+[01:01:21] 那
+[01:01:25] 二講
+[01:01:27] I want to go back and see where it actually went wrong, but then I'm not able to figure out how to find those traces, what do you use for traceability is my question, when you have so many, like five, six agents running in background, like, yeah.
+[01:01:57] To be honest, a lot of us are just reading through traces by hand, we do a lot of that, I would say at Anthropic in general, just like reading through traces by hand, we also just like have, you know, hacked together various things where we, you know, point Claude at a bunch of traces with some custom prompts to try and identify, like, issues with the loop, like this is where it veered off and whatnot, we kind of use that as like a first pass, I would say, maybe, you know,
+[01:02:28] to just kind of like see where something might have gone wrong, but to be honest, by far and away, the best approach, at least, that we use internally is just reading the traces by hand, only then do you kind of like truly get to kind of relate to what the model is trying to actually do, yeah.
+[01:02:47] Thanks for the talk, I have a few questions, first of all, how do you measure the quality of a harness agent pair, is it, it feels like a vibe check, like it's a green field?
+[01:03:02] Let's build an app, but let's say you're going into a new project, maybe brownfield, it feels like a vibe check, or some kind of art, can you make it more scientific, or is that just not feasible?
+[01:03:19] I mean, the way that we've thought about it, at least, right, is like we specify the rubrics in kind of extreme detail at the kind of generator and evaluator level, right, so we talked about, for example, those four kind of criteria, that's very high level, the rubric, which we use for like design taste,
+[01:03:34] like, you know,
+[01:03:34] let's say, and so, we set those up for various bits of this app, right, so that can be just for the design element, maybe another piece for like how we think about kind of API design, let's say, code quality, whatever, and we kind of use those as the kind of various sort of rubrics which we're hill climbing against, right, and then the evaluator's jobs that, you know, encourage the builder to hill climb against those, and so, for any given app or output,
+[01:04:04] we have, like, a signal of, this is where the model started on those kind of criteria, and this is where we've kind of ended at, now, that's less useful for like kind of, like you said, working on kind of newer code bases, but it still applies, right, like, you could point, you just have to start the loop a different way, you just point the evaluator at a given code base, and be like, this is where we are now, and then give it the spec of what you're trying to achieve, and then let the loop kind of iterate against those, and so, that's kind of where we ended up.
+[01:04:35] 这些标准
+[01:04:36] 所以不需要一套
+[01:04:38] 在最后的设定
+[01:04:39] 而是
+[01:04:41] 这是我们认为好看的标准
+[01:04:43] 然后让
+[01:04:45] 测试员和设计员
+[01:04:47] 进行一系列的测试
+[01:04:49] 或合约
+[01:04:50] 需要满足的
+[01:04:51] 然后让它
+[01:04:52] 就像银河一样跨越那些
+[01:04:55] 这不太相似
+[01:04:56] 不同的产品和运营
+[01:04:59] 但它非常有用
+[01:05:01] 在一个产品或运营中
+[01:05:03] 还有这个
+[01:05:04] 这个特别的模式
+[01:05:06] 就像你所说的
+[01:05:08] 很适合绿色
+[01:05:09] 你可能会使用
+[01:05:10] react
+[01:05:10] 像Postgres
+[01:05:11] 是一个图案
+[01:05:12] 有Node在背面
+[01:05:13] 但你的Brownfield App
+[01:05:14] 可能会使用
+[01:05:15] 特别不同的东西
+[01:05:16] 或者我们创建的
+[01:05:18] 我们认为
+[01:05:19] 很好的设计模式
+[01:05:21] 可能会
+[01:05:22] 在你的项目上
+[01:05:23] 特别不同
+[01:05:24] 所以我觉得
+[01:05:25] 我们在设计这个
+[01:05:25] 是一个模式
+[01:05:26] 你能够
+[01:05:28] 对你的应用
+[01:05:28] 调整
+[01:05:34] 这就行了吗
+[01:05:35] 是的
+[01:05:36] 你用
+[01:05:38] 你用
+[01:05:38] 你用
+[01:05:39] 直接的图案
+[01:05:40] 自己的图案
+[01:05:40] 你如何合作
+[01:05:41] 作为一个团队
+[01:05:43] 我认为
+[01:05:43] 很难
+[01:05:44] 像
+[01:05:45] 我分享我的屏幕
+[01:05:46] 我工作在谈话中
+[01:05:49] 很难让人们继续
+[01:05:50] 而另一方面
+[01:05:52] 我认为
+[01:05:52] 很难指引
+[01:05:53] 如何提示
+[01:05:55] 你如何合作
+[01:05:56] 作为一个团队
+[01:05:57] 你有团队的图案吗
+[01:06:01] 嗯
+[01:06:04] 这可能是
+[01:06:04] 谷歌图案的好功能
+[01:06:08] 是的
+[01:06:10] 也许
+[01:06:11] 我认为
+[01:06:12] 我们可能有工作要做
+[01:06:13] 对吧
+[01:06:14] 我认为
+[01:06:17] 经常发生的事情
+[01:06:18] 在内
+[01:06:18] 就是
+[01:06:19] 人们提出这些想法
+[01:06:20] 然后他们总是
+[01:06:21] 被不同团队
+[01:06:22] 取决于最低的程度
+[01:06:23] 然后
+[01:06:24] 嗯
+[01:06:25] 这就是原来的工作
+[01:06:27] 你知道
+[01:06:27] 呃
+[01:06:28] 想象者
+[01:06:29] 应该说
+[01:06:29] 这就是
+[01:06:29] 在这种情况下
+[01:06:30] 可以维持
+[01:06:31] 并且
+[01:06:32] 能够
+[01:06:32] 为不同团队
+[01:06:33] 进行
+[01:06:34] 不同团队
+[01:06:35] 的
+[01:06:36] 选择
+[01:06:36] 然后
+[01:06:37] 你知道
+[01:06:38] 呃
+[01:06:38] 使用
+[01:06:38] 他们的部分
+[01:06:40] 的
+[01:06:40] 数据基础
+[01:06:40] 让我们说
+[01:06:41] 嗯
+[01:06:42] 但是我们没有任何
+[01:06:44] 好的
+[01:06:44] 东西
+[01:06:45] 在这方面
+[01:06:45] 我认为
+[01:06:45] 你知道
+[01:06:46] 甚至是
+[01:06:46] 观察能力
+[01:06:47] 像
+[01:06:47] 其他人所谈到的
+[01:06:48] 对吧
+[01:06:48] 是一个
+[01:06:49] 嗯
+[01:06:50] 通常来说
+[01:06:51] 一个
+[01:06:52] 未够完全解决的
+[01:06:53] 对于这些
+[01:06:54] 超长运作用
+[01:06:55] 呃
+[01:06:55] 资源
+[01:06:56] 嗯
+[01:06:57] 是的
+[01:06:57] 有趣的地方
+[01:06:59] 在
+[01:06:59] 探索
+[01:07:00] 绿色的
+[01:07:00] 设备
+[01:07:02] 是的
+[01:07:03] 那是
+[01:07:03] 那是
+[01:07:04] 有趣的
+[01:07:04] 无论是
+[01:07:05] 一些
+[01:07:05] 联合的
+[01:07:06] 经验
+[01:07:06] 或者
+[01:07:08] 甚至
+[01:07:08] cloud.ai
+[01:07:09] 我认为
+[01:07:10] 在
+[01:07:10] 探索
+[01:07:11] 设备
+[01:07:12] 最佳的
+[01:07:13] 设备
+[01:07:13] 控制
+[01:07:14] 并且
+[01:07:14] 并且
+[01:07:14] 并且
+[01:07:15] 并且
+[01:07:15] 或
+[01:07:16] 如果你在自己工作
+[01:07:18] 用一些
+[01:07:18] 像
+[01:07:18] git
+[01:07:18] 工作树
+[01:07:19] 这样
+[01:07:19] 你不需要
+[01:07:20] 复制
+[01:07:21] 文件系统
+[01:07:22] 不同的
+[01:07:22] 功能
+[01:07:23] 都很合理
+[01:07:24] 但是
+[01:07:25] 是的
+[01:07:25] 我觉得
+[01:07:25] 关于
+[01:07:26] 合作
+[01:07:27] 可能
+[01:07:27] 是
+[01:07:28] 你
+[01:07:28] 知道
+[01:07:28] 不太会发生
+[01:07:29] 太多
+[01:07:30] 因为
+[01:07:30] 人们
+[01:07:30] 只是建立
+[01:07:31] 这些
+[01:07:31] 项目
+[01:07:32] 正如
+[01:07:32] ash
+[01:07:33] 说
+[01:07:33] 从
+[01:07:33] 地上
+[01:07:34] 而
+[01:07:34] 然后
+[01:07:34] 你
+[01:07:35] 知道
+[01:07:35] 向
+[01:07:36] 其他
+[01:07:36] 公司
+[01:07:40] 嗯
+[01:07:41] 我
+[01:07:42] 从
+[01:07:43] mercedes-benz
+[01:07:44] research
+[01:07:44] and
+[01:07:44] development
+[01:07:45] here
+[01:07:45] hi
+[01:07:45] thanks
+[01:07:46] for
+[01:07:46] the
+[01:07:46] talk
+[01:07:46] um
+[01:07:47] while
+[01:07:47] looking
+[01:07:48] at
+[01:07:48] it
+[01:07:48] i
+[01:07:48] thought
+[01:07:48] ok
+[01:07:49] it
+[01:07:49] looks
+[01:07:49] a
+[01:07:49] lot
+[01:07:50] like
+[01:07:50] a
+[01:07:50] scrum
+[01:07:50] team
+[01:07:51] a
+[01:07:51] feature
+[01:07:51] team
+[01:07:52] working
+[01:07:53] for
+[01:07:53] longer
+[01:07:54] times
+[01:07:55] on
+[01:07:55] a
+[01:07:55] product
+[01:07:57] and
+[01:07:57] i
+[01:07:57] was
+[01:07:57] thinking
+[01:07:59] how
+[01:07:59] does
+[01:08:00] human
+[01:08:00] in
+[01:08:00] the
+[01:08:00] loop
+[01:08:01] look
+[01:08:01] like
+[01:08:02] in
+[01:08:02] that
+[01:08:02] scenario
+[01:08:04] because
+[01:08:05] you
+[01:08:05] have
+[01:08:06] you
+[01:08:06] have
+[01:08:06] this
+[01:08:06] kind
+[01:08:07] of
+[01:08:07] sprints
+[01:08:08] have
+[01:08:09] you
+[01:08:09] thought
+[01:08:09] about
+[01:08:09] a
+[01:08:10] sprprint
+[01:08:10] review
+[01:08:11] kind
+[01:08:13] as
+[01:08:13] a
+[01:08:14] human
+[01:08:14] get
+[01:08:14] asked
+[01:08:15] oh
+[01:08:15] hey
+[01:08:15] here's
+[01:08:16] what
+[01:08:16] we
+[01:08:16] built
+[01:08:16] the
+[01:08:16] last
+[01:08:17] two
+[01:08:17] hours
+[01:08:17] how
+[01:08:18] is
+[01:08:18] it
+[01:08:18] looking
+[01:08:18] like
+[01:08:19] for
+[01:08:19] you
+[01:08:19] yeah
+[01:08:21] so we
+[01:08:21] subject
+[01:08:21] to
+[01:08:22] agents
+[01:08:22] the
+[01:08:22] same
+[01:08:22] trauma
+[01:08:23] that
+[01:08:23] engineers
+[01:08:23] go
+[01:08:24] through
+[01:08:24] of
+[01:08:26] scrum
+[01:08:27] review
+[01:08:27] i
+[01:08:29] mean
+[01:08:30] like
+[01:08:30] the
+[01:08:30] who
+[01:08:30] point
+[01:08:30] of
+[01:08:30] this
+[01:08:30] general
+[01:08:31] the
+[01:08:31] general
+[01:08:31] idea
+[01:08:31] which
+[01:08:32] behind
+[01:08:32] this
+[01:08:32] talk
+[01:08:32] and
+[01:08:32] also
+[01:08:32] what
+[01:08:33] we're
+[01:08:34] trying
+[01:08:34] to do
+[01:08:34] is
+[01:08:34] trying
+[01:08:35] to be
+[01:08:35] as
+[01:08:35] agi
+[01:08:35] pilled
+[01:08:36] as
+[01:08:36] possible
+[01:08:36] right
+[01:08:36] like
+[01:08:37] how do we
+[01:08:37] build
+[01:08:38] harnesses
+[01:08:38] we don't
+[01:08:39] need a
+[01:08:39] human
+[01:08:39] in the
+[01:08:40] loop
+[01:08:40] right
+[01:08:40] like
+[01:08:40] what
+[01:08:40] does
+[01:08:40] that
+[01:08:41] look
+[01:08:41] like
+[01:08:41] are
+[01:08:42] we
+[01:08:42] using
+[01:08:42] this
+[01:08:42] today
+[01:08:42] for
+[01:08:42] everything
+[01:08:43] obviously
+[01:08:43] not
+[01:08:44] right
+[01:08:44] but
+[01:08:46] the
+[01:08:46] goal
+[01:08:46] is
+[01:08:46] you know
+[01:08:47] this
+[01:08:47] is
+[01:08:47] this
+[01:08:48] is
+[01:08:48] a
+[01:08:48] technique
+[01:08:48] or a
+[01:08:48] pattern
+[01:08:49] which
+[01:08:49] should
+[01:08:50] extend
+[01:08:50] very
+[01:08:50] nicely
+[01:08:51] such
+[01:08:51] that
+[01:08:51] you
+[01:08:51] don't
+[01:08:51] have
+[01:08:52] a
+[01:08:52] human
+[01:08:52] in the
+[01:08:52] loop
+[01:08:52] for
+[01:08:52] most
+[01:08:52] things
+[01:08:53] if
+[01:08:53] you
+[01:08:54] did
+[01:08:54] right
+[01:08:54] it's
+[01:08:54] like
+[01:08:55] you
+[01:09:06] like
+[01:09:06] hamback
+[01:09:07] to
+[01:09:07] human
+[01:09:07] allow
+[01:09:08] some
+[01:09:08] kind of
+[01:09:08] develop a
+[01:09:09] message
+[01:09:09] input
+[01:09:09] and then
+[01:09:09] continue
+[01:09:10] the
+[01:09:10] loop
+[01:09:10] would
+[01:09:11] be
+[01:09:11] like
+[01:09:11] kind of
+[01:09:11] a
+[01:09:12] simple
+[01:09:12] way
+[01:09:12] to
+[01:09:12] implement
+[01:09:12] it
+[01:09:13] but
+[01:09:14] yeah
+[01:09:15] to
+[01:09:15] be
+[01:09:15] honest
+[01:09:15] we're
+[01:09:16] kind of
+[01:09:17] exploring
+[01:09:17] this
+[01:09:17] from a
+[01:09:18] what
+[01:09:20] can
+[01:09:20] we
+[01:09:20] do
+[01:09:21] fully
+[01:09:21] autonomously
+[01:09:21] kind of
+[01:09:22] approach
+[01:09:22] as
+[01:09:22] supposed
+[01:09:23] to
+[01:09:23] thinking
+[01:09:23] this
+[01:09:23] as
+[01:09:23] like
+[01:09:24] here's
+[01:09:24] code
+[01:09:25] code
+[01:09:25] and
+[01:09:26] like
+[01:09:26] how
+[01:09:27] do
+[01:09:27] you
+[01:09:27] make
+[01:09:27] this
+[01:09:27] like
+[01:09:28] more
+[01:09:28] powerful
+[01:09:29] per se
+[01:09:29] it's
+[01:09:29] very
+[01:09:37] the
+[01:09:37] chance
+[01:09:38] to
+[01:09:38] review
+[01:09:38] it
+[01:09:38] maybe
+[01:09:39] a
+[01:09:39] few
+[01:09:39] hours
+[01:09:39] in
+[01:09:40] and I
+[01:09:41] might
+[01:09:41] be
+[01:09:41] able
+[01:09:41] to
+[01:09:41] steer
+[01:09:42] it
+[01:09:42] in a
+[01:09:42] way
+[01:09:43] better
+[01:09:43] way
+[01:09:44] so
+[01:09:45] that
+[01:09:45] eight
+[01:09:45] hours
+[01:09:45] later
+[01:09:46] it's
+[01:09:46] more
+[01:09:47] like
+[01:09:47] the
+[01:09:48] one
+[01:09:48] kind
+[01:09:48] of
+[01:09:48] project
+[01:09:49] I
+[01:09:49] would
+[01:09:49] like
+[01:09:49] to
+[01:09:49] have
+[01:09:49] yeah
+[01:09:50] I
+[01:09:50] mean
+[01:09:51] I
+[01:09:52] get
+[01:09:52] what
+[01:09:52] you're
+[01:09:53] saying
+[01:09:53] I
+[01:09:53] think
+[01:09:53] the
+[01:09:53] question
+[01:09:54] then
+[01:09:54] is
+[01:09:54] is
+[01:09:54] like
+[01:09:54] should
+[01:09:54] that
+[01:09:54] be
+[01:09:55] like
+[01:09:55] a
+[01:09:55] permanent
+[01:09:55] feature
+[01:09:55] of
+[01:09:55] the
+[01:09:56] harness
+[01:09:56] or
+[01:09:56] is
+[01:09:56] that
+[01:09:56] just
+[01:09:57] like
+[01:09:57] a
+[01:09:57] thing
+[01:09:59] which
+[01:09:59] you
+[01:09:59] should
+[01:09:59] have
+[01:09:59] like
+[01:10:00] kind
+[01:10:00] of
+[01:10:00] basically
+[01:10:00] prompted
+[01:10:00] around
+[01:10:01] when
+[01:10:01] building
+[01:10:01] the
+[01:10:02] harness
+[01:10:02] right
+[01:10:02] so
+[01:10:02] we
+[01:10:03] would
+[01:10:03] have
+[01:10:03] that
+[01:10:03] right
+[01:10:04] we
+[01:10:04] would
+[01:10:04] run
+[01:10:04] this
+[01:10:04] this
+[01:10:05] this
+[01:10:05] harness
+[01:10:05] on
+[01:10:05] loop
+[01:10:06] and
+[01:10:07] we
+[01:10:07] would
+[01:10:07] have
+[01:10:07] you
+[01:10:07] know
+[01:10:07] we
+[01:10:08] might
+[01:10:08] spin
+[01:10:08] up
+[01:10:08] like
+[01:10:08] ten
+[01:10:08] generations
+[01:10:09] different
+[01:10:09] things
+[01:10:10] and
+[01:10:10] like
+[01:10:10] three
+[01:10:11] of
+[01:10:11] them
+[01:10:11] succeed
+[01:10:11] and
+[01:10:11] seven
+[01:10:11] of
+[01:10:12] them
+[01:10:12] fail
+[01:10:12] in
+[01:10:12] like
+[01:10:13] random
+[01:10:13] ways
+[01:10:13] and
+[01:10:15] then
+[01:10:15] we
+[01:10:15] just sit
+[01:10:15] down
+[01:10:15] with
+[01:10:16] those
+[01:10:16] seven
+[01:10:16] read
+[01:10:16] through
+[01:10:16] them
+[01:10:17] adjust
+[01:10:17] the
+[01:10:17] prompting
+[01:10:18] of the
+[01:10:18] main
+[01:10:18] harness
+[01:10:18] and then
+[01:10:19] and then
+[01:10:19] try
+[01:10:19] again
+[01:10:19] and then
+[01:10:20] until
+[01:10:20] we get
+[01:10:20] to a
+[01:10:21] point
+[01:10:21] where
+[01:10:21] we're
+[01:10:21] like
+[01:10:21] quite
+[01:10:21] happy
+[01:10:22] leaving
+[01:10:22] it
+[01:10:22] to run
+[01:10:23] fully
+[01:10:24] autonomously
+[01:10:24] so
+[01:10:25] ultimately
+[01:10:25] that's
+[01:10:25] still
+[01:10:26] the end
+[01:10:26] goal
+[01:10:26] for us
+[01:10:26] as opposed
+[01:10:27] to being
+[01:10:27] like
+[01:10:27] basically
+[01:10:29] giving up
+[01:10:30] on the
+[01:10:30] harness
+[01:10:30] and being
+[01:10:30] like
+[01:10:31] okay
+[01:10:31] we're
+[01:10:31] just
+[01:10:31] inside
+[01:10:31] a
+[01:10:31] human
+[01:10:32] hair
+[01:10:32] to
+[01:10:32] cover
+[01:10:33] for
+[01:10:34] any
+[01:10:34] kind
+[01:10:35] of
+[01:10:35] stairability
+[01:10:35] issues
+[01:10:35] instead
+[01:10:36] but rather
+[01:10:36] embed
+[01:10:37] that
+[01:10:37] and bake
+[01:10:38] that
+[01:10:38] into the
+[01:10:38] harness
+[01:10:38] itself
+[01:10:39] in the
+[01:10:40] first place
+[01:10:41] have you
+[01:10:47] used this
+[01:10:47] to build
+[01:10:48] anything
+[01:10:49] like
+[01:10:49] non greenfield
+[01:10:50] or i guess
+[01:10:51] like production
+[01:10:52] like anything
+[01:10:52] in code code
+[01:10:53] itself
+[01:10:53] or have you
+[01:10:54] used it
+[01:10:55] for actual
+[01:10:55] features
+[01:10:56] and seeing it
+[01:10:56] to the end
+[01:10:57] i think
+[01:11:00] i mean
+[01:11:01] this does
+[01:11:01] mostly extend
+[01:11:02] to greenfield
+[01:11:03] projects
+[01:11:04] i think
+[01:11:04] for brownfield
+[01:11:05] maybe you do
+[01:11:05] need a little
+[01:11:06] bit more
+[01:11:06] control
+[01:11:07] as you're
+[01:11:08] starting to
+[01:11:09] build out
+[01:11:09] your own
+[01:11:09] rubrics
+[01:11:10] and patterns
+[01:11:11] and
+[01:11:11] i mean
+[01:11:13] what we're
+[01:11:14] seeing
+[01:11:14] in brownfield
+[01:11:16] is that
+[01:11:17] if you look
+[01:11:17] at the whole
+[01:11:17] software development
+[01:11:18] life
+[01:11:19] life cycle
+[01:11:20] is not just
+[01:11:20] the coding
+[01:11:21] aspects
+[01:11:21] that people
+[01:11:22] are starting
+[01:11:22] to use
+[01:11:22] something like
+[01:11:23] cloud code
+[01:11:24] for it
+[01:11:24] might be
+[01:11:24] say there's
+[01:11:25] like autonomous
+[01:11:26] monitoring
+[01:11:27] happen
+[01:11:27] happening
+[01:11:28] and then
+[01:11:29] that could
+[01:11:29] feed into
+[01:11:30] say
+[01:11:30] generating
+[01:11:31] some kind
+[01:11:32] of
+[01:11:32] like issue
+[01:11:33] or
+[01:11:34] or feature
+[01:11:34] request
+[01:11:35] that could
+[01:11:36] then just
+[01:11:36] feed into
+[01:11:37] an agent
+[01:11:38] that would
+[01:11:39] then go through
+[01:11:39] to make the
+[01:11:40] pull request
+[01:11:40] and then there's
+[01:11:41] sort of
+[01:11:41] pull review
+[01:11:42] already happening
+[01:11:44] and then maybe
+[01:11:45] you're just
+[01:11:45] reviewing that
+[01:11:46] before you
+[01:11:47] actually merge
+[01:11:47] so I think
+[01:11:48] there are other
+[01:11:49] ways to
+[01:11:49] automate the
+[01:11:50] whole software
+[01:11:50] development
+[01:11:51] life cycle
+[01:11:51] in a brownfield
+[01:11:54] project
+[01:11:54] but I think
+[01:11:55] this particular
+[01:11:56] pattern
+[01:11:56] may be
+[01:11:57] without a lot
+[01:11:58] of testing
+[01:11:58] within your
+[01:11:59] project
+[01:11:59] and building
+[01:12:00] like customizing
+[01:12:01] it for your
+[01:12:02] project
+[01:12:02] it's probably
+[01:12:03] more suited
+[01:12:03] towards
+[01:12:04] brand new
+[01:12:04] applications
+[01:12:05] have you built
+[01:12:07] any green
+[01:12:07] filled apps
+[01:12:08] like I don't
+[01:12:09] know like an
+[01:12:09] internal tooling
+[01:12:10] or anything like
+[01:12:11] that that you
+[01:12:11] have been
+[01:12:11] using
+[01:12:12] like not
+[01:12:12] just a demo
+[01:12:13] sort of like
+[01:12:13] yeah
+[01:12:14] to be frank
+[01:12:15] I can't really
+[01:12:16] like talk to
+[01:12:16] like internal tooling
+[01:12:17] too much
+[01:12:17] but a good
+[01:12:19] anecdote of
+[01:12:20] this was
+[01:12:20] like a lot
+[01:12:24] of the
+[01:12:25] new and fun
+[01:12:25] stuff that you
+[01:12:26] see in
+[01:12:26] code code
+[01:12:27] will like
+[01:12:27] when I'm
+[01:12:30] speaking to
+[01:12:30] the team
+[01:12:30] and working
+[01:12:31] with them
+[01:12:31] on stuff
+[01:12:31] use a lot
+[01:12:34] of the lessons
+[01:12:34] from this
+[01:12:35] per se
+[01:12:35] like in
+[01:12:36] like even
+[01:12:36] just general
+[01:12:37] hands-on
+[01:12:39] code code
+[01:12:41] usage
+[01:12:41] the way that
+[01:12:42] they prompt
+[01:12:42] the
+[01:12:43] the main
+[01:12:44] model
+[01:12:45] tospin up
+[01:12:46] a subagent
+[01:12:46] let's say
+[01:12:47] and go
+[01:12:47] after something
+[01:12:48] or as
+[01:12:49] andrew said
+[01:12:49] right
+[01:12:50] and kind
+[01:12:50] of
+[01:12:51] monitoring
+[01:12:51] and bug
+[01:12:51] fixing
+[01:12:52] loops
+[01:12:52] like when
+[01:12:53] generating
+[01:12:53] a fix
+[01:12:54] like should
+[01:12:54] you have
+[01:12:55] a separate
+[01:12:55] evaluator
+[01:12:56] and a generator
+[01:12:57] go after
+[01:12:57] the same
+[01:12:57] thing
+[01:12:58] so a lot
+[01:12:58] of these
+[01:12:58] principles
+[01:12:59] apply
+[01:13:00] is it
+[01:13:00] like one
+[01:13:01] for one
+[01:13:01] this
+[01:13:02] maybe not
+[01:13:03] but it's
+[01:13:03] like taking
+[01:13:04] the good
+[01:13:04] bits of
+[01:13:05] this or
+[01:13:05] whatever you
+[01:13:05] think is
+[01:13:06] kind of
+[01:13:06] applicable to
+[01:13:07] a certain
+[01:13:07] space and
+[01:13:08] field and
+[01:13:08] then kind
+[01:13:09] of running
+[01:13:09] with it
+[01:13:10] in your
+[01:13:10] own way
+[01:13:10] you say
+[01:13:27] reading the
+[01:13:27] traces
+[01:13:27] is that
+[01:13:28] literally
+[01:13:28] just like
+[01:13:29] the raw
+[01:13:29] output or
+[01:13:30] is there
+[01:13:30] something more
+[01:13:31] specific you
+[01:13:32] prompted it
+[01:13:32] to like
+[01:13:33] write this
+[01:13:33] to file
+[01:13:33] these are
+[01:13:34] the sorts
+[01:13:34] of things
+[01:13:34] i care
+[01:13:34] about
+[01:13:35] and i
+[01:13:35] wanna see
+[01:13:35] now you
+[01:13:36] got to
+[01:13:36] read the
+[01:13:36] whole thing
+[01:13:37] read the
+[01:13:37] whole thing
+[01:13:38] i do
+[01:13:38] think it's
+[01:13:39] like a
+[01:13:39] really
+[01:13:39] important
+[01:13:39] skill
+[01:13:40] when
+[01:13:40] building
+[01:13:41] agents
+[01:13:41] in general
+[01:13:41] is to
+[01:13:42] like
+[01:13:42] empathize
+[01:13:44] as much
+[01:13:44] with the
+[01:13:45] model
+[01:13:45] this was
+[01:13:46] like there's
+[01:13:46] an interesting
+[01:13:47] anecdo which
+[01:13:49] we used
+[01:13:49] when we
+[01:13:50] were building
+[01:13:50] for example
+[01:13:50] the agent
+[01:13:51] harness for
+[01:13:51] called for
+[01:13:52] chrome
+[01:13:52] which is
+[01:13:53] our kind
+[01:13:53] of browser
+[01:13:54] use
+[01:13:55] thing
+[01:13:55] and we
+[01:13:58] would run
+[01:13:59] this like
+[01:13:59] experiment
+[01:13:59] where like
+[01:14:00] imagine if
+[01:14:00] you know
+[01:14:00] you were
+[01:14:01] trying to
+[01:14:01] navigate a
+[01:14:01] web page
+[01:14:02] and click
+[01:14:02] around
+[01:14:02] where like
+[01:14:03] you know
+[01:14:03] you effectively
+[01:14:04] do it
+[01:14:04] with your
+[01:14:04] eyes closed
+[01:14:05] and like
+[01:14:05] every ten
+[01:14:06] seconds
+[01:14:06] you just
+[01:14:06] opened it
+[01:14:07] to see
+[01:14:07] like a
+[01:14:07] static page
+[01:14:08] and then
+[01:14:08] close it
+[01:14:09] again
+[01:14:09] and then
+[01:14:09] have to
+[01:14:09] like do
+[01:14:10] things
+[01:14:10] and like
+[01:14:11] really
+[01:14:11] putting
+[01:14:11] yourself
+[01:14:12] in the
+[01:14:12] shoes
+[01:14:12] of the
+[01:14:13] model
+[01:14:13] is kind
+[01:14:16] of like
+[01:14:16] this kind
+[01:14:17] empathetic
+[01:14:17] skill set
+[01:14:18] which you
+[01:14:18] need to
+[01:14:18] develop
+[01:14:18] and the
+[01:14:19] only way
+[01:14:20] to really
+[01:14:20] do that
+[01:14:20] is to
+[01:14:20] like
+[01:14:21] spend as
+[01:14:22] much time
+[01:14:22] with these
+[01:14:22] models
+[01:14:22] but also
+[01:14:23] yeah
+[01:14:24] reading through
+[01:14:25] line by line
+[01:14:26] being like
+[01:14:26] oh why
+[01:14:26] did it
+[01:14:26] think this
+[01:14:27] oh I can
+[01:14:28] kind of
+[01:14:28] see why
+[01:14:28] I did
+[01:14:29] that
+[01:14:29] and then
+[01:14:29] kind of
+[01:14:29] adjusting
+[01:14:30] the way
+[01:14:30] you
+[01:14:31] instruct it
+[01:14:31] next time
+[01:14:31] to do
+[01:14:32] better
+[01:14:32] but
+[01:14:34] that's why
+[01:14:35] I think
+[01:14:35] call to
+[01:14:35] chrome
+[01:14:35] is very
+[01:14:36] good
+[01:14:36] with
+[01:14:36] just
+[01:14:36] really
+[01:14:37] just
+[01:14:37] like
+[01:14:37] spending
+[01:14:37] a lot
+[01:14:37] of
+[01:14:38] time
+[01:14:38] as a
+[01:14:38] team
+[01:14:38] closing
+[01:14:39] pages
+[01:14:41] for
+[01:14:41] example
+[01:14:41] so
+[01:14:42] yeah
+[01:14:43] yeah
+[01:14:46] and I
+[01:14:46] think
+[01:14:47] then
+[01:14:48] actually
+[01:14:48] taking those
+[01:14:49] learnings
+[01:14:49] and putting
+[01:14:50] them into
+[01:14:50] say your
+[01:14:51] promptemplates
+[01:14:52] or your
+[01:14:52] cloud.md
+[01:14:53] or building
+[01:14:54] a skill
+[01:14:54] or just
+[01:14:56] generally
+[01:14:56] understanding
+[01:14:57] how to
+[01:14:57] sort of
+[01:14:58] avoid that
+[01:14:58] type of
+[01:14:59] behavior in
+[01:14:59] the future
+[01:15:00] I know
+[01:15:00] cloud code
+[01:15:01] now has
+[01:15:01] auto memory
+[01:15:02] for sessions
+[01:15:02] as well
+[01:15:03] so it's
+[01:15:03] sort of
+[01:15:03] constantly
+[01:15:04] memorizing
+[01:15:05] little things
+[01:15:05] as it
+[01:15:06] goes
+[01:15:06] but yeah
+[01:15:07] you can
+[01:15:07] learn quite
+[01:15:08] quickly
+[01:15:08] from reading
+[01:15:08] some traces
+[01:15:09] like where
+[01:15:10] things
+[01:15:11] might be
+[01:15:11] going
+[01:15:11] around
+[01:15:11] cool
+[01:15:13] should we
+[01:15:14] wrap up
+[01:15:14] there
+[01:15:14] I think
+[01:15:15] we have
+[01:15:15] a few
+[01:15:15] minutes
+[01:15:15] left
+[01:15:16] but we'll
+[01:15:16] be around
+[01:15:16] in general
+[01:15:17] in case you
+[01:15:18] guys want
+[01:15:18] to ask
+[01:15:18] any questions
+[01:15:19] or just
+[01:15:19] chat
+[01:15:20] but otherwise
+[01:15:21] thanks for
+[01:15:22] coming down
+[01:15:22] thanks for
+[01:15:23] having a
+[01:15:23] day

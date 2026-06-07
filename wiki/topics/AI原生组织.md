@@ -53,3 +53,10 @@ sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI �
 - [[AI安全与治理]]
 - [[AI与人类独特性]]
 - [[AI创业与投资]]
+
+
+## Harness 作为组织学习机制
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 进一步说明，AI 原生组织不只需要使用 AI 工具，还要把工具失败时的轨迹变成组织学习材料。长程 agent 的 traces、completion contracts、rubrics、time logs、Git commits 和 PR review 都是 [[企业上下文]] 的一部分。它们让团队知道模型在哪里偏航、prompt 哪里太宽、evaluator 哪里太宽容，并把经验固化进 [[Agent Harness]]。
+
+这与 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]] 中的产品品味和 eval 形成闭环：品味定义方向，eval 定义标准，harness 让标准在多小时任务中持续执行。

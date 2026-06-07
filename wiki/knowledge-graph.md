@@ -87,3 +87,17 @@ graph LR
 - [[Cowork]]
 - [[产品品味]]
 - [[Evals]]
+
+
+## 2026-06-07 新增长程 Agent Harness 子图
+
+- [[Anthropic团队：如何构建运行 数小时的Agent]] --> [[长程智能体]]
+- [[Anthropic团队：如何构建运行 数小时的Agent]] --> [[Agent Harness]]
+- [[Agent Harness]] --> [[生成器-评估器架构]]
+- [[Agent Harness]] --> [[文件系统共享状态]]
+- [[生成器-评估器架构]] --> [[Evals]]
+- [[生成器-评估器架构]] --> [[AI辅助QA]]
+- [[文件系统共享状态]] --> [[企业上下文]]
+- [[Claude Code]] --> [[Agent Harness]]
+- [[长程智能体]] --> [[智能体]]
+- [[Anthropic]] --> [[Claude Code]]

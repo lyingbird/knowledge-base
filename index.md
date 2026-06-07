@@ -112,3 +112,9 @@
 - 把旧 `01-主题/` 中成熟观点逐步迁移到 `wiki/topics/`。
 - 为高频人物和公司建立实体页。
 - 定期运行图谱构建，更新 `wiki/knowledge-graph.html`。
+
+
+## 2026-06-07 新增：长程 Agent Harness
+
+- 如果关心 Claude Code 如何从短任务工具变成长程开发系统，读 [[Anthropic团队：如何构建运行 数小时的Agent]]、[[长程智能体]]、[[Agent Harness]]、[[生成器-评估器架构]] 和 [[文件系统共享状态]]。
+- 这条素材与 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]] 形成上下游：前者补工程 harness、trace、contract 和 evaluator，后者补产品品味、eval 和 AI-native PM。

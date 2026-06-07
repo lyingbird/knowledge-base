@@ -37,3 +37,10 @@ Claude Code 的产品演进体现了 model eats harness。早期模型处理大�
 - [[Evals]]
 - [[智能体]]
 - [[业务闭环]]
+
+
+## 长程 Agent Harness
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 把 Claude Code 放进更长的演进线：从只能稳定运行约 20 分钟的 coding agent，变成可以在 [[Agent Harness]] 支撑下运行数小时甚至数天的开发系统。关键变化不是单一模型提升，而是 Claude Code/Agent SDK、MCP、sub-agent、Skills、权限、context 注入、server-side compaction、checkpoints 和 [[Evals]] 共同组成的 scaffold。
+
+这条素材补充了 Claude Code 的工程边界：当模型会 context anxiety、自评偏差或规划过载时，harness 需要把状态写入 [[文件系统共享状态]]，把完成定义变成 contract，并用 [[生成器-评估器架构]] 让 evaluator 通过 Playwright/Chrome MCP 真实操作产物。模型升级后，旧 scaffold 应通过 eval 被删除或简化，而不是固化成教条。

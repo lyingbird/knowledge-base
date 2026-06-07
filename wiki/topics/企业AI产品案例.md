@@ -43,3 +43,10 @@ Anthropic 访谈补上了“前沿 AI 产品团队如何自己使用 AI 产品�
 - [[团队知识库]]
 - [[Claude Code]]
 - [[Cowork]]
+
+
+## Claude Code 长程 Harness 案例
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 是企业内部研发提效的前沿案例。它不是把 AI 当作一次性代码生成器，而是把 Claude Code 组织成 planner、generator、evaluator、文件系统状态、trace、rubric 和版本控制共同参与的工作流。对企业 AI 产品的启发是：真正可部署的 agent 产品必须定义失败如何被发现、如何被记录、如何进入下一轮改进。
+
+这条素材也提示 brownfield 场景的边界：如果已有代码库缺少 tests、rubrics 和项目特定 harness，生成器-评估器模式更适合 greenfield。迁入生产系统时，更现实的链路可能是 autonomous monitoring -> issue/feature request -> PR -> review -> merge。

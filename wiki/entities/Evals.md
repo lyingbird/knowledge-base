@@ -26,3 +26,10 @@ Evals 对 memory、code review、Claude Code 行为改进等功能尤其重要�
 - [[Anthropic]]
 - [[业务闭环]]
 - [[智能体]]
+
+
+## 从产品 Evals 到 Agent Evaluator
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 把 evals 从“衡量模型/产品表现”推进到“驱动 agent 构建过程”。Evaluator 不是最终打一次分，而是在 [[生成器-评估器架构]] 中用 rubric 和 contract 推动 generator hill climb。前端例子使用 design、originality、craft、functionality 四项标准，并用 reference examples 校准 taste。
+
+更重要的是 completion contract：编码前先把 done 的定义写成可测试 criteria。Retro Forge demo 最终形成 27 条 contract criteria，说明 eval 的粒度必须足够细，才能让反馈从“做得更好”变成“修这个具体行为”。

@@ -67,3 +67,14 @@
 - 新增 source 页 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]，并新增实体页 [[Anthropic]]、[[Claude Code]]、[[Cowork]]、[[产品品味]]、[[Evals]]、[[Cat Wu]]。
 - 更新 [[AI原生组织]]、[[企业AI产品案例]]、[[AI人物访谈]]、[[AI原生公司]]、[[智能体]]、[[企业上下文]]、[[wiki/overview]] 和 [[index]]。
 - 将 Cowork 命名、Mythos、OpenClaw、Claude Code 泄露、/powerup、code review、Anthropic 增长数字和人物头衔等高风险点加入 [[03-核验/待核验事实]]。
+
+
+## 2026-06-07 ingest | Anthropic 长程 Agent Harness 工作坊
+
+- 导入 B 站视频 `BV19sGH6UECj`，标题为 [[Anthropic团队：如何构建运行 数小时的Agent]]。
+- B 站普通 DASH 音频 30280/30216 解码截断，改用 30232 直链流式转 WAV，核对完整 4539.66 秒；本地 ASR 生成 3397 段，尾部到 01:15:23；另抓取原始 YouTube 英文字幕 4397 块用于术语校准。
+- 派出 5 个并行分段代理，覆盖 00:00-17:50、17:50-31:30、31:30-45:00、45:00-62:00、62:00-75:39，保留 Claude Code 演进、RALPH loop、GAN-style harness、completion contract、Retro Forge、trace reading、文件系统共享状态、human-in-loop 和 brownfield 边界等细节。
+- 新增 raw 转写副本 [[raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.transcript.txt]] 与英文字幕校准件 [[raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.youtube-en.txt]]。
+- 新增 source 页 [[Anthropic团队：如何构建运行 数小时的Agent]]，并新增实体页 [[长程智能体]]、[[Agent Harness]]、[[生成器-评估器架构]]、[[文件系统共享状态]]。
+- 更新 [[Anthropic]]、[[Claude Code]]、[[Evals]]、[[智能体]]、[[AI原生组织]]、[[企业AI产品案例]]、[[AI游戏与虚拟世界]] 和 [[wiki/overview]]，把长程 agent harness 接入既有知识网络。
+- 将模型版本、METR benchmark、RALPH 来源、人物身份、Retro Forge demo 数字、hooks/auto memory 等高风险事实加入 [[03-核验/待核验事实]]。

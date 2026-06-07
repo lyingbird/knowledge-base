@@ -51,3 +51,10 @@ sources: [为什么顶尖AI公司都盯上游戏？【硅谷101】, GDC观察：
 - [[3D生成]]
 - [[智能体]]
 - [[AI安全与治理]]
+
+
+## 游戏作为长程 Agent 验证场
+
+[[Anthropic团队：如何构建运行 数小时的Agent]] 中的 Retro Game Maker demo 为游戏主题补了一类验证样本。无 harness 的版本能画出 sprite editor 和 play mode UI，却无法真正用方向键和空格游玩；有 harness 的 Retro Forge 则通过 evaluator 实际启动游戏、测试 physics loop、玩家移动和墙体碰撞。
+
+这说明游戏 AI 不能只验证资产或界面是否存在，还要验证行为闭环是否成立。对 [[AI辅助QA]]、[[AI NPC]] 和 [[游戏生产管线]] 来说，Playwright/浏览器控制、debug HUD、可测试 contract 和真实交互，是把“看起来像游戏”推进到“真的能玩”的关键。
