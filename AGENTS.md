@@ -34,3 +34,15 @@
 - `03-核验/`：待核验事实
 
 这些目录是历史笔记与人类阅读层。历史视频笔记已复制到 `raw/notes/video-notes/` 作为不可变素材副本。新的持续维护层放在 `wiki/` 下；不要为了改造结构而删除旧笔记。
+
+## 高保真视频炼化工作流
+
+遇到用户明确说视频“精华”“不要省略”“精校准”“尽可能保留信息”时，按高保真 ingest 处理：
+
+1. 不把长视频压成泛泛摘要；先保留完整转写、字幕校准件、metadata 和分段分析产物。
+2. 长视频按时间段拆给并行 worker；每段必须抽取章节、例子、数字、人名/公司/产品名、术语、推理链、ASR 疑点和待核验事实。
+3. 区分原始演讲/原始来源与 B 站二次讲解、主持人扩展、外部案例；source 页中必须写清归因边界。
+4. 新增 deliverable 不能停在 digest 或 note；必须进入 wiki/sources、相关 wiki/entities、wiki/topics、index、log、03-核验/待核验事实.md，并按需更新 wiki/overview。
+5. 数字、公司案例、研究结论、论文引用、融资/估值/绩效指标等高风险事实，未经独立核验前只进入待核验，不直接升级为综合结论。
+6. 每次影响知识网络时重建 wiki/graph-data.json 和 wiki/knowledge-graph.html，并核对 index.md、wiki/knowledge-graph.md、log.md 的双链。
+7. 汇报时以验证输出为准，列出转写完整性、worker 覆盖范围、graph 节点/边数、validate 结果、commit 和 push 状态。
