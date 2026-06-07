@@ -57,3 +57,13 @@
 - 新增 source 页 [[知乎侯容这段 AI 提效，讲得很实在]]，并新增实体页 [[AI研发提效]]、[[团队知识库]]。
 - 更新 [[AI原生组织]]、[[企业AI产品案例]]、[[企业上下文]]、[[业务闭环]]、[[wiki/overview]] 和 [[index]]。
 - 将姓名、提效口径、PE/PD 单位、知识库实验、新人上手和虚拟 Agent 接管业务等高风险点加入 [[03-核验/待核验事实]]。
+
+## 2026-06-07 ingest | Cat Wu 谈 Anthropic AI-native 产品组织
+
+- 导入 B 站视频 `BV1tGVm62EGS`，标题为 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]。
+- 下载时发现普通 DASH/m4a 容器虽然显示 01:25:34，但 AAC 数据存在断点，先后只解出 16:45 与 27:38；改用 `yt-dlp -g` 直链加 `ffmpeg` 流式解码为 WAV，验证完整 5134.080 秒。
+- 完成全量转写，字幕尾部到 01:25:32，共 4840 段；按 5 个时间段派出并行代理精读，保留产品品味、research preview、Cowork 工作流、eval、harness、multi-Claude-ing、95% 自动化不够和 Just do things 等细节。
+- 新增原始转写副本 [[raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味.transcript.txt]]。
+- 新增 source 页 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]，并新增实体页 [[Anthropic]]、[[Claude Code]]、[[Cowork]]、[[产品品味]]、[[Evals]]、[[Cat Wu]]。
+- 更新 [[AI原生组织]]、[[企业AI产品案例]]、[[AI人物访谈]]、[[AI原生公司]]、[[智能体]]、[[企业上下文]]、[[wiki/overview]] 和 [[index]]。
+- 将 Cowork 命名、Mythos、OpenClaw、Claude Code 泄露、/powerup、code review、Anthropic 增长数字和人物头衔等高风险点加入 [[03-核验/待核验事实]]。

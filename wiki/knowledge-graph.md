@@ -17,6 +17,13 @@ graph LR
   Enterprise[企业AI产品案例] --> Agent
   Enterprise --> Loop
   Enterprise --> Context
+  Enterprise --> Anthropic[Anthropic]
+  Anthropic --> ClaudeCode[Claude Code]
+  Anthropic --> Cowork[Cowork]
+  ClaudeCode --> Taste[产品品味]
+  ClaudeCode --> Evals[Evals]
+  Cowork --> Context
+  Agent --> ClaudeCode
 
   GameTopic[AI游戏与虚拟世界] --> AIGame[AI游戏]
   GameTopic --> Agent
@@ -51,6 +58,9 @@ graph LR
   EA[EA/King/Roblox量化证据] --> GameIntel
   Ubisoft[Ubisoft/KRAFTON/Inworld] --> AINPC
   Capcom[Capcom/Square Enix/Unity] --> GamePipeline
+  CatWu[Cat Wu访谈] --> Anthropic
+  CatWu --> Taste
+  CatWu --> Evals
 ```
 
 ## 查看方式
@@ -71,3 +81,9 @@ graph LR
 - [[游戏工作室AI提效落地框架]]
 - [[AI辅助QA]]
 - [[AI NPC]]
+- [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]
+- [[Anthropic]]
+- [[Claude Code]]
+- [[Cowork]]
+- [[产品品味]]
+- [[Evals]]
