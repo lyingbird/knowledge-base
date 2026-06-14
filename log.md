@@ -89,3 +89,28 @@
 - 新增 source 页 [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]，并新增实体页 [[后敏捷操作模型]]、[[Spec-driven development]]、[[AI原生工作流]]、[[技术债]]。
 - 更新 [[AI研发提效]]、[[AI原生组织]]、[[企业AI产品案例]]、[[智能体]]、[[企业上下文]]、[[Agent Harness]]、[[wiki/overview]] 和 [[index]]，把这条素材接入既有图谱。
 - 将 McKinsey 调研口径、CMU 技术债研究、GitHub Spec Kit、银行案例数字、Netflix/高盛/Cursor/P&G/Browser Company 等高风险事实加入 [[03-核验/待核验事实]]。
+
+## 2026-06-14 expand | 新增技术/学习支柱与 GitHub 项目录入
+
+- 把知识库从单一「AI 组织/产品/治理」主题扩展为双支柱：新增「AI 技术与开源项目深入学习」支柱。更新 `purpose.md` 研究范围与关键问题。
+- `.wiki-schema.md` 升到 1.2：新增 `raw/repos/` 目录、「GitHub / 开源项目学习素材 Ingest 规范」与「项目学习页结构」模板。
+- 消化 `shitagaki-lab/see-through`：raw 副本 + source 页 [[see-through动漫单图图层分解]]，新增实体 [[图层分解]]、[[扩散模型]]，新增主题 [[AI视觉与生成式内容]]。
+- 消化 `multica-ai/andrej-karpathy-skills`：raw 副本 + source 页 [[Karpathy编码原则与Claude-Code-Skills]]，新增实体 [[LLM编码原则]]，接入 [[Claude Code]]/[[AI原生工作流]]/[[生成器-评估器架构]]。
+- 新增综合页 [[Karpathy开源学习路线]]（micrograd→nanochat 优先级 + 逐仓库学习计划）与主题总入口 [[AI技术与开源学习]]。
+- 更新 `index.md`、`03-核验/待核验事实.md`（See-Through 数字/录用、Karpathy 仓库归属与星标待核验）。
+- 待办：逐个深入 Karpathy 仓库并建 source 页；按需重建 graph-data.json / knowledge-graph.html。
+
+## 2026-06-14 evaluate | 单图→游戏动态角色资产链路核查
+
+- 应「see-through 能否零手动把静态图变游戏可用动态资产」的提问，核查完整下游链路。
+- 核实：see-through 仅出静态 PSD，作者声明非 Image-to-Live2D；StretchyStudio（github.com/MangoLion/stretchystudio，editor.stretchy.studio）自动绑定 PSD 但需 ~30 秒手动调关节；PachiPakuGen（github.com/kazuya-bros/PachiPakuGen）生成眨眼/口型材料给 SpriTalk，需手动配层 + DX12/CUDA。
+- 新增综合页 [[单图到游戏角色资产的自动化管线评估]]：结论是 see-through 用于「自动备料」，零手动+高表现力+进引擎目前不成立；并在 [[see-through动漫单图图层分解]] 加下游章节互链。
+
+## 2026-06-14 validate | 单图→游戏角色动画 全链路本机实测 + Godot 引擎验证
+
+- 在本机 RTX 4070 Ti SUPER 上把 `角色图 → see-through 拆层 → 绑骨 → Godot 引擎动画` 三段全部跑通，结论写入 [[单图到游戏角色资产的自动化管线评估]]。
+- see-through 本地装好（Python 3.12 venv + torch cu128，跳过 detectron2/mmcv/sam2）；实测基准 1024≈3-4min/17层、1280≈6min/18层；踩坑：16GB 卡禁用 `--group_offload`（否则 2s/step→151s/step 且解码卡死）、禁用 hf-mirror 镜像（与 hf-xet 冲突）改直连。
+- StretchyStudio 浏览器实测：17/17 层匹配 + 自动骨架 + 导出 Spine(4.0+)/Live2D/PNG序列。
+- Godot 4.6.3 实测：分层 PNG 程序化生成 `.tscn`（无需 MCP）→ 剪纸骨架（头部组绕颈轴旋转）→ 头转动+发摆+呼吸 idle，Vulkan 实时渲染（工程 F:\godot_rig_demo、F:\godot_seethrough_girl）。
+- 关键限制：see-through 只对「标准站姿/单角色/手臂可见」效果好；对夸张展开袖+多主体的复杂 hero 立绘会崩（脸糊、手臂丢、配角丢弃），需挑图或逐主体裁切。
+- 战略结论：低成本 2D 动画（待机/转头/眨眼/口型档）可行可落地，但强依赖「可绑定友好」的输入；高表现力战斗动画仍需手工绑定。
