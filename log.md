@@ -100,6 +100,16 @@
 - 更新 `index.md`、`03-核验/待核验事实.md`（See-Through 数字/录用、Karpathy 仓库归属与星标待核验）。
 - 待办：逐个深入 Karpathy 仓库并建 source 页；按需重建 graph-data.json / knowledge-graph.html。
 
+## 2026-06-15 ingest | 独立开发者克隆 SaaS 月入 3.5 万美元（Starter Story 访谈）
+
+- 导入 B 站中配视频 BV1H27X6YENj，标题《我克隆了3个成功App，现在月入3.5万美元》，上传者 EdgeAITech，时长约 13:38；原始为 Starter Story 频道对 [[Samuel Rondot]] 的访谈。基于既产出的 digest/note/entities/tags/meta 做 ingest，未重新转写。
+- 新增 source 页 [[我克隆了3个成功App，现在月入3.5万美元]]，区分嘉宾口述、主持人总结与赞助插播（Mobin）三类归因。
+- 开出新主题 [[独立开发与微型SaaS]]，登记为知识库第一条 indie-hacker / micro-SaaS 支线，并与 [[AI创业与投资]] 建立「单人微型 SaaS vs VC/大资本」对照（双向互链）。
+- 新增实体页：[[Samuel Rondot]]、[[克隆并改进1%]]、[[公开构建]]、[[程序化SEO]]、[[无脸视频内容]]、[[StoryShort.ai]]、[[UseArtemis]]、[[Capacity.so]]，以及技术栈 [[Next.js]]、[[Node.js]]、[[Vercel]]、[[Stripe]]、[[Outrank]]。
+- 更新 [[AI创业与投资]]（加对比段与链接）、[[AI人物访谈]]（加本访谈）、[[index]]、[[wiki/overview]]。
+- 将三应用收入（合计 3.5 万/月，34000 vs 35000 矛盾）、单项 15k/20k/0.9k、客户数、StoryShort 月成本 4k–5k、Stripe vs SimilarWeb 流量工具矛盾、Samuel Rondot/Pat Walls/Lemlist/StoryShort/Capacity/Ahrefs/SEObot/Outrank/Vercel 等 ASR 校正点加入 [[03-核验/待核验事实]]。
+- 待办：交互式 `wiki/knowledge-graph.html` 与 `wiki/graph-data.json` 需下次用原 graph build 脚本重新生成，以纳入本批新节点。
+
 ## 2026-06-14 evaluate | 单图→游戏动态角色资产链路核查
 
 - 应「see-through 能否零手动把静态图变游戏可用动态资产」的提问，核查完整下游链路。

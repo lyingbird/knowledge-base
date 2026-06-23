@@ -1,6 +1,6 @@
 # 知识库索引
 
-> 最后更新：2026-06-14
+> 最后更新：2026-06-15
 
 这是 `llm-wiki` 化后的主索引。原有 Obsidian 入口仍在 [[00-入口/开始阅读]]；新的持续维护层从这里开始。
 
@@ -38,6 +38,7 @@
 - [[硬科技与中国创业]]：硬科技创业、产业机会和长期主义。
 - [[AI技术与开源学习]]：技术/学习支柱总入口，把开源项目消化成可复现的学习页。
 - [[AI视觉与生成式内容]]：扩散模型 + 分割 + 深度，把视觉资产结构化、可编辑。
+- [[独立开发与微型SaaS]]：单人/极小团队复制已验证产品、低成本自动化获客的「小而赚钱」打法。
 
 ## 实体页
 
@@ -81,6 +82,19 @@
 - [[Cursor]]
 - [[赫拉利]]
 - [[罗振宇]]
+- [[Samuel Rondot]]
+- [[克隆并改进1%]]
+- [[公开构建]]
+- [[程序化SEO]]
+- [[无脸视频内容]]
+- [[StoryShort.ai]]
+- [[UseArtemis]]
+- [[Capacity.so]]
+- [[Next.js]]
+- [[Node.js]]
+- [[Vercel]]
+- [[Stripe]]
+- [[Outrank]]
 
 ## 素材摘要
 
@@ -116,6 +130,7 @@
 - [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]
 - [[see-through动漫单图图层分解]]（GitHub 项目学习素材）
 - [[Karpathy编码原则与Claude-Code-Skills]]（GitHub 项目学习素材）
+- [[我克隆了3个成功App，现在月入3.5万美元]]（Starter Story 访谈 [[Samuel Rondot]]）
 
 ## 综合分析
 
@@ -140,6 +155,13 @@
 - 录入规范见 [[.wiki-schema|Wiki Schema]] 的「GitHub / 开源项目学习素材 Ingest 规范」；原始副本放 `raw/repos/`。
 - 首批素材：[[see-through动漫单图图层分解]]（[[图层分解]] + [[扩散模型]]，主题 [[AI视觉与生成式内容]]）；[[Karpathy编码原则与Claude-Code-Skills]]（[[LLM编码原则]]）。
 - 系列学习路线：[[Karpathy开源学习路线]]，从 micrograd 到 nanochat 排好优先级，逐仓库深入。
+
+## 2026-06-15 新增：独立开发与微型 SaaS 支线
+
+- 导入 Starter Story 对 [[Samuel Rondot]] 的访谈（B 站中配 BV1H27X6YENj），新增 source 页 [[我克隆了3个成功App，现在月入3.5万美元]]。
+- 开出新主题 [[独立开发与微型SaaS]]，与既有 [[AI创业与投资]] 形成「单人微型 SaaS vs VC/大资本」对照。
+- 新增实体：[[克隆并改进1%]]、[[公开构建]]、[[程序化SEO]]、[[无脸视频内容]]、[[StoryShort.ai]]、[[UseArtemis]]、[[Capacity.so]] 及技术栈 [[Next.js]]/[[Node.js]]/[[Vercel]]/[[Stripe]]/[[Outrank]]。
+- 全部收入/客户/成本数字、人名与工具名（ASR 还原）已进 [[03-核验/待核验事实]]，核验前不作综合结论。
 
 ## 2026-06-07 新增：长程 Agent Harness
 
