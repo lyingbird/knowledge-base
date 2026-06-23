@@ -136,3 +136,15 @@
 - 与既有 [[微型巨头：100 倍组织与智能密度]]、[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 互证：核心判断是"个体提效 ≠ 组织提效"，瓶颈在协调成本、协作效率与组织采用率。
 - 高风险事实（Altman/Amodei 预言、一人独角兽实践者收入与人数、超级组织 28 分钟上线/token 占比 15%/采用漏斗、LLM Router 降本 70%、刘世奇案例数字等）已写入 `03-核验/待核验事实.md`，核验前不升级为综合结论。
 - 注：本次 source 页引用的"原始副本"改为普通路径文本（非双链），避免在图谱中产生指向 raw 的断链节点。
+
+## 2026-06-23 ingest | Jenny Wen：AI 时代设计职能（本地 ASR）
+
+- 用户给两个 B 站链接（BV1TioVBxEKp、BV1oPAZz2E4i），要求用本地语音转文字模型理解后入库。
+- 下载受 B 站 412 风控：yt-dlp 的 bilibili 提取器在本环境网页层被拦；改写脚本走官方 API（view + WBI 签名 playurl）+ 首页 cookie jar，成功取 DASH 音轨，ffmpeg 转 16k 单声道 wav。
+- 本地 ASR：faster-whisper large-v3（CUDA/fp16，cu128），两段音频均为英文原音（B 站仅换中文标题）。Jenny 1140 段、Cat Wu 1499 段，各约 5 分钟跑完。
+- 去重判断：BV1TioVBxEKp（Cat Wu）= 既有页 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]] 的同期 Lenny's Podcast 另一搬运版 → 不新建页，只把英文原版转写存入 raw 并在该 source 页补"英文原版交叉核对件"。
+- BV1oPAZz2E4i（Jenny Wen）为全新内容 → 新建 source 页 [[传统设计流程已死：Jenny Wen 谈 AI 时代设计]]、实体 [[AI原生设计]]、人物页 [[Jenny Wen]]。
+- 反向补链：[[产品品味]]、[[Cowork]]、[[Anthropic]]、[[Cat Wu]]、[[AI与人类独特性]] 各加设计视角段落与链接。
+- 核心判断入库：工程倒逼设计、流程"已死"、设计两层分化、build trust through speed、招聘三 archetype（block/深T/cracked new grad）、legibility framework、低杠杆即高杠杆、Cloud Studio→Skills 框架。
+- 高风险点（"Opus 4.6"疑 ASR 误听、Cowork 10 天、时间分配比例、Boris/Mike Krieger/Kevin Weil/Evan Tana/Terrence Rohan 转述）入 03-核验/待核验事实.md。
+- 转写件存 `raw/notes/video-transcripts/`：Jenny 的 `.transcript.txt` 与 Cat Wu 的 `.en-original.transcript.txt`。

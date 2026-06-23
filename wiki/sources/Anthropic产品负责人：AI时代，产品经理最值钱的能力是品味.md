@@ -17,6 +17,7 @@ sources: [raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产�
 - 上传日期：2026-06-03
 - 视频时长：01:25:34
 - 原始转写：[[raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味.transcript.txt]]
+- 英文原版转写（2026-06-23 本地 ASR 补充）：`raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味.en-original.transcript.txt`，由 faster-whisper large-v3 对另一搬运版 B 站视频 `BV1TioVBxEKp`（《Anthropic 的产品团队如何做到比任何人都快 | Cat Wu》，UP 主"Web3天空之城"）的英文原音转写而成。两个 B 站视频是同一期 Lenny's Podcast 访谈的不同中文标题搬运，英文原版可作本页中文摘要的交叉核对件。
 - 外部参照：[Listen Notes 节目页](https://www.listennotes.com/podcasts/lennys-podcast/how-anthropics-product-team-ngbd5vaDuMp/)、[Lenny's Newsletter 节目页](https://www.lennysnewsletter.com/p/how-anthropics-product-team-moves)、[transcripts.wiki 结构化摘要](https://transcripts.wiki/transcripts/cat-wu-on-ai-product/)
 
 ## 核心判断

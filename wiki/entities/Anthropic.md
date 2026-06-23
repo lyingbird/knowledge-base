@@ -38,3 +38,7 @@ Cat Wu 把 Anthropic 的组织优势部分归因于 mission alignment。共同�
 [[Anthropic团队：如何构建运行 数小时的Agent]] 展示了 Anthropic Applied AI 团队如何把 Claude Code 的产品经验上升为 [[长程智能体]] 方法论。Andrew 负责梳理模型与 harness 的共演化：RALPH loop、Agent SDK、Skills、server-side compaction、1M context 等能力持续改变 scaffold 的职责。Ash 负责展示实验性 [[生成器-评估器架构]]：planner 给高层方向，generator 构建，evaluator 用真实浏览器和细粒度 rubric 施加对抗压力。
 
 这补强了 Anthropic 作为 AI-native 组织样本的另一面：它不仅通过 research preview 和 dogfooding 迭代产品，也把失败 trace、eval、completion contract、prompt/skill 更新变成组织学习循环。
+
+## 设计组织视角（Jenny Wen）
+
+[[传统设计流程已死：Jenny Wen 谈 AI 时代设计]] 给出 Anthropic 的设计侧样本：设计师大量时间用于在内部 Slack"catch up"（"Slack 是金矿，最好的 AI 新闻在公司内部"）；设计职能被工程倒逼重写，转向收敛/方向/polish（见 [[AI原生设计]]）；用 research preview + build trust through speed 发布；内部原型 Cloud Studio 催生了 Skills 框架。这与 Cat Wu 的 PM 视角、Applied AI 的 harness 视角共同拼出同一组织的多切面。

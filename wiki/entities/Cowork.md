@@ -32,6 +32,10 @@ Cowork 适合“人人都做但做不够、产出格式不清晰”的知识工�
 - Cowork 的正式产品命名、公开定位和与 Claude for Work 的关系。
 - 访谈中提到的 Gmail inbox zero、skill 更新和自定义 command 是否对应公开功能。
 
+## 设计与发布视角（Jenny Wen）
+
+[[传统设计流程已死：Jenny Wen 谈 AI 时代设计]] 补充了 Cowork 的设计与发布侧：它被以 research preview 形态发布（"这是它最差的时候"），网传"10 天造出"实为"从内部已有版本打磨到可对外发布"的时间，背后是大量 form factor 探索。设计目标是把它做成"你和 Claude 共享的 to-do 列表"。一句话定义："Claude with hands"——擅长把你的一堆杂物变成有用的东西。Jenny 自述已把多数 chat 用例迁到 Cowork 处理长任务。
+
 ## 相关页面
 
 - [[Claude Code]]
@@ -39,3 +43,5 @@ Cowork 适合“人人都做但做不够、产出格式不清晰”的知识工�
 - [[企业上下文]]
 - [[智能体]]
 - [[产品品味]]
+- [[AI原生设计]]
+- [[Jenny Wen]]

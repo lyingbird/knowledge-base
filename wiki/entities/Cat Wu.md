@@ -33,3 +33,5 @@ sources: [Anthropic产品负责人：AI时代，产品经理最值钱的能力�
 - [[Cowork]]
 - [[产品品味]]
 - [[Evals]]
+- [[Jenny Wen]]
+- [[AI原生设计]]
