@@ -10,3 +10,7 @@ Desktop.ini
 # Temporary files
 *.tmp
 *.bak
+
+# AI 工具本地状态
+.omc/state/
+.codebuddy/
