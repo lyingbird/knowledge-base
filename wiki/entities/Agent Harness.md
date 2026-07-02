@@ -1,8 +1,8 @@
 ---
 tags: [实体, Agent, AI研发提效, Claude Code]
 created: 2026-06-07
-updated: 2026-06-07
-sources: [Anthropic团队：如何构建运行 数小时的Agent, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味, 麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]
+updated: 2026-07-01
+sources: [Anthropic团队：如何构建运行 数小时的Agent, Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味, 麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率, Agent Harness：模型是脑Harness是手（十字路口×MiniMax×Hermes）]
 ---
 
 # Agent Harness
@@ -34,11 +34,26 @@ Harness 不应被当成永久教条。每次模型发布后，都要用 [[Evals]
 
 两者的共同点是：不能把“生成速度”误认为“系统能力”。AI 能产出代码，只是系统的一个局部动作；真正可持续的能力来自外部结构如何发现失败、记录失败、评价结果，并把经验回写进下一次运行。
 
+## 2026-07 补充：多 Agent、记忆与「人成为瓶颈」
+
+[[Agent Harness：模型是脑Harness是手（十字路口×MiniMax×Hermes）]] 从模型公司（MiniMax）与开源框架（Nous Research / Hermes）视角补充了几个判断：
+
+- **模型是脑、Harness 是手**：模型足够强后「人成为瓶颈」——一个人同时驾驭 5-10 个并行 Agent 时，上下文切换成为效率障碍。
+- **多 Agent 优于单 Agent**：一执行一评估的多 Agent 互检，比单 Agent + 人工确认扩展性更好（单 Agent 上下文过长指数级降质）——与本页 Planner/Generator/Evaluator 分工、[[生成器-评估器架构]] 一致。
+- **Interleaved Thinking**：每次工具调用后重新思考，是 Agent 与 Chatbot 的根本差别。
+- **记忆 > 智能**：Hermes 多层记忆解决「记忆重置」痛点；呼应 [[OpenClaw]] 三层记忆、[[给NPC加AI真能让游戏更好玩吗（插眼GameWard）]] 和平精英四维记忆。
+- **应用层创新会被模型内化**：Skill/Workflow 最终被训练吸收，Agent 玩法范式随模型迭代更新——呼应 [[杨植麟谈K2与Agentic LLM（张小珺商业访谈录）]]。
+- [[罗福莉谈AI范式巨变与OpenClaw（张小珺商业访谈录）]] 进一步指出 **Agent 框架「吃 Post-train」**：框架定义的执行规范只能靠人-Agent 交互习得。
+
 ## 相关页面
 
 - [[长程智能体]]
 - [[生成器-评估器架构]]
+- [[OpenClaw]]
 - [[Claude Code]]
 - [[Evals]]
 - [[文件系统共享状态]]
+- [[智能体编排]]
 - [[AI研发提效]]
+- [[Agent Harness：模型是脑Harness是手（十字路口×MiniMax×Hermes）]]
+- [[罗福莉谈AI范式巨变与OpenClaw（张小珺商业访谈录）]]

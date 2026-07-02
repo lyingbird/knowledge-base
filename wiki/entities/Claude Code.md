@@ -44,3 +44,12 @@ Claude Code 的产品演进体现了 model eats harness。早期模型处理大�
 [[Anthropic团队：如何构建运行 数小时的Agent]] 把 Claude Code 放进更长的演进线：从只能稳定运行约 20 分钟的 coding agent，变成可以在 [[Agent Harness]] 支撑下运行数小时甚至数天的开发系统。关键变化不是单一模型提升，而是 Claude Code/Agent SDK、MCP、sub-agent、Skills、权限、context 注入、server-side compaction、checkpoints 和 [[Evals]] 共同组成的 scaffold。
 
 这条素材补充了 Claude Code 的工程边界：当模型会 context anxiety、自评偏差或规划过载时，harness 需要把状态写入 [[文件系统共享状态]]，把完成定义变成 contract，并用 [[生成器-评估器架构]] 让 evaluator 通过 Playwright/Chrome MCP 真实操作产物。模型升级后，旧 scaffold 应通过 eval 被删除或简化，而不是固化成教条。
+
+## 用 Claude Code 做游戏（Roblox 实操）
+
+2026-06-30 导入的一组 [[Roblox Studio]] 视频，把 Claude Code 放进"个人开发者做游戏"的具体场景，是其作为**桌面型 file-editing agent** 的落地样本：
+
+- [[不用再学代码了！零基础AI全自动做Roblox游戏教程]]：通过官方 [[Script Sync]] 把 Studio 脚本同步到本地文件夹，Claude Code 指定该目录后即可自动新建/修改脚本（创建怪物 AI、加行走动画、用代码生成 GameOver UI），作者评价它"比 [[DeepSeek]] 聪明"。
+- [[【中配】用AI制作罗布乐思爆款游戏 其实很简单 - tef]]：配合 [[Rojo]] 同步，按"里程碑式 vibe coding"约 2 小时扛起一整款盗匪刷宝游戏的框架/战斗/任务/世界/属性系统——印证 Claude Code 从"改单个脚本"到"扛整个项目"的长程能力，也暴露使用额度上限这一现实约束。
+
+这两例都说明 Claude Code 的价值不在出代码片段，而在**直接接管代码库、与创作工具（经 Script Sync/Rojo/[[Model Context Protocol|MCP]]）打通后端到端完成实现**。详见主题 [[AI辅助游戏开发]]。

@@ -1,0 +1,49 @@
+# Roblox Studio 接入 Claude MCP：自动生成游戏内 GUI 系统
+BV: BV1xNRDBWEke  |  UP: RobloxDev  |  duration: 242s
+ASR: faster-whisper large-v3  |  lang: en (p=1.00)
+source_url: https://www.bilibili.com/video/BV1xNRDBWEke/
+============================================================
+
+[00:00:00.000 -> 00:00:05.520] Hey everyone, in this video, I'm going to show you how to connect Claude NCP to Roblox Studio
+[00:00:05.520 -> 00:00:09.680] so you can use AI to help build your Roblox games faster than ever.
+[00:00:10.240 -> 00:00:15.720] And the coolest part, Claude can actually generate UI directly inside your Roblox project
+[00:00:15.720 -> 00:00:19.730] from simple prompts. Let's get everything set up.
+[00:00:20.560 -> 00:00:23.880] First things first, open your browser and search for Claude Download.
+[00:00:24.340 -> 00:00:28.980] Make sure you install the desktop version, because NCP only works with Claude Desktop,
+[00:00:28.980 -> 00:00:40.520] not the web browser version. Once that's installed, we're ready for the next step.
+[00:00:41.080 -> 00:00:44.980] Now go back to your browser and search for Roblox Studio MCP GitHub.
+[00:00:45.520 -> 00:00:55.010] Click on the first GitHub result. Once you're there, scroll down the GitHub page until you
+[00:00:55.010 -> 00:01:00.530] find the setup section. Here, click the Studio plugin link to download the MCP server plugin.
+[00:01:01.010 -> 00:01:03.790] This is the plugin that connects Claude with Roblox Studio.
+[00:01:07.210 -> 00:01:12.470] Now launch Roblox Studio and create a brand new project. Any blank template works fine.
+[00:01:13.010 -> 00:01:21.510] At the top, click the Plugins tab. Then open Plugin folder. Now just paste the MCP plugin
+[00:01:21.510 -> 00:01:27.550] you downloaded into that folder. That's it. Now restart Roblox Studio. When it opens again,
+[00:01:27.670 -> 00:01:32.970] head back to the Plugins tab. And boom, you should now see your new MCP server plugin installed.
+[00:01:33.550 -> 00:01:40.100] Open it up. If you hit connect right now, it'll fail. And that's totally normal,
+[00:01:40.460 -> 00:01:46.520] because Claude Desktop isn't running yet. Now come back to GitHub page. Scroll down until you see the
+[00:01:46.520 -> 00:01:46.660] other plugins. And that's it. Now go back to the GitHub page. Scroll down until you see the other
+[00:01:46.680 -> 00:01:54.820] MCP client section. Expand it and copy the MCP server code. We need to paste this code to
+[00:01:54.820 -> 00:02:03.420] Claude Desktop config. So open Claude Desktop app. Open setting. Choose developer tab. Then click on
+[00:02:03.420 -> 00:02:09.320] edit config button. It will select the Claude Desktop config JSON file. Open it with any text
+[00:02:09.320 -> 00:02:20.490] editor. Now you can append with comma separate with previous part of the setting. Then you need
+[00:02:20.490 -> 00:02:30.470] to quit Claude app completely. Now launch Claude Desktop. Go into
+[00:02:30.470 -> 00:02:36.430] developer settings. And here you should see the Roblox Studio MCP server already added and running.
+[00:02:36.850 -> 00:02:44.290] That means the connection is ready. Go to Roblox Studio and open plugin again if it closed. Then
+[00:02:44.290 -> 00:02:51.090] click connect to connect to Claude. Now it connected successfully to MCP server. With
+[00:02:51.090 -> 00:02:57.070] Roblox Studio still open, go to Claude and type check connection to Roblox Studio. If everything
+[00:02:57.070 -> 00:03:01.030] is working, Claude will confirm the connection instantly. Very cool.
+[00:03:01.210 -> 00:03:07.890] Now for the fun part. Enter this prompt. Create health bar HUD UI on top left corner. A game map
+[00:03:07.890 -> 00:03:13.070] at bottom left. An inventory GUI on top right corner of the screen. And now Claude starts
+[00:03:13.070 -> 00:03:19.070] building the UI directly in Roblox Studio for you. How awesome is that? After a few minutes,
+[00:03:19.170 -> 00:03:24.090] the UI looked amazing. But in my case, the health and mana bars ended up in the center of the screen.
+[00:03:24.470 -> 00:03:29.670] So I simply gave Claude another prompt, asking it to fix the placement. And just like that,
+[00:03:29.670 -> 00:03:31.130] it corrected everything.
+[00:03:31.710 -> 00:03:37.650] Now hit play inside Roblox Studio. And there it is. A clean, polished, in-game GUI system,
+[00:03:38.090 -> 00:03:44.430] generated with AI. The UI looks fantastic. It's not fully functional yet, but later we can ask
+[00:03:44.430 -> 00:03:50.430] Claude to add logic for health, mana, inventory systems, and much more. I've added all the
+[00:03:50.430 -> 00:03:55.270] prerequisite download links in the description below. If this helped you out, give this video
+[00:03:55.270 -> 00:03:59.990] a like, subscribe for more Roblox AI tutorials, and I'll see you in the next one.
+
+============================================================
+[full_text]
+Hey everyone, in this video, I'm going to show you how to connect Claude NCP to Roblox Studioso you can use AI to help build your Roblox games faster than ever.And the coolest part, Claude can actually generate UI directly inside your Roblox projectfrom simple prompts. Let's get everything set up.First things first, open your browser and search for Claude Download.Make sure you install the desktop version, because NCP only works with Claude Desktop,not the web browser version. Once that's installed, we're ready for the next step.Now go back to your browser and search for Roblox Studio MCP GitHub.Click on the first GitHub result. Once you're there, scroll down the GitHub page until youfind the setup section. Here, click the Studio plugin link to download the MCP server plugin.This is the plugin that connects Claude with Roblox Studio.Now launch Roblox Studio and create a brand new project. Any blank template works fine.At the top, click the Plugins tab. Then open Plugin folder. Now just paste the MCP pluginyou downloaded into that folder. That's it. Now restart Roblox Studio. When it opens again,head back to the Plugins tab. And boom, you should now see your new MCP server plugin installed.Open it up. If you hit connect right now, it'll fail. And that's totally normal,because Claude Desktop isn't running yet. Now come back to GitHub page. Scroll down until you see theother plugins. And that's it. Now go back to the GitHub page. Scroll down until you see the otherMCP client section. Expand it and copy the MCP server code. We need to paste this code toClaude Desktop config. So open Claude Desktop app. Open setting. Choose developer tab. Then click onedit config button. It will select the Claude Desktop config JSON file. Open it with any texteditor. Now you can append with comma separate with previous part of the setting. Then you needto quit Claude app completely. Now launch Claude Desktop. Go intodeveloper settings. And here you should see the Roblox Studio MCP server already added and running.That means the connection is ready. Go to Roblox Studio and open plugin again if it closed. Thenclick connect to connect to Claude. Now it connected successfully to MCP server. WithRoblox Studio still open, go to Claude and type check connection to Roblox Studio. If everythingis working, Claude will confirm the connection instantly. Very cool.Now for the fun part. Enter this prompt. Create health bar HUD UI on top left corner. A game mapat bottom left. An inventory GUI on top right corner of the screen. And now Claude startsbuilding the UI directly in Roblox Studio for you. How awesome is that? After a few minutes,the UI looked amazing. But in my case, the health and mana bars ended up in the center of the screen.So I simply gave Claude another prompt, asking it to fix the placement. And just like that,it corrected everything.Now hit play inside Roblox Studio. And there it is. A clean, polished, in-game GUI system,generated with AI. The UI looks fantastic. It's not fully functional yet, but later we can askClaude to add logic for health, mana, inventory systems, and much more. I've added all theprerequisite download links in the description below. If this helped you out, give this videoa like, subscribe for more Roblox AI tutorials, and I'll see you in the next one.

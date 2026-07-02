@@ -148,3 +148,52 @@
 - 核心判断入库：工程倒逼设计、流程"已死"、设计两层分化、build trust through speed、招聘三 archetype（block/深T/cracked new grad）、legibility framework、低杠杆即高杠杆、Cloud Studio→Skills 框架。
 - 高风险点（"Opus 4.6"疑 ASR 误听、Cowork 10 天、时间分配比例、Boris/Mike Krieger/Kevin Weil/Evan Tana/Terrence Rohan 转述）入 03-核验/待核验事实.md。
 - 转写件存 `raw/notes/video-transcripts/`：Jenny 的 `.transcript.txt` 与 Cat Wu 的 `.en-original.transcript.txt`。
+
+## 2026-06-30 ingest | AI 辅助 Roblox 游戏开发（4 个 B 站视频，本地 ASR）
+
+- 用户给 4 个 B 站链接（BV15J786XEfk、BV1xNRDBWEke、BV1fB7Y6TEoW、BV1CcE46wEmo），要求用本地语音模型炼化入库，跑通则落本地仓库。
+- 沿用既定链路：web_fetch 4 链接均 412 风控 → 改走官方 API（nav 取 WBI img/sub key + 签名 playurl + view 取 cid/标题/时长）+ 用户 cookie jar；DASH 音轨经 ffmpeg 流式转 16k 单声道 WAV，4 个时长全部对齐（diff < 1s，无截断）。
+- 本地 ASR：faster-whisper large-v3（CUDA/fp16，torch 2.11+cu128）。语种：BV1xNRDBWEke 英文原音（B 站仅换中文标题），其余 3 个中文（含 BV1fB7Y6TEoW 为 tef 英文视频的中文配音搬运）。
+- 去重判断：4 个均为全新内容（既有 24 篇为访谈/行业分析，无"个人用 AI 实操做 Roblox 游戏"主题），全部新建 source 页。
+- 新增 raw 转写副本 4 份于 `raw/notes/video-transcripts/`（去 BV 前缀命名）。
+- 新增 source 页 4 个：[[不用再学代码了！零基础AI全自动做Roblox游戏教程]]、[[Roblox Studio 接入 Claude MCP：自动生成游戏内 GUI 系统]]、[[【中配】用AI制作罗布乐思爆款游戏 其实很简单 - tef]]、[[竟然已经可以游玩了？Roblox AI渲染游戏【Roblox新闻】]]。
+- 新增实体页 5 个：[[Roblox Studio]]、[[Model Context Protocol]]、[[Rojo]]、[[Script Sync]]、[[DeepSeek]]；新增主题页 [[AI辅助游戏开发]]（三路径表 + 里程碑式 vibe coding 方法 + 平台级对照）。
+- 反向补链：[[Claude Code]]（加"用 Claude Code 做 Roblox 游戏"段）、[[AI原生游戏]]（加平台级 AI 生成世界落差段）、[[AI游戏与虚拟世界]]（接入第三条线）、[[wiki/overview]]、[[index]]。
+- 高风险事实（DeepSeek 对 Luau 能力、Script Sync 发布时间、MCP/NCP ASR 疑点、Fable 5、tef 2 小时原型、Roblox 收购 AI 公司/3% 好评率/数百万美元等）写入 [[03-核验/待核验事实]]。
+- source 页引用 raw 原始副本用普通路径文本（非双链），避免图谱出现指向 raw 的断链节点。
+- 重建 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`，核对 [[index]]、[[wiki/knowledge-graph]]、[[log]] 双链。
+- 任务收尾清理临时下载/ASR 脚本、cookie 文件与中间 WAV（cookie 含敏感凭证）。
+
+## 2026-07-01 intel-gather + ingest | 天美两话题：游戏商业化增量 & 游戏+AI 布局（7 个 B 站视频，本地 ASR）
+
+- 用户提出两个天美视角调研话题：A「跨界思维 × 游戏商业化增量」（经济系统/付费/虚拟资产/IP 衍生/创作者经济/跨界灵感）、B「游戏+AI 布局」（研发提效/下一代范式/AI 无法取代的核心竞争力）。选择"检索 B 站高质量视频候选"。
+- 检索：在既有 `.bili_tmp/search_bili.py` 基础上新建 `search_bili_timi.py`（两话题聚焦关键词，宽召回 1332 条→补全 80）+ 第 2 轮 `search_bili_timi2.py`（补创作者经济/皮肤/盲盒/IP 跨界 + 腾讯网易自研/世界模型/AI 美术关卡，宽召回 339）。第 2 轮话题 B 新增 0（已饱和），话题 A 有补充。人工按相关性+深度信号（投币率/收藏率/时长）分层，剔除误命中噪音，产出候选清单 `.bili_tmp/候选清单_天美两话题.md`。
+- 用户确认 7 个 BV 入库：话题 A：BV1zh9jByE3y（经济系统）、BV1Af4y1Q7gS（Pay to Win，未入库见下）、BV1X54y1m79Q（王者日赚20亿）、BV1L4znYWEr5（乐高）；话题 B：BV1gjwQznEae（GDC中国位置）、BV1dLosBiExF（米哈游LPM）、BV1sAVr6bEiN（NPC加AI）。
+  - 注：实际建 source 页 6 个——BV1Af4y1Q7gS（Pay to Win 氪金演变，42min）与经济系统页高度同源，其要点并入 [[游戏付费设计]] 实体与经济系统 source 页，转写副本仍保留，未单建 source 页。
+- 下载：沿用官方 API + WBI 签名 playurl 链路；乐高、米哈游 2 个视频最高码率音轨落在 `mcdn.bilivideo.cn` P2P CDN 导致 ffmpeg 拉流失败，改为优先选 `upos-*` 主 CDN 音轨后成功。7 个 WAV 时长全部对齐（VAD 尾部静音差 <41s）。
+- 本地 ASR：faster-whisper large-v3（CUDA/fp16），7 个全部中文，段尾时间对齐视频总时长。转写副本存 `raw/notes/video-transcripts/`（去 BV 前缀命名）。
+- 新增 source 页 6 个：[[游戏设计师为什么总是搞不好经济系统（火兰杂谈）]]、[[王者荣耀日赚20亿的商业秘密（海盗Talk）]]、[[乐高的三大商业战略（小Lin说）]]、[[GDC2026观察：AI时代中国游戏在什么位置（退役编辑雨上）]]、[[米哈游LPM大型表演模型（退役编辑雨上）]]、[[给NPC加AI真能让游戏更好玩吗（插眼GameWard）]]。
+- 新增实体页 11 个：话题 A——[[游戏经济系统]]、[[游戏付费设计]]、[[游戏长线运营]]、[[IP衍生变现]]、[[创作者经济]]、[[王者荣耀]]、[[天美工作室群]]、[[乐高]]、[[AARRR模型]]、[[跨界商业案例]]；话题 B——[[游戏AI提效]]、[[AI无法取代的核心竞争力]]。更新既有实体 [[AI NPC]]（补和平精英 AI 队友、米哈游 LPM 两条路线与"聪明≠好玩"）。
+- 新增主题页 1 个：[[游戏商业化与虚拟经济]]（话题 A 总入口，三层次：游戏内经济/付费、端外 IP/资产、跨界灵感）。更新主题页 [[AI游戏与虚拟世界]]（补 2026-07 大厂 AI 战略与下一代范式段、新素材、新链接）。
+- 高风险事实全部写入 [[03-核验/待核验事实]]：王者日活1亿/营收20亿/留存55.9%（约2020口径）、乐高2023营收98亿/利润19亿美元、GDC 36%/106场、和平精英1.1亿用户/开麦率74.72%、米哈游LPM 170亿参数/童馨履历、OpenAI Five TAU/4.5万年、游戏AI史时间点等，核验前不升级为综合结论。
+- 归因边界：6 份素材均为 UP 主对公开信息的解读/分析，非厂商官方披露；source 页均标注归因边界与时效。
+- 两话题跨主题连接：[[游戏商业化与虚拟经济]]（A）与 [[AI游戏与虚拟世界]]（B）并列互链；[[王者荣耀]] 是两话题共同的天美内部案例交汇点；[[AI无法取代的核心竞争力]] 接 [[AI与人类独特性]]、[[产品品味]]。
+- 待办（下一步）：重建 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`；话题 A 待补跨界案例（泡泡玛特/迪士尼/任天堂/平台经济）与网络文章/GitHub 来源（用户已勾选但本轮仅跑 B 站）；可考虑做 [[comparisons]]：乐高 vs 王者生态化、米哈游 LPM vs 和平精英 AI 队友两条 NPC 路线。
+
+
+## 2026-07-01 intel-gather + ingest | 两 UP 主精选 12 访谈（张小珺 + 十字路口，本地 ASR，autopilot）
+
+- 用户给两个 UP 主页（UID 505301413 Koji杨远骋·十字路口；280780745 张小珺商业访谈录）+ 新 cookie，要求"今晚下载"，/autopilot 模式。
+- 抓取投稿列表：新建 `.bili_tmp/fetch_up_list.py`（space/wbi/arc/search 分页 + WBI 签名），得两 UP 共 82 条、约 129 小时音频（张小珺多为 3-7h 超长访谈，Koji 多为 40-90min）。去重发现张小珺的姚顺宇/Manus出售/朱啸虎/印奇/禾赛已在库。
+- 因全量 82 条/129h 音频不现实，用 AskUserQuestion 确认范围 → 用户选"精选高优先级一批（约 10-15 条）今晚跑完入库"。
+- 精选 12 条（清单存 `.bili_tmp/精选清单_两UP.md`）：张小珺 6（阳萌/罗福莉/杨植麟/谢赛宁/Kimi K2讲解/Manus肖弘），Koji 6（Agent Harness/前原神主创/AI游戏全景/FDE/OpenClaw/世界模型终局）。
+- 下载：复用官方 API + WBI playurl + upos CDN 优选（避 mcdn P2P）链路，`dl_audio2.py`；12 个 WAV 时长全部对齐（谢赛宁 24278s=6.7h 也完整）。
+- 本地 ASR：faster-whisper large-v3（CUDA），按时长升序转写，12 个全部完成、全中文、段尾对齐（谢赛宁 6.7h 转写耗时约 35min）。转写副本存 `raw/notes/video-transcripts/`。
+- 入库策略：短片我通读精写 source 页；超长片用 Explore agent 并行提炼结构化要点后我据此撰写，边转写边入库以提效。
+- 新增 source 页 12 个：[[2026 AI游戏全景扫描：四层图景与共识缺口（十字路口×405游局）]]、[[世界模型的终局之路：因果世界模型（十字路口×黄碧薇）]]、[[FDE：AI时代的新岗位与旧分工松动（十字路口×Rolling AI）]]、[[20个问题搞懂OpenClaw：Agent范式的爆红（十字路口）]]、[[Agent Harness：模型是脑Harness是手（十字路口×MiniMax×Hermes）]]、[[前原神主创聊AI游戏创业（十字路口×恶少）]]、[[Manus爆火时对话肖弘（张小珺商业访谈录）]]、[[杨植麟谈K2与Agentic LLM（张小珺商业访谈录）]]、[[逐段讲解Kimi K2报告：系统工程的力量（张小珺商业访谈录）]]、[[罗福莉谈AI范式巨变与OpenClaw（张小珺商业访谈录）]]、[[阳萌谈第三类公司与端侧模型（张小珺商业访谈录）]]、[[谢赛宁7小时访谈：世界模型与AMI Labs（张小珺商业访谈录）]]。
+- 新增实体页 6 个：[[世界模型]]、[[端侧模型]]、[[FDE]]、[[OpenClaw]]、[[十字路口]]、[[张小珺商业访谈录]]。更新已有实体 [[Agent Harness]]（补多 Agent/记忆/人成瓶颈）、[[基础模型]]（补 Agent 范式/世界模型）、[[具身智能]]（补世界模型/端侧）。
+- 更新主题页 [[AI人物访谈]]（接入两大深访频道 6+ 素材）；[[AI游戏与虚拟世界]] 已含游戏类新素材的链接。
+- 三条世界模型路线在库内形成完整对照：因果世界模型（黄碧薇）vs 具身认知/JEPA（谢赛宁/杨立昆 AMI Labs）vs 生成式实时交互（米哈游 LPM）；共识 LLM 非终局，分歧在路径。多方判断"世界模型对游戏为时尚早"。
+- Agent 范式主线由 OpenClaw（罗福莉/十字路口）+ Agent Harness（MiniMax×Hermes）+ 杨植麟（Agentic LLM）+ 库内 Anthropic 长程 Agent 交叉锁定：记忆>智能、框架吃 post-train、多 Agent 互检、群体开源自进化。
+- 高风险事实（融资/估值/参数/用户量/benchmark/人名机构）全部写入 [[03-核验/待核验事实]]，核验前不作定论。OpenClaw 名称、罗福莉现职、AMI Labs 数字、恶少提炼数字等标注歧义/存疑。
+- 待办：重建图谱、校验双链、清理临时文件；两 UP 剩余约 70 条（含张小珺李想/何小鹏/余凯/SpaceX/DeepSeek论文讲解、Koji 大量创业访谈）未处理，可后续分批。
