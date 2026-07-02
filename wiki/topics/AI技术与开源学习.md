@@ -1,8 +1,8 @@
 ---
 tags: [主题, 技术学习, 开源, 项目学习]
 created: 2026-06-14
-updated: 2026-06-14
-sources: [wiki/sources/see-through动漫单图图层分解, wiki/sources/Karpathy编码原则与Claude-Code-Skills]
+updated: 2026-07-01
+sources: [wiki/sources/see-through动漫单图图层分解, wiki/sources/Karpathy编码原则与Claude-Code-Skills, 游戏AI开源项目学习路线（NPC-RL-具身Agent-PCG）]
 ---
 
 # AI技术与开源学习
@@ -24,11 +24,14 @@ sources: [wiki/sources/see-through动漫单图图层分解, wiki/sources/Karpath
 
 - [[see-through动漫单图图层分解]] —— 单图 → 23 层 PSD 的 2.5D 分解管线。
 - [[Karpathy编码原则与Claude-Code-Skills]] —— 约束 LLM 编码 agent 的四条原则。
+- [[游戏AI开源项目学习路线（NPC-RL-具身Agent-PCG）]] —— 生成式 NPC（斯坦福小镇）/ RL 玩游戏（street-fighter-ai）/ LLM 具身 Agent（Voyager）/ PCG（gym-pcgrl）四条路线的可复现学习路线，与 [[AI游戏与虚拟世界]] 交叉。
 
 ## 相关页面
 
 - [[Karpathy开源学习路线]]
+- [[游戏AI开源项目学习路线（NPC-RL-具身Agent-PCG）]]
 - [[AI视觉与生成式内容]]
+- [[AI游戏与虚拟世界]]
 - [[图层分解]]
 - [[扩散模型]]
 - [[LLM编码原则]]
