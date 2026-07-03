@@ -37,7 +37,7 @@
 ## 2026-06-04 intel-gather | 游戏工作室 AI 提效证据
 
 - 以 `/intel-gather` 方式并行拆分 5 条证据线：量化提效、NPC/叙事/语音、资产/3D/美术管线、QA/运营/内部工具、行业报告与落地方法论。
-- 新增原始情报副本 [[raw/notes/intel-gather-game-ai-2026-06-04]]。
+- 新增原始情报副本 `raw/notes/intel-gather-game-ai-2026-06-04`。
 - 新增 source 页 [[游戏工作室 AI 提效证据]]，汇总 EA、King、Roblox、Ubisoft、KRAFTON、Embark、CDPR/Respeecher、Layer、Capcom、Square Enix、Unity、Google Cloud、GDC 等公开证据。
 - 新增综合页 [[游戏工作室AI提效落地框架]]，按自动测试、资产生产、NPC/语音、内部工具、客服运营等环节整理可复制方法。
 - 新增实体页 [[AI辅助QA]] 与 [[AI NPC]]，并更新 [[AI游戏与虚拟世界]]、[[游戏生产管线]]、[[AI游戏]]、[[wiki/overview]]、[[index]]。
@@ -53,7 +53,7 @@
 - 导入 B 站视频 `BV1gmLz6BEse`，标题为 [[知乎侯容这段 AI 提效，讲得很实在]]。
 - 下载时发现普通 DASH 音频会解码截断，改用 ffmpeg 直链流式转 WAV，完成 34:54 全量转写。
 - 按精校流程派出分段代理，分别抽取 00:00-12:00、12:00-24:00、24:00-34:54 的章节、例子、数字、流程和 ASR 疑点。
-- 新增原始转写副本 [[raw/notes/video-transcripts/知乎侯容这段 AI 提效，讲得很实在.transcript.txt]]。
+- 新增原始转写副本 `raw/notes/video-transcripts/知乎侯容这段 AI 提效，讲得很实在.transcript.txt`。
 - 新增 source 页 [[知乎侯容这段 AI 提效，讲得很实在]]，并新增实体页 [[AI研发提效]]、[[团队知识库]]。
 - 更新 [[AI原生组织]]、[[企业AI产品案例]]、[[企业上下文]]、[[业务闭环]]、[[wiki/overview]] 和 [[index]]。
 - 将姓名、提效口径、PE/PD 单位、知识库实验、新人上手和虚拟 Agent 接管业务等高风险点加入 [[03-核验/待核验事实]]。
@@ -63,7 +63,7 @@
 - 导入 B 站视频 `BV1tGVm62EGS`，标题为 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]。
 - 下载时发现普通 DASH/m4a 容器虽然显示 01:25:34，但 AAC 数据存在断点，先后只解出 16:45 与 27:38；改用 `yt-dlp -g` 直链加 `ffmpeg` 流式解码为 WAV，验证完整 5134.080 秒。
 - 完成全量转写，字幕尾部到 01:25:32，共 4840 段；按 5 个时间段派出并行代理精读，保留产品品味、research preview、Cowork 工作流、eval、harness、multi-Claude-ing、95% 自动化不够和 Just do things 等细节。
-- 新增原始转写副本 [[raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味.transcript.txt]]。
+- 新增原始转写副本 `raw/notes/video-transcripts/Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味.transcript.txt`。
 - 新增 source 页 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]，并新增实体页 [[Anthropic]]、[[Claude Code]]、[[Cowork]]、[[产品品味]]、[[Evals]]、[[Cat Wu]]。
 - 更新 [[AI原生组织]]、[[企业AI产品案例]]、[[AI人物访谈]]、[[AI原生公司]]、[[智能体]]、[[企业上下文]]、[[wiki/overview]] 和 [[index]]。
 - 将 Cowork 命名、Mythos、OpenClaw、Claude Code 泄露、/powerup、code review、Anthropic 增长数字和人物头衔等高风险点加入 [[03-核验/待核验事实]]。
@@ -74,7 +74,7 @@
 - 导入 B 站视频 `BV19sGH6UECj`，标题为 [[Anthropic团队：如何构建运行 数小时的Agent]]。
 - B 站普通 DASH 音频 30280/30216 解码截断，改用 30232 直链流式转 WAV，核对完整 4539.66 秒；本地 ASR 生成 3397 段，尾部到 01:15:23；另抓取原始 YouTube 英文字幕 4397 块用于术语校准。
 - 派出 5 个并行分段代理，覆盖 00:00-17:50、17:50-31:30、31:30-45:00、45:00-62:00、62:00-75:39，保留 Claude Code 演进、RALPH loop、GAN-style harness、completion contract、Retro Forge、trace reading、文件系统共享状态、human-in-loop 和 brownfield 边界等细节。
-- 新增 raw 转写副本 [[raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.transcript.txt]] 与英文字幕校准件 [[raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.youtube-en.txt]]。
+- 新增 raw 转写副本 `raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.transcript.txt` 与英文字幕校准件 `raw/notes/video-transcripts/Anthropic团队：如何构建运行 数小时的Agent.youtube-en.txt`。
 - 新增 source 页 [[Anthropic团队：如何构建运行 数小时的Agent]]，并新增实体页 [[长程智能体]]、[[Agent Harness]]、[[生成器-评估器架构]]、[[文件系统共享状态]]。
 - 更新 [[Anthropic]]、[[Claude Code]]、[[Evals]]、[[智能体]]、[[AI原生组织]]、[[企业AI产品案例]]、[[AI游戏与虚拟世界]] 和 [[wiki/overview]]，把长程 agent harness 接入既有知识网络。
 - 将模型版本、METR benchmark、RALPH 来源、人物身份、Retro Forge demo 数字、hooks/auto memory 等高风险事实加入 [[03-核验/待核验事实]]。
@@ -85,7 +85,7 @@
 - 普通 DASH 高码率音频解码存在截断，改用可完整解码的 30216 直链/导入音频，核对时长 2264.642 秒，ASR 生成 1194 段，尾部到 00:37:34。
 - 另抓取原始英文演讲校准材料：YouTube SZStlIhyTCY 英文字幕与 Sozai transcript；区分 McKinsey 原演讲和 B 站二次讲解案例。
 - 派出 4 个分段 agent 精读 00:00-09:30、09:30-19:00、19:00-28:30、28:30-37:44，保留 5%-15% 公司级提效、300 家企业、spec-driven development、one-pizza pods、银行案例、change management、outcome measurement、Netflix/高盛/Cursor/P&G/Browser Company 待核验案例等细节。
-- 新增 raw 转写副本 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.transcript.txt]]、英文字幕校准件 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.youtube-en.txt]] 和 Sozai 校准件 [[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.sozai.txt]]。
+- 新增 raw 转写副本 `raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.transcript.txt`、英文字幕校准件 `raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.youtube-en.txt` 和 Sozai 校准件 `raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.sozai.txt`。
 - 新增 source 页 [[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]，并新增实体页 [[后敏捷操作模型]]、[[Spec-driven development]]、[[AI原生工作流]]、[[技术债]]。
 - 更新 [[AI研发提效]]、[[AI原生组织]]、[[企业AI产品案例]]、[[智能体]]、[[企业上下文]]、[[Agent Harness]]、[[wiki/overview]] 和 [[index]]，把这条素材接入既有图谱。
 - 将 McKinsey 调研口径、CMU 技术债研究、GitHub Spec Kit、银行案例数字、Netflix/高盛/Cursor/P&G/Browser Company 等高风险事实加入 [[03-核验/待核验事实]]。
@@ -178,7 +178,7 @@
 - 高风险事实全部写入 [[03-核验/待核验事实]]：王者日活1亿/营收20亿/留存55.9%（约2020口径）、乐高2023营收98亿/利润19亿美元、GDC 36%/106场、和平精英1.1亿用户/开麦率74.72%、米哈游LPM 170亿参数/童馨履历、OpenAI Five TAU/4.5万年、游戏AI史时间点等，核验前不升级为综合结论。
 - 归因边界：6 份素材均为 UP 主对公开信息的解读/分析，非厂商官方披露；source 页均标注归因边界与时效。
 - 两话题跨主题连接：[[游戏商业化与虚拟经济]]（A）与 [[AI游戏与虚拟世界]]（B）并列互链；[[王者荣耀]] 是两话题共同的天美内部案例交汇点；[[AI无法取代的核心竞争力]] 接 [[AI与人类独特性]]、[[产品品味]]。
-- 待办（下一步）：重建 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`；话题 A 待补跨界案例（泡泡玛特/迪士尼/任天堂/平台经济）与网络文章/GitHub 来源（用户已勾选但本轮仅跑 B 站）；可考虑做 [[comparisons]]：乐高 vs 王者生态化、米哈游 LPM vs 和平精英 AI 队友两条 NPC 路线。
+- 待办（下一步）：重建 `wiki/graph-data.json` 与 `wiki/knowledge-graph.html`；话题 A 待补跨界案例（泡泡玛特/迪士尼/任天堂/平台经济）与网络文章/GitHub 来源（用户已勾选但本轮仅跑 B 站）；可考虑做对比页（`wiki/comparisons/`）：乐高 vs 王者生态化、米哈游 LPM vs 和平精英 AI 队友两条 NPC 路线（后者已落地为 [[游戏AI NPC两路线对比]]）。
 
 
 ## 2026-07-01 intel-gather + ingest | 两 UP 主精选 12 访谈（张小珺 + 十字路口，本地 ASR，autopilot）
@@ -230,3 +230,15 @@
 - 主线补强：具身智能（银河通用王鹤「合成数据」vs 星海图高继扬「真实数据」两路线对立，+ VLA 论文讲解 + 车企 VLA，构成完整具身图谱）；基础模型（注意力机制 NSA/MOBA/线性 + DeepSeek 演进）；AI 编程（阿里 Qoder）；AI 基础设施（Agent Infra/向量数据库）；产品品味（AI 眼镜范皓宇）；硬科技/能源（可控核聚变）；创投生态（VC/ToB/3D）。
 - 更新主题 [[AI人物访谈]]、频道实体收录清单；高风险事实全部入 [[03-核验/待核验事实]]。
 - 待办：重建图谱、校验、提交推送、清理。两 UP 仍剩约 39 条（多为 Koji 中小体量创业访谈 + 张小珺洪乐潼/SpaceX/95后Agent/数据综述/开源论文之旅等）。
+
+## 2026-07-03 lint | 双链校验 + 收尾核对
+
+- 核对上一批遗留待办：图谱其实已在 e9fb977（第四批同 commit）重建完成，当前 `wiki/graph-data.json` 为 **185 节点 / 1704 边**，生成于 2026-07-02，已包含第三、四批全部新 source/实体页（探测范皓宇/杨钊/注意力/MiniMax/余凯/Qoder/星海图等均在列）。第三、四批 log 中“待办：重建图谱”为同 commit 内的过时表述，实际已完成并推送。
+- 全库双链校验（`.lint_wikilinks.py`，扫描 258 个 .md / 206 个页面名）：
+  - 修复 **13 处断链**：12 处 `[[raw/notes/video-transcripts/….txt]]` 改为反引号普通路径文本（符合 6-23 起的 schema 约定“source 页引用 raw 用普通路径文本，非双链”），涉及 `log.md` 与 3 个 6-07 旧 source 页（[[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]]、[[知乎侯容这段 AI 提效，讲得很实在]]、[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]]）；1 处 `log.md` 的 `[[comparisons]]` 改为普通文本（其指向的 NPC 对比页已落地为 [[游戏AI NPC两路线对比]]）。
+  - 校验后剩余 2 处“断链”均为 `CLAUDE.md` 中反引号内的语法示例（`[[02-视频笔记/...]]`、`[[真实页面名]]`），非真链接，保留。
+  - 孤岛 6 个均为设计内：`CLAUDE.md`（agent 指令文件）+ 5 个 `raw/` 素材（raw 用普通路径引用，故无 wikilink 入链，不进图谱）。
+- 旧主题迁移核对：`01-主题/` 7 个页面在 `wiki/topics/` 均已有对应版本，迁移已完成，无需再动。
+- `.bili_tmp/` 核对：位于 git 仓库外（仓库根为 `knowledge-base/`），未提交；扫描未发现真实 cookie 凭证（SESSDATA/bili_jct/DedeUserID 值均无），仅 `search_bili.py` 含变量名。保留作为后续视频批次的工作状态（`up_videos.json` 存剩余约 39 条两 UP 清单）。
+- 实体页缺口分析（高频被提及但缺实体页）：MiniMax(15)、杨植麟(13)、黄碧薇(10)、Altman(10)、何小鹏(9)、闫俊杰(8)、印奇(8)、朱啸虎(8)、姚顺宇(8)、Kimi(8)、谢赛宁(7)、罗福莉(7)、余凯(7)、阶跃星辰(7)、张鹏(6)、智谱(6)、Karpathy(6)、Tom Blomfield(6) 等约 40 个人物/公司缺页，列为下一维护重点。
+- 本次未改知识内容，仅链接健康维护；提交后工作树干净。

@@ -15,7 +15,7 @@ sources: [raw/notes/video-transcripts/知乎侯容这段 AI 提效，讲得很�
 - UP 主：AIMakerSummit
 - 上传日期：2026-05-19
 - 时长：34:54
-- 本地转写副本：[[raw/notes/video-transcripts/知乎侯容这段 AI 提效，讲得很实在.transcript.txt]]
+- 本地转写副本：`raw/notes/video-transcripts/知乎侯容这段 AI 提效，讲得很实在.transcript.txt`
 - 备注：B 站 DASH 音频普通下载曾出现解码截断，最终使用 ffmpeg 直链流式转 WAV 后完成全量转写。
 
 ## 核心判断

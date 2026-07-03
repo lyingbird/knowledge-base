@@ -13,7 +13,7 @@ sources: [Bilibili BV1bMq3BTEhX, Moving away from Agile]
 
 - B 站：BV1bMq3BTEhX，标题为《麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率》，上传者为“碳硅同传”，视频时长约 37:44。
 - 原始演讲：Martin Harrysson 与 Natasha Maniar，McKinsey & Company / Software X，题为 “Moving away from Agile: What's Next”。
-- 本地 raw 副本：[[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.transcript.txt]]、[[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.youtube-en.txt]]、[[raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.sozai.txt]]。
+- 本地 raw 副本：`raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.transcript.txt`、`raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.youtube-en.txt`、`raw/notes/video-transcripts/麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率.sozai.txt`。
 - 归因边界：McKinsey 原演讲支持“约 300 家企业、公司级提效常只有 5%-15%、AI-native workflows/roles、spec-driven development、one-pizza pods、银行案例、change management、outcome measurement”等主线；Netflix、高盛、Cursor、宝洁、Browser Company 等案例属于 B 站二次讲解或外部扩展，已放入待核验。
 
 ## 核心判断
