@@ -1,0 +1,43 @@
+---
+title: "GMTK|字幕|潜行学院2-五种类型的潜行游戏道具"
+platform: bilibili
+bvid: BV1WQA5eLE5t
+author: 庸才的朽木
+author_uid: 49665055
+pubdate: 2025-02-16 20:16:51
+duration_sec: 752
+view: 822
+like: 36
+coin: 10
+favorite: 66
+reply: 0
+danmaku: 5
+share: 2
+url: https://www.bilibili.com/video/BV1WQA5eLE5t
+subtitle_source: asr_Qwen3-ASR-1.7B
+asr_model: Qwen3-ASR-1.7B
+asr_elapsed_sec: 41.2
+transcript_chars: 30
+crawl_time: 2026-05-24 20:56:08
+---
+
+# GMTK|字幕|潜行学院2-五种类型的潜行游戏道具
+
+## 视频信息
+
+- **UP主**: 庸才的朽木
+- **发布时间**: 2025-02-16 20:16:51
+- **时长**: 12分32秒
+- **播放**: 822 | 赞: 36 | 币: 10 | 藏: 66
+- **链接**: https://www.bilibili.com/video/BV1WQA5eLE5t
+
+## 视频描述
+
+原视频：https://www.youtube.com/watch?v=QLWC081dDpc
+（2020年4月21日）欢迎回到潜行游戏课，GMTK关于潜行游戏如何运作的迷你系列。在第二集中，让我们看看潜行游戏小工具。从光纤摄像机到迷彩服再到可靠的消音手枪。订阅以确保你能看到最新的系列视频。
+
+## 完整文稿
+
+> 来源: asr_Qwen3-ASR-1.7B
+
+视频标题：GMTK|字幕|潜行学院2-五种类型的潜行游戏道具

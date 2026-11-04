@@ -14,3 +14,15 @@ Desktop.ini
 # AI 工具本地状态
 .omc/state/
 .codebuddy/
+
+# 媒体文件（本地保留；仓库只提交转写/笔记文本）
+*.m4a
+*.mp3
+*.wav
+*.aac
+*.flac
+*.mp4
+*.mov
+*.webm
+# 复原工序的中间产物目录
+raw/m4a/_cleaned/

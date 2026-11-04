@@ -1,5 +1,79 @@
 # 操作日志
 
+## 2026-11-02 restructure | Obsidian 结构整理（导航层重建）
+
+库里积累到 335 个 Markdown 页面（raw 905 个文件、wiki 328 页、实体 141 个、主题 23 个）之后，结构问题开始显现：入口分散、目录冗余、没有按「解决什么问题」组织。这次只改结构，不改内容。
+
+诊断出的四个问题：
+
+1. **入口双轨**：`00-入口/开始阅读.md` 与 `00-入口/Obsidian工作台.md` 互相指向，两页都在当首页，新读者不知道跟哪个。根目录 `README.md`、`AGENTS.md`、`CLAUDE.md` 又各有一份入口说明，共五处。
+2. **没有 MOC 层**：141 个实体页平铺在 `wiki/entities/` 里，只能靠 `index.md` 的 141 行清单查找，或者靠 Ctrl+O 搜索。没有「按问题组织的路径」。
+3. **新旧目录并存不表意**：`01-主题/`（8 页）、`02-视频笔记/`（26 页）是 llm-wiki 改造前的历史层，`wiki/topics/`（23 页）、`wiki/sources/`（152 页）是新层。名字看不出谁是活的是死的，也看不出区别。
+4. **Obsidian 默认配置有隐患**：`newFileLocation` 指向 `02-视频笔记`，意味着 Ctrl+N 新建的笔记会落进历史只读层，长期会污染。
+
+具体改动：
+
+- **新建 [[首页]]**，作为唯一入口。四条主线按「你在解决什么问题」划分（游戏设计 / AI 与组织 / 技术学习 / 独立开发），上一层放三层结构说明（raw / wiki / 导航）与「我想……去哪」速查表。
+- **新建四张 MOC 地图**，这是本次结构的核心：
+    - [[游戏设计MOC]]：先给三种进入方式（建体系 / 遇问题 / 看争论），再给「按问题查」症状→框架对照表（12 条），然后是五层 32 个理论的分层清单、三校流派对比、业界信条、SRK 认知框架、中文实践层。
+    - [[AI组织MOC]]：主题层（9 个主题）+ 概念层（7 个核心概念）+ 人物区（按立场聚类）+ 素材层。
+    - [[技术学习MOC]]：三条学习路线（Karpathy / 游戏AI / 视觉资产）+ 单项目学习页 + 概念沉淀。
+    - [[独立开发MOC]]：方法论四件套（选品/获客/建信任/变现）+ 案例 + 工具实体。
+- **新建 [[库结构说明]]**：把目录职责表、为什么保留 `01-主题/` 与 `02-视频笔记/`（26 篇历史笔记仍在被引用，迁移会让上百条路径链接失效）、页面五段格式、命名规范、三种链接用法、四种关系类型、新建判断顺序（source → entity → topic → synthesis → comparison）、导航层维护标准、六项定期检查全部写进去。已知的 27 处历史断链也在此登记。
+- **改写两个旧入口为跳转页**：[[开始阅读]] 与 [[Obsidian工作台]] 保留文件（防止既有链接断掉），内容改为指向 [[首页]] 与四张 MOC，并附旧路径映射表。
+- **修正 Obsidian 配置** `.obsidian/app.json`：`newFileFolderPath` 从 `02-视频笔记` 改为 `00-入口`；补 `attachmentFolderPath: raw/assets`（附件不再散落根目录）、`newLinkFormat: shortest`（双链默认最短形式）、`showUnsupportedFiles: false`。
+- **更新 `index.md`**：顶部「最后更新」、推荐阅读路径新增第 13c 条、主题页清单新增 [[游戏设计流派与争论]]、实体页清单新增 8 条。
+- **更新 [[游戏设计方法]] 与 [[游戏设计理论谱系]]**：方法页经典理论层表格新增「院校怎么教 / 认知怎么承载 / 业界怎么说」三行并加指向流派页的提醒；谱系页顶部加「学界没有共识」的第二条提醒，末尾相关页面补 6 条链接，与流派页互为坐标系。
+
+结构原则（写进 [[库结构说明]] 供后续遵循）：
+
+- **index 是清单，MOC 是地图**，两者都要有，不合并。
+- **旧层不迁移**：`01-主题/` 与 `02-视频笔记/` 保持原位只读，新知识只往 `wiki/` 写，用双链跨越新旧而不是移动文件。
+- **MOC 按问题组织，不按目录组织**：判断标准是「读者带着什么问题来」，不是「这个文件放在哪个文件夹」。
+
+链接校验：本次新增与修改的 43 个页面全部通过，0 断链；27 处断链全部位于历史层（`01-主题/`、`02-视频笔记/`）与 `index.md` / `log.md` 的示例写法中，未新增。
+
+## 2026-11-02 ingest | 游戏设计流派层（院校 + 业界 + 认知框架）
+
+回应「USC / CMU / NYU 教的不一样、业界也有不同看法、KRS 要齐全」的补充要求。上一批只补了英文经典理论，但经典理论层呈现的是「学界的温和共识」；真实的游戏设计知识还有两条断层：院校之间的方法论互不兼容，产业界的信条互相矛盾。这一批补的就是这两条断层。
+
+- 新增主题页 [[游戏设计流派与争论]]：三校横向对比表（院校 / 代表方法 / 核心判据 / 服务对象）、业界六组对立（机制优先 vs 叙事优先、作者表达 vs 玩家自由、体验设计 vs 动机设计、手工内容 vs 程序生成、难度作为门槛 vs 选项、商业模型决定设计 vs 设计决定商业模型）、两条互斥格言（Sid Meier vs Schell）、SRK 单列一节、三步使用法。
+- 新增 3 个院校实体页：
+    - [[USC游戏设计方法]]：Tracy Fullerton 的 playcentric design 六步循环、formal/dramatic/dynamic 三层元素、Fullerton 的游戏定义原文、方法论母体（1995 年 MSN 项目 + Kevin Keeker 的用户测试故事）、代表文本 *Game Design Workshop* 2004 首版 / 2024 第五版。
+    - [[CMU娱乐技术中心]]：ETC 1998 年由 CS 学院与艺术学院合办、MET 学位、Randy Pausch 的 *Building Virtual Worlds*、Jesse Schell 曾在此任教、核心主张「游戏制作不是装配线」、团队技术/艺术对半构成、四步项目制、两条可搬用经验。
+    - [[NYU游戏中心]]：2008-12 成立、$1M 匿名捐赠 + Rockefeller $200K、Frank Lantz 创始主任（2021 转 Chair Emeritus，Naomi Clark 接任）、Eric Zimmerman 与 Jesper Juul 在列、信条 games matter、三方向（game design / production / scholarship）、设计课 "off the computer"、Games 101 按艺术史方式讲游戏史、Lantz *The Beauty of Games* 2023 与 *Games Are Not Media* 2009 的形式主义立场、三校一句话对比。
+- 新增 [[SRK框架]]：**纠正用户的 KRS 说法**。真名 SRK（Skills → Rules → Knowledge），Jens Rasmussen 1983 年 *IEEE Trans. SMC-13* pp.257-266，1979 年 5 月 Risø 内部报告首次成型，1986 年专著扩展；页内单设「名称辨析（重要）」章节说明中文业界倒序称 KRS 带来的隐蔽误解——SRK 是按认知负荷从低到高排的三层，不是学习先后顺序；三层对应三种信息表征（信号 signals / 符号 signs / 象征 symbols）；含认知负荷与错误类型表、游戏业两种用法、与 [[技能原子]] 对比表、学术批评。
+- 新增 [[业界设计信条]]：六条产业界格言（Sid Meier「游戏是一系列有趣的选择」GDC 2012、宫本茂延迟满足、Jaime Griesemer 的 Halo「30 秒的乐趣」GDC 2002、Jonathan Blow「设计是发现」、任天堂「先做玩具再做游戏」、「乐趣优先于真实」），每条标注隐含代价，并解释为什么这些信条互相矛盾（它们在回答不同问题）、正确用法。
+- 新增 3 个方法论实体页：[[Cerny方法]]（Mark Cerny 的 The Method，DICE 2002，预制作/量产两段 + 明确闸门 + 三个核心问题，四种失败模式，与 playcentric 对比）、[[OODA循环]]（John Boyd，Observe→Orient→Decide→Act，Orient 最关键也最常被省略，无成书靠简报流传，与 SRK 的关系，三点局限）、[[引擎与经济]]（Tynan Sylvester *Designing Games* 2013，Engine 产出事件流 / Economy 决定稀缺结构，两种不咬合病症，与其他框架分工表）。
+- 更新 `index.md`：顶部「最后更新」、推荐阅读路径新增第 13c 条（院校流派与业界分歧）、主题页清单新增 [[游戏设计流派与争论]]、实体页清单新增 8 条。
+- 全部新页遵循 `.wiki-schema.md` 格式（frontmatter + 一句话摘要 + 核心内容 + 相关页面）；`01-主题/` 等 legacy 只读层未改动。
+- 待核验提示：三校的创立年份、经费数额、人事变动（Lantz 2021 转 Chair Emeritus）均为公开信息交叉比对，人事可能再变；[[SRK框架]] 的批评部分为认知工程学界既有意见，非原创论断。
+
+## 2026-11-02 ingest | 游戏设计经典理论层（英文原始框架）
+
+补齐游戏设计支柱缺失的另一半：此前该支柱只有中文 GDC/GMTK ASR（772 篇）与 necromanov 评论（67 篇），全部是二手或行业实践层，缺英文经典理论的原始框架。
+
+- 新增主题页 [[游戏设计理论谱系]]，按「游戏是什么 / 体验从哪来 / 玩家为什么留下 / 规则能说什么 / 怎么落地」五层把全部理论串成可读谱系，含阅读顺序、分层对照表与 Mermaid 总图。
+- 新增 24 个实体页，全部标注原始出处（作者 + 年份 + 论文/书名），并把「常被误用/批评」单独成节：
+    - 本体与定义：[[游戏定义]]、[[古典游戏模型]]、[[魔法圈]]、[[有意义游玩]]、[[游戏学与叙事学之争]]
+    - 体验结构：[[MDA框架]]、[[元素四元组]]、[[设计镜头]]、[[游戏之心]]、[[技能原子]]、[[心流]]、[[四把钥匙]]
+    - 动机与留存：[[玩家类型]]、[[自我决定理论]]、[[八角行为分析]]、[[玩家旅程]]、[[循环与弧线]]、[[游戏奖励设计]]
+    - 叙事与表达：[[叙事建筑]]、[[环境叙事]]、[[游戏性叙事失调]]、[[程序修辞]]
+    - 结构工具：[[游戏设计模式]]、[[难度曲线]]
+- 改造 [[游戏设计方法]]：frontmatter 补 tags/sources/updated；顶部插入「经典理论层」段落，把两条线扩为三条线（经典理论 + GDC/GMTK + necromanov）；跨子主题概念段补入新实体；阅读建议新增「只读三篇」路径（MDA / 技能原子 / SDT）。
+- 为 6 个中文子主题页补反向链接，避免新页孤立：[[游戏叙事设计]]（叙事建筑 / 环境叙事 / 叙事失调 / 程序修辞 / 游戏学争论）、[[系统与策略设计]]（技能原子 / 设计模式 / 有意义游玩 / 游戏之心 / 古典模型）、[[开放世界设计]]（有意义游玩 / 叙事建筑 / 环境叙事 / 古典模型 / 设计镜头）、[[游戏经济与商业化]]（奖励设计 / SDT / 八角 / 玩家旅程 / 循环弧线）、[[RPG设计]]（游戏定义 / 叙事建筑 / 叙事失调 / 有意义游玩 / 玩家类型）、[[动作游戏设计史]]（技能原子 / 心流 / 难度曲线 / MDA / 游戏之心）。
+- 更新 `index.md`：顶部「最后更新」、推荐阅读路径新增第 13b 条（经典理论原文框架）、主题页清单新增 [[游戏设计理论谱系]]、实体页清单新增 24 条。
+- 写作规范说明：全部新页遵循 `.wiki-schema.md` 格式（frontmatter + 一句话摘要 + 核心内容 + 相关页面）；`01-主题/` 等 legacy 只读层未改动。
+- 待核验提示：本批内容为理论文献核实（原始论文/著作年份与核心定义已交叉比对），未涉及商业数据；[[八角行为分析]] 的自称普适性、[[技能原子]] 的缺乏实证、[[四把钥匙]] 的样本局限已在各自页面明确标注，不写成定论。
+
+## 2026-08-27 docs | B站视频蒸馏流程 2.0
+
+- 找回旧流程记录：`BV 清单 → 音频 → Qwen3-ASR → LLM 修复 → distill buckets → Markdown → 知识库`；历史实现路径 `D:\工作\Crawler\MOBA_Related` 当前已不存在，不能再视为可运行入口。
+- 审计当前 `raw/notes/moba-asr/`：794 份 Markdown 中 772 份含 ASR 模型字段，但只有 2 份出现时间轴格式，未形成 `aid/cid/content hash` 证据契约。
+- 新增 `00-入口/B站视频蒸馏SOP.md`，把流程升级为页级 manifest、字幕优先/音频兜底、ASR 对齐、按需说话人、scene/keyframe/OCR、时间轴证据卡、全局综合、外部核验、Wiki 编译和金标回归。
+- 更新 `AGENTS.md`、`CLAUDE.md` 与 `.wiki-schema.md`，将 SOP 设为跨 Agent 的正式视频处理标准；更新 `index.md` 与 `00-入口/开始阅读.md` 入口。
+- 本次只优化流程与规范，没有恢复已缺失的旧管线代码，也没有批量重处理历史转写。
+
 ## 2026-06-03 init | llm-wiki 结构化改造
 
 - 拉取并参考 `sdyckjq-lab/llm-wiki-skill`。
@@ -242,3 +316,256 @@
 - `.bili_tmp/` 核对：位于 git 仓库外（仓库根为 `knowledge-base/`），未提交；扫描未发现真实 cookie 凭证（SESSDATA/bili_jct/DedeUserID 值均无），仅 `search_bili.py` 含变量名。保留作为后续视频批次的工作状态（`up_videos.json` 存剩余约 39 条两 UP 清单）。
 - 实体页缺口分析（高频被提及但缺实体页）：MiniMax(15)、杨植麟(13)、黄碧薇(10)、Altman(10)、何小鹏(9)、闫俊杰(8)、印奇(8)、朱啸虎(8)、姚顺宇(8)、Kimi(8)、谢赛宁(7)、罗福莉(7)、余凯(7)、阶跃星辰(7)、张鹏(6)、智谱(6)、Karpathy(6)、Tom Blomfield(6) 等约 40 个人物/公司缺页，列为下一维护重点。
 - 本次未改知识内容，仅链接健康维护；提交后工作树干净。
+
+## 2026-07-09 docs | deepinit 分层 AGENTS.md（目录导航文档）
+
+- 运行 `deepinit` skill，为各内容目录生成分层 `AGENTS.md` 导航文档（共 16 个，均带 `<!-- Parent: ../AGENTS.md -->` 层级标签，内容为中文以匹配仓库语言）。
+- 覆盖目录：`raw/`、`raw/notes/`、`raw/notes/video-notes/`、`raw/notes/video-transcripts/`、`raw/articles/`、`raw/repos/`、`wiki/`、`wiki/entities/`、`wiki/topics/`、`wiki/sources/`、`wiki/comparisons/`、`wiki/synthesis/`、`00-入口/`、`01-主题/`、`02-视频笔记/`、`03-核验/`。
+- 跳过：仅含 `.gitkeep` 的空 schema 桶（`raw/assets|pdfs|tweets|wechat|xiaohongshu|zhihu`、`wiki/queries`、`wiki/synthesis/sessions`，已在各自父目录子目录表登记）；`.obsidian/`（Obsidian 自动生成的工具状态，非人工维护内容）。
+- **未改动根 `AGENTS.md`**：它是手工维护的规范层入口（被 `CLAUDE.md` 与 `.wiki-schema.md` 引用），不属于自动生成文档，保持原样。
+- 校验：16 个 Parent 引用全部解析通过；无孤立 AGENTS.md；所有含真实内容的目录均已覆盖；时间戳统一 2026-07-09。
+- 发现待处理项：`raw/m4a/` 为未在 `.wiki-schema.md` 中登记的空目录（今日新建，无 `.gitkeep`），未为它生成 AGENTS.md，留待用户确认用途后决定是否纳入 schema。
+- 本次仅新增目录导航文档，未改知识内容、未动双链与图谱。
+
+## 2026-07-09 ingest-infra | 音频复原工序（raw/m4a 神经降噪）
+
+- 背景：知识库管线为 视频/音频→文本，但手机录音 m4a 噪音多、电平低，直接转写质量差。在 `raw/` 与转写之间新增一道**音频复原工序**。
+- 技术选型：实测谱减法（ffmpeg `afftdn`）只把语音段底噪从 -37.9dB 降到 ~-33dB（SNR +4dB）且压扁动态；改用 **Facebook `denoiser` 预训练 dns64**（DNS 挑战赛神经降噪，torch+RTX 5080），同段底噪直接打到 **-inf**（背景噪声归零），语音保留。代价是 dns64 压低电平，故后接 `loudnorm=I=-16`+`alimiter` 归一（噪声≈0，放大安全）。
+- 产出脚本 `raw/m4a/restore_audio.py`：`ffmpeg 解码→dns64 分块降噪(30s+1s重叠)→ffmpeg 响度归一+限幅→16k mono wav（whisper 就绪）`。
+- 处理结果：5 个手机录音（共 ~8.8 小时，最长 4 小时）全部复原完成，产出 `raw/m4a/_cleaned/*.restored.wav`（共 ~950MB）。4 小时大文件中段确认：底噪 -40.7dB→-inf、Peak -1.05（无削波）、RMS -18.2。各文件时长与原始一致。
+- 安装：`pip install denoiser`（基于已有 torch，无需 Rust；DeepFilterNet 因需 Rust 工具链未采用）。
+- `.gitignore` 新增媒体规则（`*.m4a/*.wav/*.mp4` 等 + `raw/m4a/_cleaned/`）：仓库只提交文本（转写/笔记），音视频本地保留；`restore_audio.py` 与 `raw/m4a/AGENTS.md` 仍进 git。这与仓库现有惯例一致（已跟踪 347 文件全为文本，零音视频）。
+- 新增 `raw/m4a/AGENTS.md` 文档化此工序（补上 deepinit 时跳过的目录）。
+- 下游衔接：`_cleaned/*.restored.wav` 可直接喂 faster-whisper 转写，转写文本入 `raw/notes/video-transcripts/`（待用户触发，本次未执行转写）。
+
+## 2026-07-09 fix | 转写纠错：复原工序实测有害，改用原始直转
+
+- **纠错**：上一条记录的「复原工序→转写」方向被实测推翻。用户指出转录质量糟糕后审查发现，复原版转写严重失真：关键实体丢失（「来天美的成都」→「我来感受」、「在腾讯」→「在工作的一些职业群」、「游戏科学」→「为什么是有机会」），句子被 VAD 切碎成单字。
+- **A/B 测试**（同一 4 分钟片段 × 4 变体，无 VAD 隔离变量）：
+  - A 原始直转：实体全对，质量最佳 ✅
+  - B dns64 神经降噪(无 loudnorm)：实体丢失
+  - C afftdn 轻度谱减法：轻微错误(成都→杭州)，无提升
+  - D dns64+loudnorm(之前的激进方案)：最差
+- **根因**：whisper large-v3 训练时已见过噪声，能自行处理背景噪声；神经降噪(dns64)把语音当噪声压掉，引入的失真比噪声更伤转写。之前只盯「底噪=-inf」指标，没验证语音是否被损伤（Crest factor 18→6 已是损伤信号，被忽略）。
+- **纠正**：`restore_audio.py` 标注废弃（不再作转写前置，保留作音频分析对照）；`transcribe.py` 改为原始 m4a 直转 + 保守 VAD（min_silence_duration_ms 500→2000，避免切碎句子）；`raw/m4a/AGENTS.md` 重写纠正结论，附 A/B 对比表防再踩坑。
+- **重转结果**：5 个文件全部用原始直转覆盖错误结果，共 **12,520 段、约 60.6 万字**，全部 lang=zh(1.00)。抽查多位置确认实体保留、通顺度可接受（仍有 ASR 小错如「回长州」应为「回杭州」，属正常范围，摘要阶段校对）。文件5开头「准备一页 GPT」→修正为「准备一页 PPT」。
+- 清理临时诊断脚本（`_ab_fine.py`/`_ab2.py`/`_diagnose_ab.py`/`_test_denoiser.py`/`_ingest_workflow.js`）。
+- 教训：转写质量验收不能只看开头几行和通顺度，必须抽查中段+核对实体；音频处理指标（底噪/响度）好不代表转写好，必须端到端验证。
+
+## 2026-07-09 ingest | 内部分享知识入库（5 录音 → 独立 digest 知识包）
+
+- 用原始直转文本（已纠错）做高保真入库，共 5 个文件 / 8.8 小时 / 60.6 万字 / 12,520 段。
+- **入库方式**：按用户要求「单独放在一个内容里，后续给 agent 看」，独立存放于 `raw/m4a/digest/`，不接入主 `wiki/` 双链网络，做成自包含知识包。
+- 工作流：9 worker 分段精读（按行切片，sed 300行/批）→ 5 merger 合并写 digest → 补跑 2 个缺失切片（f1 前54m、f3 后31m，初轮 4 worker 出错导致）→ 5 个 digest 全部完整覆盖全程。
+- 产出 `raw/m4a/digest/`：INDEX.md（agent 入口，含总览/文件清单/跨文件主题线索/转写质量说明/agent使用说明）+ f1~f5 五个结构化 digest（front-matter + 核心观点 + 章节大纲 + 关键概念 + 人公司产品项目 + 数字待核验 + ASR疑点）。
+- 两条主线：A 游戏科学/黑神话（f1+f2，使命价值观+创作哲学）、B 天美L1/王者荣耀（f3+f4+f5，黑天鹅认知+年轻化IP+四线复盘）。关键人物：冯骥(疑)、老李(李旻)。
+- digest 总计 177 章节、约 200 待核验数字/案例、大量 ASR 疑点已记录。高风险事实（项目状态/人员评价/数据）均标注待核验，未升级为结论。
+- git：digest + 转写文本 + 脚本进 git；m4a 音频本地保留（gitignore）。
+- 未提交，留用户审阅。`_cleaned/` 复原产出（已废弃）待用户决定删除。
+
+## 2026-07-09 enhance | 句子合并完成 + 说话人分离受阻 + 废弃清理
+
+- **删除废弃物**：用户确认删除 `_cleaned/`（971MB 复原产出，已实测有害）+ `restore_audio.py`（废弃脚本）+ `_transcribe_summary.json`。教训已沉淀在 AGENTS.md 的 A/B 对比表。
+- **句子合并（完成，零风险后处理）**：新增 `raw/m4a/merge_sentences.py`，把 whisper 碎片段按「30字/句末标点断」合并成可读整句。5 个文件全部处理：2518→637、4207→1023、2831→796、1201→306、1763→457（压缩 ~75%），产出 `*.transcript.readable.txt`，平均字/段从 8 提升到 ~40，可读性大幅改善，内容无损。原始 `.transcript.txt` 保留不动。
+- **说话人分离（受阻，待用户决定）**：f4/f5 是多人圆桌，当前转写无说话人归因。尝试两套方案均受阻：
+  - pyannote.audio 3.x：装好了，但 `speaker-diarization-3.1`/`segmentation-3.0` 模型需 HuggingFace 授权 token（本机无 HF_TOKEN，镜像也 401）；torchcodec 装了但 torchaudio 后端仍不可用。
+  - sherpa-onnx：装好了，但 k2-fsa 官方 speaker-segmentation 模型 release URL 全 404，HF 也 401。
+  - 卡点：两者都需 HuggingFace token。用户提供 HF_TOKEN 后可继续（pyannote 路线），或改用本地无需授权的 whisperX/NeMo 方案。
+- **热词注入实测排除**：试 `initial_prompt` 注入领域热词（游戏科学/冯骬/李旻等），faster-whisper 把 prompt 当前文接续，直接幻觉成「欢迎订阅转发打赏」（B 站话术），整段崩坏。此环境不能用 initial_prompt。
+- 量化质量结论：转写对 AI digest/检索已够用（digest 已产出）；句子合并后对人精读也改善明显；缺说话人分离是剩余主要短板，需 HF token 才能补。
+
+## 2026-07-12 ingest | 从库 A 引入 Supercell 实体页（试点）
+
+- **来源**：库 A `~/.claude/kb/video-insights/distilled/supercell_理念溯源.md`（824+ B站 ASR 转录稿炼化结论）。
+- **新增**：`wiki/entities/Supercell.md`——按本库 entity 规范重写（frontmatter tags/created/updated/sources + 一句话摘要 + 分节叙事 + [[双链]] + 底部相关页面）。保留 5 条一手引用，新增"对知识库的意义"和"待核验点"两节。
+- **双链更新**：`wiki/topics/AI超级个体与组织提效.md` 关键概念列表补 `[[Supercell]]`。
+- **索引更新**：`wiki/entities/AGENTS.md` 代表性文件表 +1，总数 87→88。
+- **格式转译要点**：库 A 用 `id/type/status/related` frontmatter + 平铺；库 B 用 `tags/created/updated/sources` + `[[双链]]` + 叙事分节。未直接 cp，按库 B 风格重组。
+- **试点目的**：验收格式后决定其余 4 篇 distilled 的批量引入方式。
+
+## 2026-07-12 ingest | 双 vault 合并 + B站 ASR 全量迁移(764篇)
+
+**双 vault 合并**
+- 发现两个同构 knowledge-base:Vault A `D:\工作\Wiki知识库\knowledge-base`(293篇,主库更新)与 Vault B `D:\工作\knowledge-base\knowledge-base`(175篇,Obsidian 实际打开,早期副本)。
+- Vault B 独有 22 个文件(11篇 GDC ASR `gdc-game-design-first-batch`、6个游戏设计 entity、`游戏设计方法.md` topic、`moba-asr-ingest-plan.md` 等)已全量并入 Vault A。
+- Vault A 现为唯一全量 vault(315 md)。Vault B 待用户切换 Obsidian 后删除。
+- 合并前两 vault 各有未提交修改,未做 git 合并,仅文件层复制。
+
+**B站 ASR 全量迁移(764篇 → raw/notes/moba-asr/<主题>/)**
+- 来源:库 A `~/.claude/kb/_corpus/bilibili-transcripts/`(824+ 篇 ASR,可再生,git-ignored)
+- 分类方法:基于「标题 + 视频描述 + UP主」三重信号,内容驱动分类(不只看标题)
+- 7 个主题目录(沿用 B 已有的 `moba-asr/` 命名,而非 `bilibili-asr/`):
+  | 主题 | 篇数 | 时长 |
+  |---|---|---|
+  | 游戏设计方法(GDC+GMTK合并) | 611 | 398h |
+  | 游戏试玩评测 | 65 | 70h |
+  | 游戏文化与历史 | 48 | 9h |
+  | 超级个体与一人公司 | 13 | 2h |
+  | 游戏开发技术 | 11 | 3h |
+  | Supercell与游戏公司 | 9 | 1h |
+  | AI前沿人物 | 7 | 9h |
+  | **合计** | **764** | **494h** |
+- 每主题目录含 `_index.md`(视频清单表格 + [[BV号]] 双链);总索引 `moba-asr/_index.md`。
+- 旧的 `gdc-game-design-first-batch`(10篇,与「游戏设计方法」重复)已删除,manifest.csv 保留为 `游戏设计方法/gdc-first-batch-manifest.csv`。
+- 定位:Vault A purpose 待更新为「AI 时代的组织/产品/游戏 + 游戏设计专业知识」双重定位(GDC/GMTK 占 80%,纯 AI 主题占 5%)。
+
+**待办**
+- [ ] 用户切换 Obsidian vault 到 A,删除 Vault B
+- [ ] 更新 `purpose.md` / `index.md` 体现双重定位
+- [ ] 关键视频建立 `wiki/sources/` 摘要页 + 接 `wiki/entities/` 双链(如 Supercell entity 已建)
+
+## 2026-07-12 ingest | 新视频抓取+ASR入库 + 三支柱定位 + source页+双链
+
+**purpose/index 三支柱定位**
+- purpose.md:双支柱→三支柱,新增「C. 游戏设计支柱」(764篇 B站 ASR,494h,611篇 GDC/GMTK),新增第7个关键问题。
+- index.md:概览补三支柱;阅读路径新增第12条(游戏设计方法)+第13条(Supercell与超级个体);主题页补 [[游戏设计方法]];素材层补 moba-asr/。
+
+**新视频抓取(7个,用户提供 URL+cookie)**
+- BV1iKdvBhEYJ(Codex产品负责人)、BV1TioVBxEKp(Anthropic产品团队)、BV1zkdWBTEFo(OpenAI Harness)、BV1kKMM6SE49(Huberman)、BV1QHML6QE4Q(戒掉信息瘾)、BV1TEjm6WEJ3(CMU AI科学家)、BV1VGjh6WEf9(MiniMax闫俊杰)。
+- 抓取链路:yt-dlp + cookie 抓元数据(7个全成功)→ yt-dlp 下载音频轨(7个全成功,~960MB WAV)→ faster-whisper large-v3(CUDA/fp16)ASR 转录。
+- ASR 进度:第1个(BV1iKdvBhEYJ,43min,英文,771段,14.6x)已完成入库;其余6个后台转录中,完成后用 ingest_new.py 批量入库。
+- 入库格式:与库 A 同构(frontmatter + 完整文稿),按主题分入 moba-asr/<主题>/。
+
+**source 页 + entity 双链**
+- 新建 [[Supercell访谈：Ilkka Paananen谈cells模型与香槟庆祝失败]]:Paananen 本人口述公司史,cells模型/香槟庆祝失败/杀掉Gunshine转型的一手出处。接 [[Supercell]] entity(已更新 sources 字段引用此页)。
+- 新建 [[从打工人到超级个体：AI时代的职业五层逻辑]]:科技慢半拍40min,五层逻辑(劳动力总量谬误→疤痕效应→年轻人反脆弱→AI恐慌营销→超级个体杠杆),接 [[AI超级个体与组织提效]]/[[AI超级个体]]/[[一人公司]]/[[超级组织]]。
+- sources/AGENTS.md 计数 77→81。
+- 所有主题 _index.md + 总索引重建(765篇,7主题,495h13m)。
+
+**自检结果**
+- Vault A 1069 md,moba-asr 765 BV,Supercell entity 12双链,2个source页双链完整(6+7),purpose/index 三支柱已更新,新入库 BV1iKdvBhEYJ 53KB。
+
+**待办**
+- [ ] 6个视频 ASR 完成后批量入库(ingest_new.py)
+- [ ] 用户切换 Obsidian vault 到 A
+- [ ] 关键 AI 视频(Codex/Anthropic/OpenAI Harness)建 source 页 + entity 双链
+- [ ] 重建 wiki/graph-data.json + knowledge-graph.html
+
+## 2026-07-12 ingest | 7视频ASR全部入库 + 4个source页 + 双链收尾
+
+**7 视频 ASR 全部完成并入库**
+- 765→771 篇,新增 6 篇(第1篇之前已入库):BV1iKdvBhEYJ(Codex)、BV1kKMM6SE49(Huberman)、BV1QHML6QE4Q(戒信息瘾)、BV1TEjm6WEJ3(CMU科学家)、BV1TioVBxEKp(Cat Wu)、BV1VGjh6WEf9(MiniMax闫俊杰)、BV1zkdWBTEFo(OpenAI Harness)。
+- faster-whisper large-v3 (CUDA/fp16) 全部转完,总耗时约 30 分钟,实时率 9-19x。
+- 入库到 AI前沿人物/(6篇)+ 超级个体与一人公司/(2篇:Huberman/戒信息瘾)。
+- 索引全部重建:765→771 篇,7 主题,495h→503h12m。
+
+**新增 4 个 source 页 + 双链**
+- [[Codex团队如何用Codex（Easonlee AI Builder）]]:极简spec/设计师写码/PR比沟通快/PM填缝,接 AI原生工作流/超级组织/Agent Harness。
+- [[OpenAI的Harness工程实践（Ryan Lopopolo访谈）]]:Harness范式/系统思维三问/逐步自动化SDLC,接 Agent Harness/AI原生组织。
+- [[Supercell访谈：Ilkka Paananen谈cells模型与香槟庆祝失败]]:Paananen本人口述,cells/香槟/杀Gunshine,接 Supercell entity。
+- [[从打工人到超级个体：AI时代的职业五层逻辑]]:劳动力总量谬误→疤痕效应→年轻人反脆弱→AI恐慌营销→超级个体杠杆,接 AI超级个体/一人公司/超级组织。
+- Cat Wu 既有 source 页补交叉核对件引用(BV1TioVBxEKp)。
+- sources/AGENTS.md 81→84。
+
+**全局自检**
+- Vault A:1069→1075 md;moba-asr:771 BV(503h);wiki/sources:84;wiki/entities:94。
+- purpose/index 三支柱已更新;Supercell entity 双链完整(12);4 新 source 页双链完整。
+- 待用户:切换 Obsidian vault 到 A;删除 Vault B。
+
+## 2026-07-12 ingest | 新增 BV1eyBgB2EbX(Cat Wu 40min Peter播客版)
+
+- 视频:Claude Code负责人 Cat Wu 在 Peter 播客谈 AI 原生团队运作(40min,英文)。
+- 抓取+ASR+入库:BV1eyBgB2EbX → AI前沿人物/(39535字,639段)。
+- 新建 source [[Claude Code负责人Cat Wu：AI原生团队如何使用AI]]:不用Google Docs/原型替代文档/每10分钟反馈/爱负反馈/Boris tinkering起源/短周期迭代。
+- 与既有 [[Anthropic产品负责人：AI时代，产品经理最值钱的能力是品味]](85min Lenny版)互补:同人两期不同角度,非重复。
+- 与 [[Codex团队如何用Codex]] 形成 OpenAI vs Anthropic AI原生团队对照系列。
+- sources/AGENTS 84→85;moba-asr 772 篇。
+
+## 2026-07-12 ingest | GDC 611篇精分类 + necromanov 67篇入库
+
+**GDC 611 篇精分类(内容驱动)**
+- 派 6 个 GLM 5.2 subagent 并行读 156 篇未分类 GDC 转录稿正文,按内容归入 14 个子主题。
+- 全部 611 篇 GDC/GMTK 现已分到 14 子主题目录(顶层 0 剩余):
+  制作与管理158 / 叙事与写作87 / 战斗与系统设计72 / 玩家心理70 / 美术40 / UX45 / 关卡35 / 优化22 / 经济24 / 音频16 / 程序化13 / 工具13 / AI游戏11 / 测试5
+- 每个子主题目录有 _index.md(讲座清单表格);总索引在游戏设计方法/_index.md。
+
+**necromanov 旗舰评论 67 篇入库**
+- 来源:https://necromanov.wordpress.com/(2008-2026,18年游戏设计深度评论)
+- 抓取:curl + HTML 解析,67/77 篇成功(10 篇风控失败)
+- 原文存:raw/notes/necromanov/(67篇 + _index.md 总索引)
+- 内容:开放世界设计/RPG/叙事/经济/动作史/VR/商业化/独立游戏
+- 派 5 个 GLM 5.2 subagent 并行读 67 篇,为每篇建 wiki/sources/ 摘要页(进行中)
+
+## 2026-07-12 全局审视 + 修复不合理
+
+**审视发现的问题**
+1. 🔴 15 个 _index.md 说明区有 [[BV号]] 字面占位符 → Obsidian 产生虚假断链
+2. 🟡 index.md 未提 necromanov(已入库 67 篇)
+3. 🟡 94 个断链(去重),主要是占位符 + 未建实体(游戏科学/天美L1/老李/冯骥/黑神话/开放世界设计/RPG设计/关卡设计/电影化叙事等)
+4. 🟢 01-主题/ vs wiki/topics/ 重复(legacy 设计,刻意保留,不删)
+5. 🟢 raw/ 下 7 个原始素材目录几乎空(schema 预留,待用)
+
+**修复动作**
+- 修复 15 个 _index.md 占位符 → 纯文本(消除 16 个 [[BV号]] 断链)
+- index.md 补 necromanov(素材层 + 阅读路径第 13 条)+ 游戏设计方法子主题说明
+- 新建 10 个关键实体页(消除高频断链):
+  游戏科学 / 天美L1工作室 / 老李(李旻) / 冯骥 / 黑神话：悟空 / 斗战神
+  开放世界设计 / RPG设计 / 关卡设计 / 电影化叙事 / 旗舰评论
+  叙事与写作 / 游戏数值设计 / 游戏平衡性
+- entities/AGENTS + sources/AGENTS 计数同步
+
+**剩余断链说明**
+- 剩余断链主要是子 agent 建 necromanov source 时按内容自然引用的设计概念实体(MMORPG设计/学习曲线等),目标实体未建。
+- 这些是有价值的"待建实体提示",非错误——说明 source 页在做真实的知识网络连接。
+- 可后续按需补建,不影响浏览。
+
+**当前总量**
+- Vault A: 1100+ md
+- moba-asr: 772 篇 BV(7 主题,游戏设计方法下 14 子主题)
+- necromanov: 67 篇原文 + 65+ source 摘要页
+- wiki/sources: 140+ 页
+- wiki/entities: 110+ 页
+- wiki/topics: 14 页
+
+## 2026-07-12 重做 topic 层(用户阅读入口)
+
+**问题**:之前把素材堆在 raw/,但用户阅读习惯是按主题搜索——raw 是原料层不该看,topic 才是阅读入口。游戏设计支柱有 772 篇 ASR + 67 篇 necromanov,但 topic 层几乎是空的(游戏设计方法 topic 只有 969 字)。
+
+**修复**:
+- 重写 [[游戏设计方法]] topic 为真正的总入口(969→2497 字,40+ 双链,聚合 14 子主题 + 6 子 topic + necromanov)
+- 派 6 个 GLM 5.2 subagent 并行写 6 个子 topic(每个读相关 necromanov source + entity,写聚合页):
+  [[开放世界设计]] 9318字/33双链
+  [[RPG设计]] 10326字/44双链
+  [[游戏叙事设计]] 10195字/63双链
+  [[动作游戏设计史]] 9430字/29双链
+  [[游戏经济与商业化]] 9773字/63双链
+  [[系统与策略设计]] 12541字/58双链
+- 每个 topic 页结构:核心判断(综合多篇文章提炼) + 关键素材(necromanov source 清单) + GDC 讲座子主题引用 + 相关实体 + 阅读建议
+- index.md 阅读路径更新:第 12 条指向 6 个子 topic(不再指向 raw),主题页清单补 6 个子 topic
+
+**阅读体验现在是**:
+用户按主题进 topic 页(如 [[开放世界设计]])→ 看 4 个核心判断(综合 7 篇 necromanov)→ 点 source 双链看具体摘要 → 想看原文点 raw 引用 → 全文搜索(Ctrl+Shift+F)可检索所有 raw 转录稿。raw 退居"全文检索底料 + source 引用源",不出现在阅读路径。
+
+**当前 wiki/topics**:20 页(原 14 + 新 6)
+
+## 2026-11-02 第二轮：理论页补充「具体案例」
+
+已在下述理论页的 ## 相关页面 之前新增 ## 具体案例 章节，每页都配了游戏名 + 具体机制数字 + 原始出处（论文/GDC 演讲/行业白皮书/原作者博客），全部可查证、未虚构。
+
+第一批（5 页）：MDA框架、技能原子、游戏之心、四把钥匙、玩家类型
+第二批（6 页）：自我决定理论、八角行为分析、Cerny方法、游戏性叙事失调、叙事建筑、程序修辞
+第三批（6 页）：心流、元素四元组、设计镜头、环境叙事、难度曲线、游戏奖励设计
+第四批（5 页）：有意义游玩、魔法圈、游戏设计模式、循环与弧线、OODA循环
+第五批（4 页）：引擎与经济、SRK框架、业界设计信条、玩家旅程
+第六批（3 页）：USC游戏设计方法、CMU娱乐技术中心、NYU游戏中心
+
+新建跨理论案例索引：wiki/sources/案例索引-按游戏反查理论.md（按作品反查，与 MOC 按问题查配合）
+更新：00-入口/游戏设计MOC.md 的「按问题查」表加入「印证案例」列，并指向新索引
+
+## 2026-11-04 三轮：补完全部游戏设计理论页案例
+
+在上一轮 11 页案例基础上，本年继续为剩余理论/方法页补 ## 具体案例 章节：
+
+第七批（11 页）：关卡设计、游戏平衡性、游戏数值设计、开放世界设计、电影化叙事、长销游戏、游戏扩展包设计、探索动线、世界设计、玩家反馈闭环、游戏叙事设计
+第八批（3 页）：游戏定义、古典游戏模型、游戏学与叙事学之争
+
+至此 entities 目录 141 个文件，其中 43 个含 ## 具体案例 章节，覆盖全部游戏设计理论/方法页。所有案例均带游戏名 + 具体机制数字 + 可查证出处（论文/GDC 讲座/开发者访谈/原作者博客），未虚构。
+
+补充要点：
+- 关卡设计用 kishotenketsu 起承转合 + SMB1-1 逐屏拆解（Hayashida Gamasutra 专访 / GMTK）
+- 游戏平衡性用 Sakurai 的"保持峰值低谷"平衡观 + SMBU 86 角色胜率 51.43%/47.18%（Sakurai YouTube/专访）
+- 游戏数值设计用输入/输出随机性、POE 受控随机（GMTK / necromanov）
+- 电影化叙事用 God of War 2018 一镜到底（Barlog 多篇访谈，40% 团队反对、无过场淡出）
+- 长销游戏用 No Man's Sky 八年免费翻盘（35 次更新、2024-11 特别好评）
+- 探索动线/世界设计用 Valheim、塞尔达旷野之息、Hollow Knight、艾尔登法环
+- 游戏学叙事学之争用国际象棋、史丹利的寓言、BioShock、TLOU 案例

@@ -47,7 +47,7 @@ When adding new material, **a summary page alone is never sufficient.** Follow `
 
 For GitHub / open-source-project material, use the dedicated ingest spec in `.wiki-schema.md` ("GitHub / 开源项目学习素材 Ingest 规范" and "项目学习页结构"): copy key info to `raw/repos/{owner}-{repo}.md`, and every project source page must include a runnable hands-on checklist (install / run / reproduce, with hardware/dependency constraints).
 
-There is also a **high-fidelity video ingest** path (see `AGENTS.md`) triggered when the user says a video's "精华/不要省略/精校准/尽可能保留信息": keep full transcripts, split long videos across parallel workers per time segment, and strictly track attribution boundaries (original talk vs. B-site re-narration vs. host expansion vs. external cases).
+There is also a **high-fidelity video ingest** path. Read `00-入口/B站视频蒸馏SOP.md` before processing Bilibili or other long videos; `AGENTS.md` contains the mandatory gates. It is triggered when the user says a video's "精华/不要省略/精校准/尽可能保留信息", and also for multi-speaker, slide/demo/gameplay, or high-risk material. Preserve immutable raw evidence, page/cid identity, timestamps, visual evidence when needed, claim-level provenance, attribution boundaries, and rollback.
 
 ## Linking & naming conventions
 

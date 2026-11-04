@@ -1,5 +1,10 @@
 {
   "alwaysUpdateLinks": true,
   "newFileLocation": "folder",
-  "newFileFolderPath": "02-视频笔记"
+  "newFileFolderPath": "00-入口",
+  "showUnsupportedFiles": false,
+  "attachmentFolderPath": "raw/assets",
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "promptDelete": true
 }

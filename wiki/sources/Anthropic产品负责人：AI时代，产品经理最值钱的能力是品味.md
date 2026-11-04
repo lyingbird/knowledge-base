@@ -163,3 +163,7 @@ AI skeptic 与 believer 的分裂来自体验代际差异。2024 一代产品主
 - [[AI人物访谈]]
 - [[AI研发提效]]
 - [[团队知识库]]
+
+## 交叉核对件
+
+- `raw/notes/moba-asr/AI前沿人物/BV1TioVBxEKp.md`（Web3天空之城搬运版，同一访谈的另一 ASR 转写，faster-whisper large-v3，英文原音，1h25min）。与本文本同期 Lenny's Podcast，可交叉核对 ASR 误转点。

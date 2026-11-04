@@ -1,0 +1,34 @@
+---
+tags: [索引, B站ASR, 游戏设计方法, 音频]
+created: 2026-07-12
+updated: 2026-07-12
+---
+
+# 音频
+
+> 16 篇 GDC/GMTK 讲座。音乐、音效、音频设计
+
+**统计**: 16 篇 · 10h07m
+
+## 讲座清单
+
+| 时长 | UP主 | 标题 | 文件 |
+|---|---|---|---|
+| 1h07m | 庸才的朽木 | GDC16\|中配\|《血源诅咒》的哥特式恐怖音乐——The Gothic Horror Music of 'Bloodborne' | [[BV1yv5T6YEY3]] |
+| 1h04m | 庸才的朽木 | GDC16\|原声\|《血源诅咒》的哥特式恐怖音乐——The Gothic Horror Music of 'Bloodborne' | [[BV1JB5x6VENZ]] |
+| 1h00m | 庸才的朽木 | GDC24\|中配\|在游戏音频领域，作为音乐人找到属于自己的节奏——Finding Your Groove as Musicians in Game Audio | [[BV1P348zrExz]] |
+| 57min | 庸才的朽木 | GDC22\|中配\|《Unpacking》：拟音背后的乐趣——'Unpacking': The Fun Behind the Foley | [[BV1B5SiBpEYB]] |
+| 52min | 庸才的朽木 | GDC24\|中配\|音频峰会：在视频游戏中塑造强大的音乐身份——Developing Strong Musical Identity in Video Games | [[BV1GdtqzmEm3]] |
+| 39min | 庸才的朽木 | GDC25\|中配\|音频峰会：超越展位：创意声音录制与表演设计——Audio Summit: Beyond the Booth: Creative Voice R | [[BV1dvCTB9EoA]] |
+| 34min | 庸才的朽木 | GDC25\|原声\|音频峰会：超越展位：创意声音录制与表演设计——Audio Summit: Beyond the Booth: Creative Voice R | [[BV1Enk6BJEZH]] |
+| 32min | 庸才的朽木 | GDC24\|原声\|音频峰会：从3A到独立音频团队：灵活性是关键——From AAA to Indie Audio Teams: Remaining Flexib | [[BV1JsHHzwEPS]] |
+| 31min | 庸才的朽木 | GDC24\|原声\|音频峰会：《糖果传奇》如何让休闲游戏的玩家开启音效？——How Do You Make Casual Games' Players Turn | [[BV1ZiHNzUEkm]] |
+| 28min | 庸才的朽木 | GDC24\|中配\|音频峰会：《糖果传奇》如何让休闲游戏的玩家开启音效？——How Do You Make Casual Games' Players Turn | [[BV14ExEzVEJL]] |
+| 28min | 庸才的朽木 | GDC25\|中配\|独立游戏开发者如何规划音频——How to Plan for Audio as a Independent Game Developer | [[BV1KhTXztEx4]] |
+| 28min | 庸才的朽木 | GDC25\|中配\|每年开发5MB：《动物井》的诞生——Developing at 5mb per Year: The Making of Animal Well | [[BV19fEsz9Eg2]] |
+| 28min | 庸才的朽木 | GDC24\|原声\|为烹饪独游《薇妮巴一家 Venba》制作音效：一场通过声音的亲密之旅——Independent Games Summit 'Venba' An | [[BV1CGWnzMExE]] |
+| 27min | 庸才的朽木 | GDC24\|原声\|音频QA：获取有用的音频反馈——Audio QA: Getting Useful Feedback on Your Audio Work | [[BV1dTn2zdEQM]] |
+| 13min | 庸才的朽木 | GMTK\|原声\|《蓝途王子》一个随机拼图游戏真能行吗？——Blue Prince Can a random puzzle game actually work? | [[BV1bD79zfEPD]] |
+| 13min | 庸才的朽木 | GMTK\|中配\|《蓝途王子》一个随机拼图游戏真能行吗？——Blue Prince Can a random puzzle game actually work? | [[BV1bkEYzBEsH]] |
+
+> 双击 `BV号文件(如 BV1xxxxxx.md)` 可查看完整讲座转录稿。

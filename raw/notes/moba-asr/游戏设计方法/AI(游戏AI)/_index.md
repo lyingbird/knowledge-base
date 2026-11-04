@@ -1,0 +1,29 @@
+---
+tags: [索引, B站ASR, 游戏设计方法, AI(游戏AI)]
+created: 2026-07-12
+updated: 2026-07-12
+---
+
+# AI(游戏AI)
+
+> 11 篇 GDC/GMTK 讲座。游戏 AI、NPC AI、寻路(非通用AI)
+
+**统计**: 11 篇 · 5h16m
+
+## 讲座清单
+
+| 时长 | UP主 | 标题 | 文件 |
+|---|---|---|---|
+| 59min | 庸才的朽木 | GDC25\|原声\|游戏体验的人工智能创新：从研究到原型设计——AI Innovation for Game Experiences: From Research | [[BV1GVTDzwEoH]] |
+| 45min | 庸才的朽木 | GDC25\|中配\|超越炒作：谷歌AI在游戏中的实际应用——Beyond the Hype: Real-World Applications of Google | [[BV1SGMuzyEsz]] |
+| 45min | 庸才的朽木 | GDC25\|原声\|超越炒作：谷歌AI在游戏中的实际应用——Beyond the Hype: Real-World Applications of Google | [[BV1GuMnzjEVt]] |
+| 36min | 庸才的朽木 | GDC17\|中配\|P社\|通过数据驱动设计在《群星》中创建复杂的AI行为——Creating Complex AI Behavior in 'Stellaris' | [[BV12eqGBMEyW]] |
+| 26min | 庸才的朽木 | GDC15\|中配\|深入战壕：AI 灾难故事——Tales from the Trenches AI Disaster Stories | [[BV1S5d3YtEJW]] |
+| 22min | 庸才的朽木 | 【中配双语\|GMTK】《模拟人生》背后的天才人工智能——The Genius AI Behind The Sims | [[BV1eNrnYxEkq]] |
+| 21min | 庸才的朽木 | 【双语字幕\|GMTK】《模拟人生》背后的天才人工智能——The Genius AI Behind The Sims | [[BV19NrnYsEfP]] |
+| 16min | 庸才的朽木 | 【中配双语\|GMTK】什么组成了优秀的AI | [[BV16KkGY1EeN]] |
+| 15min | 庸才的朽木 | 【双语字幕\|GMTK】什么组成了优秀的AI | [[BV16KkGY1Et1]] |
+| 13min | 庸才的朽木 | GMTK\|中配\|潜行学院1-潜行游戏的守卫是如何看和听的 | [[BV1DzANeaEBm]] |
+| 12min | 庸才的朽木 | GMTK\|字幕\|潜行学院1-潜行游戏的守卫是如何看和听的 | [[BV1QzANeYEFf]] |
+
+> 双击 `BV号文件(如 BV1xxxxxx.md)` 可查看完整讲座转录稿。

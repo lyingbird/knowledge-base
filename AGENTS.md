@@ -37,12 +37,13 @@
 
 ## 高保真视频炼化工作流
 
-遇到用户明确说视频“精华”“不要省略”“精校准”“尽可能保留信息”时，按高保真 ingest 处理：
+完整执行标准见 [`00-入口/B站视频蒸馏SOP.md`](00-入口/B站视频蒸馏SOP.md)。遇到用户明确说视频“精华”“不要省略”“精校准”“尽可能保留信息”，或视频包含多人、幻灯片、演示、游戏画面和高风险事实时，按高保真档处理。
 
-1. 不把长视频压成泛泛摘要；先保留完整转写、字幕校准件、metadata 和分段分析产物。
-2. 长视频按时间段拆给并行 worker；每段必须抽取章节、例子、数字、人名/公司/产品名、术语、推理链、ASR 疑点和待核验事实。
-3. 区分原始演讲/原始来源与 B 站二次讲解、主持人扩展、外部案例；source 页中必须写清归因边界。
-4. 新增 deliverable 不能停在 digest 或 note；必须进入 wiki/sources、相关 wiki/entities、wiki/topics、index、log、03-核验/待核验事实.md，并按需更新 wiki/overview。
-5. 数字、公司案例、研究结论、论文引用、融资/估值/绩效指标等高风险事实，未经独立核验前只进入待核验，不直接升级为综合结论。
-6. 每次影响知识网络时重建 wiki/graph-data.json 和 wiki/knowledge-graph.html，并核对 index.md、wiki/knowledge-graph.md、log.md 的双链。
-7. 汇报时以验证输出为准，列出转写完整性、worker 覆盖范围、graph 节点/边数、validate 结果、commit 和 push 状态。
+不可省略的门：
+
+1. 先建立 `BVID + page + cid` 页级 manifest；保留原始字幕/ASR、metadata、哈希和工具版本，LLM 不得覆盖 raw。
+2. 字幕优先、音频 ASR 兜底；转写必须带时间轴。多人时按需分离说话人，画面承载信息时必须补 scene/keyframe/OCR。
+3. 先产出带 `evidence_id` 的分段证据卡，再做全局综合；每条关键结论必须能回跳到原视频时间段或关键帧。
+4. 区分原始演讲、B站二次讲解、主持人扩展、模型推论和外部事实；高风险事实未经独立核验只能进入待核验。
+5. deliverable 不能停在 digest；必须进入 `wiki/sources`、相关 `wiki/entities`、`wiki/topics`、`index`、`log`、`03-核验/待核验事实.md`，并按需更新 overview/graph。
+6. 汇报以验证输出为准，列出获取路线、页/时长覆盖、转写/视觉质量门、证据覆盖、核验状态、lint/graph 结果和 Git 状态。
