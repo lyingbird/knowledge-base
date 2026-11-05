@@ -10,7 +10,7 @@ updated: 2026-11-05
 
 ## 来源
 
-- 原始转写：[[01-原始素材/B站转录/gdc-game-design-first-batch/BV19cBMBMEC5]]
+- 原始转写：[[01-原始素材/B站转录/游戏设计/战斗与系统/BV19cBMBMEC5]]
 - BVID：BV19cBMBMEC5
 - URL：https://www.bilibili.com/video/BV19cBMBMEC5
 - 原视频：Boss Keys / GMTK, The World Design of Hollow Knight: Silksong

@@ -10,7 +10,7 @@ updated: 2026-11-05
 
 ## 来源
 
-- 原始副本：[[01-原始素材/B站转录/gdc-game-design-first-batch/BV1FkL16KE8x]]
+- 原始副本：[[01-原始素材/B站转录/游戏设计/制作与管理/BV1FkL16KE8x]]
 - BVID：BV1FkL16KE8x
 - URL：https://www.bilibili.com/video/BV1FkL16KE8x
 - ASR：Qwen3-ASR-1.7B
