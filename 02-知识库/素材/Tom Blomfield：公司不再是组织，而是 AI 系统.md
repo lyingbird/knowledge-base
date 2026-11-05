@@ -1,8 +1,8 @@
----
+﻿---
 tags: [素材摘要, 视频笔记, AI原生公司]
 created: 2026-06-03
 updated: 2026-06-03
-sources: [05-历史视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]
+sources: [01-原始素材/视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]
 ---
 
 # Tom Blomfield：公司不再是组织，而是 AI 系统
@@ -11,7 +11,7 @@ sources: [05-历史视频笔记/Tom Blomfield：公司不再是组织，而是 A
 
 ## 来源
 
-- 原笔记：[[05-历史视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]]
+- 原笔记：[[01-原始素材/视频笔记/Tom Blomfield：公司不再是组织，而是 AI 系统]]
 
 ## 核心观点
 

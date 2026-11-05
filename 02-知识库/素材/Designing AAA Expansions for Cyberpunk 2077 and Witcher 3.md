@@ -1,3 +1,9 @@
+﻿---
+tags: [素材摘要, GDC, 扩展包设计, 游戏叙事]
+created: 2026-11-05
+updated: 2026-11-05
+---
+
 # Designing AAA Expansions for Cyberpunk 2077 and Witcher 3
 
 > 核心观点：大型扩展包不是“更多内容”，而是一次有边界的再设计：用明确主题、类型、目标和玩家幻想，把本体游戏补完成更长寿的产品。

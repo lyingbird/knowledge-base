@@ -1,4 +1,4 @@
-<!-- Parent: ../AGENTS.md -->
+﻿<!-- Parent: ../AGENTS.md -->
 <!-- Generated: 2026-07-09 | Updated: 2026-07-09 -->
 
 # 01-原始素材/笔记（手写笔记 · 转写 · 外部 Markdown）
@@ -16,7 +16,7 @@
 
 | 目录 | 用途 |
 |------|------|
-| `video-notes/` | 从 `05-历史视频笔记/` 复制来的不可变素材副本（见 `video-notes/AGENTS.md`） |
+| `video-notes/` | 从 `01-原始素材/视频笔记/` 复制来的不可变素材副本（见 `video-notes/AGENTS.md`） |
 | `video-transcripts/` | 完整视频/播客转写件，高保真 ingest 产物（见 `video-transcripts/AGENTS.md`） |
 
 ## 给 AI Agent
@@ -36,7 +36,7 @@
 ## 依赖
 
 ### 内部
-- `video-notes/` 内容源自 `05-历史视频笔记/`。
+- `video-notes/` 内容源自 `01-原始素材/视频笔记/`。
 - 采集件喂给 `02-知识库/素材/` 与 `02-知识库/综合/`（如 `游戏工作室AI提效落地框架`）。
 
 <!-- MANUAL: -->

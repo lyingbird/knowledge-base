@@ -1,4 +1,4 @@
-<!-- Parent: ../AGENTS.md -->
+﻿<!-- Parent: ../AGENTS.md -->
 <!-- Generated: 2026-07-09 | Updated: 2026-07-09 -->
 
 # raw（原始素材层）
@@ -43,7 +43,7 @@ Karpathy LLM Wiki 三层架构中的 **第一层：原始素材层（source of t
 
 ### 内部
 - 上游被 `02-知识库/素材/` 摘要引用，是知识网络的根。
-- `05-历史视频笔记/` 的内容已复制到 `notes/video-notes/` 作为副本。
+- `01-原始素材/视频笔记/` 的内容已复制到 `notes/video-notes/` 作为副本。
 
 ### 外部
 - 无（纯 Markdown / 文本素材）。

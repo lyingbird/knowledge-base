@@ -18,7 +18,7 @@ The single most important thing to understand before editing anything:
 2. **`02-知识库/` — LLM-maintained layer.** Everything here is generated and continuously maintained by the LLM: source summaries, entity pages, topic pages, comparisons, synthesis, and graph data. New material must be *integrated* into existing pages here, not just appended as a new file.
 3. **`06-手册/知识库规范.md` + `AGENTS.md` — the spec layer.** These tell the LLM how to maintain the base. **Read both before doing substantive work** — they are the operating manual and take precedence over this file for domain rules. Evolve the schema when you discover new naming/linking/verification/graph conventions.
 
-`00-入口/`, `04-历史主题/`, `05-历史视频笔记/`, `03-核验/` are the legacy human-reading layer. **Do not delete legacy notes** to restructure — the new `02-知识库/` layer gradually reorganizes them.
+`00-入口/`, `04-历史主题/`, `01-原始素材/视频笔记/`, `03-核验/` are the legacy human-reading layer. **Do not delete legacy notes** to restructure — the new `02-知识库/` layer gradually reorganizes them.
 
 ## The `02-知识库/` layer
 
@@ -51,7 +51,7 @@ There is also a **high-fidelity video ingest** path. Read `06-手册/B站视频�
 
 ## Linking & naming conventions
 
-- Use Obsidian double-link syntax `[[真实页面名]]`. New wiki-layer links prefer short page names (`[[智能密度]]`); links to legacy notes keep the path (`[[05-历史视频笔记/...]]`).
+- Use Obsidian double-link syntax `[[真实页面名]]`. New wiki-layer links prefer short page names (`[[智能密度]]`); links to legacy notes keep the path (`[[01-原始素材/视频笔记/...]]`).
 - Every entity/topic page maintains a "相关页面" (related pages) section at the bottom.
 - Page front-matter format (tags/created/updated/sources) is specified in `06-手册/知识库规范.md`; follow it.
 - Watch for **synonyms** — `06-手册/知识库规范.md` has an alias table (e.g. `AI原生公司 = AI原生组织`, `agent = 智能体`). Don't create duplicate near-synonym pages.

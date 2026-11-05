@@ -54,7 +54,7 @@ sources: [01-原始素材/B站转录/AI前沿人物/BV1zkdWBTEFo.md, https://www
 - 接 [[Agent Harness]]：本 source 是该 entity 的一手工程样本，补充"harness 做接线、prompt 做通信"的具体形态。
 - 接 [[AI原生工作流]]：Harness 是 AI 原生工作流的基础设施层。
 - 接 [[AI研发提效]]：逐步自动化 SDLC 的方法论，与"44→27 人天"案例同构。
-- 与 [[当我们讨论 Agent Harness 时，我们究竟在讨论什么？ _ 深度对谈_ Minimax × Hermes Agent]] 形成系列：本 source 是 OpenAI 视角，那个是 Minimax × Hermes 视角。
+- 与 `当我们讨论 Agent Harness 时，我们究竟在讨论什么？ _ 深度对谈_ Minimax × Hermes Agent` 形成系列：本 source 是 OpenAI 视角，那个是 Minimax × Hermes 视角。
 - 接 [[AI原生组织]]：Harness 工程是 AI 原生组织的技术底座——组织扁平化的前提是 harness 接管了中间层。
 
 ## 待核验点

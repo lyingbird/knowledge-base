@@ -41,9 +41,9 @@ sources: [01-原始素材/旗舰评论/2017-06-09_prey.md, https://necromanov.wo
 - 对比失望精神续作(Mighty No.9/纽摩拉之潮):徒有原作之形无原作之神,易用性与原作一样糟而内容远不及;正确做法=用当代设计技巧重现经典内容的丰富深奥
 
 ## 与已有知识网络的连接
-- 接 [[实体/精神续作方法论]] 当代设计技巧+经典内容深度 vs 徒有原作之形
-- 接 [[实体/沉浸模拟关卡设计]] Arkane 以关卡设计为核心、能力装备服务关卡的设计灵魂
-- 接 [[实体/System Shock谱系]] Looking Glass→Deus Ex/Bioshock/Prey 的精神续作传承
+- 接 `精神续作方法论` 当代设计技巧+经典内容深度 vs 徒有原作之形
+- 接 `沉浸模拟关卡设计` Arkane 以关卡设计为核心、能力装备服务关卡的设计灵魂
+- 接 `System Shock谱系` Looking Glass→Deus Ex/Bioshock/Prey 的精神续作传承
 
 ## 待核验点
 - "IGN 一度 4 分后调 8、Gamespot 6 分"为作者时点引用,需 Metacritic 历史记录复核
