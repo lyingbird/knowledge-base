@@ -1,4 +1,4 @@
-<!-- Parent: ../AGENTS.md -->
+﻿<!-- Parent: ../AGENTS.md -->
 <!-- Generated: 2026-07-09 | Updated: 2026-07-09 -->
 
 # wiki（LLM 维护层）
@@ -33,12 +33,12 @@ Karpathy LLM Wiki 三层架构中的 **第二层：LLM 维护层**。这里的�
 
 ### 在此目录工作
 - **新增素材绝不只加摘要页**：必须走 `raw → sources → entities/topics → index/log → graph`。新信息要整合进已有实体页、主题页，补交叉引用，标记矛盾或待核验点。
-- **页面 front-matter** 遵循 `知识库规范.md`：`tags` / `created` / `updated` / `sources`。
+- **页面 front-matter** 遵循 `06-手册/知识库规范.md`：`tags` / `created` / `updated` / `sources`。
 - **双向链接**用 Obsidian 语法 `[[真实页面名]]`；新 wiki 层优先短页面名（`[[智能密度]]`），链旧笔记保留路径（`[[05-历史视频笔记/...]]`）。每个实体/主题页底部维护「相关页面」。
 - **图谱文件不要手改**：`graph-data.json` 和 `knowledge-graph.html` 由外部 `llm-wiki-skill` 的 `build-graph-data.sh` / `build-graph-html.sh` 脚本生成（本仓库未 vendored 这些脚本）。知识网络变化时重建二者，并核对 `总索引.md`、`知识图谱说明.md`、`操作日志.md` 的双链。
 - vendored 的 `*.min.js` 和 `LICENSE-*.txt` 是交互图谱依赖，不要编辑。
 
-### 校验要求（Lint，见 `知识库规范.md`）
+### 校验要求（Lint，见 `06-手册/知识库规范.md`）
 - 孤立页面（无入链/出链）、断链（双链指向不存在页面）。
 - 索引不一致（`总索引.md` 漏掉重要页面）。
 - 概念重复（同一概念多个近义词页，查别名词表）。

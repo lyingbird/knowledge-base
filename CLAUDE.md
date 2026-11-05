@@ -1,4 +1,4 @@
-# CLAUDE.md
+﻿# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -16,7 +16,7 @@ The single most important thing to understand before editing anything:
 
 1. **`01-原始素材/` — raw source layer (source of truth).** Original material or immutable copies (articles, transcripts, tweets, wechat/zhihu/xiaohongshu, PDFs, repo notes). Claude may *read* these but by default must **not modify** them. To correct something, record it in `03-核验/待核验事实.md` and the relevant `02-知识库/素材/` page rather than rewriting the raw copy. Historical video notes live in `01-原始素材/视频笔记/` as immutable copies.
 2. **`02-知识库/` — LLM-maintained layer.** Everything here is generated and continuously maintained by the LLM: source summaries, entity pages, topic pages, comparisons, synthesis, and graph data. New material must be *integrated* into existing pages here, not just appended as a new file.
-3. **`知识库规范.md` + `AGENTS.md` — the spec layer.** These tell the LLM how to maintain the base. **Read both before doing substantive work** — they are the operating manual and take precedence over this file for domain rules. Evolve the schema when you discover new naming/linking/verification/graph conventions.
+3. **`06-手册/知识库规范.md` + `AGENTS.md` — the spec layer.** These tell the LLM how to maintain the base. **Read both before doing substantive work** — they are the operating manual and take precedence over this file for domain rules. Evolve the schema when you discover new naming/linking/verification/graph conventions.
 
 `00-入口/`, `04-历史主题/`, `05-历史视频笔记/`, `03-核验/` are the legacy human-reading layer. **Do not delete legacy notes** to restructure — the new `02-知识库/` layer gradually reorganizes them.
 
@@ -45,20 +45,20 @@ When adding new material, **a summary page alone is never sufficient.** Follow `
 
 **High-risk facts** (numbers, company cases, research conclusions, paper citations, funding/valuation/performance metrics, acceptance status) go into `03-核验/待核验事实.md` first and stay there until independently verified — do **not** promote them into synthesis conclusions before verification.
 
-For GitHub / open-source-project material, use the dedicated ingest spec in `知识库规范.md` ("GitHub / 开源项目学习素材 Ingest 规范" and "项目学习页结构"): copy key info to `01-原始素材/开源项目/{owner}-{repo}.md`, and every project source page must include a runnable hands-on checklist (install / run / reproduce, with hardware/dependency constraints).
+For GitHub / open-source-project material, use the dedicated ingest spec in `06-手册/知识库规范.md` ("GitHub / 开源项目学习素材 Ingest 规范" and "项目学习页结构"): copy key info to `01-原始素材/开源项目/{owner}-{repo}.md`, and every project source page must include a runnable hands-on checklist (install / run / reproduce, with hardware/dependency constraints).
 
-There is also a **high-fidelity video ingest** path. Read `00-入口/B站视频蒸馏SOP.md` before processing Bilibili or other long videos; `AGENTS.md` contains the mandatory gates. It is triggered when the user says a video's "精华/不要省略/精校准/尽可能保留信息", and also for multi-speaker, slide/demo/gameplay, or high-risk material. Preserve immutable raw evidence, page/cid identity, timestamps, visual evidence when needed, claim-level provenance, attribution boundaries, and rollback.
+There is also a **high-fidelity video ingest** path. Read `06-手册/B站视频蒸馏流程.md` before processing Bilibili or other long videos; `AGENTS.md` contains the mandatory gates. It is triggered when the user says a video's "精华/不要省略/精校准/尽可能保留信息", and also for multi-speaker, slide/demo/gameplay, or high-risk material. Preserve immutable raw evidence, page/cid identity, timestamps, visual evidence when needed, claim-level provenance, attribution boundaries, and rollback.
 
 ## Linking & naming conventions
 
 - Use Obsidian double-link syntax `[[真实页面名]]`. New wiki-layer links prefer short page names (`[[智能密度]]`); links to legacy notes keep the path (`[[05-历史视频笔记/...]]`).
 - Every entity/topic page maintains a "相关页面" (related pages) section at the bottom.
-- Page front-matter format (tags/created/updated/sources) is specified in `知识库规范.md`; follow it.
-- Watch for **synonyms** — `知识库规范.md` has an alias table (e.g. `AI原生公司 = AI原生组织`, `agent = 智能体`). Don't create duplicate near-synonym pages.
+- Page front-matter format (tags/created/updated/sources) is specified in `06-手册/知识库规范.md`; follow it.
+- Watch for **synonyms** — `06-手册/知识库规范.md` has an alias table (e.g. `AI原生公司 = AI原生组织`, `agent = 智能体`). Don't create duplicate near-synonym pages.
 
 ## Lint (health check) — what "broken" means here
 
-There is no test suite. Correctness is graph/link health, checked per `知识库规范.md`:
+There is no test suite. Correctness is graph/link health, checked per `06-手册/知识库规范.md`:
 
 - **Orphan pages** (no in/out links), **broken links** (double-link to a nonexistent page).
 - **Index inconsistency** (`总索引.md` misses important pages).
