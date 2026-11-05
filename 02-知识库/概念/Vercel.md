@@ -1,4 +1,4 @@
----
+﻿---
 tags: [实体, 工具, 部署平台, 技术栈]
 created: 2026-06-15
 updated: 2026-06-15
@@ -11,7 +11,7 @@ sources: [我克隆了3个成功App，现在月入3.5万美元]
 
 ## 核心内容
 
-在 [[我克隆了3个成功App，现在月入3.5万美元]] 中，[[Samuel Rondot]] 用 [[Vercel]]（ASR 作 Verso）部署其全部应用。它与 [[Next.js]] + [[Node.js]] + [[Stripe]] 构成「一人可维护」的最小 SaaS 技术栈，契合两周 MVP 与「简单易维护」的选题原则。
+在 [[我克隆了3个成功App，现在月入3.5万美元]] 中，[[Samuel Rondot]] 用 Vercel（ASR 作 Verso）部署其全部应用。它与 [[Next.js]] + [[Node.js]] + [[Stripe]] 构成「一人可维护」的最小 SaaS 技术栈，契合两周 MVP 与「简单易维护」的选题原则。
 
 ## 待核验
 

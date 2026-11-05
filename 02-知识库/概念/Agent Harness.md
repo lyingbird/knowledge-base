@@ -1,4 +1,4 @@
----
+﻿---
 tags: [实体, Agent, AI研发提效, Claude Code]
 created: 2026-06-07
 updated: 2026-07-01
@@ -30,7 +30,7 @@ Harness 不应被当成永久教条。每次模型发布后，都要用 [[Evals]
 
 ## 从任务 Harness 到组织 Harness
 
-[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 提供了一个组织层类比：[[Agent Harness]] 是模型外部的任务运行框架，[[后敏捷操作模型]] 是团队外部的组织运行框架。前者用 completion contract、trace、evaluator、hooks 和文件系统状态约束单个 agent；后者用 spec、角色、测试、review、架构规则、upskilling 和 outcome measurement 约束整条研发价值流。
+[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 提供了一个组织层类比：Agent Harness 本身是模型外部的任务运行框架，[[后敏捷操作模型]] 是团队外部的组织运行框架。前者用 completion contract、trace、evaluator、hooks 和文件系统状态约束单个 agent；后者用 spec、角色、测试、review、架构规则、upskilling 和 outcome measurement 约束整条研发价值流。
 
 两者的共同点是：不能把“生成速度”误认为“系统能力”。AI 能产出代码，只是系统的一个局部动作；真正可持续的能力来自外部结构如何发现失败、记录失败、评价结果，并把经验回写进下一次运行。
 
