@@ -15,7 +15,7 @@ sources: ["necromanov, 时隔二十年的复活：从UFO到新XCOM2, 旗舰评�
 
 同期采用 AP 制的还有：铁血联盟 1 代、辐射 1/2。
 
-版权辗转后回到 Firaxis Games，2012 年以 XCOM: Enemy Unknown 复活。
+版权辗转后由 2K Games 持有，2012 年交 Firaxis Games 以 XCOM: Enemy Unknown 复活。
 
 ## 新 XCOM 的当代化
 
@@ -103,6 +103,6 @@ necromanov 给 88（+10 给支持战棋类型者），基础质量 85。
 
 ## 待核验点
 
-- 「老 UFO 由 MicroProse 开发、版权辗转后回到 Firaxis Games」需独立核实版权流向。
+- ~~「老 UFO 由 MicroProse 开发、版权辗转后回到 Firaxis Games」需独立核实版权流向。~~ 已核实并修正（2026-11-05）：老 UFO（UFO: Enemy Unknown / X-COM: UFO Defense，1994）由 Julian Gollop 的 Mythos Games 与 MicroProse 共同开发、MicroProse 发行，不是 MicroProse 独家开发。版权流向为 MicroProse（1994-1998）→ Hasbro Interactive（1998-2001）→ Infogrames（2001-2002）→ Take-Two/2K（2004-2005 取得）。Firaxis 是 2K 请来的开发方（2008 年起），从不持有版权。正文已改为「版权辗转后由 2K Games 持有」。
 - 「XCOM2 传奇难度第二个月出现重装持盾兵和机甲」为作者游玩体验，可能因版本/DLC 变动。
 - 推荐指数 88 及各项加减分为作者主观评分。
