@@ -28,9 +28,9 @@ sources:
 
 `BV 清单 → 音频 → Qwen3-ASR → LLM 修复 → distill buckets → Markdown → 知识库`
 
-方向没错，缺的是生产契约。2026-07 的迁移日志记录了首批 764 篇；2026-08-27 当前扫描口径是 `raw/notes/moba-asr/**/*.md` 下 794 份 Markdown，其中 772 份记录了 ASR 模型，另外 22 份主要是索引/管理文件。这 772 份转写里只有 2 份出现时间轴格式，0 份形成 `aid/cid/content_hash` frontmatter 字段。历史质量审计还记录过编码损坏、过短产物和超时误判。因此 2.0 的重点不是继续追求吞吐，而是补齐页级身份、时间证据、选择性视觉信息、质量门、幂等恢复和评测。
+方向没错，缺的是生产契约。2026-07 的迁移日志记录了首批 764 篇；2026-08-27 当前扫描口径是 `01-原始素材/B站转录/**/*.md` 下 794 份 Markdown，其中 772 份记录了 ASR 模型，另外 22 份主要是索引/管理文件。这 772 份转写里只有 2 份出现时间轴格式，0 份形成 `aid/cid/content_hash` frontmatter 字段。历史质量审计还记录过编码损坏、过短产物和超时误判。因此 2.0 的重点不是继续追求吞吐，而是补齐页级身份、时间证据、选择性视觉信息、质量门、幂等恢复和评测。
 
-证据位置：`log.md` 的“2026-07-12 ingest | 双 vault 合并 + B站 ASR 全量迁移”。当前统计可在 vault 根目录复跑：
+证据位置：`操作日志.md` 的“2026-07-12 ingest | 双 vault 合并 + B站 ASR 全量迁移”。当前统计可在 vault 根目录复跑：
 
 ```powershell
 $files = Get-ChildItem -LiteralPath '.\raw\notes\moba-asr' -Recurse -File -Filter '*.md'
@@ -229,7 +229,7 @@ agent-reach transcribe "<local-audio-path>" -o (Join-Path $transcriptDir "transc
 4. Qwen3 ForcedAligner 官方限制单段最长 300 秒；需要时间轴时，先把长音频切成不超过 5 分钟的块，再把局部时间映射回全局。
 5. 单人视频默认不装说话人分离；多人访谈、圆桌或对话才启用 pyannote/WhisperX 一类的 diarization，并记录授权和模型依赖。
 6. `raw_text` 永不覆盖。LLM 只能生成 `normalized_text`，用于标点、分段和受词表约束的专名校正；保存 diff、模型和 prompt 版本。
-7. 标题、简介、PPT、原视频链接和已知实体可形成校准词表，但热词注入必须先 A/B 测试。本地证据见 `log.md` 的“2026-07-09 enhance | 句子合并完成 + 说话人分离受阻 + 废弃清理”：该次 `initial_prompt` 实测诱发整段幻觉；它是一次本地案例，不代表所有模型/配置必然如此。
+7. 标题、简介、PPT、原视频链接和已知实体可形成校准词表，但热词注入必须先 A/B 测试。本地证据见 `操作日志.md` 的“2026-07-09 enhance | 句子合并完成 + 说话人分离受阻 + 废弃清理”：该次 `initial_prompt` 实测诱发整段幻觉；它是一次本地案例，不代表所有模型/配置必然如此。
 
 转写最小字段：`segment_id/start_ms/end_ms/speaker/language/confidence/raw_text/normalized_text/source_type`。
 
@@ -331,12 +331,12 @@ scenedetect -i "<local-video-path>" -o "$taskRoot\visual" detect-content list-sc
 
 一次完整入库至少产生或更新：
 
-1. `raw/`：不可变 Source Pack 或可定位的外部原件；
-2. `wiki/sources/`：带证据与归因边界的素材页；
-3. `wiki/entities/`：按现有知识库 ingest 规则通常提取 3-5 个可复用实体；这不是行业固定配额；
-4. `wiki/topics/`：把新信息接入已有主题；
+1. `01-原始素材/`：不可变 Source Pack 或可定位的外部原件；
+2. `02-知识库/素材/`：带证据与归因边界的素材页；
+3. `02-知识库/概念/`：按现有知识库 ingest 规则通常提取 3-5 个可复用实体；这不是行业固定配额；
+4. `02-知识库/主题/`：把新信息接入已有主题；
 5. `03-核验/待核验事实.md`：未核事实和 ASR 疑点；
-6. `index.md`、`log.md`，必要时 `wiki/overview.md`；
+6. `总索引.md`、`操作日志.md`，必要时 `02-知识库/知识库总览.md`；
 7. 知识网络变化时重建 graph，并执行 lint。
 
 “生成了一篇 Markdown”不是完成。完成标准是：原始证据可回看、关键结论可定位、高风险事实被隔离、知识网络已更新。
@@ -379,7 +379,7 @@ scenedetect -i "<local-video-path>" -o "$taskRoot\visual" detect-content list-sc
 
 1. BVID 升级为 BVID + page + cid 的稳定身份；
 2. 新增 manifest、内容哈希和阶段状态；
-3. raw/normalized 双层，禁止 LLM 覆盖原文；
+3. 01-原始素材/normalized 双层，禁止 LLM 覆盖原文；
 4. 每条证据补时间轴，蒸馏改成“证据卡 → 全局综合”；
 5. 加 G1-G6 发布门；超时不再永久 skip；
 6. B站入口改为 bili-cli/OpenCLI/bili audio 降级链，停止默认 yt-dlp 直抓。

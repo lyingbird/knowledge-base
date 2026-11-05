@@ -25,4 +25,4 @@ Desktop.ini
 *.mov
 *.webm
 # 复原工序的中间产物目录
-raw/m4a/_cleaned/
+01-原始素材/音视频/_cleaned/

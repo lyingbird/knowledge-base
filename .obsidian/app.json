@@ -3,7 +3,7 @@
   "newFileLocation": "folder",
   "newFileFolderPath": "00-入口",
   "showUnsupportedFiles": false,
-  "attachmentFolderPath": "raw/assets",
+  "attachmentFolderPath": "01-原始素材/附件",
   "useMarkdownLinks": false,
   "newLinkFormat": "shortest",
   "promptDelete": true

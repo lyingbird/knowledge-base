@@ -40,7 +40,7 @@ updated: 2026-11-02
 
 ## 维护规范
 
-开源项目的 ingest 规范在 [[.wiki-schema|Wiki Schema]] 的「GitHub / 开源项目学习素材 Ingest 规范」一节，原始副本放 `raw/repos/`。
+开源项目的 ingest 规范在 [[知识库规范|知识库规范]] 的「GitHub / 开源项目学习素材 Ingest 规范」一节，原始副本放 `01-原始素材/开源项目/`。
 
 ## 相关主线
 
