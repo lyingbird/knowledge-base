@@ -45,7 +45,7 @@ sources: [Tom Blomfield：公司不再是组织，而是 AI 系统, YC 的 AI �
 
 ## 后敏捷操作模型
 
-[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 把 [[AI原生组织]] 的主线推进到软件工程 operating model。AI 让代码生成变便宜，但组织仍用 8-10 人团队、两周 sprint、模糊 story、人工 review 和旧测试队列协作时，公司级生产率只会得到有限提升。McKinsey 的框架不是“敏捷已死”，而是旧敏捷操作模型需要被 [[后敏捷操作模型]] 替换。
+[[麦肯锡：AI 时代，旧的敏捷开发方式正在拖累个人效率]] 把本页的主线推进到软件工程 operating model。AI 让代码生成变便宜，但组织仍用 8-10 人团队、两周 sprint、模糊 story、人工 review 和旧测试队列协作时，公司级生产率只会得到有限提升。McKinsey 的框架不是“敏捷已死”，而是旧敏捷操作模型需要被 [[后敏捷操作模型]] 替换。
 
 AI 原生组织在研发上的形态包括 [[AI原生工作流]] 和 AI-native roles：从季度规划转向 continuous planning，从 story-driven 转向 [[Spec-driven development]]，从 two-pizza team 转向 3-5 人 one-pizza pod，从前后端/QA 分离转向产品构建者编排 [[智能体]]、理解全栈和架构。组织级变革还需要 upskilling、incentives、coaching、bring your own code 和 outcome measurement，而不只是发放工具账号。
 
