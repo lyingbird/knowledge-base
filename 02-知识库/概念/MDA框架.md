@@ -68,12 +68,12 @@ Robin Hunicke、Marc LeBlanc、Robert Zubek 合写的短文 *MDA: A Formal Appro
 
 论文用四个游戏说明「同一套机制语言可以交付完全不同的体验」：
 
-| 游戏 | 主要交付的体验 | 机制上做对了什么 |
-| --- | --- | --- |
-| Charades（你画我猜） | Fellowship、Expression、Challenge | 几乎没有规则，只有轮流表演与猜测的协议，乐趣全部来自人际默契 |
-| Quake | Challenge、Sensation、Competition、Fantasy | 移动速度、武器切换时间、地图控制点，全部服务于「快」与「准」 |
-| The Sims | Discovery、Fantasy、Expression、Narrative | 需求条与物件交互表，允许玩家自己生成故事，系统不写剧情 |
-| Final Fantasy | Fantasy、Narrative、Expression、Discovery、Challenge、Submission | 战斗数值曲线保证「努力必有回报」，把 Submission 也纳入交付清单 |
+| 游戏             | 主要交付的体验                                                     | 机制上做对了什么                              |
+| -------------- | ----------------------------------------------------------- | ------------------------------------- |
+| Charades（你画我猜） | Fellowship、Expression、Challenge                             | 几乎没有规则，只有轮流表演与猜测的协议，乐趣全部来自人际默契        |
+| Quake          | Challenge、Sensation、Competition、Fantasy                     | 移动速度、武器切换时间、地图控制点，全部服务于「快」与「准」        |
+| The Sims       | Discovery、Fantasy、Expression、Narrative                      | 需求条与物件交互表，允许玩家自己生成故事，系统不写剧情           |
+| Final Fantasy  | Fantasy、Narrative、Expression、Discovery、Challenge、Submission | 战斗数值曲线保证「努力必有回报」，把 Submission 也纳入交付清单 |
 
 四款游戏里没有哪一款「更高级」。MDA 的用法是：先写清这张表的右列，再问「我的机制在为哪一项服务」。
 
